@@ -1,8 +1,8 @@
 # Great Western Wine
-BigCommerce platform theme based off Cornerstone for Great Western Wine website
+BigCommerce platform theme based off Cornerstone (Light version) for Great Western Wine website
 
 ## Installation:
-The theme runs independently from the platform and it requires an active BigCommerce account to get access to the API & Data from local.
+The theme runs independently from the platform and it requires an active BigCommerce account to get access to the API & Data from local. API/Access tokens & keys can be found on TeamsID.
 
 The theme uses a theme engine called **Stencil** and this runs on Node, it requires specifically Node 8.1.0 (not older, not newer) to install the cli tool globaly:
 
@@ -10,11 +10,13 @@ The theme uses a theme engine called **Stencil** and this runs on Node, it requi
 
 In my case I had to use the `n` tool to switch to that specific version of node, but it should work with Brew or other alternatives. 
 
-Once the global CLI tool is installed, we can proceed to download the **Cornerstone** theme, then `cd` into the theme folder and run `npm install` to get the packages needed to run Stencil against the theme.
+Once the global CLI tool is installed, we can proceed to download the **Great Western Wine theme - Cyber-Duck** theme, then `cd` into the theme folder and run `npm install` to get the packages needed to run Stencil against the theme.
 
-*I need to find out how to change the theme name and folder so we don't just overwrite Cornerstone, but create a new theme based off it*
+In this step, not all the required packages for **Stencil** were installed correctly and some of the commands failed, so I had to install them as they were requested, after solving a permissions issue with the `node_modules` folder inside the project. 
 
-In this step, not all the required packages for **Stencil** were installed correctly and some of the commands failed, so I had to install them as they were requested, after solving a permissions issue with the `node_modules` folder inside the project. Main commands to use are:
+(Note from Connor - The BigCommerce documentation advises using Node Version Manager [here](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil), this didn't cause any issues in my case - I have `n` installed also, and as of yet haven't had conflicts when switching between versions with either of these, though as a precaution, I use the 'current' tool to switch to my most up-to-date version, then use the other version switching tool (as the versions NVM and `n` have installed are different)).
+
+Main commands to use are:
 
 `stencil init` To initialise the project, this will ask for store details (API token, etc) which have to be generated from the account.
 
@@ -24,7 +26,7 @@ In this step, not all the required packages for **Stencil** were installed corre
 
 `stencil push` uploads the compiled/bundled theme to the BigCommerce account so it can be activated.
 
-There are other commands but these are the basic ones we will need.
+There are other commands but these are the basic ones we will need
 
 ## Tech stack
 Cornerstone is built with Handlebars, Sass and Javascript.
@@ -49,8 +51,10 @@ Uses a module system/syntax and each part is separated in a file and imported to
 
 - [Custom JS](https://developer.bigcommerce.com/stencil-docs/javascript-and-event-hooks/customizing-javascript)
 
+### Theme Update
+To be able to modify the theme's code/files, we had to create a copy of Cornerstone Light, however copies of themes cannot receive updates from the theme's creator (they advise taking the original theme, updating, then applying our changes to it again, but this doesn't seem feasible due to the scale of changes currently).
+
 ## Other things (WIP)
-- Theme updates
 - Invoices
 - Analytics
 
