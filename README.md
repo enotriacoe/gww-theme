@@ -14,7 +14,7 @@ Once the global CLI tool is installed, we can proceed to download the **Great We
 
 In this step, not all the required packages for **Stencil** were installed correctly and some of the commands failed, so I had to install them as they were requested, after solving a permissions issue with the `node_modules` folder inside the project. 
 
-(Note from Connor - The BigCommerce documentation advises using Node Version Manager [here](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil), this didn't cause any issues in my case - I have `n` installed also, and as of yet haven't had conflicts when switching between versions with either of these, though as a precaution, I use the 'current' tool to switch to my most up-to-date version, then use the other version switching tool (as the versions NVM and `n` have installed are different)).
+(Note from Connor - The BigCommerce documentation advises using Node Version Manager [here](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil), NVM and n were fine at first for me, but NVM began to overrule n in most cases, so I uninstalled NVM, other than having to sudo install 8.16 with n, I've had no issues since with running Stencil etc.)).
 
 Main commands to use are:
 
