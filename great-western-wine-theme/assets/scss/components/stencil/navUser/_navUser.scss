@@ -75,10 +75,9 @@
 
 .navUser-action {
     color: stencilColor("navUser-color");
-    font-weight: fontWeight("bold");
+    font-weight: fontWeight("normal");
     padding: spacing("base") spacing("half");
     text-decoration: none;
-    text-transform: uppercase;
 
     &:hover,
     &.is-open {
@@ -93,8 +92,10 @@
     }
 
     .icon {
-        @include square(8px);
-        margin: -1px 0 0 spacing("eighth");
+        height: $header-item-icon-size;
+        width: $header-item-icon-size;
+        margin: 0 auto;
+        display: block;
     }
 
     svg {
@@ -143,6 +144,13 @@
 
 .navUser-item {
     display: none;
+
+    .icon {
+        height: $header-item-icon-size;
+        width: $header-item-icon-size;
+        margin: 0 auto;
+        display: block;
+    }
 
     @include breakpoint("medium") {
         display: block;

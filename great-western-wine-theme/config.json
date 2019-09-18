@@ -426,7 +426,7 @@
         "default_image_gift_certificate": "img/GiftCertificate.png",
         "body-font": "Google_Work+Sans_400",
         "headings-font": "Google_Playfair+Display_400",
-        "fontSize-root": 14,
+        "fontSize-root": 16,
         "fontSize-h1": 28,
         "fontSize-h2": 25,
         "fontSize-h3": 22,

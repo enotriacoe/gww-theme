@@ -33,6 +33,9 @@
             </li>
         {{/if}}
         <li class="navUser-item navUser-item--account">
+            <i class="icon">
+                <svg><use xlink:href="#icon-user"></use></svg>
+            </i>
             {{#if customer}}
                 <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a>
                 <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
@@ -50,6 +53,9 @@
                 data-dropdown="cart-preview-dropdown"
                 data-options="align:right"
                 href="{{urls.cart}}">
+                <i class="icon">
+                    <svg><use xlink:href="#icon-basket"></use></svg>
+                </i>
                 <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span> <span class="countPill cart-quantity"></span>
             </a>
 
