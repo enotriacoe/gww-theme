@@ -44,7 +44,7 @@
     text-align: center;
 
     @include breakpoint("medium") {
-        margin: 0;
+        margin: (spacing("base") * 1.5) 0;
     }
 
     > a {
