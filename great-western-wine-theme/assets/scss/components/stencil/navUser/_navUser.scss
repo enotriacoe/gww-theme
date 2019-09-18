@@ -28,9 +28,10 @@
         padding: 0 spacing("single");
         position: relative;
         right: auto;
-        top: auto;
+        float: right;
         transform: none;
         z-index: zIndex("high");
+        width: 50%;
     }
 
     .dropdown-menu {
