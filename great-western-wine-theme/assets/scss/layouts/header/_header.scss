@@ -43,6 +43,10 @@
     margin: 0 remCalc($header-toggle-width); // 2
     text-align: center;
 
+    @include breakpoint("medium") {
+        margin: 0;
+    }
+
     > a {
         @include clearfix;
         color: $storeName-color;

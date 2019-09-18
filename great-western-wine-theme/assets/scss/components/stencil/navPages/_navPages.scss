@@ -75,7 +75,6 @@
 
     @include breakpoint("medium") {
         @include grid-row(); // 1
-        @include nav($style: "navBar", $wrapper: "nav");
         background: none;
         font-size: 0; // 1
         overflow-y: visible;
@@ -108,8 +107,10 @@
     margin: 0;
 
     @include breakpoint("medium") {
-        display: inline-block;
-        float: none;
+        display: flex;
+        justify-content: space-between;
+        width: 92%;
+        margin: 0 auto;
     }
 
     + .navPages-list {
@@ -190,14 +191,13 @@
     color: stencilColor("navPages-color");
     display: block;
     font-size: fontSize("smaller");
-    font-weight: fontWeight("bold");
+    font-weight: 600;
     padding: spacing("half") 0;
     text-decoration: none;
-    text-transform: uppercase;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        padding: spacing("half") (spacing("half") + spacing("quarter")) spacing("half");
 
         &.is-open {
             background-color: stencilColor("navPages-subMenu-backgroundColor");
