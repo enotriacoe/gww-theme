@@ -19,7 +19,7 @@
 .navUser {
     @include nav($style: "navBar", $wrapper: "nav");
     @include verticalPositionMiddle("absolute");
-    right: 0;
+    right: 45px;
     top: 26px; // 2
     width: 100%; // 4
     z-index: zIndex("lowest"); // 5.
@@ -146,14 +146,19 @@
     display: none;
 
     .icon {
-        height: $header-item-icon-size;
-        width: $header-item-icon-size;
+        height: $header-item-icon-size-mobile;
+        width: $header-item-icon-size-mobile;
         margin: 0 auto;
         display: block;
     }
 
     @include breakpoint("medium") {
         display: block;
+
+        .icon {
+            height: $header-item-icon-size;
+            width: $header-item-icon-size
+        }
 
         &.navUser-item--social {
             margin-top: rem-calc(5px);
@@ -218,7 +223,7 @@
 .navUser-item-cartLabel {
     display: none;
 
-    @include breakpoint("small") {
+    @include breakpoint("medium") {
         display: inline;
     }
 }

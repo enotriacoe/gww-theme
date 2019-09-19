@@ -40,9 +40,9 @@
 
 .header-logo {
     font-size: 0;   // 1
-    margin: 0 remCalc($header-toggle-width); // 2
+    margin: 0;
     text-align: center;
-
+    
     @include breakpoint("medium") {
         margin: (spacing("base") * 1.5) 0;
     }
@@ -173,7 +173,7 @@
     @include square($header-toggle-width);
     display: inline-block;
     font-size: 0;
-    left: 0;
+    right: 0;
     overflow: hidden;
     padding: 0 remCalc(18);
     position: absolute;
