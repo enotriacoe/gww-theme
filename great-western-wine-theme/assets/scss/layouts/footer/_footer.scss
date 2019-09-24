@@ -25,7 +25,7 @@
 
 .footer-info-col {
     @include grid-column(12);
-    color: stencilColor("color-textSecondary");
+    color: stencilColor("color-white");
     display: inline-block;
     float: none;
     font-size: fontSize("base"); // 2
@@ -95,12 +95,12 @@
     margin-left: 0;
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-white");
         text-decoration: none;
 
         // scss-lint:disable NestingDepth
         &:hover {
-            color: stencilColor("color-textSecondary--hover");
+            color: stencilColor("color-white");
         }
         // scss-lint:enable NestingDepth
     }
@@ -114,18 +114,18 @@
     }
 
     > .powered-by {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-white");
         font-size: fontSize("tiny");
         margin: 0;
     }
 
     a {
-        color: stencilColor("color-textSecondary");
+        color: stencilColor("color-white");
         text-decoration: none;
 
         // scss-lint:disable NestingDepth
         &:hover {
-            color: stencilColor("color-textSecondary--hover");
+            color: stencilColor("color-white");
         }
         // scss-lint:enable NestingDepth
     }
