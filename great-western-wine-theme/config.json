@@ -623,7 +623,7 @@
         "restrict_to_login": false,
         "swatch_option_size": "22x22",
         "social_icon_placement_top": false,
-        "social_icon_placement_bottom": "bottom_none",
+        "social_icon_placement_bottom": "bottom_left",
         "geotrust_ssl_common_name": "",
         "geotrust_ssl_seal_size": "M",
         "navigation_design": "simple",

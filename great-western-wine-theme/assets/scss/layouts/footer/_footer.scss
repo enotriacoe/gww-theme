@@ -15,7 +15,7 @@
 .footer {
     background-color: $footer-background;
     border-top: container("border");
-    padding: spacing("double") 0;
+    padding: spacing("double") 0 0;
 }
 
 .footer-info {
@@ -27,7 +27,7 @@
     @include grid-column(12);
     color: stencilColor("color-white");
     display: inline-block;
-    float: none;
+    float: right;
     font-size: fontSize("base"); // 2
     margin-bottom: spacing("double");
     text-align: center;
@@ -108,12 +108,14 @@
 
 .footer-copyright {
     text-align: center;
+    padding: spacing("single") 0;
+    background-color: $primary-color;
 
     @include breakpoint("small") {
         text-align: left;
     }
 
-    > .powered-by {
+    .powered-by {
         color: stencilColor("color-white");
         font-size: fontSize("tiny");
         margin: 0;
@@ -165,4 +167,15 @@
 
 .footer-newsletter-summary {
     text-align: left;
+}
+
+.footer-details {
+    display: inline-block;
+    color: stencilColor("color-white");
+    float: none;
+    font-size: fontSize("base"); // 2
+}
+
+.footer-logo {
+    max-height: 85px; 
 }

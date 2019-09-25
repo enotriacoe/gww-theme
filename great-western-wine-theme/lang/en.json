@@ -4,7 +4,10 @@
     },
     "footer": {
         "brands": "Popular Brands",
-        "navigate": "Navigate",
+        "service": "Service",
+        "about_us": "About us",
+        "careers": "Careers",
+        "help": "Help",
         "info": "Info",
         "categories": "Categories",
         "call_us": "Call us at {phone_number}"
