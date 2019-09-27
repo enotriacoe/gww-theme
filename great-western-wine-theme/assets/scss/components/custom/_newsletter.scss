@@ -1,0 +1,50 @@
+.newsletter-title {
+    font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: ($fontSize-largest * 1.5);
+    font-weight: $fontWeight-black;
+    text-transform: none;
+    margin-bottom: 0;
+}
+
+.newsletter-intro {
+    text-align: center;
+}
+
+.newsletter-form {
+    .form-prefixPostfix {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-input, .form-prefixPostfix .button{
+        border-radius: 0;
+        margin: 0;
+        border-color: $primary-color;
+    }
+
+    .button {
+        border-radius: 0;
+        margin: 0;
+        border-color: $primary-color;
+        text-transform: uppercase;
+        background-color: $primary-color;
+    }
+    
+    .black-hr {
+        border-color: black;
+    }
+}
+
+.newsletter-form {
+    .form-input, .form-prefixPostfix .button{
+        border-radius: 0;
+        margin: 0;
+        border-color: $primary-color;
+    }
+
+    .button {
+        text-transform: uppercase;
+        background-color: $primary-color;
+    }
+}

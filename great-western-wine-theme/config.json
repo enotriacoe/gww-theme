@@ -443,7 +443,7 @@
         "color-textLink": "#333333",
         "color-textLink--hover": "#757575",
         "color-textLink--active": "#757575",
-        "color-textHeading": "#444444",
+        "color-textHeading": "#000000",
         "color-primary": "#357044",
         "color-primaryDark": "#666666",
         "color-primaryDarker": "#333333",

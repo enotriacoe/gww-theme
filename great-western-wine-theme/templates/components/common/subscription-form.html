@@ -1,7 +1,8 @@
-<h5 class="footer-info-heading">{{lang 'newsletter.subscribe'}}</h5>
-<p>{{lang 'newsletter.subscribe_intro'}}</p>
+<hr class="black-hr">
+<h5 class="newsletter-title">{{lang 'newsletter.subscribe'}}</h5>
+<p class="newsletter-intro">{{lang 'newsletter.subscribe_intro'}}</p>
 
-<form class="form" action="{{urls.subscribe.action}}" method="post">
+<form class="form newsletter-form" action="{{urls.subscribe.action}}" method="post">
     <fieldset class="form-fieldset">
         <input type="hidden" name="action" value="subscribe">
         <input type="hidden" name="nl_first_name" value="bc">
@@ -13,7 +14,7 @@
                 <input class="button button--primary form-prefixPostfix-button--postfix" type="submit" value="{{lang 'newsletter.subscribe_submit'}}">
             </div>
             {{#if settings.show_newsletter_summary }}
-                <div class="footer-newsletter-summary">{{settings.newsletter_summary}}</div>
+                <div>{{settings.newsletter_summary}}</div>
             {{/if}}
         </div>
     </fieldset>

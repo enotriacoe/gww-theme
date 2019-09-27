@@ -788,9 +788,9 @@
         "comments": "Comments"
     },
     "newsletter": {
-        "subscribe": "Subscribe to our newsletter",
-        "subscribe_intro": "Get the latest updates on new products and upcoming sales",
-        "subscribe_submit": "Subscribe",
+        "subscribe": "Get £15 voucher",
+        "subscribe_intro": "When you sign up to the newsletter",
+        "subscribe_submit": "Sign Up",
         "email_placeholder": "Your email address",
         "subscribed_heading": "Thanks for Subscribing!",
         "subscribed_heading_error": "Oops...",
