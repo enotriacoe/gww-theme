@@ -120,6 +120,7 @@
         color: stencilColor("color-white");
         font-size: fontSize("tiny");
         margin: 0;
+        display: inline-block;
     }
 
     a {
@@ -179,4 +180,13 @@
 
 .footer-logo {
     max-height: 85px; 
+}
+
+.drink-aware-cont {
+    float: none;
+    text-align: center;
+
+    @include breakpoint("small") {
+        float: right;
+    }
 }
