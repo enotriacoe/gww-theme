@@ -40,26 +40,11 @@
 
 .header-logo {
     font-size: 0;   // 1
-    margin: 0 remCalc($header-toggle-width); // 2
+    margin: 0;
     text-align: center;
-
-    @include breakpoint("small") { // 4
-        margin-left: remCalc($header-toggle-width * 1.5);
-        margin-right: remCalc($header-toggle-width * 1.5);
-    }
-
+    
     @include breakpoint("medium") {
-        margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
-        padding: 0;
-
-        .header.fixed & {
-            background-color: color("greys", "lightest");
-            margin: 0;
-            padding: spacing("quarter") 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-        }
+        margin: (spacing("base") * 1.5) 0;
     }
 
     > a {
@@ -79,6 +64,7 @@
             display: inline;
             padding: 0;
             width: 100%;
+            margin: 0;
         }
 
         &:hover {
@@ -93,10 +79,6 @@
 
 .header-logo--left {
     text-align: left;
-
-    @include breakpoint("medium") {
-        margin-left: remCalc(40px);
-    }
 
     .header-logo-image {
         right: unset;
@@ -191,7 +173,7 @@
     @include square($header-toggle-width);
     display: inline-block;
     font-size: 0;
-    left: 0;
+    right: 0;
     overflow: hidden;
     padding: 0 remCalc(18);
     position: absolute;

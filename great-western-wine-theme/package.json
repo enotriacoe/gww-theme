@@ -65,7 +65,8 @@
   },
   "scripts": {
     "build": "npx webpack --config webpack.prod.js",
-    "buildDev": "npx webpack --config webpack.dev.js",
+    "builddev": "npx webpack --config webpack.dev.js",
+    "buildwatch": "npx webpack --config webpack.dev.js --watch",
     "lighthouse": "npx lighthouse --config-path=lighthouse-config.js --quiet --output json --chrome-flags=\"--headless\" $URL | jq '.audits | map_values(.rawValue)'"
   }
 }
