@@ -9,6 +9,7 @@
 
 .btn-coral-line {
     border-bottom: 4px solid $color-warning;
+    color: $black;
     
     &:after {
         content: '>';
