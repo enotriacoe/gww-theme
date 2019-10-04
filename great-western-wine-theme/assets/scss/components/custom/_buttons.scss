@@ -1,0 +1,20 @@
+.btn {
+    display: inline-block;
+    padding: 5px 0;
+    line-height: 1.15;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-coral-line {
+    border-bottom: 4px solid $color-warning;
+    
+    &:after {
+        content: '>';
+        padding-left: 5px;
+        font-weight: 500;
+        transform: scaleX(0.7);
+        display: inline-block;
+    }
+}
