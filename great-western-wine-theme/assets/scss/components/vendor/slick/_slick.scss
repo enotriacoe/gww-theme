@@ -18,9 +18,7 @@
 
 .slick-next,
 .slick-prev {
-    @include carouselOpaqueBackgrounds($slick-arrow-bgColor);
     z-index: 1;
-    border: 1px solid $slick-arrow-borderColor;
     height: remCalc(61px);
     margin-top: -(remCalc(15px));
     padding: remCalc(10px);
@@ -37,7 +35,6 @@
 
     &:hover,
     &:focus {
-        @include carouselOpaqueBackgrounds($slick-arrow-bgColor); // 1
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: 100%;
