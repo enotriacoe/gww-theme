@@ -15,7 +15,7 @@
 .footer {
     background-color: $footer-background;
     border-top: container("border");
-    padding: spacing("double") 0 0;
+    padding: (spacing("base") * 2) 0 0;
 }
 
 .footer-info {
