@@ -20,11 +20,11 @@
 .heroCarousel {
     width: 1px;
     min-width: 100%;
-    margin-bottom: (spacing("double") + spacing("single"));
+    margin-bottom: 0;
     margin-top: 0;
 
     &.slick-initialized { // 2
-        max-height: remCalc(1000);
+        max-height: remCalc(600px);
         opacity: 1;
     }
 
@@ -87,7 +87,7 @@
 
     .heroCarousel-image-wrapper {
         @include breakpoint("medium") {
-            max-height: remCalc(600px);
+            max-height: remCalc(500px);
         }
     }
 
@@ -120,10 +120,9 @@
         margin: 0 auto;
         padding: spacing("single") * 1.5;
         position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: remCalc(700px);
+        bottom: 0;
+        transform: translateY(-10%);
+        width: remCalc(600px);
 
         &.heroCarousel-content--empty {
             background-color: transparent;
@@ -167,7 +166,8 @@
 // ----------------------------------------------------------------------------
 
 .home-carousel-cont {
-    width: 66.6%;
+    width: 65%;
+    display: inline-block;
 }
 
 .home-carousel-wrap {

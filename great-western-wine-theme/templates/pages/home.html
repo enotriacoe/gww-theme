@@ -13,12 +13,15 @@ blog:
 ---
 {{#partial "hero"}}
     {{> components/common/usp-block}}
-    {{{region name="home_below_menu"}}}
-    {{#if carousel}}
-        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
-    {{/if}}
-    {{{region name="home_below_carousel"}}}
-    <hr>
+    <div class="container">
+        {{{region name="home_below_menu"}}}
+        {{#if carousel}}
+            {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+        {{/if}}
+        {{{region name="home_below_carousel"}}}
+        {{> components/what-eating-home}}
+    </div>
+    <hr class="hr-black">
 {{/partial}}
 
 {{#partial "page"}}
