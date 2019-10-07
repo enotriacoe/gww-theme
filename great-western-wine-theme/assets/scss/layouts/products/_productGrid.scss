@@ -18,7 +18,7 @@
     margin-bottom: spacing("single");
 
     .product {
-        @include grid-column(6, $float: none);
+        @include grid-column(4, $float: none);
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
@@ -28,7 +28,7 @@
         }
 
         @include breakpoint("medium") {
-            width: grid-calc(3, $total-columns);
+            width: grid-calc(4, $total-columns);
         }
     }
 }
@@ -47,7 +47,7 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product { // 1
             @include breakpoint("small") {
-                width: grid-calc(4, $total-columns);
+                width: grid-calc(3, $total-columns);
             }
         }
     }
@@ -75,7 +75,7 @@
     }
 
     @include breakpoint("medium") {
-        column-count: 4;
+        column-count: 3;
     }
 
     .product {
@@ -118,7 +118,7 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product {
             @include breakpoint("medium") {
-                width: grid-calc(4, $total-columns);
+                width: grid-calc(3, $total-columns);
             }
         }
     }
@@ -131,7 +131,7 @@
 
             // scss-lint:disable SelectorDepth, NestingDepth
             .product {
-                @include grid-column(4, $float: none);
+                @include grid-column(3, $float: none);
             }
         }
     }
