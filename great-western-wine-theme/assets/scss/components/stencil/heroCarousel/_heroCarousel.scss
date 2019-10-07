@@ -42,26 +42,26 @@
     }
 
     .slick-next {
-        right: 15px;
+        left: 70px;
 
         @include breakpoint("medium") {
-            right: 25px;
+            left: 70px;
         }
     }
 
     .slick-prev {
-        left: 15px;
+        left: 20px;
 
         @include breakpoint("medium") {
-            left: 25px;
+            left: 0;
         }
     }
 
     .slick-dots {
-        bottom: spacing("third");
+        bottom: 0rem;
 
         @include breakpoint("medium") {
-            bottom: spacing("single");
+            bottom: 0.5rem;
         }
 
     }
@@ -107,18 +107,20 @@
 .heroCarousel-content {
     background-color: rgba($carousel-bgColor, 1);
     padding: spacing("half") spacing("single") (spacing("double"));
-    text-align: center;
+    text-align: left;
+    border-left: 4px solid #e1675c;
 
     @include breakpoint("medium") {
         @include carouselOpaqueBackgrounds;
-        background-color: rgba($carousel-bgColor, 0.9);
+        background-color: rgba($carousel-bgColor, 1);
         left: 0;
         margin: 0 auto;
-        padding: spacing("single") * 1.5;
+        padding: 1.3rem (spacing("single") * 1.5);
         position: absolute;
         bottom: 0;
-        transform: translateY(-10%);
+        transform: translateY(-15%);
         width: remCalc(600px);
+        max-height: 260px;
 
         &.heroCarousel-content--empty {
             background-color: transparent;
@@ -130,22 +132,26 @@
     color: $carousel-title-color;
     font-size: fontSize("small");
     margin-top: 0;
+    font-family: $fontFamily-headings;
+    font-weight: 900;
 
     @include breakpoint("medium") {
         font-size: fontSize("hero");
+        line-height: 1;
     }
 }
 
 .heroCarousel-description {
     color: $carousel-description-color;
-    font-size: fontSize("tiny");
+    font-size: fontSize("large");
+    margin-bottom: 0;
 
     @include breakpoint("small") {
         font-size: fontSize("smallest");
     }
 
     @include breakpoint("medium") {
-        font-size: fontSize("smaller");
+        font-size: fontSize("large");
     }
 }
 
@@ -153,7 +159,7 @@
     margin: 0;
 
     @include breakpoint("medium") {
-        margin-top: spacing("single");
+        margin-top: (spacing("single") / 3);
     }
 }
 
@@ -162,10 +168,10 @@
 // ----------------------------------------------------------------------------
 
 .home-carousel-cont {
-    width: 65%;
+    width: 100%;
     display: inline-block;
-}
 
-.home-carousel-wrap {
-
+    @include breakpoint ("medium") {
+        width: 65%;
+    }
 }
