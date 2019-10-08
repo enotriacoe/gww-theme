@@ -81,7 +81,8 @@
             </h3>
         </div>
 
-        <p>2013 | 75cl <span>*****</span></p>
+        <p class="card-year-size">2013 | <span class="brand-color-text">75cl</span></p>
+        <p class="card-rating">{{> components/products/ratings rating=rating}}</p>
 
         <div class="card-text" data-test-info-type="price">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}

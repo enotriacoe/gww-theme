@@ -168,6 +168,15 @@
 .card-title-cont {
     height: (remCalc(22px * 5));
     overflow: hidden;
+    line-height: 1.4rem;
+}
+
+.card-year-size {
+    display: inline-block;
+}
+
+.card-rating {
+    float: right;
 }
 
 .card-multibuy-cont {
@@ -177,11 +186,11 @@
 }
 
 .card-multibuy-only-label {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .card-multibuy-price {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: $fontWeight-bold;
 }
 
@@ -189,6 +198,6 @@
     display: inline-block;
     max-width: 55%;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 0.9rem;
 }

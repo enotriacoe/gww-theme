@@ -23,13 +23,13 @@
         font-size: fontSize("base"); // 1
         vertical-align: top;
         
-
         @include breakpoint("small") {
             width: grid-calc(3, $total-columns);
         }
 
         @include breakpoint("medium") {
             width: grid-calc(3, $total-columns);
+            margin-bottom: spacing("single");
             padding: 0 20px;
             &:not(:nth-child(4)) {
                 border-right: 1px solid lightgrey;
