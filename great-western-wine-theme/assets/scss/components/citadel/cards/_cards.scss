@@ -60,7 +60,7 @@
 .card-brand {
     font-size: $card-title-fontSize;
     font-weight: 500;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 .card-title {
@@ -161,6 +161,15 @@
     margin: 0;
 }
 
+.card-body .card-text {
+    color: $black;
+}
+
+.card-title-cont {
+    height: (remCalc(22px * 5));
+    overflow: hidden;
+}
+
 .card-multibuy-cont {
     background-color: $xl-green;
     width: 100%;
@@ -173,7 +182,7 @@
 
 .card-multibuy-price {
     font-size: 28px;
-    font-weight: bold;
+    font-weight: $fontWeight-bold;
 }
 
 .card-multibuy-label {
@@ -183,4 +192,3 @@
     font-size: 12px;
     line-height: 0.9rem;
 }
-

@@ -8,18 +8,6 @@ If you are making a change here or in price-range.html, you probably want to mak
     {{> components/products/price-range price=price schema_org=schema_org}}
 {{else}}
     {{#if price.with_tax}}
-        <div class="price-section price-section--withTax rrp-price--withTax" {{#unless price.rrp_with_tax}}style="display: none;"{{/unless}}>
-            {{theme_settings.pdp-retail-price-label}}
-            <span data-product-rrp-with-tax class="price price--rrp">
-                {{price.rrp_with_tax.formatted}}
-            </span>
-        </div>
-        <div class="price-section price-section--withTax non-sale-price--withTax" {{#unless price.non_sale_price_with_tax}}style="display: none;"{{/unless}}>
-            {{theme_settings.pdp-non-sale-price-label}}
-            <span data-product-non-sale-price-with-tax class="price price--non-sale">
-                {{price.non_sale_price_with_tax.formatted}}
-            </span>
-        </div>
         <div class="price-section price-section--withTax" {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}}>
             <span class="price-label" {{#if price.non_sale_price_with_tax}}style="display: none;"{{/if}}>
                 {{theme_settings.pdp-price-label}}
@@ -40,6 +28,20 @@ If you are making a change here or in price-range.html, you probably want to mak
             {{#if price.without_tax}}
                 <abbr title="{{lang 'products.including_tax'}}">{{lang 'products.price_with_tax' tax_label=price.tax_label}}</abbr>
             {{/if}}
+        </div>
+        <div class="price-section price-section--withTax rrp-price--withTax" {{#unless price.rrp_with_tax}}style="display: none;"{{/unless}}>
+            {{theme_settings.pdp-retail-price-label}}
+            <span data-product-rrp-with-tax class="price price--rrp">
+                {{price.rrp_with_tax.formatted}}
+            </span>
+        </div>
+        <div class="price-section price-section--withTax non-sale-price--withTax" {{#unless price.non_sale_price_with_tax}}style="display: none;"{{/unless}}>
+            {{theme_settings.pdp-non-sale-price-label}}
+            <span data-product-non-sale-price-with-tax class="price price--non-sale">
+                {{price.non_sale_price_with_tax.formatted}}
+            </span>
+            <span class="price price-saving">Save £101.00</span>
+            <!-- <span class="price">Save £{{subtract price.non_sale_price_with_tax.value price.with_tax.value}}</span> -->
         </div>
     {{/if}}
     {{#if price.without_tax}}

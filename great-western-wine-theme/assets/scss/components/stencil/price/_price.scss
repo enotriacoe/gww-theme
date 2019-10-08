@@ -11,3 +11,27 @@
 .price-section--minor {
     color: color("greys", "light");
 }
+
+.price--withTax {
+    font-size: 30px;
+    font-weight: $fontWeight-bold;
+
+}
+
+.price-section {
+    display: inline-block;
+    line-height: 2.2rem;
+}
+
+.non-sale-price--withTax {
+    float: right;
+    text-align: right;
+    line-height: 1rem;
+}
+
+.price-saving {
+    display: inline-block;
+    width: 100%;
+    color: $color-warning;
+    font-weight: 500;
+}

@@ -74,10 +74,13 @@
         {{#if brand.name}}
             <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
         {{/if}}
-        <h4 class="card-brand">Domaine Parent Bourgogne</h4>
-        <h3 class="card-title">
-            <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
-        </h3>
+        <div class="card-title-cont">
+            <h4 class="card-brand">Domaine Parent Bourgogne</h4>
+            <h3 class="card-title">
+                <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+            </h3>
+        </div>
+
         <p>2013 | 75cl <span>*****</span></p>
 
         <div class="card-text" data-test-info-type="price">
@@ -88,6 +91,14 @@
             {{/or}}
         </div>
         {{> components/products/bulk-discount-rates}}
+    </div>
+    <div class="grid-add-cart">
+
+            <div class="form-action">
+                    <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+                </div>    
+                
     </div>
     <div class="card-multibuy-cont">
         <span class="card-multibuy-only-label">Only</span>
