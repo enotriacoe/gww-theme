@@ -15,6 +15,18 @@
 // SweetAlert2 replacement for JavaScript alert/confirmations
 @import "vendor/sweetalert2/component";
 
+// Custom components
+// -----------------------------------------------------------------------------
+
+// Newsletter
+@import "custom/variables";
+
+@import "custom/buttons";
+@import "custom/newsletter";
+@import "custom/typography";
+@import "custom/usp-block";
+@import "custom/what-are-you-eating";
+
 
 // Foundation components
 // -----------------------------------------------------------------------------
@@ -188,14 +200,3 @@
 
 // Payment Methods
 @import "stencil/paymentMethods/component";
-
-
-// Custom components
-// -----------------------------------------------------------------------------
-
-// Newsletter
-@import "custom/buttons";
-@import "custom/newsletter";
-@import "custom/typography";
-@import "custom/usp-block";
-@import "custom/what-are-you-eating";

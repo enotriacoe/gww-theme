@@ -26,8 +26,7 @@
 
 .card-img-container {
     max-width: get-width(stencilString('productgallery_size'));
-
-    @include lazy-loaded-padding('productgallery_size');
+    padding-bottom: 100%;
 }
 
 .card-figcaption {
@@ -51,9 +50,17 @@
     border: 0;
     width: 100%;
     max-height: 100%;
+    max-width: 310px;
+    min-height: 310px;
     object-fit: contain;
     /* Object-fit polyfill */
     font-family: 'object-fit: contain;';
+}
+
+.card-brand {
+    font-size: $card-title-fontSize;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
 .card-title {
@@ -142,3 +149,38 @@
         }
     }
 }
+
+//
+// Card - New Custom styles
+//
+// Purpose: For GWW specific styling/additions
+// -----------------------------------------------------------------------------
+
+
+.card {
+    margin: 0;
+}
+
+.card-multibuy-cont {
+    background-color: $xl-green;
+    width: 100%;
+    padding: 7px 14px; 
+}
+
+.card-multibuy-only-label {
+    font-size: 12px;
+}
+
+.card-multibuy-price {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.card-multibuy-label {
+    display: inline-block;
+    max-width: 55%;
+    margin: 0;
+    font-size: 12px;
+    line-height: 0.9rem;
+}
+

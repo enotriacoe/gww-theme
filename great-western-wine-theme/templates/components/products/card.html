@@ -74,9 +74,11 @@
         {{#if brand.name}}
             <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
         {{/if}}
-        <h4 class="card-title">
+        <h4 class="card-brand">Domaine Parent Bourgogne</h4>
+        <h3 class="card-title">
             <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
-        </h4>
+        </h3>
+        <p>2013 | 75cl <span>*****</span></p>
 
         <div class="card-text" data-test-info-type="price">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
@@ -86,5 +88,10 @@
             {{/or}}
         </div>
         {{> components/products/bulk-discount-rates}}
+    </div>
+    <div class="card-multibuy-cont">
+        <span class="card-multibuy-only-label">Only</span>
+        <span class="card-multibuy-price">£7.95</span>
+        <p class="card-multibuy-label">per bottle when you mix 12+ bottles</p>
     </div>
 </article>
