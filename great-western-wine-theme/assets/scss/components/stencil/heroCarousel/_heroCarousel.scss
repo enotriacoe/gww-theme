@@ -118,13 +118,16 @@
         padding: 1.3rem (spacing("single") * 1.5);
         position: absolute;
         bottom: 0;
-        transform: translateY(-15%);
-        width: remCalc(600px);
-        max-height: 260px;
 
         &.heroCarousel-content--empty {
             background-color: transparent;
         }
+    }
+    
+    @include breakpoint("large") {
+        transform: translateY(-15%);
+        width: remCalc(600px);
+        max-height: 260px;
     }
 }
 
@@ -136,8 +139,12 @@
     font-weight: 900;
 
     @include breakpoint("medium") {
-        font-size: fontSize("hero");
+        font-size: $fontSize-largest;
         line-height: 1;
+    }
+    
+    @include breakpoint("large") {
+        font-size: $fontSize-hero;
     }
 }
 
@@ -174,4 +181,9 @@
     @include breakpoint ("medium") {
         width: 65%;
     }
+}
+
+.home-carousel-wrap {
+    width: 100%;
+    display: inline-block;
 }
