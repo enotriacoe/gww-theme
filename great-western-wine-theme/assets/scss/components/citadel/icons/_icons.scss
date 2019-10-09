@@ -12,3 +12,7 @@
 .icon svg {
     transition: all 0.15s ease;
 }
+
+.icon::after {
+    display: none;
+  }

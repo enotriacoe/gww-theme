@@ -36,6 +36,7 @@
         left: 10;
         top: 50%;
         transform: translateY(-50%);
+        color: $primary-color;
     }
 
     @include breakpoint("medium") {
