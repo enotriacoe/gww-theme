@@ -1,10 +1,10 @@
 .what-eating-cont {
     width: 100%;
     display: inline-block;
-    margin-left: 4.5%;
     vertical-align: top;
     
     @include breakpoint("medium") {
+        margin-left: 4.5%;
         width: 29.8%;
     }
 
