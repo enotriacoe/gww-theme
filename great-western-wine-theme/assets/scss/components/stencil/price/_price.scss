@@ -30,8 +30,8 @@
 }
 
 .price-saving {
-    display: inline-block;
-    width: 100%;
+    display: block;
     color: $color-warning;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 17px;
 }
