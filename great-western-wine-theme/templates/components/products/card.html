@@ -71,11 +71,8 @@
                 </span>
             </p>
         {{/and}}
-        {{#if brand.name}}
-            <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
-        {{/if}}
         <div class="card-title-cont">
-            <h4 class="card-brand">Domaine Parent Bourgogne</h4>
+            <h4 class="card-brand">{{#if brand.name}}{{brand.name}}{{/if}} Domaine Parent Bourgogne</h4>
             <h3 class="card-title">
                 <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
             </h3>
