@@ -15,4 +15,41 @@
 
 .icon::after {
     display: none;
-  }
+}
+
+.text-icon {
+    font-family: fontFamily("headingSans");
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.product-card-icons {
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.product-card-icon-cont {
+    height: 38px;
+    width: 38px;
+    background: $xl-green;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    margin-bottom: 10px;
+
+    .svg-inline--fa {
+        height: 70%;
+        width: 70%;
+
+        &.fa-medal {
+            margin-top: 5px;
+        }
+
+        &.fa-leaf {
+            height: 60%;
+            width: 60%;
+        }
+    }
+}
