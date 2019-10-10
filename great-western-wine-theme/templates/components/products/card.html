@@ -103,10 +103,11 @@
     </div>
     <div class="grid-add-cart">
 
-            <div class="form-action">
-                    <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
-                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
-                </div>    
+
+
+            <a href="/cart.php?action=add&amp;product_id={{id}}" class="button button--primary button--cartAction" data-product-add-to-cart="" data-product-id="{{id}}" data-wait-message="Adding to cart…" tabindex="0">Add to Cart</a>
+
+
                 
     </div>
     <div class="card-multibuy-cont">

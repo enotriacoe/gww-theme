@@ -10,25 +10,12 @@
 
     <section class="productView-details">
         <div class="productView-product">
-            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
             {{#if product.brand}}
                 <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
                     <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
                 </h2>
             {{/if}}
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-            <div class="productView-price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                    {{> components/products/price price=product.price schema_org=schema}}
-                {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}}
-            </div>
-            {{{region name="product_below_price"}}}
+            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
             <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                 {{#if settings.show_product_rating}}
                     {{#if product.num_reviews '>' 0}}
@@ -49,16 +36,51 @@
                         {{/if}}
                     </span>
                 {{/if}}
-                {{#if settings.show_product_reviews}}
-                    <span class="productView-reviewLink">
-                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                           {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
-                           {{lang 'products.reviews.new'}}
-                        </a>
-                    </span>
-                    {{> components/products/modals/writeReview}}
-                {{/if}}
             </div>
+            {{#if settings.show_wishlist}}
+            {{> components/common/wishlist-dropdown}}
+            {{/if}}
+            {{#if product.call_for_price}}
+                <p class="productView-price">
+                    <span>{{product.call_for_price}}</span>
+                </p>
+            {{/if}}
+
+            <hr>
+                <div class="prodictView-icons">
+                    <div class="productView-icon">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        Red Wine
+                    </div>
+                <div class="productView-icon">
+                    <i class="fal fa-flag icon"></i>
+                    Red Wine
+                </div>
+                <div class="productView-icon">
+                    <i class="fal fa-map-marker-alt icon"></i>
+                    Red Wine
+                </div>
+                <div class="productView-icon">
+                    <span class="vintage-icon">2014</span>
+                    Vintage
+                </div>
+                <div class="productView-icon">
+                    <span class="text-icon icon">Vg</span>
+                    Vegetarian & Vegan
+                </div>
+                </div>
+            <hr class="icon-bottom">
+
+
+            <div class="productView-price">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{> components/products/price price=product.price schema_org=schema}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+            {{{region name="product_below_price"}}}
+
             {{product.detail_messages}}
             <dl class="productView-info">
                 <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
@@ -238,9 +260,6 @@
                     {{/if}}
                 {{/if}}
             </form>
-            {{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
-            {{/if}}
         </div>
         {{> components/common/share}}
     </section>

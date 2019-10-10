@@ -140,11 +140,8 @@
 
 .productView-title {
     font-size: fontSize("small");
-    margin: -(spacing("half")) 0 spacing("quarter");
-
-    @include breakpoint("medium") {
-        margin-top: spacing("single");
-    }
+    margin: 0 0 spacing("quarter");
+    font-family: $fontFamily-headings;
 
     @include breakpoint("large") {
         font-size: fontSize("largest");
@@ -153,17 +150,18 @@
 
 .productView-brand {
     color: $productView-brand-link-color;
-    font-size: fontSize("smaller");
-    margin: 0 0 spacing("half");
+    font-size: fontSize("small");
+    font-family: $fontFamily-headings;
+    font-weight: 900;
+    margin: 0;
 
     @include breakpoint("large") {
-        font-size: fontSize("small");
-        margin: -(spacing("eighth")) 0 spacing("base");
+        font-size: fontSize("largest");
     }
 
     a {
-        color: $productView-brand-link-color;
-
+        color: $black;
+        text-decoration: none;
         // scss-lint:disable NestingDepth
         &:hover {
             color: $productView-brand-link-color--hover;
@@ -416,5 +414,39 @@
     img {
         max-width: none;
         width: auto;
+    }
+}
+
+
+// Custom Classes for GWW
+// -----------------------------------------------------------------------------
+
+.productView-icon {
+    width: 24%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 35px;
+
+    &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+        margin-top: 0;
+    }
+
+    .icon {
+        display: block;
+        margin: 0 auto 10px;
+        height: 45px;
+        width: 45px; 
+    }
+
+    .text-icon {
+        font-size: 2rem;
+    }
+
+    .vintage-icon {
+        font-family: fontFamily("sans");
+        font-size: remCalc(25px);
+        font-weight: 800;
+        display: block;
+        margin: 0 auto 10px;
     }
 }
