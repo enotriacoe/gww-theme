@@ -193,6 +193,7 @@
 
     @include breakpoint("medium") {
         width: auto;
+        text-align: left;
     }
 }
 
