@@ -4,10 +4,14 @@
 
 .stylised-title {
     font-family: $fontFamily-headings;
-    font-size: 50px;
+    font-size: 32px;
     font-weight: 900;
     line-height: 1;
     margin-top: 1rem;
+
+    @include breakpoint("large"){
+        font-size: 50px;
+    }
 }
 
 .brand-color-text {

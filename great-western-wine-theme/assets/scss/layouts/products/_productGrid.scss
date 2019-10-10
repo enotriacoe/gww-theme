@@ -18,19 +18,22 @@
     margin-bottom: spacing("single");
 
     .product {
-        @include grid-column(3, $float: none);
+        @include grid-column(12, $float: none);
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
+        margin-bottom: spacing("single");
+        padding: 0 20px;
         
-        @include breakpoint("small") {
-            width: grid-calc(3, $total-columns);
+        @include breakpoint("medium") {
+            width: grid-calc(6, $total-columns);
+            &:not(:nth-child(2)) {
+                border-right: 1px solid lightgrey;
+            }
         }
 
-        @include breakpoint("medium") {
+        @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
-            margin-bottom: spacing("single");
-            padding: 0 20px;
             &:not(:nth-child(4)) {
                 border-right: 1px solid lightgrey;
             }

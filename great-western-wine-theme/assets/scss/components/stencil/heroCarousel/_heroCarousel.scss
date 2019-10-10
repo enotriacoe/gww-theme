@@ -106,7 +106,7 @@
 
 .heroCarousel-content {
     background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half") spacing("single") (spacing("double"));
+    padding: spacing("half") spacing("single") (spacing("single"));
     text-align: left;
     border-left: 4px solid #e1675c;
 
@@ -133,7 +133,7 @@
 
 .heroCarousel-title {
     color: $carousel-title-color;
-    font-size: fontSize("small");
+    font-size: 35px;
     margin-top: 0;
     font-family: $fontFamily-headings;
     font-weight: 900;
@@ -152,10 +152,6 @@
     color: $carousel-description-color;
     font-size: fontSize("large");
     margin-bottom: 0;
-
-    @include breakpoint("small") {
-        font-size: fontSize("smallest");
-    }
 
     @include breakpoint("medium") {
         font-size: fontSize("large");
