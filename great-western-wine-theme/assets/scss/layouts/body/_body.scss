@@ -9,7 +9,7 @@
 
 
 .body {
-    margin-bottom: spacing("double") * 2;
+    margin-bottom: spacing("double");
     margin-top: spacing("single"); // 1
 
     @include breakpoint("medium") {
@@ -54,4 +54,9 @@
             @include grid-column(9);
         }
     }
+}
+
+
+address {
+    font-style: normal;
 }
