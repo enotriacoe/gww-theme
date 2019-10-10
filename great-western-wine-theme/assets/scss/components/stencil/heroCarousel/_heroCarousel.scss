@@ -21,11 +21,7 @@
     width: 1px;
     min-width: 100%;
     margin-bottom: (spacing("double") + spacing("single"));
-    margin-top: -(spacing("single")); // 3
-
-    @include breakpoint("medium") {
-        margin-top: -(spacing("single") + spacing("base")); // 3
-    }
+    margin-top: 0;
 
     &.slick-initialized { // 2
         max-height: remCalc(1000);

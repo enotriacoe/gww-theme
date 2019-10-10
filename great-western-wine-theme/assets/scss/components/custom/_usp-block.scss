@@ -1,0 +1,53 @@
+// =============================================================================
+// USP BLOCK (CSS)
+// =============================================================================
+
+.usp-container {
+    margin-bottom: 20px;
+    margin-top: -17px;
+
+    @include breakpoint("medium") {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.usp-block {
+    width: 100%;
+    border: 3px solid $primary-color;
+    padding: 5px 10px;
+    position: relative;
+
+    &:not(:first-child) {
+        display: none;
+    }
+
+    p {
+        margin-left: ($header-item-icon-size-mobile + 1rem);
+        margin-bottom: 0;
+        line-height: 1.2rem;
+        color: $primary-color;
+    }
+
+    .icon {
+        height: $header-item-icon-size-mobile;
+        width: $header-item-icon-size-mobile;
+        position: absolute;
+        left: 10;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @include breakpoint("medium") {
+        width: 30%;
+        
+        &:not(:first-child) {
+            display: inline-block;
+        }
+    }
+}
+
+.usp-main-txt {
+    font-weight: $fontWeight-semibold;
+    display: block;
+}
