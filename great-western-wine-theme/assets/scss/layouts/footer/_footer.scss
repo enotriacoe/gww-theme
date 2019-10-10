@@ -90,11 +90,22 @@
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
     text-transform: inherit;
+    font-weight: bold;
+    
+    @include breakpoint("medium"){
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+        width: 90%;
+    }
 }
 
 .footer-info-list {
     list-style: none;
     margin-left: 0;
+
+    li {
+        line-height: 2rem;
+    }
 
     a {
         color: stencilColor("color-white");
