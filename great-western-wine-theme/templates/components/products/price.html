@@ -40,7 +40,7 @@ If you are making a change here or in price-range.html, you probably want to mak
             <span data-product-non-sale-price-with-tax class="price price--non-sale">
                 {{price.non_sale_price_with_tax.formatted}}
             </span>
-            <span class="price price-saving">Save: {{subtract price.non_sale_price_with_tax.value price.with_tax.value}}</span>
+            <span class="price price-saving">Save: £{{toFixed (subtract price.non_sale_price_with_tax.value price.with_tax.value) 2}}</span>
         </div>
     {{/if}}
     {{#if price.without_tax}}

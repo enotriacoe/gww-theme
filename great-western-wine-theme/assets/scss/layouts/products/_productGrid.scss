@@ -24,13 +24,6 @@
         vertical-align: top;
         margin-bottom: spacing("single");
         padding: 0 20px;
-        
-        @include breakpoint("medium") {
-            width: grid-calc(6, $total-columns);
-            &:not(:nth-child(2)) {
-                border-right: 1px solid lightgrey;
-            }
-        }
 
         @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
@@ -40,6 +33,15 @@
         }
     }
 }
+
+@media only screen and (min-width: 801px) and (max-width: 1260px) {
+    .productGrid .product {
+        width: grid-calc(6, $total-columns);
+        &:not(:nth-child(2)) {
+            border-right: 1px solid lightgrey;
+        }
+    }
+} 
 
 
 // Product when sidebar is present
