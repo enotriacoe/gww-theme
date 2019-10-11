@@ -35,3 +35,26 @@
     font-weight: 600;
     font-size: 17px;
 }
+
+.multibuy-cont {
+    background-color: $xl-green;
+    width: 100%;
+    padding: 7px 7px; 
+}
+
+.multibuy-only-label {
+    font-size: 14px;
+}
+
+.multibuy-price {
+    font-size: 32px;
+    font-weight: $fontWeight-bold;
+}
+
+.multibuy-label {
+    display: inline-block;
+    max-width: 45%;
+    margin: 0;
+    font-size: 14px;
+    line-height: 0.9rem;
+}

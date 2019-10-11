@@ -768,7 +768,9 @@
             "percent": "and get {discount} off",
             "price": "and get {discount} off",
             "fixed": "and pay only {discount} each"
-        }
+        },
+        "only_discount_text": "Only",
+        "multi_buy_discount_text": "per bottle when you mix 12+ bottles"
     },
     "invoice": {
         "for_order": "{name} Invoice for Order #{id}",
