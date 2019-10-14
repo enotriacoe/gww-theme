@@ -130,7 +130,6 @@
 .productView-product {
     @include breakpoint("medium") {
         border-bottom: container("border");
-        padding-bottom: spacing("single") + spacing("third");
     }
 
     > :last-child {
@@ -174,11 +173,17 @@
 
 .productView-price {
     font-size: fontSize("smaller");
-    margin-bottom: spacing("third");
-
+    display: inline-block;
+    
     @include breakpoint("medium") {
         font-size: fontSize("larger");
-        margin-bottom: spacing("base");
+        width: 35%;
+        vertical-align: bottom;
+        margin-right: 3%;
+    }
+
+    .non-sale-price--withTax {
+        font-size: 1rem;
     }
 
     .price-section--saving {
@@ -196,6 +201,10 @@
     display: inline-block;
     margin-left: spacing("half");
     vertical-align: middle;
+
+    a {
+        text-decoration: none;
+    }
 
     + .productView-reviewLink {
         display: block;
@@ -448,5 +457,67 @@
         font-weight: 800;
         display: block;
         margin: 0 auto 10px;
+    }
+}
+
+.productView-product {
+    .multibuy-cont {
+        width: 32%;
+        display: inline-block;
+        padding: 17px 20px;
+        vertical-align: top;
+    }
+
+    .multibuy-only-label, .multibuy-price, .multibuy-label {
+        display: block;
+    }
+
+    .multibuy-only-label {
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 0.8rem;
+    }
+
+    .multibuy-price {
+        line-height: 2rem;
+    }
+
+    .multibuy-label {
+        max-width: 100%;
+        font-size: 12px;
+    }
+}
+
+.productView-price-usp {
+    width: 26%;
+    display: inline-block;
+    padding: 0 20px;
+    font-size: remCalc(14px);
+    line-height: 1rem;
+
+    .icon {
+        height: 25px;
+        width: 25px;
+        margin-right: 6px;
+        vertical-align: top;
+    }
+
+    .usp-title {
+        font-size: remCalc(14px);
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0;
+        margin-bottom: 5px;
+        display: inline-block;
+        max-width: 70%;
+    }
+
+    .usp-txt {
+        margin-bottom: 8px;
+    }
+
+    .usp-extra-txt {
+        font-size: remCalc(11px);
+        margin-bottom: 8px;
     }
 }
