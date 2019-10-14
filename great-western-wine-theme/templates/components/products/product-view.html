@@ -269,6 +269,8 @@
             {{> components/products/description}}
         {{/if}}
     </article>
+
+    {{> components/products/custom-field custom_field='shipping'}}
     
     <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
     <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
