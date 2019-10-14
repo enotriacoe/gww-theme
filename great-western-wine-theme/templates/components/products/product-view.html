@@ -262,16 +262,23 @@
         {{> components/common/share}}
     </section>
 
+    <hr>
+    <div class="food-recommendation">
+        <h3>Our Expert Food Recommendation</h3>
+        <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
+    </div>
+
     <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
         {{#if theme_settings.show_product_details_tabs}}
             {{> components/products/description-tabs}}
         {{else}}
             {{> components/products/description}}
+            {{> components/products/custom-field custom_field='size'}}
         {{/if}}
     </article>
 
     {{> components/products/custom-field custom_field='shipping'}}
-    
+
     <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
     <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
     <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
@@ -281,8 +288,23 @@
         <dt class="productView-info-name">{{name}}:</dt>
         <dd class="productView-info-value">{{{value}}}</dd>
         {{/each}}
+    {{/if}}
 
-{{/if}}
+
+    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
+        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+    {{/all}}
+
+    <div>Press Reviews</div>
+
+    <div class="">Product Spec</div>
+
+    <div class="">Winemaking</div>
+
+    <div>Producer Info</div>
+    <div>Country Info</div>
+
+
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
