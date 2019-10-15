@@ -19,6 +19,10 @@ $toggle-spacing: spacing("single") + spacing("half");
 
 .toggle-title {
     margin-bottom: $toggle-spacing;
+
+    .productView-reviewLink {
+        vertical-align: unset;
+    }
 }
 
 .toggleLink {

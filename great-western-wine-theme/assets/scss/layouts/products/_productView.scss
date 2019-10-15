@@ -8,8 +8,7 @@
 
 .productView {
     @include grid-row($behavior: "nest");
-    margin-left: -(spacing("base"));
-    margin-right: -(spacing("base"));
+    margin: 0;
 
     .modal & {
         padding-bottom: 0;
@@ -29,7 +28,7 @@
     padding-right: spacing("base");
 
     @include breakpoint("medium") {
-        width: grid-calc(6, $total-columns);
+        width: grid-calc(4, $total-columns);
     }
 }
 
@@ -41,19 +40,19 @@
     @include breakpoint("medium") {
         clear: right;
         float: right;
-        width: grid-calc(6, $total-columns);
+        width: grid-calc(8, $total-columns);
     }
 }
 
 .productView-description {
     @include grid-column(12);
-    padding-left: spacing("base");
+    padding-left: 0;
     padding-right: spacing("base");
 
     @include breakpoint("large") {
         clear: right;
         float: right;
-        width: grid-calc(6, $total-columns);
+        width: grid-calc(8, $total-columns);
     }
 
     .productView-title {

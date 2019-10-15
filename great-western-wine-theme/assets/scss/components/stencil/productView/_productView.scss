@@ -120,7 +120,6 @@
 // -----------------------------------------------------------------------------
 
 .productView-details {
-    margin-bottom: spacing("single") + spacing("third");
 }
 
 
@@ -525,5 +524,31 @@
 .productView-food-recommendation {
     background-color: $xl-green;
     width: 30%;
-    padding: 7px 7px; 
+    display: inline-block;
+    padding: 30px 30px 14px; 
+}
+
+.productView-food-rec-title {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-family: $fontFamily-headings;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.productView-divider {
+    margin-top: 0;
+    border: 0;
+    border-top: solid 1px black;
+}
+
+.productView-size {
+    background-color: $xl-green;
+    display: inline-block;
+    padding: 5px 9px;
+}
+
+.row {
+    clear: both;
 }

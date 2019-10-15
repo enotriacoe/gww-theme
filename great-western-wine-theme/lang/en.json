@@ -693,7 +693,7 @@
             "new": "Write a Review",
             "show": "Show Reviews",
             "header": "{total, plural, =0{0 Reviews} one {# Review} other {# Reviews}}",
-            "link_to_review": "Based on {total, plural, =0{No reviews yet} one {# review} other {# reviews}}",
+            "link_to_review": "{total, plural, =0{No reviews yet} one {Based on # review} other {Based on # reviews}}",
             "post_on_by": "Posted by { name } on { date }",
             "rating_label": "Rating",
             "select_rating": "Select Rating",
