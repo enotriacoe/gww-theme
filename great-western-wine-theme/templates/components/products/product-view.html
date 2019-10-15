@@ -35,6 +35,15 @@
                             {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
                         {{/if}}
                     </span>
+                    {{#if settings.show_product_reviews}}
+                    <span class="productView-reviewLink">
+                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                           {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
+                           {{lang 'products.reviews.new'}}
+                        </a>
+                    </span>
+                    {{> components/products/modals/writeReview}}
+                {{/if}}
                 {{/if}}
             </div>
             {{#if settings.show_wishlist}}
@@ -46,7 +55,7 @@
                 </p>
             {{/if}}
 
-            <hr>
+            <hr class="productView-divider">
                 <div class="prodictView-icons">
                     <div class="productView-icon">
                         <i class="fal fa-wine-glass-alt icon"></i>
@@ -262,42 +271,47 @@
         {{> components/common/share}}
     </section>
 
-    <hr>
-    <div class="productView-food-recommendation">
-        <h3>Our Expert Food Recommendation</h3>
-        <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
+    <div class="row">
+        <div class="productView-food-recommendation">
+            <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
+            <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
+        </div>
+        
+        <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+            <hr class="productView-divider">
+            {{#if theme_settings.show_product_details_tabs}}
+                {{> components/products/description-tabs}}
+            {{else}}
+                {{> components/products/description}}
+                <p class="productView-size">{{> components/products/custom-field custom_field='size'}}</p>
+            {{/if}}
+        </article>
     </div>
-
-    <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
-        {{#if theme_settings.show_product_details_tabs}}
-            {{> components/products/description-tabs}}
-        {{else}}
-            {{> components/products/description}}
-            {{> components/products/custom-field custom_field='size'}}
-        {{/if}}
-    </article>
-
-    {{> components/products/custom-field custom_field='shipping'}}
-
-    <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-    <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
-    {{#if theme_settings.show_custom_fields_tabs '!==' true}}
-    {{#each product.custom_fields}}
-        <dt class="productView-info-name">{{name}}:</dt>
-        <dd class="productView-info-value">{{{value}}}</dd>
-        {{/each}}
-    {{/if}}
-
 
     {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
         {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
     {{/all}}
 
-    <div>Press Reviews</div>
+    <div class="productView-press-reviews">
+        <div class="press-review-cont">
+            <blockquote class="press-review-quote">{{> components/products/custom-field custom_field='pr-1-text'}}</blockquote>
+            <h4 class="press-review-title">{{> components/products/custom-field custom_field='pr-1-name'}}</h4>
+        </div>
+        <div class="press-review-cont">
+            <blockquote class="press-review-quote">{{> components/products/custom-field custom_field='pr-2-text'}}</blockquote>
+            <h4 class="press-review-title">{{> components/products/custom-field custom_field='pr-2-name'}}</h4>
+        </div>
+
+    </div>
 
     <div class="">Product Spec</div>
+
+    <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+    <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+
+
 
     <div class="">Winemaking</div>
 
