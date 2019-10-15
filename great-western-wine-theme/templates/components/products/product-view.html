@@ -301,19 +301,42 @@
             <blockquote class="press-review-quote">{{> components/products/custom-field custom_field='pr-2-text'}}</blockquote>
             <h4 class="press-review-title">{{> components/products/custom-field custom_field='pr-2-name'}}</h4>
         </div>
-
     </div>
+    <div class="row">
+        <div class="productView-spec">
+            <h3 class="stylised-medium">Product Specification</h3>
+            <ul class="product-spec-list">
+                <li>
+                    <div class="productView-spec-item">
+                        <span class="productView-spec-label">Type</span>
+                    </div>
+                    <span>Red Wine</span>
+                </li>
+                <li>
+                    <div class="productView-spec-item">
+                        <span class=productView-spec-label>Country</span>
+                    </div>
+                    <span>South Africa</span>
+                </li>
+                <li>
+                    <div class="productView-spec-item">
+                        <span class=productView-spec-label>Region</span>
+                    </div>
+                    <span>Western Cape</span>
+                </li>            
+            </ul>
 
-    <div class="">Product Spec</div>
+            <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
+            <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
+            <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
+            <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
+        </div>
 
-    <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-    <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-    <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-    <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
-
-
-
-    <div class="">Winemaking</div>
+        <div class="productView-creation">
+            <h3 class="stylised-medium">Winemaking</h3>
+            <p>{{> components/products/custom-field custom_field='winemaking'}}</p>
+        </div>
+    </div>
 
     <div>Producer Info</div>
     <div>Country Info</div>

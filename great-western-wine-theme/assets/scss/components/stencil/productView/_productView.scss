@@ -549,6 +549,64 @@
     padding: 5px 9px;
 }
 
+.productView-spec {
+    width: 66.66667%;
+    display: inline-block;
+    
+    li {
+        width: 50%;
+        display: inline-block;
+    }
+}
+
+.product-spec-list {
+    margin: 0;
+
+    li {
+        span {
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+            background: white;
+            display: inline;
+            padding-right: (spacing("base") / 3);
+        }
+            
+        & > span {
+            padding-left: (spacing("base") / 4 );
+            padding-right: 0;
+        }
+    }
+}
+
+.productView-spec-item {
+    width: 49%;
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none;
+    display: inline-block;
+
+    :before {
+        float: left;
+        width: 0;
+        white-space: nowrap;
+        content: ". . . . . . . . . . . . . . . . . . . . . . . . .";
+        font-weight: normal;
+    }
+}
+
+.productView-spec-label {
+    font-weight: $fontWeight-bold;
+    text-transform: uppercase;
+}
+
+.productView-creation {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}
+
 .row {
     clear: both;
 }
