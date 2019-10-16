@@ -49,6 +49,20 @@
 
 .form-wishlist {
     position: relative;
+    float: right;
+
+    a {
+        text-decoration: none;
+    }
+
+    .icon {
+        height: 23px;
+        width: 23px;
+
+        &:hover {
+            color: $peach;
+        }
+    }
 }
 
 .dropdown-menu-button {
@@ -67,9 +81,10 @@
 
 #wishlist-dropdown.is-open {
     background: transparent;
-    left: auto !important;
+    left: -200px !important;
     max-width: none !important;
-    width: 100% !important;
+    width: 264px !important;
+    top: 36px !important;
 
     @include breakpoint('small') {
         padding-right: 20px;

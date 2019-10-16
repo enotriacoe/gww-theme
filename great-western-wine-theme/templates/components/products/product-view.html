@@ -271,12 +271,7 @@
         {{> components/common/share}}
     </section>
 
-    <div class="row">
-        <div class="productView-food-recommendation">
-            <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
-            <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
-        </div>
-        
+    <div class="row">        
         <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
             <hr class="productView-divider">
             {{#if theme_settings.show_product_details_tabs}}
@@ -286,6 +281,11 @@
                 <p class="productView-size">{{> components/products/custom-field custom_field='size'}}</p>
             {{/if}}
         </article>
+        
+        <div class="productView-food-recommendation">
+            <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
+            <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
+        </div>
     </div>
 
     {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
