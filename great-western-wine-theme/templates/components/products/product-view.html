@@ -303,34 +303,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="productView-spec">
-            <h3 class="stylised-medium">Product Specification</h3>
-            <ul class="product-spec-list">
-                <li>
-                    <div class="productView-spec-item">
-                        <span class="productView-spec-label">Type</span>
-                    </div>
-                    <span>Red Wine</span>
-                </li>
-                <li>
-                    <div class="productView-spec-item">
-                        <span class=productView-spec-label>Country</span>
-                    </div>
-                    <span>South Africa</span>
-                </li>
-                <li>
-                    <div class="productView-spec-item">
-                        <span class=productView-spec-label>Region</span>
-                    </div>
-                    <span>Western Cape</span>
-                </li>            
-            </ul>
-
-            <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-            <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-            <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-            <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
-        </div>
+        {{> components/products/product-spec }}
 
         <div class="productView-creation">
             <h3 class="stylised-medium">Winemaking</h3>

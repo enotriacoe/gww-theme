@@ -1,0 +1,52 @@
+<div class="productView-spec">
+    <h3 class="stylised-medium">Product Specification</h3>
+    <ul class="product-spec-list">
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Type</span>
+            </div>
+            <span>Red Wine</span>
+        </li>
+        <li>
+            <div class="productView-spec-item">
+                <span class=productView-spec-label>Country</span>
+            </div>
+            <span>South Africa</span>
+        </li>
+        <li>
+            <div class="productView-spec-item">
+                <span class=productView-spec-label>Region</span>
+            </div>
+            <span>Western Cape</span>
+        </li>   
+        {{#if product.sku}} 
+        <li>
+            <div class="productView-spec-item">
+                <span class=productView-spec-label>SKU</span>
+            </div>
+            <span>{{product.sku}}</span>
+        </li>
+        {{/if}}
+    </ul>
+
+    <ul class="product-spec-list">
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Alcohol</span>
+                </div>
+                <span>13%</span>
+            </li>
+            <li>
+                <div class="productView-spec-item">
+                    <span class=productView-spec-label>Primary Grape</span>
+                </div>
+                <span>South Africa</span>
+            </li>
+            <li>
+                <div class="productView-spec-item">
+                    <span class=productView-spec-label>Region</span>
+                </div>
+                <span>Western Cape</span>
+            </li>            
+        </ul>
+</div>

@@ -550,17 +550,21 @@
 }
 
 .productView-spec {
-    width: 66.66667%;
+    width: 66%;
     display: inline-block;
+    border-right: solid 1px lightgrey;
+    margin-top: 2.25rem;
     
     li {
-        width: 50%;
+        width: 100%;
         display: inline-block;
     }
 }
 
 .product-spec-list {
     margin: 0;
+    width: 49%;
+    display: inline-block;
 
     li {
         span {
@@ -605,6 +609,8 @@
     width: 30%;
     display: inline-block;
     vertical-align: top;
+    padding-left: 30px;
+    margin-top: 2.25rem;
 }
 
 .row {

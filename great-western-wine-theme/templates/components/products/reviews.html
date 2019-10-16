@@ -1,7 +1,7 @@
 {{#if reviews.total}}
 <section class="toggle productReviews" id="product-reviews" data-product-reviews>
     <h4 class="toggle-title">
-        {{lang 'products.reviews.header' total=reviews.total}}
+        <span class="stylised-medium">{{lang 'products.reviews.title' }}</span>
         {{#if settings.show_product_reviews}}
         <span class="productView-reviewLink">
             <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
