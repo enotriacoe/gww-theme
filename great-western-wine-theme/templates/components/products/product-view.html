@@ -278,14 +278,18 @@
                 {{> components/products/description-tabs}}
             {{else}}
                 {{> components/products/description}}
-                <p class="productView-size">{{> components/products/custom-field custom_field='size'}}</p>
+                {{#filter product.custom_fields 'size' property='name'}}
+                    <p class="productView-size">{{value}}</p>
+                {{/filter}}
             {{/if}}
         </article>
         
+        {{#filter product.custom_fields 'food-recommendation' property='name' }}
         <div class="productView-food-recommendation">
             <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
-            <p>{{> components/products/custom-field custom_field='food-recommendation'}}</p>
+            <p>{{value}}</p>
         </div>
+        {{/filter}}
     </div>
 
     {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
@@ -293,22 +297,33 @@
     {{/all}}
 
     <div class="productView-press-reviews">
+        {{#filter product.custom_fields 'press1Text' property='name'}}
         <div class="press-review-cont">
-            <blockquote class="press-review-quote">{{> components/products/custom-field custom_field='pr-1-text'}}</blockquote>
-            <h4 class="press-review-title">{{> components/products/custom-field custom_field='pr-1-name'}}</h4>
+            <blockquote class="press-review-quote">{{value}}</blockquote>{{/filter}}
+            {{#filter product.custom_fields 'press1Attribution' property='name'}}
+            <h4 class="press-review-title">
+                {{value}}
+            </h4>
         </div>
+        {{/filter}}
+        {{#filter product.custom_fields 'press2Text' property='name'}}
         <div class="press-review-cont">
-            <blockquote class="press-review-quote">{{> components/products/custom-field custom_field='pr-2-text'}}</blockquote>
-            <h4 class="press-review-title">{{> components/products/custom-field custom_field='pr-2-name'}}</h4>
+            <blockquote class="press-review-quote">{{value}}</blockquote>
+            <h4 class="press-review-title">{{/filter}}
+                {{#filter product.custom_fields 'press2Attribution' property='name'}}{{value}}
+            </h4>
         </div>
+        {{/filter}}
     </div>
     <div class="row">
         {{> components/products/product-spec }}
 
-        <div class="productView-creation">
-            <h3 class="stylised-medium">Winemaking</h3>
-            <p>{{> components/products/custom-field custom_field='winemaking'}}</p>
-        </div>
+        {{#filter product.custom_fields 'winemaking' property='name' }}
+            <div class="productView-creation">
+                <h3 class="stylised-medium">Winemaking</h3>
+                <p>{{value}}</p>
+            </div>
+        {{/filter}}
     </div>
 
     <div>Producer Info</div>

@@ -560,7 +560,6 @@
     
     @include breakpoint("medium") {
         width: 66%;
-        border-right: solid 1px lightgrey;
     }
     
     li {
@@ -573,6 +572,7 @@
     margin: 0;
     width: 49%;
     display: inline-block;
+    vertical-align: top;
 
     li {
         span {
@@ -624,6 +624,7 @@
     @include breakpoint("medium") {
         width: 30%;
         padding-left: 30px;
+        border-left: solid 1px lightgrey;
     }
 }
 

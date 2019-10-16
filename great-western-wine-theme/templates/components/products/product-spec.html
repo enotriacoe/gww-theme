@@ -1,52 +1,24 @@
 <div class="productView-spec">
     <h3 class="stylised-medium">Product Specification</h3>
     <ul class="product-spec-list">
+        {{#filter product.custom_fields 'type' property='name' }}
         <li>
             <div class="productView-spec-item">
                 <span class="productView-spec-label">Type</span>
             </div>
-            <span>Red Wine</span>
+            <span>{{value}}</span>
         </li>
-        <li>
-            <div class="productView-spec-item">
-                <span class=productView-spec-label>Country</span>
-            </div>
-            <span>South Africa</span>
-        </li>
-        <li>
-            <div class="productView-spec-item">
-                <span class=productView-spec-label>Region</span>
-            </div>
-            <span>Western Cape</span>
-        </li>   
-        {{#if product.sku}} 
-        <li>
-            <div class="productView-spec-item">
-                <span class=productView-spec-label>SKU</span>
-            </div>
-            <span>{{product.sku}}</span>
-        </li>
-        {{/if}}
+        {{/filter}}
     </ul>
 
     <ul class="product-spec-list">
+            {{#filter product.custom_fields 'type' property='name' }}
             <li>
                 <div class="productView-spec-item">
-                    <span class="productView-spec-label">Alcohol</span>
+                    <span class="productView-spec-label">Type</span>
                 </div>
-                <span>13%</span>
+                <span>{{value}}</span>
             </li>
-            <li>
-                <div class="productView-spec-item">
-                    <span class=productView-spec-label>Primary Grape</span>
-                </div>
-                <span>Merlot, Apples, Bananas, Cherries, Shiraz</span>
-            </li>
-            <li>
-                <div class="productView-spec-item">
-                    <span class=productView-spec-label>Region</span>
-                </div>
-                <span>Western Cape</span>
-            </li>            
+            {{/filter}}          
         </ul>
 </div>
