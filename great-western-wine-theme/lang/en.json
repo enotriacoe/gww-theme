@@ -826,7 +826,7 @@
                 "title": "Refine by",
                 "rating-label": "Rated {rating, plural, one {# Star} other {# Stars}} Or More",
                 "no-filters": "No filters applied",
-                "clear-all": "Clear all"
+                "clear-all": "Clear all filters"
             },
             "range": {
                 "update": "Update",

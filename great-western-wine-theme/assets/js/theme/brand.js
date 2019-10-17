@@ -22,7 +22,7 @@ export default class Brand extends CatalogPage {
         const requestOptions = {
             template: {
                 productListing: 'brand/product-listing',
-                sidebar: 'brand/sidebar',
+                sidebar: 'brand/topbar',
             },
             config: {
                 shop_by_brand: true,

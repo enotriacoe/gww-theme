@@ -195,7 +195,7 @@ export default class Search extends CatalogPage {
         const requestOptions = {
             template: {
                 productListing: 'search/product-listing',
-                sidebar: 'search/sidebar',
+                sidebar: 'search/topbar',
                 heading: 'search/heading',
                 productCount: 'search/product-count',
             },

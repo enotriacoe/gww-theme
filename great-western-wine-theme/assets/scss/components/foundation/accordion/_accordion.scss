@@ -49,16 +49,28 @@
     }
 
     .accordion-block {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        
         @include breakpoint("medium") {
-            margin-top: $accordion-navList-spacing;
+            width: 25%;
+        }
+
+        @include breakpoint("large") {
+            width: 20%;
         }
     }
 
     .accordion-content {
         padding: $accordion-navList-padding;
-
+        
         @include breakpoint("medium") {
             padding: 0;
+            position: absolute;
+            border: 1px solid $xl-green;
+            background: $xl-green;
+            width: 100%;
         }
     }
 

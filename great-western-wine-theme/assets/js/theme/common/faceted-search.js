@@ -20,7 +20,7 @@ class FacetedSearch {
      * let requestOptions = {
      *      templates: {
      *          productListing: 'category/product-listing',
-     *          sidebar: 'category/sidebar'
+     *          sidebar: 'category/topbar'
      *     }
      * };
      *

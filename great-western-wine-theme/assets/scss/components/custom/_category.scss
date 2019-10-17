@@ -1,0 +1,43 @@
+// =============================================================================
+// CATEGORY - CUSTOM CLASSES FOR GWW
+// =============================================================================
+
+.category-header {
+    display: inline-block;
+
+    .stylised-title {
+        @include breakpoint ("medium") {
+            font-size: 35px;
+            padding-bottom: 5px;
+            border-bottom: solid 5px $color-warning;
+        }
+        
+        @include breakpoint ("large") {
+            font-size: 45px;
+        }
+    }
+}
+
+.category-img {    
+    @include breakpoint("medium") {
+        width: 49%;
+        float: right;
+        margin-bottom: 30px;
+    }
+    @include breakpoint("large") {
+        width: 66%;
+    }
+}
+
+.category-text {
+    @include breakpoint("medium") {
+        display: inline-block;
+        width: 49%;
+        margin-bottom: 30px;
+    }
+
+    @include breakpoint("large") {
+        width: 33%;
+        padding-right: 25px;
+    }
+}
