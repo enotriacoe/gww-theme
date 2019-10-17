@@ -57,26 +57,36 @@
 
             <hr class="productView-divider">
                 <div class="prodictView-icons">
+                    {{#filter product.custom_fields 'colour' property='name' }}
                     <div class="productView-icon">
                         <i class="fal fa-wine-glass-alt icon"></i>
-                        Red Wine
+                        {{value}}
                     </div>
-                <div class="productView-icon">
-                    <i class="fal fa-flag icon"></i>
-                    Red Wine
-                </div>
-                <div class="productView-icon">
-                    <i class="fal fa-map-marker-alt icon"></i>
-                    Red Wine
-                </div>
-                <div class="productView-icon">
-                    <span class="vintage-icon">2014</span>
-                    Vintage
-                </div>
-                <div class="productView-icon">
-                    <span class="text-icon icon">Vg</span>
-                    Vegetarian & Vegan
-                </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'country' property='name' }}
+                    <div class="productView-icon">
+                        <i class="fal fa-flag icon"></i>
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'region' property='name' }}
+                    <div class="productView-icon">
+                        <i class="fal fa-map-marker-alt icon"></i>
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'vintage' property='name' }}
+                    <div class="productView-icon">
+                        <span class="vintage-icon">{{value}}</span>
+                        Vintage
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'vegetarian' property='name' }}
+                    <div class="productView-icon">
+                        <span class="text-icon icon">Vg</span>
+                        Vegetarian
+                    </div>
+                    {{/filter}}
                 </div>
             <hr class="icon-bottom">
 

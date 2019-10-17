@@ -1,23 +1,130 @@
 <div class="productView-spec">
     <h3 class="stylised-medium">Product Specification</h3>
     <ul class="product-spec-list">
-        {{#filter product.custom_fields 'type' property='name' }}
+        {{#filter product.custom_fields 'colour' property='name' }}
         <li>
             <div class="productView-spec-item">
-                <span class="productView-spec-label">Type</span>
+                <span class="productView-spec-label">Colour</span>
             </div>
             <span>{{value}}</span>
         </li>
         {{/filter}}
+        {{#filter product.custom_fields 'country' property='name' }}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Country</span>
+            </div>
+            <span>{{value}}</span>
+        </li>
+        {{/filter}}
+        {{#filter product.custom_fields 'region' property='name' }}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Region</span>
+            </div>
+            <span>{{value}}</span>
+        </li>
+        {{/filter}}
+        {{#filter product.custom_fields 'subRegion' property='name' }}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Sub Region</span>
+            </div>
+            <span>{{value}}</span>
+        </li>
+        {{/filter}}
+        {{#filter product.custom_fields 'wineStyle' property='name' }}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Style</span>
+            </div>
+            <span>{{value}}{{/filter}}{{#filter product.custom_fields 'wineExpression' property='name' }} - {{value}}{{/filter}}
+            {{#filter product.custom_fields 'wineStyle' property='name' }}
+            </span>
+        </li>
+        {{/filter}}
+        {{#filter product.custom_fields 'closure' property='name' }}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">Closure</span>
+            </div>
+            <span>{{value}}</span>
+        </li>
+        {{/filter}}
+
+        {{#if product.sku}}
+        <li>
+            <div class="productView-spec-item">
+                <span class="productView-spec-label">SKU</span>
+            </div>
+            <span>{{product.sku}}</span>
+        </li>
+        {{/if}}
     </ul>
 
     <ul class="product-spec-list">
-            {{#filter product.custom_fields 'type' property='name' }}
+            {{#filter product.custom_fields 'abv' property='name' }}
             <li>
                 <div class="productView-spec-item">
-                    <span class="productView-spec-label">Type</span>
+                    <span class="productView-spec-label">Alcohol %</span>
                 </div>
                 <span>{{value}}</span>
+            </li>
+            {{/filter}} 
+            {{#filter product.custom_fields 'grape' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Grape</span>
+                </div>
+                <span>{{value}}</span>
+            </li>
+            {{/filter}}  
+            {{#filter product.custom_fields 'unitVolume' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Unit Volume</span>
+                </div>
+                <span>{{value}}</span>
+            </li>
+            {{/filter}} 
+            {{#filter product.custom_fields 'awardName' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Award</span>
+                </div>
+                <span>{{value}}</span>
+            </li>
+            {{/filter}}  
+            {{#filter product.custom_fields 'vegan' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Vegan</span>
+                </div>
+                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+            </li>
+            {{/filter}}  
+            {{#filter product.custom_fields 'vegetarian' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Vegetarian</span>
+                </div>
+                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+            </li>
+            {{/filter}} 
+            {{#filter product.custom_fields 'organic' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Organic</span>
+                </div>
+                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+            </li>
+            {{/filter}}  
+            {{#filter product.custom_fields 'biodynamic' property='name' }}
+            <li>
+                <div class="productView-spec-item">
+                    <span class="productView-spec-label">Bio-dynamic</span>
+                </div>
+                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
             </li>
             {{/filter}}          
         </ul>
