@@ -57,7 +57,7 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product { // 1
             @include breakpoint("small") {
-                width: grid-calc(3, $total-columns);
+                width: grid-calc(4, $total-columns);
             }
         }
     }
