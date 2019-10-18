@@ -849,8 +849,8 @@
         }
     },
     "page_not_found": {
-        "page_heading": "404 Error - Page not found",
-        "message": "Uh oh, looks like the page you are looking for has moved or no longer exists."
+        "page_heading": "Strange.",
+        "message": "We seem to be missing something."
     },
     "server_error": {
         "page_heading": "Something Went Wrong...",
