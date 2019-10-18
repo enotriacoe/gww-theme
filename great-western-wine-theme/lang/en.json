@@ -270,7 +270,7 @@
         "breadcrumb": "Your Account",
         "nav": {
             "overview": "Overview",
-            "orders": "Orders",
+            "orders": "My Orders",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
             "wishlists": "Wish Lists ({num_wishlists})",
@@ -422,7 +422,7 @@
             }
         },
         "settings": {
-            "heading": "Account Settings",
+            "heading": "My Account",
             "first_name": "First Name",
             "last_name": "Last Name",
             "email": "Email Address",

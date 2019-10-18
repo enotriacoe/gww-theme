@@ -9,6 +9,31 @@
 .navBar--account {
     display: none;
 
+    .navBar-item {
+        a, &.is-active {
+            font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+            font-size: 17px;
+            font-weight: 900;
+            color: #1D1D1B;
+        }
+
+        span {
+            display: block;
+        }
+
+        &.is-active,
+        &:hover{    
+            padding-bottom: 5px;
+            border-bottom: solid 3px #e1675c;
+        }
+
+        .icon{
+            height: 30px;
+            width: 30px;
+            margin-bottom: 15px;
+        }
+    }
+
     @include breakpoint("medium") {
         display: block;
     }
@@ -17,7 +42,9 @@
 
 // Account headings
 // -----------------------------------------------------------------------------
-
+.title--edit{
+    margin-bottom: 3rem;
+}
 .account-heading {
     border-bottom: container("border");
     margin: 0;
