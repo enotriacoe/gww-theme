@@ -35,6 +35,8 @@
         <li class="navUser-item navUser-item--account">
             {{#if customer}}
                 <a class="navUser-action" href="{{urls.account.index}}"><i class="fal fa-user"></i>{{lang 'common.account'}}</a>
+                or 
+                <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
             {{else}}
                 <a class="navUser-action" href="{{urls.auth.login}}"><i class="fal fa-user"></i>{{lang 'common.login'}}</a>
                 {{#if settings.account_creation_enabled}}
