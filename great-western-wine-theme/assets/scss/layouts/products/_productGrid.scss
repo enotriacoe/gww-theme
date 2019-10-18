@@ -35,6 +35,23 @@
         .card-desc-cont {
             display: none;
         }
+        .card-read-more {
+            display: none;
+        }
+
+        .wishlist-grid-view {
+            display: inline-block;
+        }
+
+        .form-wishlist {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .wishlist-list-view {
+            display: none;
+        }
     }
 }
 
@@ -156,3 +173,4 @@
         }
     }
 }
+

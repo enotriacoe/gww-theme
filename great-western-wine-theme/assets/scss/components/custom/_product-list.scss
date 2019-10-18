@@ -2,26 +2,92 @@
 // LIST VIEW - CUSTOM CLASSES FOR GWW FOR CUSTOM DYNAMIC LIST/GRID VIEW TOGGLING
 // =============================================================================
 
-.page-sidebar + .page-content {
-    .product-list {
-        .product {
-            width: grid-calc(12, $total-columns) !important;
-            padding-bottom: spacing("single");
-            border-right: 0;
-            border-bottom: 1px solid black;
 
-            .card-figure {
-                width: 19%;
-                display: inline-block;
-            }
+@include breakpoint("medium"){
+    .page-sidebar + .page-content {
+        .product-list {
+            .product {
+                width: grid-calc(12, $total-columns) !important;
+                padding-bottom: spacing("single");
+                border-right: 0;
+                border-bottom: 1px solid black;
 
-            .card-details {
-                width: 79%;
-                display: inline-block;
-            }
+                .card-figure {
+                    width: 19%;
+                    display: inline-block;
+                    vertical-align: top;
+                }
 
-            .card-desc-cont {
-                display: inline-block;
+                .card-image {
+                    min-height: 200px;
+                }
+
+                .card-details {
+                    width: 79%;
+                    display: inline-block;
+                }
+
+                .card-body {
+                    width: 70%;
+                    display: inline-block;
+                    position: relative;
+                }
+
+                .card-desc-cont {
+                    display: inline-block;
+                }
+
+                .card-read-more {
+                    display: block;
+                    text-decoration: none;
+                    color: $primary-color;
+                    font-weight: fontWeight("bold");
+                }
+
+                .wishlist-grid-view {
+                    display: none;
+                }
+                
+                .wishlist-list-view {
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 15px;
+                    right: 0;
+                }
+
+                .form-wishlist {
+                    position: initial;
+                }
+
+                .card-title-cont {
+                    height: (remCalc(30px * 3));
+                    line-height: 1.6rem;
+                }
+
+                .card-title{
+                    font-size: 22px;
+                }                
+
+                .card-brand {
+                    font-size: 22px;
+                }
+
+                .card-pricing{
+                    width: 29%;
+                    display: inline-block;
+                    padding-left: 2%;
+                    vertical-align: top;
+                }
+
+                .card-rating {
+                    float: none;
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+
+                .card-year-size {
+                    margin-top: 2rem;
+                }
             }
         }
     }

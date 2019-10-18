@@ -1,0 +1,27 @@
+<div class="product-card-icons">
+    {{#filter custom_fields 'country' property='name' }}
+    <div class="product-card-icon-cont">
+        <i class="fal fa-flag"></i>
+    </div>
+    {{/filter}}
+    {{#filter custom_fields 'awardName' property='name' }}
+    <div class="product-card-icon-cont">
+        <i class="fal fa-medal"></i>
+    </div>
+    {{/filter}}
+    {{#filter custom_fields 'organic' property='name' }}
+    <div class="product-card-icon-cont">
+        <i class="fal fa-leaf"></i>
+    </div>
+    {{/filter}}
+    {{#filter custom_fields 'vegan' property='name' }}
+    <div class="product-card-icon-cont">
+        <span class="text-icon">V</span>
+    </div>
+    {{/filter}}
+    {{#filter custom_fields 'vegetarian' property='name' }}
+    <div class="product-card-icon-cont">
+        <span class="text-icon">Vg</span>
+    </div>
+    {{/filter}}
+</div>
