@@ -31,6 +31,10 @@
                 border-right: 1px solid lightgrey;
             }
         }
+
+        .card-desc-cont {
+            display: none;
+        }
     }
 }
 
@@ -57,7 +61,13 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product { // 1
             @include breakpoint("small") {
+                width: grid-calc(6, $total-columns);
+            }
+            @include breakpoint("medium") {
                 width: grid-calc(4, $total-columns);
+            }
+            @include breakpoint("large") {
+                width: grid-calc(3, $total-columns);
             }
         }
     }

@@ -74,24 +74,23 @@
             </div>
         </div>
     </figure>
-    <div class="card-body">
-        {{#and rating show_rating}}
-            <p class="card-text" data-test-info-type="productRating">
-                <span class="rating--small">
-                    {{> components/products/ratings rating=rating}}
-                </span>
-            </p>
-        {{/and}}
-        <div class="card-title-cont">
-            <h4 class="card-brand">{{#if brand.name}}{{brand.name}}{{/if}} Domaine Parent Bourgogne</h4>
-            <h3 class="card-title">
-                <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
-            </h3>
+    <div class="card-details">
+        <div class="card-body">
+            <div class="card-title-cont">
+                <h4 class="card-brand">{{#if brand.name}}{{brand.name}}{{/if}} Domaine Parent Bourgogne</h4>
+                <h3 class="card-title">
+                    <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+                </h3>
+            </div>
+
+            <div class="card-desc-cont">
+                {{summary}}
+            </div>
+
+            <p class="card-year-size">2013 | <span class="brand-color-text">75cl</span></p>
+            <p class="card-rating">{{> components/products/ratings rating=rating}}</p>
+
         </div>
-
-        <p class="card-year-size">2013 | <span class="brand-color-text">75cl</span></p>
-        <p class="card-rating">{{> components/products/ratings rating=rating}}</p>
-
         <div class="card-text" data-test-info-type="price">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                 {{> components/products/price price=price}}
@@ -99,20 +98,15 @@
                 {{> components/common/login-for-pricing}}
             {{/or}}
         </div>
-        {{> components/products/bulk-discount-rates}}
-    </div>
-    <div class="grid-add-cart">
+        <div class="grid-add-cart">
 
-
-
-            <a href="/cart.php?action=add&amp;product_id={{id}}" class="button button--primary button--cartAction" data-product-add-to-cart="" data-product-id="{{id}}" data-wait-message="Adding to cart…" tabindex="0">Add to Cart</a>
-
-
-                
-    </div>
-    <div class="multibuy-cont">
-        <span class="-multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
-        <span class="multibuy-price">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
-        <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
+                <a href="/cart.php?action=add&amp;product_id={{id}}" class="button button--primary button--cartAction" data-product-add-to-cart="" data-product-id="{{id}}" data-wait-message="Adding to cart…" tabindex="0">Add to Cart</a>
+    
+        </div>
+        <div class="multibuy-cont">
+            <span class="-multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
+            <span class="multibuy-price">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
+            <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
+        </div>
     </div>
 </article>

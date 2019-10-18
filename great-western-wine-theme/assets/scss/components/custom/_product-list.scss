@@ -1,0 +1,28 @@
+// =============================================================================
+// LIST VIEW - CUSTOM CLASSES FOR GWW FOR CUSTOM DYNAMIC LIST/GRID VIEW TOGGLING
+// =============================================================================
+
+.page-sidebar + .page-content {
+    .product-list {
+        .product {
+            width: grid-calc(12, $total-columns) !important;
+            padding-bottom: spacing("single");
+            border-right: 0;
+            border-bottom: 1px solid black;
+
+            .card-figure {
+                width: 19%;
+                display: inline-block;
+            }
+
+            .card-details {
+                width: 79%;
+                display: inline-block;
+            }
+
+            .card-desc-cont {
+                display: inline-block;
+            }
+        }
+    }
+}
