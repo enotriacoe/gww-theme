@@ -59,7 +59,7 @@
             text-transform: initial;
             position: absolute;
             right: 12px;
-            top: 37px;
+            top: 40px;
         }
     }
 
@@ -79,7 +79,7 @@
         border: none;
         padding: 9px 40px 9px 12px;
         color: $black;
-        height: 2.5rem;
+        // height: 2.5rem;
 
         &::placeholder{
             color: $dark-grey;
