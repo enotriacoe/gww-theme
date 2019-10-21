@@ -42,7 +42,9 @@
 // Account form
 // -----------------------------------------------------------------------------
 .edit-account-form,
-.new-account-form{
+.new-account-form,
+.login-form,
+.forgot-password-form{
     label{
         font-weight: 900;
         color: $black;
@@ -61,7 +63,7 @@
         }
     }
 
-    .dob-form {
+    .dob-container {
         margin-bottom: 0;
     }
 
@@ -71,7 +73,7 @@
         }
     }
 
-    input, select{
+    input:not([type=submit]), select{
         background-color: $grey-bg;
         border-radius: 0;
         border: none;
@@ -92,10 +94,17 @@
         padding: 9px 12px;
     }
 
-    & + .form-actions{
+    & + .form-actions,
+    .form-actions{
         text-align: left;
         margin-top: 0;
     }
+}
+
+.new-account-form label:after,
+.login-form label:after,
+.forgot-password-form label:after{
+    display: none;
 }
 
 

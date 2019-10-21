@@ -24,3 +24,19 @@
     margin-bottom: 1px;
     margin-left: 7px;
 }
+
+.input-btn{
+    border: none;
+    padding: 0;
+    width: auto !important;
+    transition: color 0.15s ease;
+    & + svg {
+        transition: color 0.15s ease;
+    }
+    &:hover {
+        color: $grey-hover;
+        & + svg {
+            color: $grey-hover; 
+        }
+    }
+}
