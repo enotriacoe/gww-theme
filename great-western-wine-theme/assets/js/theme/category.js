@@ -13,6 +13,27 @@ export default class Category extends CatalogPage {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
+
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        $gridViewButton.on('click', () => {
+            if ($gridViewButton.not('.current-view')) {
+                $listViewButton.removeClass('current-view')
+                $gridViewButton.addClass('current-view')
+                $productView.removeClass('product-list');
+            }
+        });
+
+        $listViewButton.on('click', () => {            
+            if ($listViewButton.not('current-view')) {
+                console.log($gridViewButton);
+                $gridViewButton.removeClass('current-view')
+                $listViewButton.addClass('current-view')
+                $productView.addClass('product-list');
+            }
+        });
     }
 
     initFacetedSearch() {
