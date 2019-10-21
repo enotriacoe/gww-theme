@@ -46,11 +46,16 @@
 }
 
 .change-list-view {
-    float: right;
-    margin: 1px 10px;
+    display: none;
 
-    .icon {
-        height: 30px;
-        width: 30px;
+    @include breakpoint("medium") {
+        display: inline-block;
+        float: right;
+        margin: 1px 10px;
+
+        .icon {
+            height: 30px;
+            width: 30px;
+        }
     }
 }

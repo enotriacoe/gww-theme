@@ -52,13 +52,19 @@
         width: 100%;
         display: inline-block;
         position: relative;
+        background-color: $xl-green;
         
         @include breakpoint("medium") {
-            width: 25%;
+            width: 31%;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
         }
 
         @include breakpoint("large") {
-            width: 20%;
+            width: 18%;
+            margin-right: 22px;
+            margin-bottom: 25px;
         }
     }
 
@@ -71,6 +77,13 @@
             border: 1px solid $xl-green;
             background: $xl-green;
             width: 100%;
+            left: 0;
+            top: 100%;
+            z-index: 100;
+        }
+
+        .form-minMaxRow {
+            padding: 10px;
         }
     }
 
@@ -88,7 +101,7 @@
         text-transform: inherit;
 
         @include breakpoint("medium") {
-            margin-bottom: spacing("half");
+            margin-bottom: 0;
             margin-top: 0;
             padding: 0;
         }
