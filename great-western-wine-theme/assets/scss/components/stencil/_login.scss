@@ -7,8 +7,9 @@
     max-width: remCalc(900px);
 
     .forgot-password{
-        display: block;
-        margin-top: 20px;
+        display: inline-block;
+        margin-top: 3px;
+        float: right;
     }
 }
 
