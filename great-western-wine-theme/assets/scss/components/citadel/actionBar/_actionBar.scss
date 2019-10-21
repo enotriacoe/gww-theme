@@ -10,6 +10,7 @@
         border: $actionBar-form-field-border;
         border-radius: $actionBar-form-field-radius;
         overflow: hidden;
+        margin: 0;
 
         // scss-lint:disable NestingDepth
         &:hover {

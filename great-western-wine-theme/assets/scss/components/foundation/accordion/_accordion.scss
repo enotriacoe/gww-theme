@@ -38,6 +38,8 @@
 //
 // -----------------------------------------------------------------------------
 .accordion--navList {
+    margin: 0;
+    
     @include breakpoint("medium") {
         border: 0;
     }

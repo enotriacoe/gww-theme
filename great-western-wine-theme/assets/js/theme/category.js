@@ -20,17 +20,16 @@ export default class Category extends CatalogPage {
 
         $gridViewButton.on('click', () => {
             if ($gridViewButton.not('.current-view')) {
-                $listViewButton.removeClass('current-view')
-                $gridViewButton.addClass('current-view')
+                $listViewButton.removeClass('current-view');
+                $gridViewButton.addClass('current-view');
                 $productView.removeClass('product-list');
             }
         });
 
-        $listViewButton.on('click', () => {            
+        $listViewButton.on('click', () => {
             if ($listViewButton.not('current-view')) {
-                console.log($gridViewButton);
-                $gridViewButton.removeClass('current-view')
-                $listViewButton.addClass('current-view')
+                $gridViewButton.removeClass('current-view');
+                $listViewButton.addClass('current-view');
                 $productView.addClass('product-list');
             }
         });
