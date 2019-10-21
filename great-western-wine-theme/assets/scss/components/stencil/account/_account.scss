@@ -14,7 +14,7 @@
             font-family: "Playfair Display", Arial, Helvetica, sans-serif;
             font-size: 17px;
             font-weight: 900;
-            color: #1D1D1B;
+            color: $black;
         }
 
         span {
@@ -24,7 +24,7 @@
         &.is-active,
         &:hover{    
             padding-bottom: 5px;
-            border-bottom: solid 3px #e1675c;
+            border-bottom: solid 3px $peach;
         }
 
         .icon{
@@ -41,10 +41,11 @@
 
 // Account form
 // -----------------------------------------------------------------------------
-.edit-account-form{
+.edit-account-form,
+.new-account-form{
     label{
         font-weight: 900;
-        color: #1D1D1B;
+        color: $black;
         text-transform: uppercase;
         font-size: 12px;
         position: relative;
@@ -60,31 +61,30 @@
         }
     }
 
-    .dob-form label{
-        &[for="FormField_25"] {
-            & + .form-row--third > div{
-                margin-bottom: 0;
-            }
-            &:after{
-                display: none;
-            }
+    .dob-form {
+        margin-bottom: 0;
+    }
+
+    .select-container{
+        label::after{
+            display: none;
         }
     }
 
     input, select{
-        background-color: #E9F0F2;
+        background-color: $grey-bg;
         border-radius: 0;
         border: none;
         padding: 9px 40px 9px 12px;
-        color: #1D1D1B;
+        color: $black;
         height: 2.5rem;
 
         &::placeholder{
-            color: #666666;
+            color: $dark-grey;
         }
 
         &:focus{
-            border-bottom: solid 5px #e1675c;
+            border-bottom: solid 5px $peach;
         }
     }
 
@@ -103,6 +103,7 @@
 // -----------------------------------------------------------------------------
 .title--edit{
     margin-bottom: 3rem;
+    text-align: left;
 }
 .account-heading {
     border-bottom: container("border");
@@ -110,6 +111,15 @@
     padding-bottom: spacing("base");
 }
 
+
+// Account New
+// -----------------------------------------------------------------------------
+.account--new{
+    .account-body{
+        margin: initial;
+    }
+
+}
 
 // Account list
 // -----------------------------------------------------------------------------
