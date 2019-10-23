@@ -22,8 +22,12 @@
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
-        margin-bottom: spacing("single");
-        padding: 0 20px;
+        padding: spacing("single") 20px;
+        border-bottom: 1px solid lightgrey;
+
+        @include breakpoint("medium") {
+            border-bottom: 0;
+        }
 
         @include breakpoint("large") {
             width: grid-calc(3, $total-columns);

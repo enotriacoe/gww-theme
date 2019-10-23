@@ -76,7 +76,7 @@
 .navUser-action {
     color: stencilColor("navUser-color");
     font-weight: fontWeight("normal");
-    padding: (spacing("half") / 2) spacing("half");
+    padding: (spacing("half") / 2) 0.5rem;
     text-decoration: none;
 
     &:hover,
