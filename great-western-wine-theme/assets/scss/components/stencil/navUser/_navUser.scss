@@ -76,7 +76,7 @@
 .navUser-action {
     color: stencilColor("navUser-color");
     font-weight: fontWeight("normal");
-    padding: spacing("base") spacing("half");
+    padding: (spacing("half") / 2) spacing("half");
     text-decoration: none;
 
     &:hover,
@@ -103,6 +103,11 @@
         stroke: stencilColor("navUser-color");
         transition: all 0.15s ease;
     }
+}
+
+.navUser-action-icon {
+
+
 }
 
 .navUser-action--currencySelector + .dropdown-menu {
@@ -237,6 +242,10 @@
 }
 
 .navUser-item--account {
+
+    @include breakpoint("medium") {
+        margin-right: 20px;
+    }
 
     .navUser-or {
 
