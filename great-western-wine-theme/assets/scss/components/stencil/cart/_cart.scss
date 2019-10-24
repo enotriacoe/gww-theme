@@ -125,6 +125,7 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
 
 .cart-item-image {
     @include lazy-loaded-img;
+    height: 100%;
 
     @include breakpoint("medium") {
         margin-left:0;
@@ -576,9 +577,10 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
     padding: 0;
     text-align: center;
     position: relative;
-
+    
     img {
         @include lazy-loaded-img;
+        height: 100%;
     }
 
     @include lazy-loaded-padding('productthumb_size');
