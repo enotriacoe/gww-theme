@@ -15,7 +15,7 @@
 
     <div class="blog-post-body">
         <header class="blog-header">
-            <h2 class="blog-title">
+            <h2 class="blog-title page-heading-left stylised-medium">
                 <a href="{{post.url}}">{{post.title}}</a>
             </h2>
             <p class="blog-date">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
@@ -25,10 +25,10 @@
             {{#if post.body}}
                 {{{post.body}}}
             {{else}}
-                {{{post.summary}}}
-                {{#if post.show_read_more}}
-                    &hellip; <a href="{{url}}">read more</a>
-                {{/if}}
+                <p>{{{post.summary}}}...</p>
+            {{/if}}
+            {{#if post.show_read_more}}
+                <a class="btn btn-coral-line" href="{{url}}">Read more</a>
             {{/if}}
         </div>
 

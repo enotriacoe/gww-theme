@@ -9,17 +9,31 @@ blog:
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<main class="page">
-    {{#unless theme_settings.hide_blog_page_heading }}
-        <h1 class="page-heading">{{ blog.name }}</h1>
-    {{/unless}}
+<div class="page">
+   
+    <aside class="page-sidebar">
+        <div class="category-header">
+                <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1280x1280/e/steak__96674.original.jpg" alt="Steak" title="Steak" data-sizes="auto" srcset="https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/80w/e/steak__96674.original.jpg 80w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/160w/e/steak__96674.original.jpg 160w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/320w/e/steak__96674.original.jpg 320w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/640w/e/steak__96674.original.jpg 640w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/960w/e/steak__96674.original.jpg 960w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1280w/e/steak__96674.original.jpg 1280w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1920w/e/steak__96674.original.jpg 1920w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/2560w/e/steak__96674.original.jpg 2560w" data-srcset="https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/80w/e/steak__96674.original.jpg 80w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/160w/e/steak__96674.original.jpg 160w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/320w/e/steak__96674.original.jpg 320w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/640w/e/steak__96674.original.jpg 640w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/960w/e/steak__96674.original.jpg 960w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1280w/e/steak__96674.original.jpg 1280w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1920w/e/steak__96674.original.jpg 1920w, https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/2560w/e/steak__96674.original.jpg 2560w" class="category-img lazyautosizes ls-is-cached lazyloaded" sizes="883px">
+            <div class="category-text">
+                    {{#unless theme_settings.hide_blog_page_heading }}
+                        <h1 class="stylised-title">{{ blog.name }}</h1>
+                    {{/unless}}
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad omnis inventore doloremque tenetur aliquid voluptatibus fugit excepturi modi dolor, a, veritatis laudantium hic ab accusamus fuga natus, non aperiam sunt.</p>
+            </div>
+        </div>
+        
+        <hr class="productView-divider">
+    </aside>
 
-    {{#each blog.posts}}
-        {{> components/blog/post post=this}}
-    {{/each}}
+    <main class="page-content">
+        {{#each blog.posts}}
+            {{> components/blog/post post=this}}
+        {{/each}}
 
-    {{> components/common/paginator pagination.blog}}
-</main>
+        {{> components/common/paginator pagination.blog}}
+    </main>
+
+</div>
 
 {{/partial}}
 {{> layout/base}}
