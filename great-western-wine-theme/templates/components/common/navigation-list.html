@@ -21,9 +21,27 @@
                     </a>
                     <ul class="navPage-childList" id="navPages-{{id}}">
                         {{#each children}}
-                        <li class="navPage-childList-item">
-                            <a class="navPage-childList-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
-                        </li>
+                            <li class="navPage-childList-item">
+                                <a class="navPage-childList-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
+                                    {{#if children}}
+                                        <ul class="navPage-childList" id="navPages-{{id}}">
+                                            {{#each children}}
+                                                <li class="navPage-childList-item"> <a class="navPage-childList-action navPages-action" href="{{url}}">{{name}}</a>            
+                                                    {{#if children}}
+                                                        <ul class="navPage-childList" id="navPages-{{id}}">
+                                                            {{#each children}}
+                                                                <li class="navPage-childList-item">
+                                                                    <a class="navPage-childList-action navPages-action" href="{{url}}">{{name}}</a>
+                                                                </li>
+                                                            {{/each}}
+                                                        </ul>
+                                                    {{/if}}
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    {{/if}}
+                                </a>
+                            </li>
                         {{/each}}
                     </ul>
                 {{else}}
