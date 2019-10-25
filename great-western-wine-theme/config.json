@@ -626,7 +626,7 @@
         "social_icon_placement_bottom": "bottom_left",
         "geotrust_ssl_common_name": "",
         "geotrust_ssl_seal_size": "M",
-        "navigation_design": "simple",
+        "navigation_design": "alternate",
         "price_ranges": true,
         "pdp-price-label": "",
         "pdp-sale-price-label": "",
