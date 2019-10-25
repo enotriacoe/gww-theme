@@ -44,6 +44,12 @@
     margin: auto;
     max-width: get-width(stencilString('product_size'));
     width: 100%;
+    max-height: 50vh;
+
+
+    @include breakpoint("medium") {
+        max-height: 100%;
+    }
 
     img {
         @include lazy-loaded-img;
@@ -52,6 +58,11 @@
         object-fit: contain;
         /* Object-fit polyfill */
         font-family: 'object-fit: contain;';
+            max-height: 50vh;
+
+        @include breakpoint("medium") {
+            max-height: 100%;
+        }
     }
 
     @include lazy-loaded-padding('product_size');
