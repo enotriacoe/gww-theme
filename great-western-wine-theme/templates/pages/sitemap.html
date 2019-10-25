@@ -1,31 +1,35 @@
 {{#partial "page"}}
-<h1>{{lang 'sitemap.page_title'}}</h1>
+<main class="page">
+    <h1 class="page-content page-content--centered page-heading-left stylised-medium">{{lang 'sitemap.page_title'}}</h1>
 
-<ul>
-{{#each sitemap}}
-    <li>
-        <h3>{{label}}</h3>
+    <div class="page-content page-content--centered">
         <ul>
-            {{#each body}}
+        {{#each sitemap}}
             <li>
-                <a href="{{url}}">{{label}}</a>
-                {{#if children}}
-                    <ul>
-                    {{#each children}}
-                        {{> components/sitemap/links}}
+                <h3>{{label}}</h3>
+                <ul>
+                    {{#each body}}
+                    <li>
+                        <a href="{{url}}">{{label}}</a>
+                        {{#if children}}
+                            <ul>
+                            {{#each children}}
+                                {{> components/sitemap/links}}
+                            {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
                     {{/each}}
-                    </ul>
-                {{/if}}
+                    {{#if show_all_link}}
+                    <li>
+                        <a href="{{subsection_url}}">{{lang 'sitemap.show_all_link'}}</a>
+                    </li>
+                    {{/if}}
+                </ul>
             </li>
-            {{/each}}
-            {{#if show_all_link}}
-            <li>
-                <a href="{{subsection_url}}">{{lang 'sitemap.show_all_link'}}</a>
-            </li>
-            {{/if}}
+        {{/each}}
         </ul>
-    </li>
-{{/each}}
-</ul>
+    </div>
+</main>
 {{/partial}}
 {{> layout/base}}
