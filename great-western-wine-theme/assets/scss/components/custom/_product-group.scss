@@ -1,0 +1,25 @@
+// =============================================================================
+// PRODUCT GROUP PAGE - CUSTOM CLASSES FOR GWW FOR CUSTOM DYNAMIC LIST/GRID VIEW TOGGLING
+// =============================================================================
+
+.group-item {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.group-item-image {
+    margin-bottom: spacing("base");
+
+    img {
+        width: 100%;
+    }
+}
+
+.group-item-title {
+    margin-bottom: 10px;
+}
+
+.group-item-options {
+    display: block;
+    margin-top: (spacing("base") / 2);
+}
