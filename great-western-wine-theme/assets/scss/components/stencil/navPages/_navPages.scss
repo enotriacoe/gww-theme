@@ -111,6 +111,7 @@
         justify-content: space-between;
         width: 92%;
         margin: 0 auto;
+        position: relative;
     }
 
     + .navPages-list {
@@ -323,10 +324,10 @@
             border-left: 1px solid stencilColor("navPages-subMenu-separatorColor");
             display: inherit;
             height: $navPage-subMenu-horizontal-height;
-            margin-left: $navPage-subMenu-horizontal-width;
+            margin-left: 100%;
             padding: 0 !important; // scss-lint:disable ImportantRule
             top: 0;
-            width: $navPage-subMenu-horizontal-width + 1;
+            width: 100%;
         }
     }
 
