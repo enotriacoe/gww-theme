@@ -2,15 +2,38 @@
     <a class="modal-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
         <span aria-hidden="true">&#215;</span>
     </a>
-    <ul class="productGrid" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results" {{/if}}>
+    <ul class="previewCartList">
+            {{#each product_results.products}}
+                <li class="previewCartItem">
+                    <div class="previewCartItem-image">
+                            {{> components/common/responsive-img
+                                image=image
+                                fallback_size=../../theme_settings.productthumb_size
+                                lazyload=../../theme_settings.lazyload_mode
+                                default_image=../../theme_settings.default_image_product
+                            }}
+                    </div>
 
-        {{#each product_results.products}}
-        <li class="product">
-                {{> components/products/card settings=../settings alternate=true show_compare=../show_compare theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                    <div class="previewCartItem-content">
+                        <span class="previewCartItem-brand">
+                            {{brand.name}}
+                        </span>
 
-        </li>
-        {{/each}}
-    </ul>
+                        <h6 class="previewCartItem-name">
+                            <a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                        </h6>
+
+                        <span class="previewCartItem-price">
+                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            {{> components/products/price price=price}}
+                            {{else}}
+                                {{> components/common/login-for-pricing}}
+                            {{/or}}
+                        </span>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
 {{else}}
     <p class="quickSearchMessage">
         {{lang 'search.results.quick_count' count=pagination.product_results.total search_query=forms.search.query}}

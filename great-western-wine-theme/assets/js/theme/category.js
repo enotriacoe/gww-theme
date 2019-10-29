@@ -34,33 +34,32 @@ export default class Category extends CatalogPage {
             }
         });
 
-        // Custom JS to sort category list PGP 
-        var list = $('ul.group-list'),
-        items = $('li', list);
+        // Custom JS to sort category list PGP
+        const list = $('ul.group-list');
+        const items = $('li', list);
 
         // sort the list
-        var sortedItems = items.get().sort(function(a, b) {
-        var aText = $.trim($(a).text().toUpperCase()),
-            bText = $.trim($(b).text().toUpperCase());
-        
-        return aText.localeCompare(bText);
+        const sortedItems = items.get().sort((a, b) => {
+            const aText = $.trim($(a).text().toUpperCase());
+            const bText = $.trim($(b).text().toUpperCase());
+
+            return aText.localeCompare(bText);
         });
 
-        list.append(sortedItems); 
+        list.append(sortedItems);
 
         // create the titles
-        var lastLetter = '';
-        list.find('li').each(function() {
-        var $this = $(this),
-            text = $.trim($this.text()),
-            firstLetter = text[0];
+        let lastLetter = '';
+        list.find('li').each(function addLetterHeaders() {
+            const $this = $(this);
+            const text = $.trim($this.text());
+            const firstLetter = text[0];
 
-        if (firstLetter != lastLetter) {
-            $this.before('<li class="splitter">' + firstLetter);
-            lastLetter = firstLetter;
-        }
+            if (firstLetter !== lastLetter) {
+                $this.before(`<li class="splitter">${firstLetter}`);
+                lastLetter = firstLetter;
+            }
         });
-
     }
 
     initFacetedSearch() {
