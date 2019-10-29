@@ -19,17 +19,16 @@ category:
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <div class="page">
-    {{> components/category/category-header}}
+    {{> components/category/category-header-no-divider}}
 
     <main class="page-content" id="product-listing-container">
         {{#if category.subcategories}}
-            <div class="productGrid"> 
-                {{#each category.subcategories}}
-                <div class="group-item product">
-                    <a class="group-item-title" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
-                    <a href="#" class="btn btn-coral-line" alt="See all {{name}}" title="See all {{name}}">See all {{name}}</a>
-                </div>
-                {{/each}}
+            <div> 
+                <ul class="group-list">
+                    {{#each category.subcategories}}
+                        <li><a href="{{url}}">{{name}}</a></li>
+                    {{/each}}
+                </ul>
             </div>
         {{/if}}
     </main>

@@ -33,6 +33,34 @@ export default class Category extends CatalogPage {
                 $productView.addClass('product-list');
             }
         });
+
+        // Custom JS to sort category list PGP 
+        var list = $('ul.group-list'),
+        items = $('li', list);
+
+        // sort the list
+        var sortedItems = items.get().sort(function(a, b) {
+        var aText = $.trim($(a).text().toUpperCase()),
+            bText = $.trim($(b).text().toUpperCase());
+        
+        return aText.localeCompare(bText);
+        });
+
+        list.append(sortedItems); 
+
+        // create the titles
+        var lastLetter = '';
+        list.find('li').each(function() {
+        var $this = $(this),
+            text = $.trim($this.text()),
+            firstLetter = text[0];
+
+        if (firstLetter != lastLetter) {
+            $this.before('<li class="splitter">' + firstLetter);
+            lastLetter = firstLetter;
+        }
+        });
+
     }
 
     initFacetedSearch() {

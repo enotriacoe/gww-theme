@@ -23,3 +23,14 @@
     display: block;
     margin-top: (spacing("base") / 2);
 }
+
+.splitter {
+    border-top: 1px solid;
+    font-size: 1.25em;
+    list-style: none;
+    padding-top: 10px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+  
