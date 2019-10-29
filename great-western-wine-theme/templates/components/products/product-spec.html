@@ -96,36 +96,44 @@
             </li>
             {{/filter}}  
             {{#filter product.custom_fields 'vegan' property='name' }}
+            {{#if value '===' 'true'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Vegan</span>
                 </div>
-                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+                <span>Yes</span>
             </li>
+            {{/if}}
             {{/filter}}  
             {{#filter product.custom_fields 'vegetarian' property='name' }}
+            {{#if value '===' 'true'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Vegetarian</span>
                 </div>
-                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+                <span>Yes</span>
             </li>
+            {{/if}}
             {{/filter}} 
             {{#filter product.custom_fields 'organic' property='name' }}
+            {{#if value '===' 'true'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Organic</span>
                 </div>
-                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+                <span>Yes</span>
             </li>
+            {{/if}}
             {{/filter}}  
             {{#filter product.custom_fields 'biodynamic' property='name' }}
+            {{#if value '===' 'true'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Bio-dynamic</span>
                 </div>
-                <span>{{#if value '===' 'true'}}Yes{{/if}}</span>
+                <span>Yes</span>
             </li>
+            {{/if}}
             {{/filter}}          
         </ul>
 </div>
