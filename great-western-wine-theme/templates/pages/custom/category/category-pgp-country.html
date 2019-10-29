@@ -26,8 +26,12 @@ category:
             <div class="productGrid"> 
                 {{#each category.subcategories}}
                 <div class="group-item product">
-                    <a class="group-item-title" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
-                    <a href="#" class="btn btn-coral-line" alt="See all {{name}}" title="See all {{name}}">See all {{name}}</a>
+                    <div class="group-item-flag">
+                        <img src="path/to/flags/{{name}}-flag.jpg">
+                    </div>
+                    <h3 class="stylised-slim">{{name}}</h3>
+                    <a class="group-item-options" href="#" alt="{{name}} - Region Options" title="{{name}} - Region Options">See regions (TBD)</a>
+                    <a href="{{url}}" class="btn btn-coral-line" alt="See all {{name}}" title="See all Wine">See all Wine</a>
                 </div>
                 {{/each}}
             </div>
