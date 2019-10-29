@@ -1,7 +1,11 @@
 <div class="product-card-icons">
     {{#filter custom_fields 'country' property='name' }}
     <div class="product-card-icon-cont" title="{{value}}">
-        <i class="fal fa-flag"></i>
+    {{/filter}}
+    {{#filter custom_fields 'countryCode' property='name' }}
+        <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
+    {{/filter}}
+    {{#filter custom_fields 'country' property='name' }}
     </div>
     {{/filter}}
     {{#filter custom_fields 'awardName' property='name' }}

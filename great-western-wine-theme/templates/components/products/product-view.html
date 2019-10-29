@@ -121,9 +121,11 @@
                         {{value}}
                     </div>
                     {{/filter}}
-                    {{#filter product.custom_fields 'country' property='name' }}
+                    {{#filter product.custom_fields 'countryCode' property='name' }}
                     <div class="productView-icon">
-                        <i class="fal fa-flag icon"></i>
+                        <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'country' property='name' }}
                         {{value}}
                     </div>
                     {{/filter}}
