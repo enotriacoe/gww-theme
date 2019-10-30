@@ -74,7 +74,11 @@
             <div class="card-title-cont">
                 <h4 class="card-brand">{{#if brand.name}}{{brand.name}}{{/if}}</h4>
                 <h3 class="card-title">
-                    <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+                    <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>
+                        {{#filter custom_fields 'simpleName' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                    </a>
                 </h3>
             </div>
 
