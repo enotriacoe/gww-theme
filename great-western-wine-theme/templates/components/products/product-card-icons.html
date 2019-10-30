@@ -14,18 +14,24 @@
     </div>
     {{/filter}}
     {{#filter custom_fields 'organic' property='name' }}
+    {{#if value '===' 'true'}}
     <div class="product-card-icon-cont" title="Organic">
         <i class="fal fa-leaf"></i>
     </div>
+    {{/if}}
     {{/filter}}
     {{#filter custom_fields 'vegan' property='name' }}
+    {{#if value '===' 'true'}}
     <div class="product-card-icon-cont" title="Vegan">
         <span class="text-icon">V</span>
     </div>
+    {{/if}}
     {{/filter}}
     {{#filter custom_fields 'vegetarian' property='name' }}
+    {{#if value '===' 'true'}}
     <div class="product-card-icon-cont" title="Vegetarian">
         <span class="text-icon">Vg</span>
     </div>
+    {{/if}}
     {{/filter}}
 </div>
