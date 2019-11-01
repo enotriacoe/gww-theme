@@ -9,6 +9,7 @@
 
     .navList {
         margin-bottom: 0;
+        padding-left: 8px;
     }
 }
 
@@ -54,17 +55,19 @@
         width: 100%;
         display: inline-block;
         position: relative;
+        float: left;
         background-color: $xl-green;
         
         @include breakpoint("medium") {
-            width: 31%;
+            // width: 31%;
+            width: calc(25% - 10px);
             margin-right: 10px;
             margin-bottom: 20px;
             padding: 10px;
         }
 
         @include breakpoint("large") {
-            width: 18%;
+            width: calc(20% - 22px);
             margin-right: 22px;
             margin-bottom: 25px;
         }
