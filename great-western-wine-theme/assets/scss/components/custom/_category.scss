@@ -5,6 +5,13 @@
 .category-header {
     display: inline-block;
     width: 100%;
+    position: relative;
+
+    @include breakpoint ("medium") {
+        max-height: 350px;
+        overflow: hidden;
+    }
+
 
     .stylised-title {
         @include breakpoint ("medium") {
@@ -21,24 +28,23 @@
 
 .category-img {    
     @include breakpoint("medium") {
-        width: 49%;
-        float: right;
-        margin-bottom: 30px;
-    }
-    @include breakpoint("large") {
-        width: 66%;
+        width: 100%;
     }
 }
 
 .category-text {
+    background-color: white;
+
     @include breakpoint("medium") {
-        display: inline-block;
-        width: 49%;
-        margin-bottom: 30px;
+        width: 60%;
+        padding: 0 25px;
+        position: absolute;
+        border-left: 5px solid $peach;
+        bottom: 20px;
     }
 
     @include breakpoint("large") {
         width: 33%;
-        padding-right: 25px;
+        bottom: 30px;  
     }
 }
