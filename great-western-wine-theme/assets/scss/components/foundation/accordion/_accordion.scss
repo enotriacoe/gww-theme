@@ -170,6 +170,10 @@
     right: $accordion-navigation-paddingHorizontal;
     top: $accordion-navigation-paddingVertical;
 
+    .facetedSearch-clearLink {
+        display: none;
+    }
+
     > a {
         color: stencilColor("color-textSecondary");
         vertical-align: middle;
