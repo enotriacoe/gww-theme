@@ -1,0 +1,65 @@
+.home-banner-full {
+    width: 100%;
+    position: relative;
+    margin: 20px 0;
+}
+
+.home-banner-half {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+
+    @include breakpoint("medium") {
+        width: 48%;
+        float: left;
+
+        &:nth-child(2) {
+            float: right;
+        }
+    }
+}
+
+.banner-content {
+    background-color: rgba($carousel-bgColor, 1);
+    padding: spacing("half") spacing("single") (spacing("single"));
+    text-align: left;
+    border-left: 4px solid #e1675c;
+
+    @include breakpoint("medium") {
+        background-color: rgba($carousel-bgColor, 1);
+        left: 0;
+        margin: 0 auto;
+        padding: 1.3rem (spacing("single") * 1.5);
+        position: absolute;
+        bottom: 10px;
+    }
+    
+}
+
+.banner-title {
+    color: $carousel-title-color;
+    font-size: 35px;
+    margin-top: 0;
+    font-family: $fontFamily-headings;
+    font-weight: 900;
+
+    @include breakpoint("medium") {
+        font-size: $fontSize-largest;
+        line-height: 1;
+    }
+    
+    @include breakpoint("large") {
+        font-size: ($fontSize-hero / 2);
+    }
+}
+
+.banner-description {
+    color: $carousel-description-color;
+    font-size: fontSize("large");
+    margin-bottom: 0;
+
+    @include breakpoint("medium") {
+        font-size: fontSize("large");
+    }
+}
