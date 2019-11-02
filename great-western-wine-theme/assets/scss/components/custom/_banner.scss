@@ -1,7 +1,15 @@
+.home-banner-grid {
+    position: relative;
+}
+
 .home-banner-full {
     width: 100%;
     position: relative;
     margin: 20px 0;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .home-banner-half {
@@ -17,6 +25,10 @@
         &:nth-child(2) {
             float: right;
         }
+    }
+
+    a {
+        text-decoration: none;
     }
 }
 
@@ -62,4 +74,9 @@
     @include breakpoint("medium") {
         font-size: fontSize("large");
     }
+}
+
+.banner-image-wrapper {
+    max-height: 340px;
+    overflow: hidden;
 }
