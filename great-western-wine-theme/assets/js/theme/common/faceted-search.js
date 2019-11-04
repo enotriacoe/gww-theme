@@ -116,6 +116,19 @@ class FacetedSearch {
 
         // Bind events
         this.bindEvents();
+
+        // Update Grid View
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+
+        $gridViewButton.on('click', () => {
+            this.activeGridView();
+        });
+
+        $listViewButton.on('click', () => {
+            this.activeListView();
+        });
+        this.updateListView();
     }
 
     updateView() {
@@ -131,6 +144,39 @@ class FacetedSearch {
             // Refresh view with new content
             this.refreshView(content);
         });
+    }
+
+    activeGridView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+        if ($gridViewButton.not('.current-view')) {
+            $listViewButton.removeClass('current-view');
+            $gridViewButton.addClass('current-view');
+            $productView.removeClass('product-list');
+            sessionStorage.setItem('productsView', 'grid-view');
+        }
+    }
+
+    activeListView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($listViewButton.not('.current-view')) {
+            $gridViewButton.removeClass('current-view');
+            $listViewButton.addClass('current-view');
+            $productView.addClass('product-list');
+            sessionStorage.setItem('productsView', 'list-view');
+        }
+    }
+
+    updateListView() {
+        if (sessionStorage.getItem('productsView') === 'grid-view') {
+            this.activeGridView();
+        } else if (sessionStorage.getItem('productsView') === 'list-view') {
+            this.activeListView();
+        }
     }
 
     expandFacetItems($navList) {
