@@ -14,26 +14,6 @@ export default class Category extends CatalogPage {
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
 
-        const $gridViewButton = $('#grid-view');
-        const $listViewButton = $('#list-view');
-        const $productView = $('.productGrid');
-
-        $gridViewButton.on('click', () => {
-            if ($gridViewButton.not('.current-view')) {
-                $listViewButton.removeClass('current-view');
-                $gridViewButton.addClass('current-view');
-                $productView.removeClass('product-list');
-            }
-        });
-
-        $listViewButton.on('click', () => {
-            if ($listViewButton.not('current-view')) {
-                $gridViewButton.removeClass('current-view');
-                $listViewButton.addClass('current-view');
-                $productView.addClass('product-list');
-            }
-        });
-
         // Custom JS to sort category list PGP
         const list = $('ul.group-list');
         const items = $('li', list);
@@ -60,6 +40,58 @@ export default class Category extends CatalogPage {
                 lastLetter = firstLetter;
             }
         });
+
+        // Grid View with Cookies
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+
+        if (sessionStorage.getItem('productsView') === null) {
+            sessionStorage.setItem('list-view');
+        }
+
+        this.updateListView();
+
+        $gridViewButton.on('click', () => {
+            this.activeGridView();
+        });
+
+        $listViewButton.on('click', () => {
+            this.activeListView();
+        });
+    }
+
+    activeGridView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($gridViewButton.not('.current-view')) {
+            $listViewButton.removeClass('current-view');
+            $gridViewButton.addClass('current-view');
+            $productView.removeClass('product-list');
+            sessionStorage.setItem('productsView', 'grid-view');
+        }
+    }
+
+    activeListView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($listViewButton.not('.current-view')) {
+            $gridViewButton.removeClass('current-view');
+            $listViewButton.addClass('current-view');
+            $productView.addClass('product-list');
+            sessionStorage.setItem('productsView', 'list-view');
+        }
+    }
+
+    updateListView() {
+        if (sessionStorage.getItem('productsView') === 'grid-view') {
+            this.activeGridView();
+        } else if (sessionStorage.getItem('productsView') === 'list-view') {
+            this.activeListView();
+        }
     }
 
     initFacetedSearch() {
