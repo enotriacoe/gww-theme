@@ -177,8 +177,42 @@
                 {{else}}
                     {{> components/common/login-for-pricing}}
                 {{/or}}
-                <button class="button"> Temp add to basket </button>
-            </div>
+
+
+
+                <div class="productView-options add-to-cart-form">
+                        <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                              data-cart-item-add>
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="product_id" value="{{product.id}}"/>
+                            <div data-product-option-change style="display:none;">
+                                {{#each product.options}}
+                                    {{{dynamicComponent 'components/products/options'}}}
+                                {{/each}}
+                            </div>
+                            <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}" style="display:none;">
+                                <label class="form-label form-label--alternate">
+                                    {{lang 'products.current_stock'}}
+                                    <span data-product-stock>{{product.stock_level}}</span>
+                                </label>
+                            </div>
+                            {{#if product.can_purchase}}
+                                {{> components/products/add-to-cart}}
+                            {{/if}}
+                            {{#if product.out_of_stock}}
+                                {{#if product.out_of_stock_message}}
+                                    <div class="button button-oos">OUT OF STOCK</div>
+                                {{else}}
+                                    {{> components/common/alert-error (lang 'products.sold_out')}}
+                                {{/if}}
+                            {{/if}}
+                        </form>
+                    </div>
+
+                    
+                </div>
+
+ 
 
             <div class="multibuy-cont">
                 <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
@@ -277,34 +311,6 @@
     </section>
 
     <section class="productView-details">
-        <div class="productView-options">
-            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
-                  data-cart-item-add>
-                <input type="hidden" name="action" value="add">
-                <input type="hidden" name="product_id" value="{{product.id}}"/>
-                <div data-product-option-change style="display:none;">
-                    {{#each product.options}}
-                        {{{dynamicComponent 'components/products/options'}}}
-                    {{/each}}
-                </div>
-                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-                    <label class="form-label form-label--alternate">
-                        {{lang 'products.current_stock'}}
-                        <span data-product-stock>{{product.stock_level}}</span>
-                    </label>
-                </div>
-                {{#if product.can_purchase}}
-                    {{> components/products/add-to-cart}}
-                {{/if}}
-                {{#if product.out_of_stock}}
-                    {{#if product.out_of_stock_message}}
-                        {{> components/common/alert-error product.out_of_stock_message}}
-                    {{else}}
-                        {{> components/common/alert-error (lang 'products.sold_out')}}
-                    {{/if}}
-                {{/if}}
-            </form>
-        </div>
         {{> components/common/share}}
     </section>
 
