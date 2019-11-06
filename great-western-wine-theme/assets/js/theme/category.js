@@ -49,14 +49,48 @@ export default class Category extends CatalogPage {
             sessionStorage.setItem('list-view');
         }
 
-        this.updateListView();
+        function activeGridView() {
+            const $gridViewButton = $('#grid-view');
+            const $listViewButton = $('#list-view');
+            const $productView = $('.productGrid');
+
+            if ($gridViewButton.not('.current-view')) {
+                $listViewButton.removeClass('current-view');
+                $gridViewButton.addClass('current-view');
+                $productView.removeClass('product-list');
+                sessionStorage.setItem('productsView', 'grid-view');
+            }
+        }
+
+        function activeListView() {
+            const $gridViewButton = $('#grid-view');
+            const $listViewButton = $('#list-view');
+            const $productView = $('.productGrid');
+
+            if ($listViewButton.not('.current-view')) {
+                $gridViewButton.removeClass('current-view');
+                $listViewButton.addClass('current-view');
+                $productView.addClass('product-list');
+                sessionStorage.setItem('productsView', 'list-view');
+            }
+        }
+
+        function updateListView() {
+            if (sessionStorage.getItem('productsView') === 'grid-view') {
+                activeGridView();
+            } else if (sessionStorage.getItem('productsView') === 'list-view') {
+                activeListView();
+            }
+        }
+
+        updateListView();
 
         $gridViewButton.on('click', () => {
-            this.activeGridView();
+            activeGridView();
         });
 
         $listViewButton.on('click', () => {
-            this.activeListView();
+            activeListView();
         });
     }
 
