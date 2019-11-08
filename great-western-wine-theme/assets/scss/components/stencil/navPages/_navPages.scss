@@ -109,7 +109,7 @@
     @include breakpoint("medium") {
         display: flex;
         justify-content: space-between;
-        width: 92%;
+        width: 100%;
         margin: 0 auto;
         position: relative;
     }
@@ -119,7 +119,23 @@
         margin-top: spacing("half");
         padding-top: spacing("half");
     }
+
+    > .navPages-item {
+        flex-grow: 1;
+
+        > .navPages-action {
+            width: 100%;
+
+            &.is-open {
+                background-color: black;
+                text-align: center;
+                color: white;
+            }
+        }
+    }
 }
+
+
 
 .navPages-list-depth-max.subMenu-is-open {
     .is-hidden {
@@ -192,7 +208,7 @@
     color: stencilColor("navPages-color");
     display: block;
     font-size: fontSize("smaller");
-    font-weight: 600;
+    font-weight: 500;
     padding: spacing("half") 0;
     text-decoration: none;
 
@@ -201,7 +217,7 @@
         padding: spacing("half") (spacing("half") + spacing("quarter")) spacing("half");
 
         &.is-open {
-            background-color: stencilColor("navPages-subMenu-backgroundColor");
+            background-color: white;
 
             // scss-lint:disable NestingDepth
             svg {
@@ -213,6 +229,7 @@
 
     &:hover, &.activePage {
         color: stencilColor("navPages-color-hover");
+        font-weight: 600;
 
         // scss-lint:disable NestingDepth
         svg {
@@ -310,19 +327,18 @@
 .has-subMenu.is-root + .navPage-subMenu-horizontal {
     @include breakpoint("medium") {
         border-left: 0;
-        height: $navPage-subMenu-horizontal-height;
-        left: inherit;
+        height: 730px;
         margin: auto;
         top: inherit;
-        width: $navPage-subMenu-horizontal-width;
+        width: 100%;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
     }
 }
 
 .navPage-subMenu-horizontal {
     &.is-open {
         @include breakpoint("medium") {
-            border-left: 1px solid stencilColor("navPages-subMenu-separatorColor");
-            display: inherit;
             height: $navPage-subMenu-horizontal-height;
             margin-left: 100%;
             padding: 0 !important; // scss-lint:disable ImportantRule
@@ -337,7 +353,28 @@
             transform: rotate(-90deg);
         }
     }
+
+    .navPage-subMenu-item-child .navPage-subMenu-horizontal {
+        width: 75%;
+        margin-left: 25%;
+        background-color: white;
+        height: 100%;
+
+        .navPage-subMenu-horizontal {
+            width: 66.6%;
+            margin-left: 33.4%;
+            background-color: $color-tertiary;
+
+            .navPage-subMenu-horizontal {
+                width: 50%;
+                margin-left: 50%;
+                background-color: white;
+            }
+        }
+    }
 }
+
+
 
 .navPage-subMenu-item {
     @include breakpoint("medium") {
@@ -363,17 +400,54 @@
 
     @include breakpoint("medium") {
         .navPage-subMenu-action {
-            padding-left: spacing("single");
+            padding-left: (spacing("single") / 2);
             padding-right: spacing("single");
-            width: 100%;
+            margin-left: (spacing("single") / 2);
+            width: 25%;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            line-height: 2;
+            &:hover {
+                background-color: white;
+            }
         }
+            
+        .navPage-subMenu-item-child, .navPage-subMenu-item-parent {
+        
+            .navPage-subMenu-action {
+                width: 33.4%;
 
-        .navPage-subMenu-action.is-open,
-        .navPage-subMenu-action:hover {
-            background: $navPage-subMenu-item--is-highlighted-background;
-            color: $navPage-subMenu-item--is-highlighted-color;
-            font-weight: 500;
-            opacity: 0.3;
+                &:hover, &.is-open {
+                    background-color: $color-tertiary;  
+                }
+            }
+            
+            .navPage-subMenu-item-child, .navPage-subMenu-item-parent{
+                .navPage-subMenu-action {
+                    width: 50%;
+
+                    &:hover, &.is-open {
+                    background-color: white;
+                    }
+                }
+
+                .navPage-subMenu-item-child, .navPage-subMenu-item-parent{
+                    .navPage-subMenu-action {
+                        width: 100%;
+
+                        &:hover &.is-open {
+                            background-color: white;
+                        }
+                    }
+                }
+            }
+
+            .navPage-subMenu-action.is-open,
+            .navPage-subMenu-action:hover {
+                color: $navPage-subMenu-item--is-highlighted-color;
+                font-weight: 600;
+                opacity: 1;
+            }
         }
     }
 }
