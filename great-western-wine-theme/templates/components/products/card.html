@@ -104,9 +104,72 @@
                 {{/or}}
             </div>
             <div class="grid-add-cart">
-
-                    <a href="/cart.php?action=add&amp;product_id={{id}}" class="button button--primary button--cartAction" data-product-add-to-cart="" data-product-id="{{id}}" data-wait-message="Adding to cart…" tabindex="0">Add to Basket</a>
-        
+                <div class="productView-options add-to-cart-form">
+                    {{#if show_cart_action}}
+                        {{#if add_to_cart_url }}
+                        <form name="form-{{id}}" class="form-{{id}}" method="post" action="{{add_to_cart_url}}" enctype="multipart/form-data"
+                            data-cart-item-add>
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="product_id" value="{{id}}"/>
+                            <div data-product-option-change style="display:none;">
+                                {{#each product.options}}
+                                    {{{dynamicComponent 'components/products/options'}}}
+                                {{/each}}
+                            </div>
+                            <div class="form-field form-field--stock{{#unless stock_level}} u-hiddenVisually{{/unless}}" style="display:none;">
+                                <label class="form-label form-label--alternate">
+                                    {{lang 'products.current_stock'}}
+                                    <span data-product-stock>{{stock_level}}</span>
+                                </label>
+                            </div>
+                            <div class="add-to-cart-cont">
+                                {{#if theme_settings.show_product_quantity_box}}
+                                    <div class="form-field form-field--increments">
+                                            <div class="form-increment form-increment-{{id}}" data-quantity-change>
+                                                <input class="form-input-{{id}} form-input--incrementTotal"
+                                                    id="qty[]"
+                                                    name="qty[]"
+                                                    type="tel"
+                                                    value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
+                                                    data-quantity-min="0"
+                                                    data-quantity-max="0"
+                                                    min="1"
+                                                    pattern="[0-9]*"
+                                                    aria-live="polite">
+                                                <button class="button button--icon" data-action="inc">
+                                                    <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+                                                    <i class="fas fa-triangle"></i>
+                                                </button>
+                                                <button class="button button--icon" data-action="dec">
+                                                    <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+                                                    <i class="fas fa-triangle"></i>
+                                                </button>
+                                            </div>
+                                    </div>
+                                {{/if}}
+                                
+                                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                    <div class="form-action addToCartSubmit">
+                                        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+                                            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+                                    </div>
+                                {{/or}}
+                            </div>
+                            
+                            <div class="alertBox productAttributes-message" style="display:none">
+                                <div class="alertBox-column alertBox-icon">
+                                    <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+                                </div>
+                                <p class="alertBox-column alertBox-message"></p>
+                            </div>
+                                
+                        </form>
+                        {{/if}}
+                        {{#if out_of_stock_message }}
+                            <div class="button button-oos">OUT OF STOCK</div>
+                        {{/if}}
+                    {{/if}}
+                </div>        
             </div>
             <div class="multibuy-cont">
                 <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>

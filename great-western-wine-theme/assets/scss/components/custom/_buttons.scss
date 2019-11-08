@@ -46,3 +46,21 @@
     border-color: $primary-color;
     border-radius: 0;
 }
+
+.button-oos {
+    background-color: lightgray;
+    color: black;
+    border-radius: 0;
+    width: 100%;
+    height: 50px;
+    line-height: unset !important;
+    border: 0;
+    margin: 0;
+    cursor: default;
+
+    &:hover {
+        background-color: lightgray;
+        transform: none;
+        border: 0;
+    }
+}

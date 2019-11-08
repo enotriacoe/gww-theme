@@ -1,7 +1,10 @@
-import { hooks } from '@bigcommerce/stencil-utils';
+/* eslint-disable no-restricted-globals, no-shadow, prefer-arrow-callback, func-names */
+import utils from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
+import modalFactory, { showAlertModal } from './global/modal';
+
 
 export default class Category extends CatalogPage {
     onReady() {
@@ -11,7 +14,7 @@ export default class Category extends CatalogPage {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            hooks.on('sortBy-submitted', this.onSortBySubmit);
+            utils.on('sortBy-submitted', this.onSortBySubmit);
         }
 
         // Custom JS to sort category list PGP
@@ -92,40 +95,160 @@ export default class Category extends CatalogPage {
         $listViewButton.on('click', () => {
             activeListView();
         });
-    }
 
-    activeGridView() {
-        const $gridViewButton = $('#grid-view');
-        const $listViewButton = $('#list-view');
-        const $productView = $('.productGrid');
-
-        if ($gridViewButton.not('.current-view')) {
-            $listViewButton.removeClass('current-view');
-            $gridViewButton.addClass('current-view');
-            $productView.removeClass('product-list');
-            sessionStorage.setItem('productsView', 'grid-view');
+        function filterEmptyFilesFromForm(formData) {
+            try {
+                for (const [key, val] of formData) {
+                    if (val instanceof File && !val.name && !val.size) {
+                        formData.delete(key);
+                    }
+                }
+            } catch (e) {
+                console.error(e); // eslint-disable-line no-console
+            }
+            return formData;
         }
-    }
 
-    activeListView() {
-        const $gridViewButton = $('#grid-view');
-        const $listViewButton = $('#list-view');
-        const $productView = $('.productGrid');
+        function getCartContent(cartItemId, onComplete) {
+            const options = {
+                template: 'cart/preview',
+                params: {
+                    suggest: cartItemId,
+                },
+                config: {
+                    cart: {
+                        suggestions: {
+                            limit: 4,
+                        },
+                    },
+                },
+            };
 
-        if ($listViewButton.not('.current-view')) {
-            $gridViewButton.removeClass('current-view');
-            $listViewButton.addClass('current-view');
-            $productView.addClass('product-list');
-            sessionStorage.setItem('productsView', 'list-view');
+            utils.api.cart.getContent(options, onComplete);
         }
-    }
 
-    updateListView() {
-        if (sessionStorage.getItem('productsView') === 'grid-view') {
-            this.activeGridView();
-        } else if (sessionStorage.getItem('productsView') === 'list-view') {
-            this.activeListView();
+        function updateCartContent(modal, cartItemId, onComplete) {
+            getCartContent(cartItemId, (err, response) => {
+                if (err) {
+                    return;
+                }
+
+                modal.updateContent(response);
+
+                // Update cart counter
+                const $body = $('body');
+                const $cartQuantity = $('[data-cart-quantity]', modal.$content);
+                const $cartCounter = $('.navUser-action .cart-count');
+                const quantity = $cartQuantity.data('cartQuantity') || 0;
+
+                $cartCounter.addClass('cart-count--positive');
+                $body.trigger('cart-quantity-update', quantity);
+
+                if (onComplete) {
+                    onComplete(response);
+                }
+            });
         }
+
+        const $form = $('form[data-cart-item-add]');
+        const $overlay = $('[data-cart-item-add] .loadingOverlay');
+
+        function addProductToCartCat(event) {
+            const previewModal = modalFactory('#previewModal')[0];
+            const $addToCartBtn = $('#form-action-addToCart', $(event.target));
+            const originalBtnVal = $addToCartBtn.val();
+            const waitMessage = $addToCartBtn.data('waitMessage');
+
+            // Do not do AJAX if browser doesn't support FormData
+            if (window.FormData === undefined) {
+                return;
+            }
+
+            // Prevent default
+            event.preventDefault();
+
+            $addToCartBtn
+                .val(waitMessage)
+                .prop('disabled', true);
+
+            $overlay.show();
+
+            // Add item to cart
+            utils.api.cart.itemAdd(filterEmptyFilesFromForm(new FormData(event.currentTarget)), (err, response) => {
+                const errorMessage = err || response.data.error;
+
+                $addToCartBtn
+                    .val(originalBtnVal)
+                    .prop('disabled', false);
+
+                $overlay.hide();
+
+                // Guard statement
+                if (errorMessage) {
+                    // Strip the HTML from the error message
+                    const tmp = document.createElement('DIV');
+                    tmp.innerHTML = errorMessage;
+
+                    return showAlertModal(tmp.textContent || tmp.innerText);
+                }
+
+                // Open preview modal and update content
+                if (previewModal) {
+                    previewModal.open();
+
+                    updateCartContent(previewModal, response.data.cart_item.id);
+                } else {
+                    this.$overlay.show();
+                    // if no modal, redirect to the cart page
+                    this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
+                }
+            });
+        }
+
+        $form.on('submit', event => {
+            addProductToCartCat(event);
+        });
+
+        const $quantityButtons = $('[data-quantity-change] button');
+
+        $quantityButtons.click(function () {
+            event.preventDefault();
+            const $target = $(event.currentTarget);
+            const $text = $(event.currentTarget).parent().find('.incrementTotal');
+            const $input = $(event.currentTarget).parent().find('[name=qty\\[\\]]');
+            const quantityMin = parseInt($input.data('quantityMin'), 10);
+            const quantityMax = parseInt($input.data('quantityMax'), 10);
+
+            let qty = parseInt($input.val(), 10);
+
+            // If action is incrementing
+            if ($target.data('action') === 'inc') {
+                // If quantity max option is set
+                if (quantityMax > 0) {
+                    // Check quantity does not exceed max
+                    if ((qty + 1) <= quantityMax) {
+                        qty++;
+                    }
+                } else {
+                    qty++;
+                }
+            } else if (qty > 1) {
+                // If quantity min option is set
+                if (quantityMin > 0) {
+                    // Check quantity does not fall below min
+                    if ((qty - 1) >= quantityMin) {
+                        qty--;
+                    }
+                } else {
+                    qty--;
+                }
+            }
+
+            // update hidden input
+            $input.val(qty);
+            // update text
+            $text.text(qty);
+        });
     }
 
     initFacetedSearch() {
