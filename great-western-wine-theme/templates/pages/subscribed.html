@@ -13,7 +13,9 @@
         {{#if subscription.error}}
             {{> components/common/alert-error subscription.error}}
         {{else}}
-            {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+            <div id="newsletter-success">
+                {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+            </div>
         {{/if}}
 
     </div>
