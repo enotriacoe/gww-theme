@@ -87,7 +87,8 @@
                 <a href="{{url}}" class="card-read-more">Read more</a>
             </div>
 
-            <p class="card-year-size">2013 | <span class="brand-color-text">75cl</span></p>
+            <p class="card-year-size">
+                {{#filter custom_fields 'vintage' property='name' }}{{value}}{{/filter}} | <span class="brand-color-text">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span></p>
             <p class="card-rating">{{> components/products/ratings rating=rating}}</p>
             <div class="wishlist-list-view">
                 {{#if settings.show_wishlist}}
