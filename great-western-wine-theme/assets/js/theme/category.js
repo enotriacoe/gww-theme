@@ -5,7 +5,6 @@ import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import modalFactory, { showAlertModal } from './global/modal';
 
-
 export default class Category extends CatalogPage {
     onReady() {
         compareProducts(this.context.urls);
@@ -45,11 +44,8 @@ export default class Category extends CatalogPage {
         });
 
         // Grid View with Cookies
-        const $gridViewButton = $('#grid-view');
-        const $listViewButton = $('#list-view');
-
         if (sessionStorage.getItem('productsView') === null) {
-            sessionStorage.setItem('list-view');
+            sessionStorage.setItem('productsView', 'list-view');
         }
 
         function activeGridView() {
@@ -88,11 +84,11 @@ export default class Category extends CatalogPage {
 
         updateListView();
 
-        $gridViewButton.on('click', () => {
+        $('.body').on('click', '#grid-view', function (e) {
             activeGridView();
         });
 
-        $listViewButton.on('click', () => {
+        $('.body').on('click', '#list-view', function (e) {
             activeListView();
         });
 
