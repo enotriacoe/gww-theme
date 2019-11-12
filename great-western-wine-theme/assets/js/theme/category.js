@@ -49,7 +49,7 @@ export default class Category extends CatalogPage {
         const $listViewButton = $('#list-view');
 
         if (sessionStorage.getItem('productsView') === null) {
-            sessionStorage.setItem('list-view');
+            sessionStorage.setItem('productsView', 'list-view');
         }
 
         function activeGridView() {
