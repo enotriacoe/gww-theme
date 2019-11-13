@@ -59,6 +59,14 @@ class FacetedSearch {
         // Init collapsibles
         collapsibleFactory();
 
+        // If there's only one option under a filter, hide that filter entirely
+
+        $('.navList').each(function hideSingleValueFilters() {
+            if ($(this).children().length === 1) {
+                $(this).parent().parent().hide();
+            }
+        });
+
         // Init price validator
         this.initPriceValidator();
 
