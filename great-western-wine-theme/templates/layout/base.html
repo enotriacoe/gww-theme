@@ -27,8 +27,6 @@
 
         {{{head.scripts}}}
 
-        <script data-search-pseudo-elements src="https://kit.fontawesome.com/fb85a17606.js" crossorigin="anonymous"></script>​
-
         {{~inject 'themeSettings' theme_settings}}
         {{~inject 'genericError' (lang 'common.generic_error')}}
         {{~inject 'maintenanceMode' settings.maintenance}}
@@ -36,7 +34,9 @@
         {{~inject 'secureBaseUrl' settings.secure_base_url}}
         {{~inject 'cartId' cart_id}}
         {{~inject 'template' template}}
-    </head>
+        
+        <script src="https://kit.fontawesome.com/fb85a17606.js" crossorigin="anonymous"></script>
+        </head>
     <body>
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 
