@@ -1,0 +1,68 @@
+---
+category:
+    shop_by_price: false
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<div class="page">
+    {{> components/category/category-header}}
+
+    {{#if category.subcategories}}
+    <div class="productGrid">
+        {{#each category.subcategories}}
+        <div class="group-item product">
+            <h3 class="stylised-slim">{{name}}</h3>
+            <a href="{{url}}" class="btn btn-coral-line" alt="See all {{name}}" title="See all Wine">See all Wine</a>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if category.faceted_search_enabled}}
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/category/topbar-no-category-header}}
+    </aside>
+    {{else if category.subcategories}}
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/category/topbar-no-category-header}}
+    </aside>
+    {{else if category.shop_by_price}}
+    {{#if theme_settings.shop_by_price_visibility}}
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/category/topbar-no-category-header}}
+    </aside>
+    {{/if}}
+    {{/if}}
+
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}}
+            {{> components/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+        {{{region name="category_below_content"}}}
+    </main>
+</div>
+
+<style>
+    .group-item.product {
+        padding: 0px !important;
+    }
+</style>
+
+{{/partial}}
+{{> layout/base}}
