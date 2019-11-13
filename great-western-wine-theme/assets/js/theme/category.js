@@ -203,14 +203,15 @@ export default class Category extends CatalogPage {
             });
         }
 
-        $('.add-to-cart-form form').on('submit', function (e) {
+        $('.page-content').on('submit', 'form[data-cart-item-add]', function (e) {
             e.preventDefault();
             addProductToCartCat(e);
         });
 
         const $quantityButtons = $('[data-quantity-change] button');
 
-        $quantityButtons.click(function () {
+        $('body').on('click', '[data-quantity-change] button', function (event) {
+            debugger;
             event.preventDefault();
             const $target = $(event.currentTarget);
             const $text = $(event.currentTarget).parent().find('.incrementTotal');
