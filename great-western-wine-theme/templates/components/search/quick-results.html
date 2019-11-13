@@ -4,6 +4,7 @@
     </a>
     <ul class="previewCartList">
             {{#each product_results.products}}
+            <a href="{{url}}" alt="{{name}}" title="{{name}}">
                 <li class="previewCartItem">
                     <div class="previewCartItem-image">
                             {{> components/common/responsive-img
@@ -20,7 +21,7 @@
                         </span>
 
                         <h6 class="previewCartItem-name">
-                            <a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                            {{name}}
                         </h6>
 
                         <span class="previewCartItem-price">
@@ -32,6 +33,7 @@
                         </span>
                     </div>
                 </li>
+            </a>
             {{/each}}
         </ul>
 {{else}}
