@@ -7,8 +7,13 @@
     width: 100%;
     position: relative;
 
+    img {
+        width: 100%;
+    }
+
     @include breakpoint ("medium") {
         max-height: 350px;
+        min-height: 130px;
         overflow: hidden;
     }
 
@@ -40,11 +45,11 @@
         padding: 0 25px;
         position: absolute;
         border-left: 5px solid $peach;
-        bottom: 20px;
+        top: 20px;
     }
 
     @include breakpoint("large") {
         width: 33%;
-        bottom: 30px;  
+        top: 30px;  
     }
 }
