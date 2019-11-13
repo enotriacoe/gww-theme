@@ -25,11 +25,7 @@ category:
     <div class="productGrid">
         {{#each category.subcategories}}
         <div class="group-item product">
-            <!--                    <div class="group-item-flag">-->
-            <!--                        <img src="path/to/flags/{{name}}-flag.jpg">-->
-            <!--                    </div>-->
             <h3 class="stylised-slim">{{name}}</h3>
-            <!--                    <a class="group-item-options" href="#" alt="{{name}} - Region Options" title="{{name}} - Region Options">See regions (TBD)</a>-->
             <a href="{{url}}" class="btn btn-coral-line" alt="See all {{name}}" title="See all Wine">See all Wine</a>
         </div>
         {{/each}}
@@ -38,16 +34,16 @@ category:
 
     {{#if category.faceted_search_enabled}}
     <aside class="page-sidebar" id="faceted-search-container">
-        {{> components/category/topbar}}
+        {{> components/category/topbar-no-category-header}}
     </aside>
     {{else if category.subcategories}}
     <aside class="page-sidebar" id="faceted-search-container">
-        {{> components/category/topbar}}
+        {{> components/category/topbar-no-category-header}}
     </aside>
     {{else if category.shop_by_price}}
     {{#if theme_settings.shop_by_price_visibility}}
     <aside class="page-sidebar" id="faceted-search-container">
-        {{> components/category/topbar}}
+        {{> components/category/topbar-no-category-header}}
     </aside>
     {{/if}}
     {{/if}}
