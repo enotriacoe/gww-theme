@@ -1,7 +1,7 @@
 <ul class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
     {{#unless theme_settings.hide_breadcrumbs }}
         {{#each breadcrumbs}}
-            <li class="breadcrumb {{#if @last}}is-active{{/if}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <li class="breadcrumb {{#if @last}}is-active{{/if}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" {{#if @last}}{{#is name "Home"}}style="display:none"{{/is}}{{/if}}>
                 {{#or @last (if url "==" null)}}
                     <meta itemprop="item" content="{{url}}">
                     <span class="breadcrumb-label" itemprop="name">{{name}}</span>
