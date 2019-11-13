@@ -84,13 +84,16 @@ export default class Category extends CatalogPage {
 
         updateListView();
 
-        $('.body').on('click', '#grid-view', function (e) {
+        $('.page-content').on('click', '#grid-view', function (e) {
             activeGridView();
         });
 
-        $('.body').on('click', '#list-view', function (e) {
+        $('.page-content').on('click', '#list-view', function (e) {
             activeListView();
         });
+
+        // Custom Add To Cart implementation for PLP pages, adapted from Product View
+
 
         function filterEmptyFilesFromForm(formData) {
             try {
@@ -146,8 +149,7 @@ export default class Category extends CatalogPage {
             });
         }
 
-        const $form = $('form[data-cart-item-add]');
-        const $overlay = $('[data-cart-item-add] .loadingOverlay');
+        const $overlay = $('.loadingOverlay');
 
         function addProductToCartCat(event) {
             const previewModal = modalFactory('#previewModal')[0];
@@ -201,8 +203,9 @@ export default class Category extends CatalogPage {
             });
         }
 
-        $form.on('submit', event => {
-            addProductToCartCat(event);
+        $('.add-to-cart-form form').on('submit', function (e) {
+            e.preventDefault();
+            addProductToCartCat(e);
         });
 
         const $quantityButtons = $('[data-quantity-change] button');
