@@ -125,8 +125,8 @@ class FacetedSearch {
         // Bind events
         this.bindEvents();
 
+        // eslint-disable-next-line no-undef
         updateListView();
-
     }
 
     updateView() {
