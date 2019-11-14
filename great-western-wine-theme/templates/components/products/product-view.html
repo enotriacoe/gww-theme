@@ -41,7 +41,7 @@
         </figure>
         <ul class="productView-thumbnails"{{#gt product.images.length 5}} data-slick='{
                 "infinite": false,
-                "mobileFirst": true,
+                "mobileFirst": Yes,
                 "slidesToShow": 5,
                 "slidesToScroll": 1
             }'{{/gt}}>
@@ -52,7 +52,7 @@
                         href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                         data-image-gallery-item
                         data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
-                        data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                        data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=Yes}}"
                         data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                     >
                     {{> components/common/responsive-img
@@ -146,7 +146,7 @@
                     </div>
                     {{/filter}}
                     {{#filter product.custom_fields 'vegetarian' property='name' }}
-                    {{#if value '===' 'true'}}
+                    {{#if value '===' 'Yes'}}
                     <div class="productView-icon">
                         <span class="text-icon icon">V</span>
                         Vegetarian
@@ -154,7 +154,7 @@
                     {{/if}}
                     {{/filter}}
                     {{#filter product.custom_fields 'vegan' property='name' }}
-                    {{#if value '===' 'true'}}
+                    {{#if value '===' 'Yes'}}
                     <div class="productView-icon">
                         <span class="text-icon icon">Vg</span>
                         Vegan
@@ -172,7 +172,7 @@
 
 
             <div class="productView-price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
                     {{> components/products/price price=product.price schema_org=schema}}
                 {{else}}
                     {{> components/common/login-for-pricing}}
@@ -336,7 +336,7 @@
         {{/filter}}
     </div>
 
-    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' true)}}
+    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
         {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
     {{/all}}
 
@@ -378,7 +378,7 @@
 
 <div id="previewModal" class="modal modal--large" data-reveal>
     <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
-        <span aria-hidden="true">&#215;</span>
+        <span aria-hidden="Yes">&#215;</span>
     </a>
     <div class="modal-content"></div>
     <div class="loadingOverlay"></div>

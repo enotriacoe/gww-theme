@@ -96,7 +96,7 @@
             </li>
             {{/filter}}  
             {{#filter product.custom_fields 'vegan' property='name' }}
-            {{#if value '===' 'true'}}
+            {{#if value '===' 'Yes'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Vegan</span>
@@ -106,7 +106,7 @@
             {{/if}}
             {{/filter}}  
             {{#filter product.custom_fields 'vegetarian' property='name' }}
-            {{#if value '===' 'true'}}
+            {{#if value '===' 'Yes'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Vegetarian</span>
@@ -116,7 +116,7 @@
             {{/if}}
             {{/filter}} 
             {{#filter product.custom_fields 'organic' property='name' }}
-            {{#if value '===' 'true'}}
+            {{#if value '===' 'Yes'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Organic</span>
@@ -126,7 +126,7 @@
             {{/if}}
             {{/filter}}  
             {{#filter product.custom_fields 'biodynamic' property='name' }}
-            {{#if value '===' 'true'}}
+            {{#if value '===' 'Yes'}}
             <li>
                 <div class="productView-spec-item">
                     <span class="productView-spec-label">Bio-dynamic</span>
