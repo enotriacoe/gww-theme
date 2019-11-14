@@ -208,10 +208,7 @@ export default class Category extends CatalogPage {
             addProductToCartCat(e);
         });
 
-        const $quantityButtons = $('[data-quantity-change] button');
-
         $('body').on('click', '[data-quantity-change] button', function (event) {
-            debugger;
             event.preventDefault();
             const $target = $(event.currentTarget);
             const $text = $(event.currentTarget).parent().find('.incrementTotal');
