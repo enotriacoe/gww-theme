@@ -25,13 +25,14 @@
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
-        padding: 0 spacing("single");
+        padding: 0 0 0 spacing("single");
         position: relative;
         right: auto;
         float: right;
         transform: none;
         z-index: zIndex("high");
         width: 70%;
+        transform: translateY(-15%);
     }
 
     .dropdown-menu {
@@ -307,8 +308,13 @@
     }
 
     @include breakpoint("medium") {
+        width: 280px;
+        margin: 12px 10px 0;
+    }
+
+    @include breakpoint("large") {
         width: 400px;
-        margin-top: 12px;
+        margin: 12px 10px 0;
     }
 
     &.is-open {
