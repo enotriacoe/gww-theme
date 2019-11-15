@@ -27,7 +27,7 @@ category:
                 {{#each category.subcategories}}
                 <div class="group-item product">
                     <div class="group-item-flag">
-                        <img src="{{cdn (concat (concat 'img/flags/4x3/' name) '.svg')}}">
+                        <img src="{{cdn (concat (concat 'img/flags/4x3/' (dashcase name)) '.svg')}}">
                     </div>
                     <h3 class="stylised-slim">{{name}}</h3>
                     <a href="{{url}}" class="btn btn-coral-line" alt="See all {{name}}" title="See all Wine">See all Wine</a>
