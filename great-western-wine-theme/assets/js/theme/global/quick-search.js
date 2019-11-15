@@ -70,5 +70,4 @@ export default function () {
     $quickSearchDiv.on('focusin', () => {
         $quickSearchResults.show();
     });
-
 }
