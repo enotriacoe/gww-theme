@@ -24,7 +24,7 @@
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
-        padding: 0 0 0 spacing("single");
+        padding: 0 0 0 (spacing("single") * 0.66);
         position: relative;
         right: auto;
         float: right;
@@ -105,9 +105,9 @@
     }
 }
 
-.navUser-action-icon {
-
-
+.navUser-item--cart .navUser-action {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .navUser-action--currencySelector + .dropdown-menu {
@@ -308,7 +308,7 @@
 
     @include breakpoint("medium") {
         width: 280px;
-        margin: 12px 10px 0;
+        margin: 12px 0 0;
     }
 
     @include breakpoint("large") {

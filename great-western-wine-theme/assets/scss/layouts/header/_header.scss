@@ -148,7 +148,13 @@
 
     @include breakpoint("medium") {
         max-height: none;
+        max-width: 230px;
     }
+
+    @include breakpoint("large") {
+        max-width: none;
+    }
+
 }
 
 .header-logo-image-unknown-size { // 5
