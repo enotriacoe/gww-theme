@@ -28,6 +28,9 @@
 
     @include breakpoint("medium") {
         margin-top: 0;
+        position: absolute;
+        background: white;
+        width: 400px;
     }
 
     .modal-close {
@@ -89,7 +92,14 @@
 }
 
 .quickSearchMessage {
-    font-size: fontSize("largest");
-    margin: spacing("single") 0 0;
+    font-size: fontSize("large");
+    margin: (spacing("single") / 2) 0 ;
     text-align: center;
+}
+
+
+// Custom SCSS for GWW Fixed in header implementation
+
+.quickSearchResults {
+    border: 1px solid #cccccc;
 }

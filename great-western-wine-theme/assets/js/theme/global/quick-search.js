@@ -60,4 +60,15 @@ export default function () {
 
         return true;
     });
+
+    $(document).click((e) => {
+        if ($(e.target).closest($quickSearchDiv).length === 0) {
+            $quickSearchResults.hide();
+        }
+    });
+
+    $quickSearchDiv.on('focusin', () => {
+        $quickSearchResults.show();
+    });
+
 }

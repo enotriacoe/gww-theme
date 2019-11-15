@@ -31,7 +31,7 @@
         float: right;
         transform: none;
         z-index: zIndex("high");
-        width: 50%;
+        width: 70%;
     }
 
     .dropdown-menu {
@@ -300,9 +300,15 @@
 .dropdown--quickSearch {
     background-color: $dropdown--quickSearch-backgroundColor;
     padding: spacing("single") 0;
+    position: unset;
 
     @include breakpoint("small") {
-        padding: spacing("double");
+        padding: 0;
+    }
+
+    @include breakpoint("medium") {
+        width: 400px;
+        margin-top: 12px;
     }
 
     &.is-open {

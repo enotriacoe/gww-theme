@@ -1,11 +1,8 @@
 {{#if product_results.products}}
-    <a class="modal-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
-        <span aria-hidden="true">&#215;</span>
-    </a>
-    <ul class="previewCartList">
-            {{#each product_results.products}}
+    <ul class="previewSearchList">
+            {{#each (limit product_results.products 5)}}
             <a href="{{url}}" alt="{{name}}" title="{{name}}">
-                <li class="previewCartItem">
+                <li class="quickResultItem">
                     <div class="previewCartItem-image">
                             {{> components/common/responsive-img
                                 image=image
