@@ -357,6 +357,9 @@
 // -----------------------------------------------------------------------------
 
 .countPill {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     background-color: stencilColor("navUser-indicator-backgroundColor");
     border-radius: 50%;
     color: color("whites", "bright");
@@ -368,6 +371,10 @@
     margin-left: spacing("eighth");
     text-align: center;
     width: 20px; // 1
+
+    @include breakpoint("medium") {
+        position: unset;
+    }
 }
 
 .countPill--positive {

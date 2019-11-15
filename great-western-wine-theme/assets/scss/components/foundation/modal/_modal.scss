@@ -38,7 +38,7 @@
 
 .modal-close {
     @include square($reveal-close-height);
-    color: stencilColor("icon-color");
+    color: #666666;
     font-size: 26px;
     line-height: remCalc($reveal-close-height);
     padding: 0;
