@@ -21,7 +21,6 @@
     @include verticalPositionMiddle("absolute");
     right: 45px;
     top: 26px; // 2
-    width: 100%; // 4
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
