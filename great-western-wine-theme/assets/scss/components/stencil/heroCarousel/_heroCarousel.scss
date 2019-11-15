@@ -38,19 +38,27 @@
 
     .slick-next,
     .slick-prev {
-        top: 50%;
+        top: 23px;
+
+        @include breakpoint("medium") {
+            top: 39.5%;
+        }
+
+        &:before {
+            opacity: 1;
+        }
     }
 
     .slick-next {
-        left: 70px;
+        left: 86px;
 
         @include breakpoint("medium") {
-            left: 70px;
+            left: 88px;
         }
     }
 
     .slick-prev {
-        left: 20px;
+        left: 0px;
 
         @include breakpoint("medium") {
             left: 0;
@@ -58,12 +66,19 @@
     }
 
     .slick-dots {
-        bottom: 0rem;
+        top: 0%;
+        bottom: unset;
+        left: 24px;
+        right: unset;
+        text-align: left;
 
         @include breakpoint("medium") {
-            bottom: 0.5rem;
+            top: 33%;
         }
 
+        @include breakpoint("large") {
+            top: 35%;
+        }     
     }
 }
 
