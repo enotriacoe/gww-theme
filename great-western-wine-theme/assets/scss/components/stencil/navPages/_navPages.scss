@@ -127,9 +127,13 @@
             width: 100%;
 
             &.is-open {
-                background-color: black;
+                background-color: none;
                 text-align: center;
-                color: white;
+
+                @include breakpoint("medium") {
+                    background-color: black;
+                    color: white;
+                }
             }
         }
     }
@@ -354,21 +358,24 @@
         }
     }
 
-    .navPage-subMenu-item-child .navPage-subMenu-horizontal {
-        width: 75%;
-        margin-left: 25%;
-        background-color: white;
-        height: 100%;
+    @include breakpoint("medium") {
 
-        .navPage-subMenu-horizontal {
-            width: 66.6%;
-            margin-left: 33.4%;
-            background-color: $color-tertiary;
+        .navPage-subMenu-item-child .navPage-subMenu-horizontal {
+            width: 75%;
+            margin-left: 25%;
+            background-color: white;
+            height: 100%;
 
             .navPage-subMenu-horizontal {
-                width: 50%;
-                margin-left: 50%;
-                background-color: white;
+                width: 66.6%;
+                margin-left: 33.4%;
+                background-color: $color-tertiary;
+
+                .navPage-subMenu-horizontal {
+                    width: 50%;
+                    margin-left: 50%;
+                    background-color: white;
+                }
             }
         }
     }

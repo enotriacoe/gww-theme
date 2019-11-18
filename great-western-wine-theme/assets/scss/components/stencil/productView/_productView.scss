@@ -184,11 +184,13 @@
 .productView-price {
     font-size: fontSize("smaller");
     display: inline-block;
+    width: 50%;
+    vertical-align: bottom;
     
     @include breakpoint("medium") {
         font-size: fontSize("larger");
-        width: 35%;
-        vertical-align: bottom;
+        width: auto;
+        vertical-align: top;
         margin-right: 3%;
     }
 
@@ -441,10 +443,14 @@
 // -----------------------------------------------------------------------------
 
 .productView-icon {
-    width: 24%;
+    width: 32%;
     text-align: center;
     display: inline-block;
     margin-top: 35px;
+
+    @include breakpoint("small") {
+        width: 24%;
+    }
 
     &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
         margin-top: 0;
@@ -476,11 +482,16 @@
 
 .productView-product {
     .multibuy-cont {
-        width: 32%;
+        width: 49%;
         display: inline-block;
         padding: 17px 20px;
         vertical-align: top;
+
+        @include breakpoint("medium") {
+            width: 32%;
+        }
     }
+
 
     .multibuy-only-label, .multibuy-price, .multibuy-label {
         display: block;
@@ -503,11 +514,15 @@
 }
 
 .productView-price-usp {
-    width: 26%;
+    width: 49%;
     display: inline-block;
     padding: 0 20px;
     font-size: remCalc(14px);
     line-height: 1rem;
+
+    @include breakpoint("medium") {
+        width: 26%;
+    }
 
     .icon {
         height: 25px;
