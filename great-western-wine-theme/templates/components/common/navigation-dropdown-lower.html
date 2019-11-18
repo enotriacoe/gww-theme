@@ -1,4 +1,5 @@
 <div class="navPage-subMenu navPage-subMenu-horizontal" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
+
     <ul class="navPage-subMenu-list">
         <li class="navPage-subMenu-item-parent">
             <a class="navPage-subMenu-action navPages-action navPages-action-depth-max" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
@@ -15,15 +16,5 @@
                 {{/if}}
             </li>
         {{/each}}
-        {{#if parent '===' 'Wine'}}
-            <li class="navPage-subMenu-item-child">
-                <a class="navPage-subMenu-action navPages-action navPages-action-depth-max food-rec-lnk" href="/whats-on-the-menu/">What's on the menu?</a>
-            </li>
-        {{/if}}
     </ul>
-    {{> components/common/first-menu-highlight}}
-
-     {{#if parent '===' 'Wine'}}
-        <a href="/whats-on-the-menu/" class="btn btn-coral-line btn-mega-menu">What's on the menu?<i class="fas fa-chevron-right icon"></i></a>
-     {{/if}}
 </div>   
