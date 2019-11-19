@@ -92,6 +92,16 @@ export default class Category extends CatalogPage {
             activeListView();
         });
 
+        $('.close-sub-items').on('click', function () {
+            const subItemList = $(this).parent();
+            subItemList.toggleClass('is-open');
+        });
+
+        $('.group-item-options').on('click', function () {
+            const groupItem = $(this).parent();
+            groupItem.toggleClass('is-open');
+        });
+
         // Custom Add To Cart implementation for PLP pages, adapted from Product View
 
 
