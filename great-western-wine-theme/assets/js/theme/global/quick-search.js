@@ -6,6 +6,10 @@ export default function () {
     const TOP_STYLING = 'top: 49px;';
     const $quickSearchResults = $('.quickSearchResults');
     const $quickSearchDiv = $('#quickSearch');
+    const $quickSearchInput = $('#quickSearch input');
+    const $quickSearchDivMobile = $('.navPages-quickSearch');
+    const $quickSearchInputMobile = $('.navPages-quickSearch input');
+    const $quickSearchResultsMobile = $('.navPages-quickSearch .quickSearchResults');
     const $searchQuery = $('#search_query');
     const stencilDropDownExtendables = {
         hide: () => {
@@ -62,12 +66,16 @@ export default function () {
     });
 
     $(document).click((e) => {
-        if ($(e.target).closest($quickSearchDiv).length === 0) {
+        if (($(e.target).closest($quickSearchDiv).length === 0) && ($(e.target).closest($quickSearchDivMobile).length === 0))   {
             $quickSearchResults.hide();
         }
     });
 
-    $quickSearchDiv.on('focusin', () => {
+    $quickSearchInput.on('focus', () => {
         $quickSearchResults.show();
+    });
+
+    $quickSearchInputMobile.on('focus', () => {
+        $quickSearchResultsMobile.show();
     });
 }

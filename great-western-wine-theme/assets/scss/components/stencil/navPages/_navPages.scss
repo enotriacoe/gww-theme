@@ -177,12 +177,11 @@
     }
 
     .navPages-action-moreIcon {
-        border: solid 1px $navPages-action-moreIcon-borderColor;
         border-radius: 4px;
         float: left;
         height: 35px;
         margin-top: -10px;
-        padding: 11.7px; // (33 - 9.6) / 2
+        padding: 14px; // (33 - 9.6) / 2
         transform: rotate(90deg);
         width: 35px;
 
@@ -198,8 +197,8 @@
     }
 
     svg {
-        height: 9.6px;
-        width: 9.6px;
+        height: 13px;
+        width: 13px;
 
         @include breakpoint("medium") {
             height: 100%;
@@ -213,7 +212,7 @@
     display: block;
     font-size: fontSize("smaller");
     font-weight: 500;
-    padding: spacing("half") 0;
+    padding: (spacing("base") / 2) 0;
     text-decoration: none;
 
     @include breakpoint("medium") {
@@ -471,7 +470,7 @@
 }
 
 .navPage-subMenu-action {
-    padding: spacing("half") 0;
+    padding: (spacing("base")/ 2) 0;
 
     @include breakpoint("medium") {
         padding: spacing("half") 0 (spacing("half") + spacing("quarter"));

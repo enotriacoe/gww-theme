@@ -618,7 +618,8 @@
             },
             "refine": "Refine Search",
             "brand": "Brands",
-            "searchsubs": "Automatically search sub categories"
+            "searchsubs": "Automatically search sub categories",
+            "allresults": "See all results"
         },
         "wishlist": {
             "name": "Wish List Name:",

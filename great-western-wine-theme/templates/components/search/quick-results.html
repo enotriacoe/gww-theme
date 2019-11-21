@@ -3,7 +3,7 @@
             {{#each (limit product_results.products 5)}}
             <a href="{{url}}" alt="{{name}}" title="{{name}}">
                 <li class="quickResultItem">
-                    <div class="previewCartItem-image">
+                    <div class="quickResultItem-image">
                             {{> components/common/responsive-img
                                 image=image
                                 fallback_size=../../theme_settings.productthumb_size
@@ -12,27 +12,26 @@
                             }}
                     </div>
 
-                    <div class="previewCartItem-content">
-                        <span class="previewCartItem-brand">
+                    <div class="quickResultItem-content">
+                        <p class="quickResultItem-name">
+                            {{#filter custom_fields 'simpleName' property='name' }}
+                                {{value}}
+                            {{/filter}}
+                        </p>
+
+                        <span class="quickResultItem-brand">
                             {{brand.name}}
                         </span>
 
-                        <h6 class="previewCartItem-name">
-                            {{name}}
-                        </h6>
-
-                        <span class="previewCartItem-price">
-                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                        <span class="quickResultItem-price">
                             {{> components/products/price price=price}}
-                            {{else}}
-                                {{> components/common/login-for-pricing}}
-                            {{/or}}
                         </span>
                     </div>
                 </li>
             </a>
             {{/each}}
         </ul>
+        <input class="button button--primary" type="submit" value="{{lang 'forms.search.allresults' }}">
 {{else}}
     <p class="quickSearchMessage">
         {{lang 'search.results.quick_count' count=pagination.product_results.total search_query=forms.search.query}}

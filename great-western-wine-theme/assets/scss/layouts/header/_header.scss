@@ -18,7 +18,6 @@
 .header {
     background-color: $header-bg;
     border-bottom: container("border");
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: zIndex("higher");
@@ -144,7 +143,7 @@
 
 .header-logo-image {
     max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
-    display: block;
+    display: inline-block;
 
     @include breakpoint("medium") {
         max-height: none;
