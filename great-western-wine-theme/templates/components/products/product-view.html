@@ -128,10 +128,13 @@
                     {{#filter product.custom_fields 'subType' property='name' }}
                         {{#contains value 'Wine'}}
                         {{else}}
-                            <div class="productView-icon">
-                                <i class="fal fa-wine-bottle icon"></i>
-                                {{value}}
-                            </div>
+                            {{#contains value 'Champagne'}}
+                            {{else}}
+                                <div class="productView-icon">
+                                    <i class="fal fa-wine-bottle icon"></i>
+                                    {{value}}
+                                </div>
+                            {{/contains}}
                         {{/contains}}
                     {{/filter}}
                     {{#filter product.custom_fields 'countryCode' property='name' }}
