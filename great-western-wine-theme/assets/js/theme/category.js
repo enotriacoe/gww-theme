@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals, no-shadow, prefer-arrow-callback, func-names */
-import utils from '@bigcommerce/stencil-utils';
+import utils, { hooks } from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
@@ -13,7 +13,7 @@ export default class Category extends CatalogPage {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
-            utils.on('sortBy-submitted', this.onSortBySubmit);
+            hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
 
         // Custom JS to sort category list PGP
