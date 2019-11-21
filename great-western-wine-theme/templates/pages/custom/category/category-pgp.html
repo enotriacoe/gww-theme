@@ -29,11 +29,7 @@ category:
                     <a class="close-sub-items" href="javascript:void(0)"><i class="fal fa-times-circle"></i></a>
                     <div class="group-item-image">
                         {{#if image}}
-                            {{> components/common/responsive-img
-                                image=image
-                                fallback_size=theme_settings.zoom_size
-                                lazyload=theme_settings.lazyload_mode
-                            }}
+                        <img src="{{getImage image}}" alt="Photo of {{name}}">
                         {{/if}}
                     </div>
                     <a href="{{url}}" alt="See all {{name}}" title="See all Wine"><h3 class="stylised-slim">{{name}}</h3></a>

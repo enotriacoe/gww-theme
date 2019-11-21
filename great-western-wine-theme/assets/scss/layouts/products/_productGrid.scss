@@ -31,7 +31,7 @@
 
         @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
-            &:not(:nth-child(4)) {
+            &:not(:nth-child(4n)) {
                 border-right: 1px solid lightgrey;
             }
         }
@@ -62,7 +62,7 @@
 @media only screen and (min-width: 801px) and (max-width: 1260px) {
     .productGrid .product {
         width: grid-calc(6, $total-columns);
-        &:not(:nth-child(2)) {
+        &:not(:nth-child(2n)) {
             border-right: 1px solid lightgrey;
         }
     }
