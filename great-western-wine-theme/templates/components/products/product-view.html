@@ -126,12 +126,13 @@
                     </div>
                     {{/filter}}
                     {{#filter product.custom_fields 'subType' property='name' }}
-                    {{#if value '!=' 'Wine'}}
-                    <div class="productView-icon">
-                        <i class="fal fa-wine-bottle icon"></i>
-                        {{value}}
-                    </div>
-                    {{/if}}
+                        {{#contains value 'Wine'}}
+                        {{else}}
+                            <div class="productView-icon">
+                                <i class="fal fa-wine-bottle icon"></i>
+                                {{value}}
+                            </div>
+                        {{/contains}}
                     {{/filter}}
                     {{#filter product.custom_fields 'countryCode' property='name' }}
                     <div class="productView-icon">
