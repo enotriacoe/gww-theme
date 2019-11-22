@@ -68,7 +68,7 @@ export default function () {
     // Hide and show search elements as required
 
     $(document).click((e) => {
-        if (($(e.target).closest($quickSearchDiv).length === 0) && ($(e.target).closest($quickSearchDivMobile).length === 0))   {
+        if (($(e.target).closest($quickSearchDiv).length === 0) && ($(e.target).closest($quickSearchDivMobile).length === 0)) {
             $quickSearchResults.hide();
         }
     });
