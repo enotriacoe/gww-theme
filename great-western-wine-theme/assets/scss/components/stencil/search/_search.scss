@@ -138,6 +138,10 @@
 .quickSearchResults {
     @include breakpoint("medium"){
         border: 1px solid #cccccc;
+
+        &:empty {
+            border: none;
+        }
     }
 }
 
@@ -230,4 +234,17 @@
 .quickResultItem-price {
     width: 100%;
     display: inline-block;
+}
+
+.search-buttons {
+    display: flex;
+    flex: 0 1 auto;
+
+    @include breakpoint("medium") {
+        flex-direction: column;
+    }
+
+    @include breakpoint("large"){
+        flex-direction: row;
+    }
 }

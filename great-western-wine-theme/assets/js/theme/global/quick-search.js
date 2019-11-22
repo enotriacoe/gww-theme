@@ -87,7 +87,7 @@ export default function () {
         $quickSearchResultsMobile.show();
     });
 
-    $('.btn-search-clear').on('click', (e) => {
+    $('.btn-search-clear').on('click', '$quickSearchDiv, $quickSearchDivMobile', (e) => {
         e.preventDefault();
         $quickSearchInput[0].value = '';
         $quickSearchInputMobile[0].value = '';

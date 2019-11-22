@@ -619,6 +619,7 @@
             "refine": "Refine Search",
             "brand": "Brands",
             "searchsubs": "Automatically search sub categories",
+            "clearsearch": "Clear search",
             "allresults": "See all results"
         },
         "wishlist": {

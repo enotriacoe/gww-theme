@@ -47,6 +47,19 @@
     border-radius: 0;
 }
 
+.button--light {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-half {
+    display: inline-block;
+    margin: 0 0.75rem 0.75rem;
+    border-radius: 0;
+    padding: spacing("base");
+    flex-grow: 1;
+}
+
 .button-oos {
     background-color: lightgray;
     color: black;

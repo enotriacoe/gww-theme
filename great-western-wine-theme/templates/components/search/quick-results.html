@@ -31,7 +31,10 @@
             </a>
             {{/each}}
         </ul>
-        <input class="button button--primary" type="submit" value="{{lang 'forms.search.allresults' }}">
+        <div class="search-buttons">
+            <button class="button button--light btn-half btn-search-clear" type="button">{{lang 'forms.search.clearsearch' }}</button>
+            <input class="button button--primary btn-half" type="submit" value="{{lang 'forms.search.allresults' }}">
+        </div>
 {{else}}
     <p class="quickSearchMessage">
         {{lang 'search.results.quick_count' count=pagination.product_results.total search_query=forms.search.query}}
