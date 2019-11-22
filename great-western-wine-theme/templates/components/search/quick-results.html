@@ -1,6 +1,6 @@
 {{#if product_results.products}}
     <ul class="previewSearchList">
-            {{#each (limit product_results.products 5)}}
+        {{#each (limit product_results.products 5)}}
             <a href="{{url}}" alt="{{name}}" title="{{name}}">
                 <li class="quickResultItem">
                     <div class="quickResultItem-image">
@@ -29,8 +29,8 @@
                     </div>
                 </li>
             </a>
-            {{/each}}
-        </ul>
+        {{/each}}
+    </ul>
         <div class="search-buttons">
             <button class="button button--light btn-half btn-search-clear" type="button">{{lang 'forms.search.clearsearch' }}</button>
             <input class="button button--primary btn-half" type="submit" value="{{lang 'forms.search.allresults' }}">

@@ -87,23 +87,42 @@ export default function () {
         $quickSearchResultsMobile.show();
     });
 
-    $('.btn-search-clear').on('click', '$quickSearchDiv, $quickSearchDivMobile', (e) => {
-        e.preventDefault();
+    function clearSearchResults() {
         $quickSearchInput[0].value = '';
         $quickSearchInputMobile[0].value = '';
         $quickSearchResults.empty();
         $quickSearchResults.hide();
-        $('.btn-search-clear').hide();
+        $('.btn-search-clear-text').hide();
+    }
+
+    $quickSearchDiv.on('click', '.btn-search-clear-text', (e) => {
+        e.preventDefault();
+        clearSearchResults();
+    });
+
+    $quickSearchResults.on('click', '.btn-search-clear', (e) => {
+        e.preventDefault();
+        clearSearchResults();
+    });
+
+    $quickSearchDivMobile.on('click', '.btn-search-clear-text', (e) => {
+        e.preventDefault();
+        clearSearchResults();
+    });
+
+    $quickSearchResultsMobile.on('click', '.btn-search-clear', (e) => {
+        e.preventDefault();
+        clearSearchResults();
     });
 
     $quickSearchInput.on('input', () => {
-        $('.btn-search-clear').show();
+        $('.btn-search-clear-text').show();
         $quickSearchResults.html('<div class="searching-text">Searching...</div>');
         $quickSearchResults.show();
     });
 
     $quickSearchInputMobile.on('input', () => {
-        $('.btn-search-clear').show();
+        $('.btn-search-clear-text').show();
         $quickSearchResultsMobile.html('<div class="searching-text">Searching...</div>');
         $quickSearchResultsMobile.show();
     });
