@@ -102,28 +102,12 @@ export default class Category extends CatalogPage {
             groupItem.toggleClass('is-open');
         });
 
-        if (screen.width >= 801) {
-            const maxLength = 440;
-            $('.show-read-more').each(function () {
-                const myStr = $(this).text();
-                if ($.trim(myStr).length > maxLength) {
-                    let newStr = myStr.substring(0, maxLength);
-                    newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(" ")))
-                    const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
-                    $(this).empty().html(newStr);
-                    $(this).append('<span class="read-more-dots">...</span>');
-                    $(this).append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
-                    $(this).append(`<span class="more-text">${removedStr}</span>`);
-                }
-            });
-            $('.read-more').on('click', function () {
-                $(this).siblings('.more-text').contents().unwrap();
-                $('.more-text').show();
-                $(this).remove();
-                $('.read-more-dots').remove();
-            });
-        } else {
-            const maxLength = 220;
+        if ($('.show-read-more')[0]) {
+            let maxLength = 220;
+            if (screen.width >= 801) {
+                maxLength = 440;
+            }
+          
             $('.show-read-more').each(function () {
                 const myStr = $(this).text();
                 if ($.trim(myStr).length > maxLength) {
