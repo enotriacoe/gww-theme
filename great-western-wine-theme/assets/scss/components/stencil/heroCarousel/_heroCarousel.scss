@@ -50,35 +50,27 @@
     }
 
     .slick-next {
-        left: 86px;
+        right: 15px;
 
         @include breakpoint("medium") {
-            left: 88px;
+            right: 25px;
         }
     }
 
     .slick-prev {
-        left: 0px;
+        left: 15px;
 
         @include breakpoint("medium") {
-            left: 0;
+            left: 25px;
         }
     }
 
     .slick-dots {
-        top: 0%;
-        bottom: unset;
-        left: 24px;
-        right: unset;
-        text-align: left;
+        bottom: spacing("third");
 
         @include breakpoint("medium") {
-            top: 33%;
-        }
-
-        @include breakpoint("large") {
-            top: 35%;
-        }     
+            bottom: spacing("single");
+        }   
     }
 }
 
