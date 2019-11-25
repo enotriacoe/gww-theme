@@ -67,17 +67,18 @@
 
 .card-brand {
     font-size: $card-title-fontSize;
-    font-weight: 500;
     margin: 0;
 }
 
 .card-title {
     font-size: $card-title-fontSize;
     margin: $card-title-margin;
-
+    margin: 0;
+    
     > a {
-        color: $card-title-color;
         text-decoration: $card-title-textDecoration;
+        font-weight: 500;
+        color: black;
 
         // scss-lint:disable NestingDepth
         &:hover {

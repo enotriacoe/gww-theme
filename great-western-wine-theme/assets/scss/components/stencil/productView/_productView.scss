@@ -149,9 +149,10 @@
 
 .productView-title {
     font-size: fontSize("small");
-    margin: 0 0 spacing("quarter");
     font-family: $fontFamily-headings;
-
+    font-weight: 900;
+    margin: 0;
+    
     @include breakpoint("large") {
         font-size: fontSize("largest");
     }
@@ -160,9 +161,8 @@
 .productView-brand {
     color: $productView-brand-link-color;
     font-size: fontSize("small");
+    margin: 0 0 spacing("quarter");
     font-family: $fontFamily-headings;
-    font-weight: 900;
-    margin: 0;
 
     @include breakpoint("large") {
         font-size: fontSize("largest");
