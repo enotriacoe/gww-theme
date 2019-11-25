@@ -298,7 +298,7 @@
 }
 
 .dropdown--quickSearch {
-    background-color: $dropdown--quickSearch-backgroundColor;
+    background-color: none;
     padding: spacing("single") 0;
     position: unset;
 
@@ -338,6 +338,8 @@
     .form-input {
         font-size: fontSize("small");
         height: unset;
+        border-radius: 2px;
+        background: $xl-green;
     }
 
     .productGrid {
