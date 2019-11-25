@@ -616,7 +616,7 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
     @include grid-row;
     border-top: container("border");
     display: block;
-    padding: spacing("single") spacing("half");
+    padding: spacing("base") spacing("half");
 
     .button {
         margin: 0;
