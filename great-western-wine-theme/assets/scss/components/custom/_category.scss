@@ -11,7 +11,7 @@
         width: 100%;
     }
 
-    @include breakpoint ("medium") {
+    @media screen and (min-width: 950px){
         max-height: 350px;
         min-height: 130px;
         overflow: hidden;
@@ -19,10 +19,12 @@
 
 
     .stylised-title {
+        border-bottom: solid 5px $color-warning;
+        padding-bottom: 5px;
+
         @include breakpoint ("medium") {
             font-size: 35px;
             padding-bottom: 10px;
-            border-bottom: solid 5px $color-warning;
         }
         
         @include breakpoint ("large") {
@@ -40,7 +42,7 @@
 .category-text {
     background-color: white;
 
-    @include breakpoint("medium") {
+    @media screen and (min-width: 950px){
         width: 60%;
         padding: 0 25px;
         position: absolute;
@@ -51,4 +53,12 @@
     @include breakpoint("large") {
         top: 30px;  
     }
+}
+
+.read-more {
+    display: inline-block;
+}
+
+.show-read-more .more-text{
+    display: none;
 }
