@@ -131,7 +131,6 @@ class FacetedSearch {
 
     updateView() {
         api.getPage(urlUtils.getUrl(), this.requestOptions, (err, content) => {
-            
             if (err) {
                 throw new Error(err);
             }

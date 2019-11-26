@@ -188,7 +188,6 @@ export default class Search extends CatalogPage {
 
     initFacetedSearch() {
         const $productListingContainer = $('#product-listing-container');
-        const $facetedSearchContainer = $('#faceted-search-container');
         const $searchHeading = $('#search-results-heading');
         const $searchCount = $('#search-results-product-count');
         const productsPerPage = this.context.searchProductsPerPage;
