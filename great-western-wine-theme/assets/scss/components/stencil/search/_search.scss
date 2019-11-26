@@ -249,3 +249,13 @@
         flex-direction: row;
     }
 }
+
+.search-page-heading {
+    text-align: left;
+    border-bottom: solid 5px $color-warning;
+    padding-bottom: 10px;
+}
+
+.search-type {
+    margin-bottom: 1rem;
+}

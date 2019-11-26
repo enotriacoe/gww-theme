@@ -16,12 +16,7 @@ product_results:
 {{#partial "page"}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <section class="nav">
-    {{#if forms.search.query}}
-        <div id="search-results-heading">
-            {{>components/search/heading}}
-        </div>
-    {{/if}}
-    <nav class="navBar navBar--sub">
+    <nav class="navBar navBar--sub search-type">
         <ul class="navBar-section account-navigation">
             <li class="navBar-item">
                 <a id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
@@ -47,6 +42,11 @@ product_results:
             {{/unless}}
         </ul>
     </nav>
+    {{#if forms.search.query}}
+    <div id="search-results-heading">
+        {{>components/search/heading}}
+    </div>
+{{/if}}
     {{#unless product_results.faceted_search_enabled}}
         {{>components/search/advanced-search}}
     {{/unless}}
