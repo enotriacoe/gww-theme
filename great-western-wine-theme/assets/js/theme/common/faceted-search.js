@@ -130,11 +130,8 @@ class FacetedSearch {
     }
 
     updateView() {
-        $(this.options.blockerSelector).show();
-
         api.getPage(urlUtils.getUrl(), this.requestOptions, (err, content) => {
-            $(this.options.blockerSelector).hide();
-
+            
             if (err) {
                 throw new Error(err);
             }

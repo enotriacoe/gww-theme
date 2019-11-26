@@ -209,7 +209,6 @@ export default class Search extends CatalogPage {
 
         this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
             $productListingContainer.html(content.productListing);
-            $facetedSearchContainer.html(content.sidebar);
             $searchHeading.html(content.heading);
             $searchCount.html(content.productCount);
 
