@@ -31,12 +31,14 @@
         background-color: $primary-color;
     }
     
-    .black-hr {
+    .hr-black {
         border-color: black;
     }
 }
 
 .newsletter-form {
+    margin: 0;
+    
     .form-input, .form-prefixPostfix .button{
         border-radius: 0;
         margin: 0;
@@ -46,5 +48,9 @@
     .button {
         text-transform: uppercase;
         background-color: $primary-color;
+    }
+
+    .form-field {
+        margin: 0;
     }
 }
