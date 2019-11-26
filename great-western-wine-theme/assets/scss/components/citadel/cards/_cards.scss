@@ -29,6 +29,10 @@
     padding-bottom: 200px;
 
     @include breakpoint("medium") {
+        padding-bottom: 130%;
+    }
+
+    @include breakpoint("large") {
         padding-bottom: 100%;
     }
 }

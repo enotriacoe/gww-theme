@@ -59,6 +59,14 @@
         width: 100%;
         text-transform: uppercase;
         font-weight: 600;
+
+        @include breakpoint("medium"){
+            padding: 5px;
+        }
+
+        @include breakpoint("large"){
+            padding: unset;
+        }
     }
 }
 

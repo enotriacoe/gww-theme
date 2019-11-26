@@ -28,9 +28,13 @@
                 }
 
                 .card-body {
-                    width: 70%;
+                    width: 62%;
                     display: inline-block;
                     position: relative;
+
+                    @include breakpoint("large") {
+                        width: 70%;
+                    }
                 }
 
                 .card-desc-cont {
@@ -74,10 +78,14 @@
                 }
 
                 .card-pricing{
-                    width: 29%;
+                    width: 37%;
                     display: inline-block;
                     padding-left: 2%;
                     vertical-align: top;
+
+                    @include breakpoint("large") {
+                        width: 29%;
+                    }
                 }
 
                 .card-rating {
