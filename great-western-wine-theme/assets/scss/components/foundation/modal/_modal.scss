@@ -5,7 +5,7 @@
 
 .modal {
     margin: 0;
-    max-height: 90%;
+    max-height: 500px;
     max-width: 95%;
     min-height: 240px;
     outline: none;
@@ -95,4 +95,8 @@
             color: $alert-button-colorActive;
         }
     }
+}
+
+.previewModal-img {
+    max-height: 400px !important;
 }
