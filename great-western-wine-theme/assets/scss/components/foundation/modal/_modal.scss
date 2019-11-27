@@ -59,7 +59,15 @@
 .modal-body {
     -webkit-overflow-scrolling: touch;
     padding: $reveal-modal-padding;
+    
+    .productView-img-container {
+        height: 80%;
 
+        @include breakpoint("medium") {
+            height: 100%;
+        }
+    }
+    
     .productGrid .product {
         width: 33%;
     }
