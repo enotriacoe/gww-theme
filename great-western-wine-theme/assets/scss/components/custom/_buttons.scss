@@ -60,7 +60,7 @@
     flex-grow: 1;
 }
 
-.button-oos {
+.btn-oos {
     background-color: lightgray;
     color: black;
     border-radius: 0;
@@ -76,4 +76,15 @@
         transform: none;
         border: 0;
     }
+}
+
+.btn-back {
+    font-size: 18px;
+    font-weight: 500;
+
+    .icon {
+        margin-right: 10px;
+        margin-bottom: 2px;
+    }
+
 }
