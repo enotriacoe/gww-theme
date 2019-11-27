@@ -65,10 +65,6 @@
             padding: 14px 36px;
 
         }
-
-        @include breakpoint("large"){
-            padding: unset;
-        }
     }
 }
 

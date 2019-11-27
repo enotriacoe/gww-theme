@@ -580,7 +580,7 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
     
     img {
         @include lazy-loaded-img;
-        height: 100%;
+        height: 90%;
     }
 
     @include lazy-loaded-padding('productthumb_size');
@@ -588,7 +588,7 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
 
 .previewCartItem-content {
     @include grid-column(8, $float: false);
-    padding-left: 0;
+    padding: 10px 0 10px 0.75em
 }
 
 .previewCartItem-name {

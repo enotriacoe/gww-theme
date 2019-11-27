@@ -723,7 +723,7 @@
             "show": "Show Videos"
         },
         "add_to_cart": "Add to Basket",
-        "adding_to_cart": "Adding to basket",
+        "adding_to_cart": "Adding...",
         "options": "Options",
         "none": "None",
         "sku": "SKU:",
