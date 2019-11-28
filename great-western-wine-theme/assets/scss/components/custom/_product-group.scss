@@ -144,14 +144,14 @@
         &.product {
             border-bottom: 0;
             
-            &:not(:nth-child(2n)) {
-                border-right: 1px solid lightgrey;
-            }
-
+            
             @include breakpoint("small") {
                 width: 46%;
                 height: 310px;
                 margin: 10px;
+                &:not(:nth-child(2n)) {
+                    border-right: 1px solid lightgrey;
+                }
             }
             
             @include breakpoint("large") {
