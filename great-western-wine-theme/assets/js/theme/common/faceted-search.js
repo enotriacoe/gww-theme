@@ -67,6 +67,14 @@ class FacetedSearch {
             }
         });
 
+        // Close filter on choice or click elsewhere
+
+        $(document).click((e) => {
+            if (($(e.target).closest($('.accordion-block')).length === 0)) {
+                this.closeAllFilters();
+            }
+        });
+
         // Init price validator
         this.initPriceValidator();
 
@@ -106,6 +114,15 @@ class FacetedSearch {
         this.bindEvents();
     }
 
+    closeAllFilters() {
+        if ($('.accordion-content').hasClass('is-open')) {
+            $('.accordion-content').each(function collapseFilter() {
+                $(this).removeClass('is-open').attr('aria-hidden', 'true');
+                $(this).prev().removeClass('is-open').attr('aria-expanded', 'false');
+            });
+        }
+    }
+
     // Public methods
     refreshView(content) {
         if (content) {
@@ -118,12 +135,10 @@ class FacetedSearch {
         // Init price validator
         this.initPriceValidator();
 
-        // Restore view state
-        this.restoreCollapsedFacets();
-        this.restoreCollapsedFacetItems();
-
         // Bind events
         this.bindEvents();
+
+        this.closeAllFilters();
 
         // eslint-disable-next-line no-undef
         updateListView();
