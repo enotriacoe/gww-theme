@@ -5,7 +5,7 @@
 
 @include breakpoint("medium"){
     .page-sidebar + .page-content {
-        .product-list {
+        .productGrid.product-list {
             .product {
                 width: grid-calc(12, $total-columns);
                 padding-bottom: spacing("single");
