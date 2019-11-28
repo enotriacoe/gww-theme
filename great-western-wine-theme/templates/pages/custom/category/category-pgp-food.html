@@ -23,9 +23,9 @@ category:
         {{> components/category/category-header}}
     </aside>
 
-    <main class="page-content" id="product-listing-container">
+    <main class="page-content grid-with-sub-items" id="product-listing-container">
         {{#if category.subcategories}}
-            <div class="productGrid grid-with-sub-items"> 
+            <div class="productGrid"> 
                 {{#each category.subcategories}}
                 <div class="group-item product {{dashcase name}}-item">
                     <a class="close-sub-items" href="javascript:void(0)"><i class="fal fa-times-circle"></i></a>

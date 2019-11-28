@@ -75,10 +75,12 @@ export default class Category extends CatalogPage {
         }
 
         function updateListView() {
-            if (sessionStorage.getItem('productsView') === 'grid-view') {
-                activeGridView();
-            } else if (sessionStorage.getItem('productsView') === 'list-view') {
-                activeListView();
+            if ($('.page-content').hasClass('grid-with-sub-items') !== true) {
+                if (sessionStorage.getItem('productsView') === 'grid-view') {
+                    activeGridView();
+                } else if (sessionStorage.getItem('productsView') === 'list-view') {
+                    activeListView();
+                }
             }
         }
 
