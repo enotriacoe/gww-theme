@@ -33,7 +33,7 @@
         }
 
         .group-sub-items {
-            display: inline-block;
+            display: flex;
             margin-left: 0;
         }
 
@@ -46,6 +46,11 @@
         .btn-coral-line {
             display: none;
         }
+
+        .group-item-cont {
+            margin: 0 10px;
+            border: 2px solid $color-warning !important;
+        }
     }    
 }
 
@@ -55,15 +60,28 @@
 
 .group-sub-items {
     display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 170px;
+    
+    .icon {
+        display: none;
+    }
+    
+    @include breakpoint("small") {
+        max-height: 140px;
+    }
 
-        .icon {
-            display: none;
-        }
+    @include breakpoint("large") {
+        max-height: 175px;
+    }
 }
 
 .group-item-image {
     margin-bottom: spacing("base");
     text-align: left;
+    max-height: 170px;
+    overflow: hidden;
 
     img {
         width: 100%;
@@ -91,3 +109,51 @@
     padding-bottom: 10px;
     margin-top: 10px;
   }
+  
+  .page-sidebar + .page-content .grid-with-sub-items {
+    .group-item {
+        height: 330px;
+        margin-top: 10px;
+        
+        &.product {
+            @include breakpoint("medium") {
+                width: 47%;
+                height: 310px;
+                margin: 10px;
+            }
+            
+            @include breakpoint("large") {
+                width: 23.3%;
+                margin: 10px;
+            }
+
+            &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                margin-top: 0;
+            }
+        }
+    }
+
+
+        .group-item {
+            height: 330px;
+            margin-top: 10px;
+            
+            &.product {
+                @include breakpoint("medium") {
+                    width: 47%;
+                    height: 310px;
+                    margin: 10px;
+                }
+                
+                @include breakpoint("large") {
+                    width: 23.3%;
+                    margin: 10px;
+                }
+    
+                &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+                    margin-top: 0;
+                }
+            }
+        }
+    
+}

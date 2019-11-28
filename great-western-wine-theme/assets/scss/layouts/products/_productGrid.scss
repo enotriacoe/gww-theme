@@ -57,6 +57,10 @@
             display: none;
         }
     }
+
+    &.grid-with-sub-items {
+        margin: 0;
+    }
 }
 
 @media only screen and (min-width: 801px) and (max-width: 1260px) {
