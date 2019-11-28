@@ -54,7 +54,7 @@
     img {
         @include lazy-loaded-img;
         max-height: 100%;
-        width: auto;
+        width: 100%;
         object-fit: contain;
         /* Object-fit polyfill */
         font-family: 'object-fit: contain;';
