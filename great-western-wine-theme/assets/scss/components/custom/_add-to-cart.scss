@@ -61,9 +61,8 @@
         font-weight: 600;
         padding: 5px;
 
-        @include breakpoint("medium"){
+        @include breakpoint("large"){
             padding: 14px 36px;
-
         }
     }
 }
