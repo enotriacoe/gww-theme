@@ -141,11 +141,18 @@
             </div>
             {{#filter custom_fields 'type' property='name' }}
             {{#contains value 'Wine'}}
-                <div class="multibuy-cont">
-                    <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
-                    <span class="multibuy-price">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
-                    <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
-                </div>
+            <div class="multibuy-cont">
+            {{else}}
+            <div class="multibuy-cont" style="display:none">
+            {{/contains}}
+            {{/filter}}
+                <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
+                <span class="multibuy-price">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
+                <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
+            </div>
+
+            {{#filter custom_fields 'type' property='name' }}
+            {{#contains value 'Wine'}}
             {{/contains}}
             {{#contains value 'Champagne'}}
             <div class="multibuy-cont">
