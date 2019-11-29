@@ -367,3 +367,55 @@
     <div class="modal-content"></div>
     <div class="loadingOverlay"></div>
 </div>
+
+<script>
+    var productName = "{{product.title}}";
+    var productPrice = "{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}";
+    if(productName){
+        productName = productName.replace(/\,.+/,"").trim();
+    }
+    if(productPrice){
+        productPrice = productPrice.replace(/[^0-9\.]+/g,"").trim();
+    }
+    window.productItems = {
+        "products" : [{
+            "id" : "{{product.sku}}",
+            "name" : productName,
+            "category" : "{{product.brand.name}}",
+            "price" : productPrice,
+            "quantity" : "1",
+            "variant" : "single-product-option"
+        }],
+        "fb" : {
+            "currency" : "GBP",
+            "content_ids" : ["{{product.sku}}"],
+            "content_names" : [productName],
+            "content_type" : "product",
+            "content_categories" : ["{{product.brand.name}}"],
+            "content_quantities" : [1],
+            "content_prices" : [productPrice],
+            "num_of_items" : 1,
+            "value" : productPrice
+        },
+        "pinterest" : {
+            "value" : productPrice,
+            "order_quantity" : 1,
+            "currency" : "GBP",
+            "line_items" : [{
+                "id" : "{{product.sku}}",
+                "name" : "{{product.title}}",
+                "category" : "{{product.brand.name}}",
+                "price" : "{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}",
+                "quantity" : "1",
+                "variant" : "single-product-option"
+            }]
+        }
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "event" : "productView",
+        "product" : window.productItems.products,
+        "pinterest" : window.productItems.pinterest.line_items,
+        "fb" : window.productItems.fb
+    })
+</script>
