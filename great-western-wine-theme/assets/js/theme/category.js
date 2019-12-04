@@ -304,7 +304,6 @@ export default class Category extends CatalogPage {
     closeAllWishlists() {
         if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
             $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
-
                 const target = $(this);
                 const targetsParent = $(this).parent();
 
