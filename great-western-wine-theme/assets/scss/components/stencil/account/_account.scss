@@ -13,7 +13,7 @@
         a, &.is-active {
             font-family: "Playfair Display", Arial, Helvetica, sans-serif;
             font-size: 17px;
-            font-weight: 900;
+            font-weight: 700;
             color: $black;
         }
 
@@ -46,7 +46,7 @@
 .login-form,
 .forgot-password-form{
     label{
-        font-weight: 900;
+        font-weight: 700;
         color: $black;
         text-transform: uppercase;
         font-size: 12px;

@@ -54,7 +54,7 @@
     font-size: 35px;
     margin-top: 0;
     font-family: $fontFamily-headings;
-    font-weight: 900;
+    font-weight: 700;
 
     @include breakpoint("medium") {
         font-size: $fontSize-largest;
