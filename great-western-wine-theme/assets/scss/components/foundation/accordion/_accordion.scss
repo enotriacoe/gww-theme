@@ -65,6 +65,7 @@
             margin-right: 10px;
             margin-bottom: 20px;
             padding: 10px;
+            border: 1px solid darken($xl-green, 10%);
         }
 
         @include breakpoint("large") {
@@ -80,10 +81,11 @@
         @include breakpoint("medium") {
             padding: 0;
             position: absolute;
-            border: 1px solid $xl-green;
+            border: 1px solid darken($xl-green, 10%);
+            border-top: none;
+            width: calc(100% + 2px);
             background: $xl-green;
-            width: 100%;
-            left: 0;
+            left: -1px;
             top: 100%;
             z-index: 10;
         }

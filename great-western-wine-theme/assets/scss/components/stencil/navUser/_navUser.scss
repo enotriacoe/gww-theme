@@ -340,6 +340,7 @@
         height: unset;
         border-radius: 2px;
         background: $xl-green;
+        border-color: darken($xl-green, 10%);
     }
 
     .productGrid {

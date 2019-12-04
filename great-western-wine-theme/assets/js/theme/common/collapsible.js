@@ -112,6 +112,8 @@ export class Collapsible {
     }
 
     open({ notify = true } = {}) {
+        this.closeAllCollapsible();
+
         this.$toggle
             .addClass(this.openClassName)
             .attr('aria-expanded', true);
@@ -194,6 +196,15 @@ export class Collapsible {
 
     onDisabledMediaQueryListMatch(media) {
         this.disabled = media.matches;
+    }
+
+    closeAllCollapsible() {
+        if ($('.accordion-content').hasClass('is-open')) {
+            $('.accordion-content').each(function collapseFilter() {
+                $(this).removeClass('is-open').attr('aria-hidden', 'true');
+                $(this).prev().removeClass('is-open').attr('aria-expanded', 'false');
+            });
+        }
     }
 }
 

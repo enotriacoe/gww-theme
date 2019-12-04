@@ -132,7 +132,6 @@ export default class Category extends CatalogPage {
 
         // Custom Add To Cart implementation for PLP pages, adapted from Product View
 
-
         function filterEmptyFilesFromForm(formData) {
             try {
                 for (const [key, val] of formData) {
