@@ -71,7 +71,7 @@ class FacetedSearch {
 
         $(document).click((e) => {
             if (($(e.target).closest($('.accordion-block')).length === 0)) {
-                this.closeAllFilters();
+                this.collapseAllFacets();
             }
         });
 
@@ -114,15 +114,6 @@ class FacetedSearch {
         this.bindEvents();
     }
 
-    closeAllFilters() {
-        if ($('.accordion-content').hasClass('is-open')) {
-            $('.accordion-content').each(function collapseFilter() {
-                $(this).removeClass('is-open').attr('aria-hidden', 'true');
-                $(this).prev().removeClass('is-open').attr('aria-expanded', 'false');
-            });
-        }
-    }
-
     // Public methods
     refreshView(content) {
         if (content) {
@@ -138,7 +129,7 @@ class FacetedSearch {
         // Bind events
         this.bindEvents();
 
-        this.closeAllFilters();
+        this.collapseAllFacets();
 
         // eslint-disable-next-line no-undef
         updateListView();
