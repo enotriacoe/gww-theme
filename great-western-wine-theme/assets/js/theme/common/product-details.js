@@ -54,6 +54,39 @@ export default class ProductDetails {
         $productOptionsElement.show();
 
         this.previewModal = modalFactory('#previewModal')[0];
+
+        $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
+            e.stopImmediatePropagation();
+            const target = $(e.currentTarget);
+            const targetsParent = $(e.currentTarget).parent();
+
+            if ($(this).hasClass('is-open')) {
+                target.removeClass('is-open').attr('aria-expanded', 'false');
+                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
+            } else {
+                this.closeAllWishlists();
+                target.addClass('is-open').attr('aria-expanded', 'true');
+                targetsParent.find('ul').addClass('is-open f-open-dropdown').attr('aria-hidden', 'false');
+            }
+        });
+
+        $(document).click((e) => {
+            if (($(e.target).closest($('[data-dropdown="wishlist-dropdown"]')).length === 0)) {
+                this.closeAllWishlists();
+            }
+        });
+    }
+
+    closeAllWishlists() {
+        if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
+            $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
+                const target = $(this);
+                const targetsParent = $(this).parent();
+
+                target.removeClass('is-open').attr('aria-expanded', 'false');
+                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
+            });
+        }
     }
 
     /**
