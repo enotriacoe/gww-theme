@@ -20,15 +20,15 @@
     @include grid-column(6);
 
     @include breakpoint("small") {
-        width: grid-calc(4, $total-columns);
+        width: grid-calc(6, $total-columns);
     }
 
     @include breakpoint("medium") {
-        width: grid-calc(3, $total-columns);
+        width: grid-calc(4, $total-columns);
     }
 
     @include breakpoint("large") {
-        width: grid-calc(2, $total-columns);
+        width: grid-calc(3, $total-columns);
     }
 
     .card {
@@ -36,6 +36,48 @@
 
         .card-title {
             overflow-wrap: break-word;
+        }
+    }
+}
+
+.header-carousel {
+    .carousel-controls {
+        width: auto;
+        display: inline-flex;
+        flex-direction: row;
+
+        .prev-arrow, .next-arrow {
+            display: inline-block;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        .prev-arrow {
+            margin-left: 10px;
+            order: 1;
+        }
+
+        .slick-dots {
+            position: relative;
+            display: inline-block;
+            width: auto;
+            bottom: unset;
+            margin-top: -3px;
+            order: 2;
+        }
+
+        .next-arrow {
+            order: 3
+        }
+    }
+    
+    @media screen and (min-width: 801px) and (max-width: 886px){
+        .card-img-container {
+            padding-bottom: 200px;
+        }
+
+        .card-image {
+            min-height: 50px;
         }
     }
 }
