@@ -72,6 +72,7 @@
 .card-brand {
     font-size: $card-title-fontSize;
     margin: 0;
+    font-weight: 400;
 }
 
 .card-title {
@@ -81,7 +82,7 @@
     
     > a {
         text-decoration: $card-title-textDecoration;
-        font-weight: 500;
+        font-weight: 700;
         color: black;
 
         // scss-lint:disable NestingDepth
