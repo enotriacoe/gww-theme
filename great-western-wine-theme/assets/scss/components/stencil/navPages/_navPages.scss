@@ -330,7 +330,7 @@
 .has-subMenu.is-root + .navPage-subMenu-horizontal {
     @include breakpoint("medium") {
         border-left: 0;
-        height: 760px;
+        height: 580px;
         margin: auto;
         top: inherit;
         width: 100%;
@@ -339,7 +339,7 @@
     }
 
     @include breakpoint("large") {
-        height: 730px;
+        height: 550px;
     }
 }
 
