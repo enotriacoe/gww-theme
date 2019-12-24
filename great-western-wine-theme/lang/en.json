@@ -95,10 +95,10 @@
         "shipping_estimator": {
             "add_info": "Estimate shipping cost",
             "select_a_country": "Country",
-            "select_a_state": "State/province",
+            "select_a_state": "County",
             "estimate_shipping": "Estimate Shipping",
             "suburb_city": "Suburb/city",
-            "zip_postal_code": "Zip/postcode",
+            "zip_postal_code": "Postcode",
             "free_shipping": "Free shipping",
             "hide_ups_rates": "Hide UPS Rates",
             "show_ups_rates": "Show UPS Rates"
@@ -385,11 +385,11 @@
               "address_line_1": "Address Line 1",
               "address_line_2": "Address Line 2",
               "suburb_city": "Suburb/City",
-              "state_province": "State/Province",
-              "choose_state": "Choose a State",
+              "state_province": "County",
+              "choose_state": "Choose a County",
               "country": "Country",
               "choose_country": "Choose a Country",
-              "zip_postcode": "Zip/Postcode"
+              "zip_postcode": "Postcode"
             }
         },
         "returns": {
@@ -551,8 +551,8 @@
             "address2": "Address Line 2",
             "city": "Suburb/City",
             "country": "Country",
-            "state": "State/Province",
-            "postal_code": "Zip/Postcode",
+            "state": "County",
+            "postal_code": "Postcode",
             "choose_country": "Choose a Country",
             "default_instrument": "Default Payment Method"
         },
