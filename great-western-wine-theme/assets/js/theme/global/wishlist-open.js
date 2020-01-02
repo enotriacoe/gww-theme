@@ -13,7 +13,6 @@ export function closeAllWishlists() {
 export function closeWishlistOnClick() {
     $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
         e.stopImmediatePropagation();
-        debugger;
 
         const target = $(e.currentTarget).parent();
 
