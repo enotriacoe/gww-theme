@@ -73,6 +73,9 @@
     font-size: $card-title-fontSize;
     margin: 0;
     font-weight: 400;
+    > a {
+        text-decoration: $card-title-textDecoration;
+    }
 }
 
 .card-title {
