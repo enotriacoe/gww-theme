@@ -190,7 +190,7 @@ export default class Category extends CatalogPage {
 
         function addProductToCartCat(event) {
             const previewModal = modalFactory('#previewModal')[0];
-            const $addToCartBtn = $('#form-action-addToCart', $(event.target));
+            const $addToCartBtn = $('.form-action-addToCart', $(event.target));
             const originalBtnVal = $addToCartBtn.val();
             const waitMessage = $addToCartBtn.data('waitMessage');
 

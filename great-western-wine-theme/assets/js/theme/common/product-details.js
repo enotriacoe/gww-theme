@@ -243,7 +243,7 @@ export default class ProductDetails {
             },
             $weight: $('.productView-info [data-product-weight]', $scope),
             $increments: $('.form-field--increments :input', $scope),
-            $addToCart: $('#form-action-addToCart', $scope),
+            $addToCart: $('.form-action-addToCart', $scope),
             $wishlistVariation: $('[data-wishlist-add] [name="variation_id"]', $scope),
             stock: {
                 $container: $('.form-field--stock', $scope),
@@ -392,7 +392,7 @@ export default class ProductDetails {
      *
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = $('#form-action-addToCart', $(event.target));
+        const $addToCartBtn = $('.form-action-addToCart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
 

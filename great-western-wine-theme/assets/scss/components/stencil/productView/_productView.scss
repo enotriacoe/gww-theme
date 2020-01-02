@@ -377,6 +377,11 @@
         .button {
             width: 100%;
 
+            &.form-action-addToCart {
+                margin: 0;
+                width: 100%;
+            }
+
             @include breakpoint("large") {
                 margin-right: spacing("half");
                 width: auto;
