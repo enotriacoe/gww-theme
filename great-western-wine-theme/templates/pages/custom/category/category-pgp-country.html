@@ -21,6 +21,98 @@ category:
 <div class="page">
     {{> components/category/category-header}}
 
+
+
+
+    <script>
+
+        // debugger;
+        
+        // Create the XHR object.
+        function createCORSRequest(method, url) {
+          var xhr = new XMLHttpRequest();
+          if ("withCredentials" in xhr) {
+            // XHR for Chrome/Firefox/Opera/Safari.
+            xhr.open(method, url, true);
+          } else if (typeof XDomainRequest != "undefined") {
+            // XDomainRequest for IE.
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+          } else {
+            // CORS not supported.
+            xhr = null;
+          }
+          return xhr;
+        }
+        
+        // Helper method to parse the title tag from the response.
+        
+        // Make the actual CORS request.
+        function makeCorsRequest() {
+          // This is a sample server that supports CORS.
+          var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+            // ^ the AWS test worked, but the bcapi gives CORS no header response currently
+          url = 'https://bcapi.greatwesternwine.co.uk/catalog/flattened-categories/11562';
+        
+          var xhr = createCORSRequest('GET', url);
+          if (!xhr) {
+            alert('CORS not supported');
+            return;
+          }
+          var obj;
+
+          // Response handlers.
+          xhr.onload = function() {
+            //console.log('xhr response here:');
+            //console.log(xhr.responseText);
+            var text = xhr.responseText;
+            obj = JSON.parse(text);
+            console.log('first obj response here:');
+            console.log(obj);
+            // alert('Response from CORS request to ' + url + ': ' + text);
+            // document.write("<div><p>" + text + "</p></div>");
+
+            useData(obj);
+          };
+
+
+          xhr.onerror = function() {
+            alert('Woops, there was an error making the request.');
+          };
+        
+          xhr.send();
+        
+        }
+        
+        makeCorsRequest();
+
+        function useData(obj){
+
+
+          console.log('obj final:');
+          console.log(obj);
+
+          console.log(obj.data[0].children);
+          var countries = obj.data[0].children;
+
+          console.log(countries.findIndex(x => x.name == 'France'))
+          let indexoffrance = countries.findIndex(x => x.name == 'France');
+          var france = countries[indexoffrance];
+          console.log(france);
+          for (var i = 0, len = france.children.length; i < len; i++){
+          console.log(france.children[i].name);
+          console.log(france.children[i].url);
+
+          }
+
+
+        }
+
+        </script>
+        
+        
+        
+
     <main class="page-content" id="product-listing-container">
         {{#if category.subcategories}}
             <div class="productGrid"> 
