@@ -485,7 +485,7 @@
         "button--primary-backgroundColorActive": "#000000",
         "button--disabled-color": "#ffffff",
         "button--disabled-backgroundColor": "#cccccc",
-        "button--disabled-borderColor": "transparent",
+        "button--disabled-borderColor": "#357044",
         "icon-color": "#ffffff",
         "icon-color-hover": "#ffffff",
         "button--icon-svg-color": "#757575",

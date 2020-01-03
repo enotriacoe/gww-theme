@@ -45,6 +45,9 @@
     background-color: $primary-color;
     border-color: $primary-color;
     border-radius: 0;
+    &:hover {
+        border-color: $primary-color;
+    }
 }
 
 .button--light {
