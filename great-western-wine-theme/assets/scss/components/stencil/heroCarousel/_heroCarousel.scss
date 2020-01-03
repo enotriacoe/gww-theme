@@ -38,11 +38,7 @@
 
     .slick-next,
     .slick-prev {
-        top: 23px;
-
-        @include breakpoint("medium") {
-            top: 39.5%;
-        }
+        top: 50%;
 
         &:before {
             opacity: 1;
@@ -50,26 +46,18 @@
     }
 
     .slick-next {
-        right: 15px;
-
-        @include breakpoint("medium") {
-            right: 25px;
-        }
+        right: 0
     }
 
     .slick-prev {
-        left: 15px;
-
-        @include breakpoint("medium") {
-            left: 25px;
-        }
+        left: 0;
     }
 
     .slick-dots {
         bottom: spacing("third");
 
         @include breakpoint("medium") {
-            bottom: spacing("single");
+            bottom: (spacing("single") * 1.2);
         }   
     }
 }
