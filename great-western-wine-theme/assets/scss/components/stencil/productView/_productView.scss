@@ -163,6 +163,7 @@
     font-size: fontSize("small");
     margin: 0 0 spacing("quarter");
     font-family: $fontFamily-headings;
+    font-weight: 400;
 
     @include breakpoint("large") {
         font-size: fontSize("largest");
