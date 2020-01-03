@@ -1,4 +1,4 @@
-import utils, { hooks } from '@bigcommerce/stencil-utils';
+import utils from '@bigcommerce/stencil-utils';
 import modalFactory, { showAlertModal } from './modal';
 
 

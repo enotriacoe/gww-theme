@@ -14,8 +14,8 @@ import carousel from './common/carousel';
 import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
 import objectFitImages from './global/object-fit-polyfill';
-import { closeWishlistOnClick, closeAllWishlists } from './global/wishlist-open';
-import { addToCartClickEvent, quantityChangeEvent} from './global/add-to-cart-func';
+import { closeWishlistOnClick } from './global/wishlist-open';
+import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-func';
 
 
 export default class Global extends PageManager {
