@@ -243,7 +243,7 @@ export default class ProductDetails {
             },
             $weight: $('.productView-info [data-product-weight]', $scope),
             $increments: $('.form-field--increments :input', $scope),
-            $addToCart: $('.form-action-addToCart', $scope),
+            $addToCart: $('#form-action-addToCart', $scope),
             $wishlistVariation: $('[data-wishlist-add] [name="variation_id"]', $scope),
             stock: {
                 $container: $('.form-field--stock', $scope),
@@ -340,51 +340,6 @@ export default class ProductDetails {
         }
     }
 
-    /**
-     *
-     * Handle action when the shopper clicks on + / - for quantity
-     *
-     */
-    listenQuantityChange() {
-        this.$scope.on('click', '[data-quantity-change] button', event => {
-            event.preventDefault();
-            const $target = $(event.currentTarget);
-            const viewModel = this.getViewModel(this.$scope);
-            const $input = viewModel.quantity.$input;
-            const quantityMin = parseInt($input.data('quantityMin'), 10);
-            const quantityMax = parseInt($input.data('quantityMax'), 10);
-
-            let qty = parseInt($input.val(), 10);
-
-            // If action is incrementing
-            if ($target.data('action') === 'inc') {
-                // If quantity max option is set
-                if (quantityMax > 0) {
-                    // Check quantity does not exceed max
-                    if ((qty + 1) <= quantityMax) {
-                        qty++;
-                    }
-                } else {
-                    qty++;
-                }
-            } else if (qty > 1) {
-                // If quantity min option is set
-                if (quantityMin > 0) {
-                    // Check quantity does not fall below min
-                    if ((qty - 1) >= quantityMin) {
-                        qty--;
-                    }
-                } else {
-                    qty--;
-                }
-            }
-
-            // update hidden input
-            viewModel.quantity.$input.val(qty);
-            // update text
-            viewModel.quantity.$text.text(qty);
-        });
-    }
 
     /**
      *
@@ -392,7 +347,7 @@ export default class ProductDetails {
      *
      */
     addProductToCart(event, form) {
-        const $addToCartBtn = $('.form-action-addToCart', $(event.target));
+        const $addToCartBtn = $('#form-action-addToCart', $(event.target));
         const originalBtnVal = $addToCartBtn.val();
         const waitMessage = $addToCartBtn.data('waitMessage');
 
