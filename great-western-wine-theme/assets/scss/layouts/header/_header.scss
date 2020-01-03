@@ -18,6 +18,7 @@
 .header {
     background-color: $header-bg;
     border-bottom: container("border");
+    position: absolute;
     top: 0;
     width: 100%;
     z-index: zIndex("higher");
@@ -30,6 +31,7 @@
 
     &.is-open {
         height: 100%;
+        position: fixed;
 
         @include breakpoint("medium") {
             height: auto;
