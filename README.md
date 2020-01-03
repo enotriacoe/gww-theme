@@ -1,6 +1,14 @@
 # Great Western Wine
 BigCommerce platform theme based off Cornerstone (Light version) for Great Western Wine website
 
+## IMPORTANT - DEPLOYMENT PROCESS
+
+When deploying changes to the stencil theme, any changes on the live or test environment to the below files must be imported into the theme/repo first, due to GWW using the files for promotional material that is updated directly on the sites:
+- templates/components/common/home-banners.html
+- templates/components/common/usp-block.html
+
+The theme should never be pushed directly using the command line, instead, the `stencil bundle` command will create a ZIP file of the theme that can then be uploaded to the test environment, then the live environment following approval.
+
 ## Installation:
 The theme runs independently from the platform and it requires an active BigCommerce account to get access to the API & Data from local. API/Access tokens & keys can be found on TeamsID.
 
