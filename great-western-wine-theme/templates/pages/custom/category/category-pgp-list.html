@@ -36,3 +36,31 @@ category:
 
 {{/partial}}
 {{> layout/base}}
+
+<script>
+    function displayProducers(dataReturned){
+        // Get all of the countries from the API/Proxy
+        if (dataReturned) {
+            console.log(dataReturned);
+            let producerList = dataReturned.data[0].children;
+            let currentProducerName, currentProducerUrl;
+            let producerDiv = document.querySelector('.group-list');
+            producerDiv.innerHTML = "";
+            
+            // Loop through each country and display 
+            for (let i = 0, length = producerList.length; i < length; i++){
+                currentProducerName = producerList[i].name;
+                currentProducerUrl = producerList[i].url;
+                producerDiv.innerHTML = (producerDiv.innerHTML + "<li><a href='" + currentProducerUrl + "'>" + currentProducerName + "</a></li>"); 
+            }
+        }
+    }
+
+    fetch('https://bcapi.greatwesternwine.co.uk/catalog/flattened-categories/producers')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(returnedJson) {
+            displayProducers(returnedJson)
+        });
+</script>
