@@ -9,39 +9,14 @@ export default class Category extends CatalogPage {
     onReady() {
         compareProducts(this.context.urls);
 
+        let categoryFunction = this;
+
         if ($('#facetedSearch').length > 0) {
             this.initFacetedSearch();
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
-
-        // Custom JS to sort category list PGP
-        const list = $('ul.group-list');
-        const items = $('li', list);
-
-        // sort the list
-        const sortedItems = items.get().sort((a, b) => {
-            const aText = $.trim($(a).text().toUpperCase());
-            const bText = $.trim($(b).text().toUpperCase());
-
-            return aText.localeCompare(bText);
-        });
-
-        list.append(sortedItems);
-
-        // create the titles
-        let lastLetter = '';
-        list.find('li').each(function addLetterHeaders() {
-            const $this = $(this);
-            const text = $.trim($this.text());
-            const firstLetter = text[0];
-
-            if (firstLetter !== lastLetter) {
-                $this.before(`<li class="splitter">${firstLetter}`);
-                lastLetter = firstLetter;
-            }
-        });
 
         // Grid View with Cookies
         if (sessionStorage.getItem('productsView') === null) {
@@ -299,6 +274,10 @@ export default class Category extends CatalogPage {
                 target.find('ul').addClass('is-open f-open-dropdown').attr('aria-hidden', 'false');
             }
         });
+        console.log(window.location.pathname.replace(/\//g, ''));
+        if ((window.location.pathname.replace(/\//g, '')) === 'producers') {
+            this.getAllProducers(categoryFunction);
+        }
     }
 
     closeAllWishlists() {
@@ -341,5 +320,63 @@ export default class Category extends CatalogPage {
                 scrollTop: 0,
             }, 100);
         });
+    }
+
+    displayProducers(dataReturned) {
+        // Get all of the countries from the API/Proxy
+        if (dataReturned) {
+            const producerList = dataReturned.data[0].children;
+            let currentProducerName;
+            let currentProducerUrl;
+            const producerDiv = document.querySelector('.group-list');
+            producerDiv.innerHTML = ('');
+
+            // Loop through each country and display
+            for (let i = 0, length = producerList.length; i < length; i++) {
+                currentProducerName = producerList[i].name;
+                currentProducerUrl = producerList[i].url;
+                producerDiv.innerHTML = (`${producerDiv.innerHTML}<li><a href='${currentProducerUrl}'>${currentProducerName}</a></li>`);
+            }
+        }
+    }
+
+    sortListAlphabetically() {
+        // Custom JS to sort category list PGP
+        const list = $('ul.group-list');
+        const items = $('li', list);
+
+        // sort the list
+        const sortedItems = items.get().sort((a, b) => {
+            const aText = $.trim($(a).text().toUpperCase());
+            const bText = $.trim($(b).text().toUpperCase());
+
+            return aText.localeCompare(bText);
+        });
+
+        list.append(sortedItems);
+
+        // create the titles
+        let lastLetter = '';
+        list.find('li').each(function addLetterHeaders() {
+            const $this = $(this);
+            const text = $.trim($this.text());
+            const firstLetter = text[0];
+
+            if (firstLetter !== lastLetter) {
+                $this.before(`<li class="splitter">${firstLetter}`);
+                lastLetter = firstLetter;
+            }
+        });
+    }
+
+    getAllProducers(categoryFunction) {
+        fetch('https://bcapi.greatwesternwine.co.uk/catalog/flattened-categories/producers')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (returnedJson) {
+                categoryFunction.displayProducers(returnedJson);
+                categoryFunction.sortListAlphabetically();
+            });
     }
 }
