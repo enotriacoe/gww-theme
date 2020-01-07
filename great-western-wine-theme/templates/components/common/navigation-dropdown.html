@@ -21,7 +21,19 @@
             </li>
         {{/if}}
     </ul>
-    {{> components/common/first-menu-highlight}}
+    {{#if parent '===' 'Wine'}}
+        {{> components/common/menu-highlight-wine}}
+    {{/if}}
+    {{#if parent '===' 'Offers'}}
+        {{> components/common/menu-highlight-offers}}
+    {{/if}}
+    {{#if parent '===' 'Spirits'}}
+        {{> components/common/menu-highlight-spirits}}
+    {{/if}}
+    {{#if parent '===' 'Gifts & More'}}
+        {{> components/common/menu-highlight-gifts}}
+    {{/if}}
+
 
      {{#if parent '===' 'Wine'}}
         <a href="/whats-on-the-menu/" class="btn btn-coral-line btn-mega-menu">What's on the menu?<i class="fas fa-chevron-right icon"></i></a>
