@@ -9,7 +9,7 @@ export default class Category extends CatalogPage {
     onReady() {
         compareProducts(this.context.urls);
 
-        let categoryFunction = this;
+        const categoryFunction = this;
 
         if ($('#facetedSearch').length > 0) {
             this.initFacetedSearch();
@@ -274,7 +274,6 @@ export default class Category extends CatalogPage {
                 target.find('ul').addClass('is-open f-open-dropdown').attr('aria-hidden', 'false');
             }
         });
-        console.log(window.location.pathname.replace(/\//g, ''));
         if ((window.location.pathname.replace(/\//g, '')) === 'producers') {
             this.getAllProducers(categoryFunction);
         }
