@@ -12,7 +12,7 @@ blog:
         limit: {{theme_settings.homepage_blog_posts_count}}
 ---
 {{#partial "hero"}}
-    {{> components/common/usp-block}}
+    {{> components/custom/usp-block}}
     <div class="container">
         {{{region name="home_below_menu"}}}
         {{#if carousel}}
@@ -45,7 +45,7 @@ blog:
         {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
         {{/if}}
 
-    {{> components/common/home-banners}}
+    {{> components/custom/home-banners}}
     
     {{{region name="home_below_new_products"}}}
     {{#if settings.show_newsletter_box}}
