@@ -16,7 +16,7 @@
 .login-row {
     @include grid-row();
     @include breakpoint("medium") {
-        margin-top: spacing("double")*2;
+        margin-top: spacing("double");
     }
 }
 
