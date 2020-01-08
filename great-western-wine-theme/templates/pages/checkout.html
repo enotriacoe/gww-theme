@@ -35,11 +35,3 @@
 {{/partial}}
 
 {{> layout/empty}}
-
-<script>
-    setTimeout(function(){
-        let orderCommentLabel = document.querySelector('label[for="orderComment"]');
-        let orderCommentLegend = orderCommentLabel.parentElement.parentElement.previousSibling;
-        orderCommentLegend.innerText = "Gift Message";
-    }, 2500);
-</script>
