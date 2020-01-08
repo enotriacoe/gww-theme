@@ -93,6 +93,7 @@
 }
 
 .newsletter-cta {
-    display: inline-block;
-    width: 32%;
+    flex: 1 1 auto;
+    margin: 0 1%;
+    padding: 0.875rem 1rem;
 }
