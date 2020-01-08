@@ -35,3 +35,12 @@
 {{/partial}}
 
 {{> layout/empty}}
+
+<script>
+    setTimeout(function(){
+
+        let cartPriceLabels = document.querySelector('div[data-test="cart-taxes"]');
+        cartPriceLabels.style.display = "none";
+    }, 1000);
+
+</script>
