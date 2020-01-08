@@ -3,7 +3,15 @@
     <head>
         <title>{{ head.title }}</title>
         {{{ resourceHints }}}
-        {{{ head.meta_tags }}}
+        {{#each (split head.meta_tags "<meta") }}
+            {{#if @index '===' 0 }}
+            {{else }}
+                {{#contains this 'name="keywords"'}}
+                {{else}}
+                    <meta {{{this}}}
+                {{/contains}}
+            {{/if}}
+        {{/each}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
 
