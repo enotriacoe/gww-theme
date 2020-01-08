@@ -25,12 +25,13 @@ limit: {{theme_settings.categorypage_products_per_page}}
         <div class="productGrid"> 
             {{#each category.subcategories}}
             <div class="group-item product country-item">
-                
                 <div class="group-item-flag">
-                    <img src="{{cdn (concat (concat 'img/flags/4x3/' (dashcase name)) '.svg')}}">
+                    <a href="{{url}}" alt="See all {{name}}" title="See all Wine">
+                        <img src="{{cdn (concat (concat 'img/flags/4x3/' (dashcase name)) '.svg')}}">
+                    </a>
                 </div>
                 <a class="close-sub-items" href="javascript:void(0)"><i class="fal fa-times-circle"></i></a>
-                <a href="{{url}}" alt="See all {{name}}" title="See all Wine"></a><h3 class="stylised-slim">{{name}}</h3></a>
+                <a href="{{url}}" alt="See all {{name}}" title="See all Wine"><h3 class="stylised-slim">{{name}}</h3></a>
                 <a class="group-item-options {{dashcase name}}-option-toggle" href="javascript:void(0)" data-target="{{dashcase name}}-item" alt="{{name}} - Food Options Choices" title="{{name}} - Food Options Choices">See regions <i class="fal fa-chevron-circle-down"></i></a>
                 <ul class="group-sub-items {{dashcase name}}-sub-items">
                 </ul>
