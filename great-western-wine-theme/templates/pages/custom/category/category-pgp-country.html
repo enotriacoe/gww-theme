@@ -45,10 +45,6 @@ limit: {{theme_settings.categorypage_products_per_page}}
     </main>
 </div>
 
-
-{{/partial}}
-{{> layout/base}}
-
 <script>
     function convertToKebabCase(string) {
         /* This is to match the kebab-casing of the category names by BigCommerce/Handlebars
@@ -88,3 +84,7 @@ limit: {{theme_settings.categorypage_products_per_page}}
         });
 
 </script>
+{{/partial}}
+
+{{> layout/base}}
+
