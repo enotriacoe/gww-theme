@@ -25,10 +25,9 @@ category:
         {{#if category.subcategories}}
             <div> 
                 <ul class="group-list">
-                    <div class="group-item product">
-                        <a class="group-item-title" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
-                        <a href="#" class="btn btn-coral-line" alt="See all {{name}}" title="See all {{name}}">See all {{name}}</a>
-                    </div>
+                    {{#each category.subcategories}}
+                        <li><a href="{{url}}">{{name}}</a></li>
+                    {{/each}}
                 </ul>
             </div>
         {{/if}}
