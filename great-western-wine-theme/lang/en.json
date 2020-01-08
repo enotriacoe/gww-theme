@@ -334,7 +334,7 @@
                 "order_status": "Order status:",
                 "payment_date": "Order date:",
                 "payment_method": "Payment method:",
-                "comments": "Order Comments",
+                "comments": "Gift Message",
                 "download_items": "Download Items",
                 "card_ending": "ending in {card}",
                 "shipments": {
