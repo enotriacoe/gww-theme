@@ -1,9 +1,8 @@
 /* eslint-disable no-restricted-globals, no-shadow, prefer-arrow-callback, func-names */
-import utils, { hooks } from '@bigcommerce/stencil-utils';
+import { hooks } from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
-import modalFactory, { showAlertModal } from './global/modal';
 
 export default class Category extends CatalogPage {
     onReady() {
@@ -105,7 +104,6 @@ export default class Category extends CatalogPage {
             });
         }
 
-        
         // Open and close only the wishlist that is clicked
         $('.page-content').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
             e.stopImmediatePropagation();
