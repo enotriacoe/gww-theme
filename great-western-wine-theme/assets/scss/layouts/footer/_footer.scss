@@ -28,19 +28,20 @@
     @include grid-column(12);
     color: stencilColor("color-white");
     display: inline-block;
-    float: right;
     font-size: fontSize("base"); // 2
     margin-bottom: spacing("double");
     text-align: center;
     vertical-align: top;
 
     @include breakpoint("small") {
-        text-align: left;
         width: width("6/12");
+        float: none;
     }
 
     @include breakpoint("medium") {
+        text-align: left;
         width: width("4/12");
+        float: right;
     }
 
     > :first-child {
@@ -89,11 +90,22 @@
     color: $footer-heading-fontColor;
     font-size: fontSize("base");
     text-transform: inherit;
+    font-weight: bold;
+    
+    @include breakpoint("medium"){
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+        width: 90%;
+    }
 }
 
 .footer-info-list {
     list-style: none;
     margin-left: 0;
+
+    li {
+        line-height: 2rem;
+    }
 
     a {
         color: stencilColor("color-white");
@@ -173,9 +185,16 @@
 
 .footer-details {
     display: inline-block;
+    width: 100%;
     color: stencilColor("color-white");
     float: none;
     font-size: fontSize("base"); // 2
+    text-align: center;
+
+    @include breakpoint("medium") {
+        width: auto;
+        text-align: left;
+    }
 }
 
 .footer-logo {
@@ -189,4 +208,8 @@
     @include breakpoint("small") {
         float: right;
     }
+}
+
+.footer-row {
+    display: inline;
 }

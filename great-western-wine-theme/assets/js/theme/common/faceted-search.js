@@ -20,7 +20,7 @@ class FacetedSearch {
      * let requestOptions = {
      *      templates: {
      *          productListing: 'category/product-listing',
-     *          sidebar: 'category/sidebar'
+     *          sidebar: 'category/topbar'
      *     }
      * };
      *
@@ -58,6 +58,22 @@ class FacetedSearch {
 
         // Init collapsibles
         collapsibleFactory();
+
+        // If there's only one option under a filter, hide that filter entirely
+
+        $('.navList').each(function hideSingleValueFilters() {
+            if ($(this).children().length === 1) {
+                $(this).parent().parent().hide();
+            }
+        });
+
+        // Close filter on choice or click elsewhere
+
+        $(document).click((e) => {
+            if (($(e.target).closest($('.accordion-block')).length === 0)) {
+                this.collapseAllFacets();
+            }
+        });
 
         // Init price validator
         this.initPriceValidator();
@@ -110,20 +126,17 @@ class FacetedSearch {
         // Init price validator
         this.initPriceValidator();
 
-        // Restore view state
-        this.restoreCollapsedFacets();
-        this.restoreCollapsedFacetItems();
-
         // Bind events
         this.bindEvents();
+
+        this.collapseAllFacets();
+
+        // eslint-disable-next-line no-undef
+        updateListView();
     }
 
     updateView() {
-        $(this.options.blockerSelector).show();
-
         api.getPage(urlUtils.getUrl(), this.requestOptions, (err, content) => {
-            $(this.options.blockerSelector).hide();
-
             if (err) {
                 throw new Error(err);
             }

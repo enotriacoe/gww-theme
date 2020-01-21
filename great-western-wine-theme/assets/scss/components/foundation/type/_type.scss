@@ -36,8 +36,11 @@ cite {
 }
 
 .page-heading {
-    margin: 0 0 spacing("double");
     text-align: center;
+    
+    @include breakpoint("medium") {
+        margin: 0 0 spacing("double");
+    }
 }
 
 h1 {

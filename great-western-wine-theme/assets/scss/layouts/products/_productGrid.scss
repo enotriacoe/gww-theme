@@ -18,20 +18,59 @@
     margin-bottom: spacing("single");
 
     .product {
-        @include grid-column(6, $float: none);
+        @include grid-column(12, $float: none);
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
-
-        @include breakpoint("small") {
-            width: grid-calc(4, $total-columns);
-        }
+        padding: spacing("single") 20px;
+        border-bottom: 1px solid lightgrey;
 
         @include breakpoint("medium") {
+            border-bottom: 0;
+        }
+
+        @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
+            &:not(:nth-child(4n)) {
+                border-right: 1px solid lightgrey;
+            }
+        }
+
+        .card-desc-cont {
+            display: none;
+        }
+        .card-read-more {
+            display: none;
+        }
+
+        .wishlist-grid-view {
+            display: inline-block;
+        }
+
+        .form-wishlist {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .wishlist-list-view {
+            display: none;
         }
     }
+
+    &.grid-with-sub-items {
+        margin: 0;
+    }
 }
+
+@media only screen and (min-width: 801px) and (max-width: 1260px) {
+    .productGrid .product {
+        width: grid-calc(6, $total-columns);
+        &:not(:nth-child(2n)) {
+            border-right: 1px solid lightgrey;
+        }
+    }
+} 
 
 
 // Product when sidebar is present
@@ -47,7 +86,13 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product { // 1
             @include breakpoint("small") {
+                width: grid-calc(6, $total-columns);
+            }
+            @include breakpoint("medium") {
                 width: grid-calc(4, $total-columns);
+            }
+            @include breakpoint("large") {
+                width: grid-calc(3, $total-columns);
             }
         }
     }
@@ -75,7 +120,7 @@
     }
 
     @include breakpoint("medium") {
-        column-count: 4;
+        column-count: 3;
     }
 
     .product {
@@ -118,7 +163,7 @@
         // scss-lint:disable SelectorDepth, NestingDepth
         .product {
             @include breakpoint("medium") {
-                width: grid-calc(4, $total-columns);
+                width: grid-calc(3, $total-columns);
             }
         }
     }
@@ -131,8 +176,12 @@
 
             // scss-lint:disable SelectorDepth, NestingDepth
             .product {
-                @include grid-column(4, $float: none);
+                @include grid-column(3, $float: none);
             }
         }
     }
+}
+
+.card-desc-cont, .wishlist-list-view {
+    display: none;
 }

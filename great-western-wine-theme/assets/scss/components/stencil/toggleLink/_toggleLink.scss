@@ -13,12 +13,16 @@ $toggle-spacing: spacing("single") + spacing("half");
     margin-bottom: $toggle-spacing;
 
     &:last-of-type {
-        margin-bottom: $toggle-spacing * 2;
+        margin-bottom: $toggle-spacing;
     }
 }
 
 .toggle-title {
     margin-bottom: $toggle-spacing;
+
+    .productView-reviewLink {
+        vertical-align: unset;
+    }
 }
 
 .toggleLink {

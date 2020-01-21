@@ -22,7 +22,7 @@ describe('FacetedSearch', () => {
             },
             template: {
                 productListing: 'category/product-listing',
-                sidebar: 'category/sidebar',
+                sidebar: 'category/topbar',
             },
         };
 

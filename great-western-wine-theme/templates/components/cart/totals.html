@@ -29,16 +29,6 @@
             {{> components/cart/shipping-estimator cart.shipping_handling}}
         </li>
     {{/if}}
-    {{#each cart.taxes}}
-        <li class="cart-total">
-            <div class="cart-total-label">
-                <strong>{{name}}:</strong>
-            </div>
-            <div class="cart-total-value">
-                <span>{{cost.formatted}}</span>
-            </div>
-        </li>
-    {{/each}}
     {{#if cart.discount }}
         <li class="cart-total">
             <div class="cart-total-label">
@@ -57,6 +47,7 @@
                     <div>
                         <a href="{{remove_url}}">{{lang 'cart.coupons.remove'}}</a>
                     </div>
+                    <span id="couponApplied" couponCode="{{code}}" style="display:none">
                 </div>
                 <div class="cart-total-value">
                     <span>{{discount.formatted}}</span>

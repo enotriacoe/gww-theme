@@ -3,7 +3,7 @@
     {{inject 'lastName' (lang 'forms.validate.account.edit.last_name')}}
     {{inject 'phoneNumber' (lang 'forms.validate.account.edit.phone')}}
     {{inject 'currentPassword' (lang 'forms.validate.account.edit.password')}}
-    <fieldset class="form-fieldset">
+    <fieldset class="form-fieldset edit-account-form">
         <div class="form-row form-row--half">
             <div class="form-field">
                 <label class="form-label" for="account_firstname">
@@ -37,6 +37,6 @@
         </div>
     </fieldset>
     <div class="form-actions">
-        <button class="button button--primary">{{lang 'account.settings.update_details'}}</button>
+        <button class="btn btn-coral-line">{{lang 'account.settings.update_details'}}</button>
     </div>
 </form>

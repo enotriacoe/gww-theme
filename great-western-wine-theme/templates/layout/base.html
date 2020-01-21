@@ -3,7 +3,15 @@
     <head>
         <title>{{ head.title }}</title>
         {{{ resourceHints }}}
-        {{{ head.meta_tags }}}
+        {{#each (split head.meta_tags "<meta") }}
+            {{#if @index '===' 0 }}
+            {{else }}
+                {{#contains this 'name="keywords"'}}
+                {{else}}
+                    <meta {{{this}}}
+                {{/contains}}
+            {{/if}}
+        {{/each}}
         {{{ head.config }}}
         {{#block "head"}} {{/block}}
 
@@ -34,7 +42,9 @@
         {{~inject 'secureBaseUrl' settings.secure_base_url}}
         {{~inject 'cartId' cart_id}}
         {{~inject 'template' template}}
-    </head>
+        
+        <script src="https://kit.fontawesome.com/fb85a17606.js" crossorigin="anonymous"></script>
+        </head>
     <body>
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 

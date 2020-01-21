@@ -1,16 +1,40 @@
 {{#if product_results.products}}
-    <a class="modal-close" aria-label="{{lang 'common.close'}}" data-drop-down-close role="button">
-        <span aria-hidden="true">&#215;</span>
-    </a>
-    <ul class="productGrid" {{#if settings.data_tag_enabled}} data-list-name="Quick Search Results" {{/if}}>
+    <ul class="previewSearchList">
+        {{#each (limit product_results.products 5)}}
+            <a href="{{url}}" alt="{{name}}" title="{{name}}">
+                <li class="quickResultItem">
+                    <div class="quickResultItem-image">
+                            {{> components/common/responsive-img
+                                image=image
+                                fallback_size=../../theme_settings.productthumb_size
+                                lazyload=../../theme_settings.lazyload_mode
+                                default_image=../../theme_settings.default_image_product
+                            }}
+                    </div>
 
-        {{#each product_results.products}}
-        <li class="product">
-                {{> components/products/card settings=../settings alternate=true show_compare=../show_compare theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                    <div class="quickResultItem-content">
+                        <p class="quickResultItem-name">
+                            {{#filter custom_fields 'simpleName' property='name' }}
+                                {{value}}
+                            {{/filter}}
+                        </p>
 
-        </li>
+                        <span class="quickResultItem-brand">
+                            {{brand.name}}
+                        </span>
+
+                        <span class="quickResultItem-price">
+                            {{> components/products/price price=price}}
+                        </span>
+                    </div>
+                </li>
+            </a>
         {{/each}}
     </ul>
+        <div class="search-buttons">
+            <button class="button button--light btn-half btn-search-clear" type="button">{{lang 'forms.search.clearsearch' }}</button>
+            <input class="button button--primary btn-half" type="submit" value="{{lang 'forms.search.allresults' }}">
+        </div>
 {{else}}
     <p class="quickSearchMessage">
         {{lang 'search.results.quick_count' count=pagination.product_results.total search_query=forms.search.query}}

@@ -21,17 +21,17 @@
     @include verticalPositionMiddle("absolute");
     right: 45px;
     top: 26px; // 2
-    width: 100%; // 4
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
-        padding: 0 spacing("single");
+        padding: 0 0 0 (spacing("single") * 0.66);
         position: relative;
         right: auto;
         float: right;
         transform: none;
         z-index: zIndex("high");
-        width: 50%;
+        width: 70%;
+        transform: translateY(-15%);
     }
 
     .dropdown-menu {
@@ -76,7 +76,7 @@
 .navUser-action {
     color: stencilColor("navUser-color");
     font-weight: fontWeight("normal");
-    padding: spacing("base") spacing("half");
+    padding: (spacing("half") / 2) 0.5rem;
     text-decoration: none;
 
     &:hover,
@@ -103,6 +103,11 @@
         stroke: stencilColor("navUser-color");
         transition: all 0.15s ease;
     }
+}
+
+.navUser-item--cart .navUser-action {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .navUser-action--currencySelector + .dropdown-menu {
@@ -238,6 +243,10 @@
 
 .navUser-item--account {
 
+    @include breakpoint("medium") {
+        margin-right: 20px;
+    }
+
     .navUser-or {
 
         // scss-lint:disable NestingDepth
@@ -289,11 +298,22 @@
 }
 
 .dropdown--quickSearch {
-    background-color: $dropdown--quickSearch-backgroundColor;
+    background-color: none;
     padding: spacing("single") 0;
+    position: unset;
 
     @include breakpoint("small") {
-        padding: spacing("double");
+        padding: 0;
+    }
+
+    @include breakpoint("medium") {
+        width: 280px;
+        margin: 12px 0 0;
+    }
+
+    @include breakpoint("large") {
+        width: 400px;
+        margin: 12px 10px 0;
     }
 
     &.is-open {
@@ -318,6 +338,9 @@
     .form-input {
         font-size: fontSize("small");
         height: unset;
+        border-radius: 2px;
+        background: $xl-green;
+        border-color: darken($xl-green, 10%);
     }
 
     .productGrid {
@@ -337,6 +360,9 @@
 // -----------------------------------------------------------------------------
 
 .countPill {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     background-color: stencilColor("navUser-indicator-backgroundColor");
     border-radius: 50%;
     color: color("whites", "bright");
@@ -348,6 +374,10 @@
     margin-left: spacing("eighth");
     text-align: center;
     width: 20px; // 1
+
+    @include breakpoint("medium") {
+        position: unset;
+    }
 }
 
 .countPill--positive {

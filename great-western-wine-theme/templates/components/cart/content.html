@@ -1,3 +1,27 @@
+<script>
+    if(!window.myCartItems){
+        window.myCartItems = {
+            "products" : [],
+            "fb" : {
+                "currency" : "GBP",
+                "content_ids" : [],
+                "content_names" : [],
+                "content_type" : "product",
+                "content_quantities" : [],
+                "content_categories" : [],
+                "content_prices" : [],
+                "num_of_items" : 0,
+                "value" : 0
+            },
+            "pinterest" : {
+                "value" : 0,
+                "order_quantity" : 0,
+                "currency" : "GBP",
+                "line_items" : []
+            }
+        }
+    }
+</script>
 <table class="cart" data-cart-quantity="{{cart.quantity}}">
     <thead class="cart-header">
         <tr>
@@ -135,6 +159,54 @@
                     {{/if}}
                 </td>
             </tr>
+            <script>
+                var productId = "{{sku}}";
+                var productName = "{{name}}";
+                var productPrice = "{{total.formatted}}";
+                var productQuantity = "{{quantity}}";
+                var productBrand = "{{brand.name}}";
+                var productVariant = "single-product-option";
+                if(productName){
+                    productName = productName.replace(/\,.+/,"").trim();
+                }
+                if(productPrice){
+                    productPrice = productPrice.replace(/[^0-9\.]+/g,"").trim();
+                }
+                if(window.myCartItems){
+                    window.myCartItems.products.push({
+                        "id" : productId,
+                        "name" : productName,
+                        "category" : productBrand,
+                        "price" : productPrice,
+                        "quantity" : productQuantity,
+                        "variant" : productVariant
+                    });
+                    window.myCartItems.pinterest.line_items.push({
+                        "product_id" : productId,
+                        "product_name" : productName,
+                        "product_price" : productPrice,
+                        "product_quantity" : productQuantity
+                    });
+                    window.myCartItems.pinterest.order_quantity += parseInt(productQuantity);
+                    window.myCartItems.pinterest.value += parseFloat(productPrice);
+                    window.myCartItems.fb.content_ids.push(productId);
+                    window.myCartItems.fb.content_names.push(productName);
+                    window.myCartItems.fb.content_quantities.push(productQuantity);
+                    window.myCartItems.fb.content_categories.push(productBrand);
+                    window.myCartItems.fb.content_prices.push(productPrice);
+                    window.myCartItems.fb.value += parseFloat(productPrice);
+                    window.myCartItems.fb.num_of_items += parseInt(productQuantity);
+                }
+            </script>
         {{/each}}
     </tbody>
 </table>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "event" : "cart",
+        "products" : window.myCartItems.products,
+        "pinterest" : window.myCartItems.pinterest,
+        "fb" : window.myCartItems.fb
+    })
+</script>

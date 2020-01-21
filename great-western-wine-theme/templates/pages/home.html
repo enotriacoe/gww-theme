@@ -12,12 +12,16 @@ blog:
         limit: {{theme_settings.homepage_blog_posts_count}}
 ---
 {{#partial "hero"}}
-    {{> components/common/usp-block}}
-    {{{region name="home_below_menu"}}}
-    {{#if carousel}}
-        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
-    {{/if}}
-    {{{region name="home_below_carousel"}}}
+    {{> components/custom/usp-block}}
+    <div class="container">
+        {{{region name="home_below_menu"}}}
+        {{#if carousel}}
+            {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+        {{/if}}
+        <!-- {{{region name="home_below_carousel"}}} -->
+        {{> components/what-eating-home}}
+    </div>
+    <hr class="hr-black">
 {{/partial}}
 
 {{#partial "page"}}
@@ -28,7 +32,7 @@ blog:
 
 <div class="main full">
     {{#if products.featured}}
-        {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+        {{> components/products/headed-carousel products=products.featured columns=theme_settings.homepage_featured_products_column_count header=true}}
     {{/if}}
     {{{region name="home_below_featured_products"}}}
 
@@ -39,11 +43,25 @@ blog:
 
     {{#if products.new}}
         {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
-    {{/if}}
+        {{/if}}
+
+    {{> components/custom/home-banners}}
+    
     {{{region name="home_below_new_products"}}}
     {{#if settings.show_newsletter_box}}
         {{> components/common/subscription-form}}
     {{/if}}
+
+
 </div>
+
+<div id="previewModal" class="modal modal--large" data-reveal>
+    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+        <span aria-hidden="Yes">&#215;</span>
+    </a>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>
+
 {{/partial}}
 {{> layout/base}}

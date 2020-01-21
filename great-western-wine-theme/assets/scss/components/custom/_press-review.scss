@@ -1,0 +1,46 @@
+.press-review-cont {
+    width: 100%;
+    background-color: $xl-green;
+    display: inline-block;
+    text-align: center;
+    padding: 40px;
+    margin: 10px 0;
+    
+    @include breakpoint("medium") {
+        width: 49%;
+    }
+
+    @include breakpoint("large") {
+        width: 48%;
+        padding: 50px 120px;
+    }
+
+    &:nth-child(2) {
+        float: right;
+    }
+}
+
+.press-review-title {
+    font-weight: $fontWeight-bold;
+    font-size: 1.1rem;
+    margin: 2rem 0 0;
+}
+
+.press-review-quote {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    display: block;
+    padding-top: 0.5em;
+    margin: 1.5em 0;
+    position: relative;
+    
+    &:before {
+        content: '\201C';
+        position: absolute;
+        top: 0em;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4em;
+        color: #1D1D1B;
+    }
+}

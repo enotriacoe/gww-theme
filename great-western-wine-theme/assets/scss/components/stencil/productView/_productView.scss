@@ -44,6 +44,12 @@
     margin: auto;
     max-width: get-width(stencilString('product_size'));
     width: 100%;
+    max-height: 50vh;
+
+
+    @include breakpoint("medium") {
+        max-height: 100%;
+    }
 
     img {
         @include lazy-loaded-img;
@@ -52,6 +58,11 @@
         object-fit: contain;
         /* Object-fit polyfill */
         font-family: 'object-fit: contain;';
+            max-height: 50vh;
+
+        @include breakpoint("medium") {
+            max-height: 100%;
+        }
     }
 
     @include lazy-loaded-padding('product_size');
@@ -120,7 +131,6 @@
 // -----------------------------------------------------------------------------
 
 .productView-details {
-    margin-bottom: spacing("single") + spacing("third");
 }
 
 
@@ -130,7 +140,6 @@
 .productView-product {
     @include breakpoint("medium") {
         border-bottom: container("border");
-        padding-bottom: spacing("single") + spacing("third");
     }
 
     > :last-child {
@@ -140,12 +149,10 @@
 
 .productView-title {
     font-size: fontSize("small");
-    margin: -(spacing("half")) 0 spacing("quarter");
-
-    @include breakpoint("medium") {
-        margin-top: spacing("single");
-    }
-
+    font-family: $fontFamily-headings;
+    font-weight: 700;
+    margin: 0;
+    
     @include breakpoint("large") {
         font-size: fontSize("largest");
     }
@@ -153,17 +160,18 @@
 
 .productView-brand {
     color: $productView-brand-link-color;
-    font-size: fontSize("smaller");
-    margin: 0 0 spacing("half");
+    font-size: fontSize("small");
+    margin: 0 0 spacing("quarter");
+    font-family: $fontFamily-headings;
+    font-weight: 400;
 
     @include breakpoint("large") {
-        font-size: fontSize("small");
-        margin: -(spacing("eighth")) 0 spacing("base");
+        font-size: fontSize("largest");
     }
 
     a {
-        color: $productView-brand-link-color;
-
+        color: $black;
+        text-decoration: none;
         // scss-lint:disable NestingDepth
         &:hover {
             color: $productView-brand-link-color--hover;
@@ -176,11 +184,27 @@
 
 .productView-price {
     font-size: fontSize("smaller");
-    margin-bottom: spacing("third");
+    display: block;
+    width: auto;
+    vertical-align: bottom;
+    margin: 0 auto 10px;
 
+    @include breakpoint("small") {
+        width: 49%;
+        display: inline-block;
+    }
+    
     @include breakpoint("medium") {
+        margin: 0;
         font-size: fontSize("larger");
-        margin-bottom: spacing("base");
+        width: auto;
+        vertical-align: top;
+        margin-right: 3%;
+        margin-bottom: 10px;
+    }
+
+    .non-sale-price--withTax {
+        font-size: 1rem;
     }
 
     .price-section--saving {
@@ -198,6 +222,10 @@
     display: inline-block;
     margin-left: spacing("half");
     vertical-align: middle;
+
+    a {
+        text-decoration: none;
+    }
 
     + .productView-reviewLink {
         display: block;
@@ -350,6 +378,11 @@
         .button {
             width: 100%;
 
+            &.form-action-addToCart {
+                margin: 0;
+                width: 100%;
+            }
+
             @include breakpoint("large") {
                 margin-right: spacing("half");
                 width: auto;
@@ -417,4 +450,265 @@
         max-width: none;
         width: auto;
     }
+}
+
+
+// Custom Classes for GWW
+// -----------------------------------------------------------------------------
+
+.productView-icon {
+    width: 32%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 35px;
+    &:first-child, &:nth-child(2), &:nth-child(3){
+        margin-top: 0;
+    }
+
+    @include breakpoint("small") {
+        width: 24%;
+        &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+            margin-top: 0;
+        }
+    }
+
+    .icon {
+        display: block;
+        margin: 0 auto 10px;
+        height: 45px;
+        width: 45px; 
+    }
+
+    .text-icon {
+        font-size: 2rem;
+    }
+
+    .vintage-icon {
+        font-family: fontFamily("sans");
+        font-size: remCalc(25px);
+        font-weight: 800;
+        display: block;
+        margin: 0 auto 10px;
+    }
+
+    .flag-icon {
+        border-radius: 100%;
+    }
+}
+
+.productView-product {
+    .multibuy-cont {
+        width: 49%;
+        display: inline-block;
+        padding: 17px 20px;
+        vertical-align: top;
+
+        @include breakpoint("medium") {
+            width: 47%;
+        }
+
+        @include breakpoint("large") {
+            width: 32%;
+        }
+    }
+
+    .multibuy-only-label, .multibuy-price, .multibuy-label {
+        display: block;
+    }
+
+    .multibuy-only-label {
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 0.8rem;
+    }
+
+    .multibuy-price {
+        line-height: 2rem;
+    }
+
+    .multibuy-label {
+        max-width: 100%;
+        font-size: 12px;
+    }
+}
+
+.productView-price-usp {
+    width: 49%;
+    display: inline-block;
+    padding: 0 20px;
+    font-size: remCalc(14px);
+    line-height: 1rem;
+    text-align: center;
+
+    @include breakpoint("small") {
+        width: 100%;
+    }
+
+    @include breakpoint("medium") {
+        text-align: left;
+        width: 47%;
+    }
+
+    @include breakpoint("large") {
+        width: 26%;
+    }
+
+    .icon {
+        height: 25px;
+        width: 25px;
+        margin-right: 6px;
+        vertical-align: middle;
+    }
+
+    .usp-title {
+        font-size: remCalc(14px);
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0;
+        display: inline-block;
+        max-width: 70%;
+        margin-bottom: 0;
+        
+        @include breakpoint("large") {
+            margin-bottom: 5px;
+        }
+    }
+
+    .usp-txt {        
+        margin-bottom: 0;
+        display: inline-block;
+        margin-left: 5px;
+
+        @include breakpoint("medium") {
+            margin-bottom: 8px;
+            margin-left: 0px;
+        }
+    }
+
+    .usp-extra-txt {
+        font-size: remCalc(11px);
+        margin-bottom: 0;
+        display: inline-block;
+        margin-left: 5px;
+
+        @include breakpoint("medium") {
+            margin-bottom: 8px;
+            margin-left: 0px;
+            padding-top: 10px;
+        }
+        @include breakpoint("large") {
+            padding: 0;
+        }
+    }
+}
+
+.productView-food-recommendation {
+    background-color: $xl-green;
+    display: inline-block;
+    padding: 30px 30px 14px;
+    margin-bottom: 30px;
+    
+    @include breakpoint("large") {
+        width: 30%;
+    }
+}
+
+.productView-food-rec-title {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-family: $fontFamily-headings;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 600;
+}
+
+.productView-divider {
+    margin-top: 0;
+    border: 0;
+    border-top: solid 1px black;
+}
+
+.productView-size {
+    background-color: $xl-green;
+    display: inline-block;
+    padding: 5px 9px;
+}
+
+.productView-spec {
+    width: 100%;
+    display: inline-block;
+    margin-top: 2.25rem;
+    
+    @include breakpoint("medium") {
+        width: 66%;
+    }
+    
+    li {
+        width: 100%;
+        display: inline-block;
+    }
+}
+
+.product-spec-list {
+    margin: 0;
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+
+    li {
+        span {
+            width: 49%;
+            display: inline-block;
+            vertical-align: top;
+            background: white;
+            display: inline;
+            padding-right: (spacing("base") / 3);
+        }
+            
+        & > span {
+            padding-left: (spacing("base") / 4 );
+            padding-right: 0;
+            max-width: 50%;
+            display: inline-block;
+        }
+    }
+}
+
+.productView-spec-item {
+    width: 49%;
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none;
+    display: inline-block;
+
+    :before {
+        float: left;
+        width: 0;
+        white-space: nowrap;
+        content: ". . . . . . . . . . . . . . . . . . . . . . . . .";
+        font-weight: normal;
+    }
+}
+
+.productView-spec-label {
+    font-weight: $fontWeight-bold;
+    text-transform: uppercase;
+}
+
+.productView-creation {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2.25rem;
+    
+    @include breakpoint("medium") {
+        width: 30%;
+        padding-left: 30px;
+        border-left: solid 1px lightgrey;
+    }
+}
+
+.row {
+    clear: both;
 }

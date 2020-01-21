@@ -20,19 +20,18 @@
 .slick-prev {
     @include carouselOpaqueBackgrounds($slick-arrow-bgColor);
     z-index: 1;
-    border: 1px solid $slick-arrow-borderColor;
-    height: remCalc(61px);
+    height: remCalc(40px);
     margin-top: -(remCalc(15px));
     padding: remCalc(10px);
-    width: remCalc(40px);
+    width: remCalc(30px);
 
     &::before {
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: 100%;
         display: block;
-        height: remCalc(41px);
-        width: remCalc(20px);
+        height: remCalc(23px);
+        width: remCalc(12px);
     }
 
     &:hover,
@@ -101,14 +100,14 @@
     margin: 0;
 
     li {
-        @include square(32px);
+        @include square(24px);
         margin: 0;
         padding: remCalc(5px);
 
         // scss-lint:disable SelectorDepth, NestingDepth
         button,
         button::before {
-            @include square(15px);
+            @include square(10px);
             border-radius: 50%;
         }
 
@@ -158,8 +157,7 @@
 // disabled carousel elements
 // -----------------------------------------------------------------------------
 .slick-disabled {
-    cursor: $cursor-default-value;
-    opacity: 0.1;
+    opacity: 1;
 }
 
 

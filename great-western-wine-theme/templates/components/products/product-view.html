@@ -8,27 +8,51 @@
         {{/if}}
     {{/each}}
 
+    <section class="productView-images" data-image-gallery>
+        {{!--
+            Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
+            for variant/rule image replacement
+        --}}
+        <figure class="productView-image"
+                data-image-gallery-main
+                {{#if product.main_image}}
+                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+                {{/if}}
+                >
+            <div class="productView-img-container">
+                {{!-- Remove the surrounding a-element if there is no main image. --}}
+                {{#if product.main_image}}
+                    <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+                        target="_blank">
+                {{/if}}
+                {{> components/common/responsive-img
+                    image=product.main_image
+                    class="productView-image--default"
+                    fallback_size=theme_settings.product_size
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                    otherAttributes="data-main-image"
+                }}
+                {{!-- Remove the surrounding a-element if there is no main image. --}}
+                {{#if product.main_image}}
+                    </a>
+                {{/if}}
+            </div>
+        </figure>
+    </section>
+
     <section class="productView-details">
         <div class="productView-product">
-            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
+                {{#filter product.custom_fields 'simpleName' property='name' }}
+                    {{value}}
+                {{/filter}}
+            </h1>
             {{#if product.brand}}
                 <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
-                    <a href="{{product.brand.url}}"{{#if schema}} itemprop="url"{{/if}}><span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span></a>
+                    <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span>
                 </h2>
             {{/if}}
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-            <div class="productView-price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                    {{> components/products/price price=product.price schema_org=schema}}
-                {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}}
-            </div>
-            {{{region name="product_below_price"}}}
             <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                 {{#if settings.show_product_rating}}
                     {{#if product.num_reviews '>' 0}}
@@ -48,8 +72,7 @@
                             {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
                         {{/if}}
                     </span>
-                {{/if}}
-                {{#if settings.show_product_reviews}}
+                    {{#if settings.show_product_reviews}}
                     <span class="productView-reviewLink">
                         <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
                            {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
@@ -58,13 +81,150 @@
                     </span>
                     {{> components/products/modals/writeReview}}
                 {{/if}}
+                {{/if}}
             </div>
+            {{#if settings.show_wishlist}}
+            {{> components/common/wishlist-dropdown}}
+            {{/if}}
+            {{#if product.call_for_price}}
+                <p class="productView-price">
+                    <span>{{product.call_for_price}}</span>
+                </p>
+            {{/if}}
+
+            <hr class="productView-divider">
+                <div class="productView-icons">
+                    {{#filter product.custom_fields 'colour' property='name' }}
+                    <div class="productView-icon">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'subType' property='name' }}
+                        {{#contains value 'Wine'}}
+                        {{else}}
+                            <div class="productView-icon">
+                                <i class="fal fa-wine-bottle icon"></i>
+                                {{value}}
+                            </div>
+                        {{/contains}}
+                        {{#contains value 'Dessert Wine'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-wine-bottle icon"></i>
+                                {{value}}
+                            </div>
+                        {{/contains}}
+                    {{/filter}}
+                    {{#filter product.custom_fields 'countryCode' property='name' }}
+                    <div class="productView-icon">
+                        <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'country' property='name' }}
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'region' property='name' }}
+                    <div class="productView-icon">
+                        <i class="fal fa-map-marker-alt icon"></i>
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'vintage' property='name' }}
+                    <div class="productView-icon">
+                        <span class="vintage-icon">{{value}}</span>
+                        Vintage
+                    </div>
+                    {{/filter}}
+                    {{#filter product.custom_fields 'vegetarian' property='name' }}
+                    {{#if value '===' 'Yes'}}
+                    <div class="productView-icon">
+                        <span class="text-icon icon">V</span>
+                        Vegetarian
+                    </div>
+                    {{/if}}
+                    {{/filter}}
+                    {{#filter product.custom_fields 'vegan' property='name' }}
+                    {{#if value '===' 'Yes'}}
+                    <div class="productView-icon">
+                        <span class="text-icon icon">Vg</span>
+                        Vegan
+                    </div>
+                    {{/if}}
+                    {{/filter}}
+                    {{#filter product.custom_fields 'awardName' property='name' }}
+                    <div class="productView-icon">
+                        <i class="fal fa-medal icon"></i>
+                        {{value}}
+                    </div>
+                    {{/filter}}
+                </div>
+            <hr class="icon-bottom">
+
+
+            <div class="productView-price">
+                {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
+                    {{> components/products/price price=product.price schema_org=schema}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+
+
+
+                <div class="productView-options add-to-cart-form">
+                        <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                              data-cart-item-add>
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="product_id" value="{{product.id}}"/>
+                            <div data-product-option-change style="display:none;">
+                                {{#each product.options}}
+                                    {{{dynamicComponent 'components/products/options'}}}
+                                {{/each}}
+                            </div>
+                            <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}" style="display:none;">
+                                <label class="form-label form-label--alternate">
+                                    {{lang 'products.current_stock'}}
+                                    <span data-product-stock>{{product.stock_level}}</span>
+                                </label>
+                            </div>
+                            {{#if product.can_purchase}}
+                                {{> components/products/add-to-cart}}
+                            {{/if}}
+                            {{#if product.out_of_stock}}
+                                {{#if product.out_of_stock_message}}
+                                    <div class="button btn-oos">OUT OF STOCK</div>
+                                {{else}}
+                                    {{> components/common/alert-error (lang 'products.sold_out')}}
+                                {{/if}}
+                            {{/if}}
+                        </form>
+                    </div>
+
+                    
+                </div>
+
+            {{#filter product.custom_fields 'type' property='name' }}
+            {{#contains value 'Wine'}}
+            <div class="multibuy-cont">
+            {{else}}
+            <div class="multibuy-cont" style="display:none">
+            {{/contains}}
+            {{/filter}}
+                <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
+                <span class="multibuy-price">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
+                <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
+            </div>
+
+            <div class="productView-price-usp">
+                <i class="fal fa-truck icon"></i>
+                <h3 class="usp-title">Free Delivery</h3>
+                <p class="usp-txt">When you spend over £100</p>
+                <p class="usp-extra-txt">We aim to deliver in 3 working days</p>
+            </div>
+
+            {{{region name="product_below_price"}}}
+
             {{product.detail_messages}}
             <dl class="productView-info">
-                <dt class="productView-info-name sku-label"{{#unless product.sku}} style="display: none;"{{/unless}}>{{lang 'products.sku'}}</dt>
-                <dd class="productView-info-value" data-product-sku>{{product.sku}}</dd>
-                <dt class="productView-info-name upc-label"{{#unless product.upc}} style="display: none;"{{/unless}}>{{lang 'products.upc'}}</dt>
-                <dd class="productView-info-value" data-product-upc>{{product.upc}}</dd>
                 {{#if product.condition}}
                     <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
                     <dd class="productView-info-value">{{product.condition}}</dd>
@@ -139,125 +299,123 @@
                     </div>
                 {{/if}}
 
-                {{#if theme_settings.show_custom_fields_tabs '!==' true}}
-                    {{#each product.custom_fields}}
-                        <dt class="productView-info-name">{{name}}:</dt>
-                        <dd class="productView-info-value">{{{value}}}</dd>
-                    {{/each}}
-                {{/if}}
+
             </dl>
         </div>
     </section>
 
-    <section class="productView-images" data-image-gallery>
-        {{!--
-            Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
-            for variant/rule image replacement
-        --}}
-        <figure class="productView-image"
-                data-image-gallery-main
-                {{#if product.main_image}}
-                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
-                {{/if}}
-                >
-            <div class="productView-img-container">
-                {{!-- Remove the surrounding a-element if there is no main image. --}}
-                {{#if product.main_image}}
-                    <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
-                        target="_blank">
-                {{/if}}
-                {{> components/common/responsive-img
-                    image=product.main_image
-                    class="productView-image--default"
-                    fallback_size=theme_settings.product_size
-                    lazyload=theme_settings.lazyload_mode
-                    default_image=theme_settings.default_image_product
-                    otherAttributes="data-main-image"
-                }}
-                {{!-- Remove the surrounding a-element if there is no main image. --}}
-                {{#if product.main_image}}
-                    </a>
-                {{/if}}
-            </div>
-        </figure>
-        <ul class="productView-thumbnails"{{#gt product.images.length 5}} data-slick='{
-                "infinite": false,
-                "mobileFirst": true,
-                "slidesToShow": 5,
-                "slidesToScroll": 1
-            }'{{/gt}}>
-            {{#each product.images}}
-                <li class="productView-thumbnail">
-                    <a
-                        class="productView-thumbnail-link"
-                        href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
-                        data-image-gallery-item
-                        data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
-                        data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
-                        data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
-                    >
-                    {{> components/common/responsive-img
-                        image=this
-                        fallback_size=../theme_settings.productthumb_size
-                        lazyload=../theme_settings.lazyload_mode
-                    }}
-                    </a>
-                </li>
-            {{/each}}
-        </ul>
-    </section>
-
-    <section class="productView-details">
-        <div class="productView-options">
-            {{#if product.release_date }}
-                <p>{{product.release_date}}</p>
+    <div class="row">        
+        <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
+            <hr class="productView-divider">
+            {{#if theme_settings.show_product_details_tabs}}
+                {{> components/products/description-tabs}}
+            {{else}}
+                {{> components/products/description}}
+                {{#filter product.custom_fields 'size' property='name'}}
+                    <p class="productView-size">{{value}}</p>
+                {{/filter}}
             {{/if}}
-            <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
-                  data-cart-item-add>
-                <input type="hidden" name="action" value="add">
-                <input type="hidden" name="product_id" value="{{product.id}}"/>
-                <div data-product-option-change style="display:none;">
-                    {{#each product.options}}
-                        {{{dynamicComponent 'components/products/options'}}}
-                    {{/each}}
-                </div>
-                <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
-                    <label class="form-label form-label--alternate">
-                        {{lang 'products.current_stock'}}
-                        <span data-product-stock>{{product.stock_level}}</span>
-                    </label>
-                </div>
-                {{#if product.can_purchase}}
-                    {{> components/products/add-to-cart}}
-                {{/if}}
-                {{#if product.out_of_stock}}
-                    {{#if product.out_of_stock_message}}
-                        {{> components/common/alert-error product.out_of_stock_message}}
-                    {{else}}
-                        {{> components/common/alert-error (lang 'products.sold_out')}}
-                    {{/if}}
-                {{/if}}
-            </form>
-            {{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
-            {{/if}}
+        </article>
+        
+        {{#filter product.custom_fields 'foodRecommendation' property='name' }}
+        <div class="productView-food-recommendation">
+            <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
+            <p>{{value}}</p>
         </div>
-        {{> components/common/share}}
-    </section>
+        {{/filter}}
+    </div>
 
-    <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
-        {{#if theme_settings.show_product_details_tabs}}
-            {{> components/products/description-tabs}}
-        {{else}}
-            {{> components/products/description}}
-        {{/if}}
-    </article>
+    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
+        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+    {{/all}}
+
+    <div class="productView-press-reviews">
+        {{#filter product.custom_fields 'press1Text' property='name'}}
+        <div class="press-review-cont">
+            <blockquote class="press-review-quote">{{value}}</blockquote>{{/filter}}
+            {{#filter product.custom_fields 'press1Attribution' property='name'}}
+            <h4 class="press-review-title">
+                {{value}}
+            </h4>
+        </div>
+        {{/filter}}
+        {{#filter product.custom_fields 'press2Text' property='name'}}
+        <div class="press-review-cont">
+            <blockquote class="press-review-quote">{{value}}</blockquote>
+            <h4 class="press-review-title">{{/filter}}
+                {{#filter product.custom_fields 'press2Attribution' property='name'}}{{value}}
+            </h4>
+        </div>
+        {{/filter}}
+    </div>
+    <div class="row">
+        {{> components/products/product-spec }}
+
+        {{#filter product.custom_fields 'winemaking' property='name' }}
+            <div class="productView-creation">
+                <h3 class="stylised-medium">Winemaking</h3>
+                <p>{{value}}</p>
+            </div>
+        {{/filter}}
+    </div>
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
     <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
-        <span aria-hidden="true">&#215;</span>
+        <span aria-hidden="Yes">&#215;</span>
     </a>
     <div class="modal-content"></div>
     <div class="loadingOverlay"></div>
 </div>
+
+<script>
+    var productName = "{{product.title}}";
+    var productPrice = "{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}";
+    if(productName){
+        productName = productName.replace(/\,.+/,"").trim();
+    }
+    if(productPrice){
+        productPrice = productPrice.replace(/[^0-9\.]+/g,"").trim();
+    }
+    window.productItems = {
+        "products" : [{
+            "id" : "{{product.sku}}",
+            "name" : productName,
+            "category" : "{{product.brand.name}}",
+            "price" : productPrice,
+            "quantity" : "1",
+            "variant" : "single-product-option"
+        }],
+        "fb" : {
+            "currency" : "GBP",
+            "content_ids" : ["{{product.sku}}"],
+            "content_names" : [productName],
+            "content_type" : "product",
+            "content_categories" : ["{{product.brand.name}}"],
+            "content_quantities" : [1],
+            "content_prices" : [productPrice],
+            "num_of_items" : 1,
+            "value" : productPrice
+        },
+        "pinterest" : {
+            "value" : productPrice,
+            "order_quantity" : 1,
+            "currency" : "GBP",
+            "line_items" : [{
+                "id" : "{{product.sku}}",
+                "name" : "{{product.title}}",
+                "category" : "{{product.brand.name}}",
+                "price" : "{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}",
+                "quantity" : "1",
+                "variant" : "single-product-option"
+            }]
+        }
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "event" : "productView",
+        "product" : window.productItems.products,
+        "pinterest" : window.productItems.pinterest.line_items,
+        "fb" : window.productItems.fb
+    })
+</script>

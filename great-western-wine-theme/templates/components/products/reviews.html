@@ -1,7 +1,15 @@
 {{#if reviews.total}}
 <section class="toggle productReviews" id="product-reviews" data-product-reviews>
     <h4 class="toggle-title">
-        {{lang 'products.reviews.header' total=reviews.total}}
+        <span class="stylised-medium">{{lang 'products.reviews.title' }}</span>
+        {{#if settings.show_product_reviews}}
+        <span class="productView-reviewLink">
+            <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+               {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
+               {{lang 'products.reviews.new'}}
+            </a>
+        </span>
+        {{> components/products/modals/writeReview}}
         {{#if theme_settings.show_product_reviews_tabs '!==' true}}
             <a class="toggleLink is-open" data-collapsible href="#productReviews-content">
                 <span class="toggleLink-text toggleLink-text--on">
@@ -13,6 +21,7 @@
             </a>
         {{/if}}
     </h4>
+    {{/if}}
     <div class="toggle-content is-open" id="productReviews-content" aria-hidden="false">
         <ul class="productReviews-list" id="productReviews-list">
             {{#each reviews.list}}

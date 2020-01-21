@@ -1,45 +1,50 @@
-<section class="heroCarousel"
-    data-slick='{
-        "arrows": {{arrows}},
-        "mobileFirst": true,
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-        "autoplay": true,
-        "autoplaySpeed": {{carousel.swap_frequency}},
-        "lazyLoad": "anticipated"
-    }'>
-    {{#each carousel.slides}}
-    <a href="{{url}}">
-        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
-            <div class="heroCarousel-image-wrapper" {{#and image_height image_width}}style="height: {{multiply (divide image_height image_width) 100}}vw"{{/and}}>
-            {{#if @first}}
-                {{> components/common/responsive-img
-                    image=stencil_image
-                    class="heroCarousel-image"
-                    fallback_size='1280w'
-                    lazyload='disabled'
-                }}
-            {{else}}
-                {{> components/common/responsive-img
-                    image=stencil_image
-                    class="heroCarousel-image"
-                    fallback_size='1280w'
-                    lazyload='lazyload'
-                }}
-            {{/if}}
-            </div>
-            {{#if heading}}
-                {{> components/carousel-content show_background=true}}
-            {{else}}
-                {{#if text}}
+<div class="home-carousel-cont">
+    <div class="home-carousel-wrap">
+        <section class="heroCarousel"
+        data-slick='{
+            "arrows": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "autoplay": true,
+            "autoplaySpeed": {{carousel.swap_frequency}},
+            "lazyLoad": "anticipated",
+            "adaptiveHeight": "true",
+            "infinite": "true"
+        }'>
+            {{#each carousel.slides}}
+            <a href="{{url}}">
+                <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+                    <div class="heroCarousel-image-wrapper">
+                        {{#if @first}}
+                        {{> components/common/responsive-img
+                            image=stencil_image
+                            class="heroCarousel-image"
+                            fallback_size='128w'
+                            lazyload='disabled'
+                        }}
+                        {{else}}
+                        {{> components/common/responsive-img
+                            image=stencil_image
+                            class="heroCarousel-image"
+                            fallback_size='128w'
+                            lazyload='lazyload'
+                        }}
+                        {{/if}}
+                    </div>
+                    {{#if heading}}
                     {{> components/carousel-content show_background=true}}
-                {{else}}
+                    {{else}}
+                    {{#if text}}
+                    {{> components/carousel-content show_background=true}}
+                    {{else}}
                     {{#if button_text}}
-                        {{> components/carousel-content show_background=false}}
+                    {{> components/carousel-content show_background=false}}
                     {{/if}}
-                {{/if}}
-            {{/if}}
-        </div>
-    </a>
-    {{/each}}
-</section>
+                    {{/if}}
+                    {{/if}}
+                </div>
+            </a>
+            {{/each}}
+        </section>
+    </div>
+</div>

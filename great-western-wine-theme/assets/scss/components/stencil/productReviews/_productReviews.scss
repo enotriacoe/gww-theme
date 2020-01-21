@@ -52,3 +52,7 @@
 .productReview-ratingNumber {
     @include u-hidden("visually");
 }
+
+.productReviews {
+    clear: both;
+}

@@ -1,0 +1,99 @@
+.btn {
+    display: inline-block;
+    padding: 5px 0;
+    line-height: 1.15;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-coral-line {
+    border-bottom: 4px solid $color-warning;
+    color: $black;
+    
+    &:after {
+        content: "\f054";
+        font-family: "Font Awesome 5 Pro"; 
+        font-weight: 700; 
+        display: none;
+    }
+}
+
+.fa-f054 {
+    font-size: 11px;
+    margin-bottom: 1px;
+    margin-left: 7px;
+}
+
+.input-btn{
+    border: none;
+    padding: 0;
+    width: auto !important;
+    transition: color 0.15s ease;
+    & + svg {
+        transition: color 0.15s ease;
+    }
+    &:hover {
+        color: $grey-hover;
+        & + svg {
+            color: $grey-hover; 
+        }
+    }
+}
+
+.button--primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    border-radius: 0;
+    &:hover {
+        border-color: $primary-color;
+    }
+}
+
+.button--light {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-half {
+    display: inline-block;
+    margin: 0 0.75rem 0.75rem;
+    border-radius: 0;
+    padding: spacing("base");
+    flex-grow: 1;
+}
+
+.btn-oos {
+    background-color: lightgray;
+    color: black;
+    border-radius: 0;
+    width: 100%;
+    height: 50px;
+    line-height: unset !important;
+    border: 0;
+    margin: 0;
+    cursor: default;
+
+    &:hover {
+        background-color: lightgray;
+        transform: none;
+        border: 0;
+    }
+}
+
+.btn-back {
+    font-size: 18px;
+    font-weight: 500;
+
+    .icon {
+        margin-right: 10px;
+        margin-bottom: 2px;
+    }
+
+}
+
+.newsletter-cta {
+    flex: 1 1 auto;
+    margin: 0 1%;
+    padding: 0.875rem 1rem;
+}

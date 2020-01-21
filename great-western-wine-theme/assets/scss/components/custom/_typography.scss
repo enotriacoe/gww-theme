@@ -1,0 +1,37 @@
+// =============================================================================
+// TYPOGRAPHY - CUSTOM CLASSES OUTSIDE OF FOUNDATION
+// =============================================================================
+
+.stylised-title {
+    font-family: $fontFamily-headings;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 1rem;
+
+    @include breakpoint("large"){
+        font-size: 50px;
+    }
+}
+
+.stylised-medium {
+    font-family: $fontFamily-headings;
+    font-weight: 700;
+    line-height: 1;
+    font-size: 30px;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.stylised-slim {
+    @extend .stylised-medium;
+    margin: (spacing("base") / 2) 0;
+}
+
+.brand-color-text {
+    color: $primary-color;
+}
+
+.page-heading-left.stylised-medium {
+    display: inline-block;
+}

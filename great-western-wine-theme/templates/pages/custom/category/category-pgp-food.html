@@ -1,0 +1,103 @@
+---
+category:
+    shop_by_price: false
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/category/category-header}}
+    </aside>
+
+    <main class="page-content grid-with-sub-items" id="product-listing-container">
+        {{#if category.subcategories}}
+            <div class="productGrid"> 
+                {{#each category.subcategories}}
+                <div class="group-item product {{dashcase name}}-item">
+                    <a class="close-sub-items" href="javascript:void(0)"><i class="fal fa-times-circle"></i></a>
+                    <div class="group-item-image">
+                        {{#if image}}
+                        <img src="{{getImage image}}" alt="Photo of {{name}}">
+                        {{/if}}
+                    </div>
+                    <a href="{{url}}" alt="See all {{name}}" title="See all Wine"><h3 class="stylised-slim">{{name}}</h3></a>
+                    <a class="group-item-options" href="javascript:void(0)" data-target="{{dashcase name}}-item" alt="{{name}} - Food Options Choices" title="{{name}} - Food Options Choices">See food options <i class="fal fa-chevron-circle-down"></i></a>
+                    <ul class="group-sub-items {{dashcase name}}-sub-items">
+                        {{#if name '===' 'Red meat'}}
+                            <li><a href="/steak/">Steak<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/lamb/">Lamb<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/veal/">Veal<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/pork/">Pork<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Fish & Seafood'}}
+                            <li><a href="/lobster/">Lobster<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/shellfish/">Shellfish<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/tuna/">Tuna<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/cod-haddock/">Cod & Haddock<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/salmon/">Salmon<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/prawns/">Prawns<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/crab/">Crab<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/oysters/">Oysters<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/scallops/">Scallops<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/monkfish/">Monkfish<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/sea-bass/">Sea Bass<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Pasta'}}
+                            <li><a href="/tomato-based/">Tomato based<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/creamy/">Creamy<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/meat/">Meat<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/mushroom/">Mushroom<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/seafood/">Seafood<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Spicy'}}
+                            <li><a href="/mexican/">Mexican<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/indian/">Indian<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/thai/">Thai<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/chinese/">Chinese<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Game'}}
+                            <li><a href="/duck/">Duck<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/goose/">Goose<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/pheasant/">Pheasant<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/venison/">Venison<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Cheese'}}
+                            <li><a href="/blue-cheese/">Blue cheese<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/brie-camembert/">Brie & Camembert<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/cheddar/">Cheddar<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/goats-cheese/">Goat's Cheese<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Dessert'}}
+                            <li><a href="/fruit/">Fruit<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/cheesecake/">Cheesecake<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/chocolate/">Chocolate<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                        {{#if name '===' 'Vegan & Vegetarian'}}
+                            <li><a href="/legumes/">Legumes<i class="fal fa-chevron-right icon"></i></a></li>
+                            <li><a href="/salad/">Salad<i class="fal fa-chevron-right icon"></i></a></li>
+                        {{/if}}
+                    </ul>
+                    <a href="{{url}}" class="btn btn-coral-line" alt="See all {{name}}" title="See all Wine">See all Wine</a>
+                </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

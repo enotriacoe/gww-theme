@@ -54,6 +54,39 @@ export default class ProductDetails {
         $productOptionsElement.show();
 
         this.previewModal = modalFactory('#previewModal')[0];
+
+        $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
+            e.stopImmediatePropagation();
+            const target = $(e.currentTarget);
+            const targetsParent = $(e.currentTarget).parent();
+
+            if ($(this).hasClass('is-open')) {
+                target.removeClass('is-open').attr('aria-expanded', 'false');
+                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
+            } else {
+                this.closeAllWishlists();
+                target.addClass('is-open').attr('aria-expanded', 'true');
+                targetsParent.find('ul').addClass('is-open f-open-dropdown').attr('aria-hidden', 'false');
+            }
+        });
+
+        $(document).click((e) => {
+            if (($(e.target).closest($('[data-dropdown="wishlist-dropdown"]')).length === 0)) {
+                this.closeAllWishlists();
+            }
+        });
+    }
+
+    closeAllWishlists() {
+        if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
+            $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
+                const target = $(this);
+                const targetsParent = $(this).parent();
+
+                target.removeClass('is-open').attr('aria-expanded', 'false');
+                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
+            });
+        }
     }
 
     /**
@@ -307,51 +340,6 @@ export default class ProductDetails {
         }
     }
 
-    /**
-     *
-     * Handle action when the shopper clicks on + / - for quantity
-     *
-     */
-    listenQuantityChange() {
-        this.$scope.on('click', '[data-quantity-change] button', event => {
-            event.preventDefault();
-            const $target = $(event.currentTarget);
-            const viewModel = this.getViewModel(this.$scope);
-            const $input = viewModel.quantity.$input;
-            const quantityMin = parseInt($input.data('quantityMin'), 10);
-            const quantityMax = parseInt($input.data('quantityMax'), 10);
-
-            let qty = parseInt($input.val(), 10);
-
-            // If action is incrementing
-            if ($target.data('action') === 'inc') {
-                // If quantity max option is set
-                if (quantityMax > 0) {
-                    // Check quantity does not exceed max
-                    if ((qty + 1) <= quantityMax) {
-                        qty++;
-                    }
-                } else {
-                    qty++;
-                }
-            } else if (qty > 1) {
-                // If quantity min option is set
-                if (quantityMin > 0) {
-                    // Check quantity does not fall below min
-                    if ((qty - 1) >= quantityMin) {
-                        qty--;
-                    }
-                } else {
-                    qty--;
-                }
-            }
-
-            // update hidden input
-            viewModel.quantity.$input.val(qty);
-            // update text
-            viewModel.quantity.$text.text(qty);
-        });
-    }
 
     /**
      *

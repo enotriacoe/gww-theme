@@ -14,7 +14,13 @@
 }
 
 .alertBox--info {
-    color: stencilColor("alert-color-alt");
+    color: $primary-color;
+    background: none;
+    border: 3px solid $primary-color;
+
+    svg {
+        fill: $primary-color;
+    }
 
     .alertBox-close {
 

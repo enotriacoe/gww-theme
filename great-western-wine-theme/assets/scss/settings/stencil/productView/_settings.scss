@@ -3,9 +3,9 @@
 // =============================================================================
 
 
-$productView-brand-link-color:                  $color-textSecondary;
-$productView-brand-link-color--hover:           $color-textSecondary-hover;
-$productView-brand-link-color--active:          $color-textSecondary-active;
+$productView-brand-link-color:                  black;
+$productView-brand-link-color--hover:           black;
+$productView-brand-link-color--active:          black;
 
 $productOptions-list-border:                    1px solid stencilColor("input-border-color");
 $productOptions-list-item-borderTop:            $productOptions-list-border;

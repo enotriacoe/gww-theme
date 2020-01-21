@@ -20,11 +20,11 @@
 .heroCarousel {
     width: 1px;
     min-width: 100%;
-    margin-bottom: (spacing("double") + spacing("single"));
+    margin-bottom: 0;
     margin-top: 0;
 
     &.slick-initialized { // 2
-        max-height: remCalc(1000);
+        max-height: remCalc(600px);
         opacity: 1;
     }
 
@@ -39,35 +39,26 @@
     .slick-next,
     .slick-prev {
         top: 50%;
+
+        &:before {
+            opacity: 1;
+        }
     }
 
     .slick-next {
-        right: 15px;
-
-        @include breakpoint("medium") {
-            right: 25px;
-        }
+        right: 0
     }
 
     .slick-prev {
-        left: 15px;
-
-        @include breakpoint("medium") {
-            left: 25px;
-        }
+        left: 0;
     }
 
     .slick-dots {
         bottom: spacing("third");
 
         @include breakpoint("medium") {
-            bottom: spacing("single");
-        }
-
-        // scss-lint:disable SelectorDepth, NestingDepth
-        li {
-            @include carouselOpaqueBackgrounds($slick-dot-bgColor);
-        }
+            bottom: (spacing("single") * 1.2);
+        }   
     }
 }
 
@@ -87,7 +78,7 @@
 
     .heroCarousel-image-wrapper {
         @include breakpoint("medium") {
-            max-height: remCalc(600px);
+            max-height: remCalc(500px);
         }
     }
 
@@ -110,47 +101,55 @@
 
 .heroCarousel-content {
     background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half") spacing("single") (spacing("double"));
-    text-align: center;
+    padding: spacing("half") spacing("single") (spacing("single"));
+    text-align: left;
+    border-left: 4px solid #e1675c;
 
     @include breakpoint("medium") {
         @include carouselOpaqueBackgrounds;
-        background-color: rgba($carousel-bgColor, 0.9);
+        background-color: rgba($carousel-bgColor, 1);
         left: 0;
         margin: 0 auto;
-        padding: spacing("single") * 1.5;
+        padding: 1.3rem (spacing("single") * 1.5);
         position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: remCalc(700px);
+        bottom: 0;
 
         &.heroCarousel-content--empty {
             background-color: transparent;
         }
     }
+    
+    @include breakpoint("large") {
+        transform: translateY(-15%);
+        width: remCalc(600px);
+        max-height: 260px;
+    }
 }
 
 .heroCarousel-title {
     color: $carousel-title-color;
-    font-size: fontSize("small");
+    font-size: 35px;
     margin-top: 0;
+    font-family: $fontFamily-headings;
+    font-weight: 700;
 
     @include breakpoint("medium") {
-        font-size: fontSize("hero");
+        font-size: $fontSize-largest;
+        line-height: 1;
+    }
+    
+    @include breakpoint("large") {
+        font-size: $fontSize-hero;
     }
 }
 
 .heroCarousel-description {
     color: $carousel-description-color;
-    font-size: fontSize("tiny");
-
-    @include breakpoint("small") {
-        font-size: fontSize("smallest");
-    }
+    font-size: fontSize("large");
+    margin-bottom: 0;
 
     @include breakpoint("medium") {
-        font-size: fontSize("smaller");
+        font-size: fontSize("large");
     }
 }
 
@@ -158,6 +157,24 @@
     margin: 0;
 
     @include breakpoint("medium") {
-        margin-top: spacing("single");
+        margin-top: (spacing("single") / 3);
     }
+}
+
+
+// Containers & Wrappers for GWW 
+// ----------------------------------------------------------------------------
+
+.home-carousel-cont {
+    width: 100%;
+    display: inline-block;
+
+    @include breakpoint ("medium") {
+        width: 65%;
+    }
+}
+
+.home-carousel-wrap {
+    width: 100%;
+    display: inline-block;
 }

@@ -1,15 +1,15 @@
 {{inject 'passwordRequirements' settings.password_requirements}}
 {{#partial "page"}}
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h1 class="page-heading">{{lang 'create_account.heading' }}</h1>
 
-    <div class="account account--fixed">
+    <div class="account account--fixed account--new">
+        <h1 class="page-heading stylised-medium title--edit">{{lang 'create_account.heading' }}</h1>
         <div class="account-body">
             {{#if forms.create_account.error}}
                 {{> components/common/alert-error forms.create_account.error}}
             {{/if}}
             {{#if settings.account_creation_enabled}}
-                <form action="{{urls.auth.save_new_account}}" data-create-account-form method="post" class="form">
+                <form action="{{urls.auth.save_new_account}}" data-create-account-form method="post" class="form new-account-form">
                     <div class="form-row form-row--half">
                         {{#each forms.create_account.account_fields }}
                             {{{dynamicComponent 'components/common/forms'}}}
@@ -22,7 +22,9 @@
                     </div>
                     {{{ forms.create_account.recaptcha.markup}}}
                     <div class="form-actions">
-                        <input type="submit" class="button button--primary" value="{{lang 'forms.create_account.submit_value' }}" />
+                        <div class="btn btn-coral-line">
+                            <input type="submit" class="btn input-btn" value="{{lang 'forms.create_account.submit_value' }}" />
+                        </div>
                     </div>
                 </form>
             {{/if}}

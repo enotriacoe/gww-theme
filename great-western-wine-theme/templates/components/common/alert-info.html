@@ -4,5 +4,8 @@
     </div>
     <p class="alertBox-column alertBox-message">
         <span>{{{this}}}</span>
+        {{#contains this "you're saving"}}
+            <span id="promotionApplied" promotionCode="multibuy12bottle" style="display:none">
+        {{/contains}}
     </p>
 </div>

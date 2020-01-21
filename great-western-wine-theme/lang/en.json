@@ -44,7 +44,7 @@
                 "or": "or"
             },
             "button": "Check out",
-            "empty_cart": "Your cart is empty",
+            "empty_cart": "Your basket is empty",
             "title": "Click here to proceed to checkout",
             "item": "Item",
             "price": "Price",
@@ -62,10 +62,10 @@
         "preview": {
             "checkout_now": "Check out now",
             "checkout_multiple": "or check out with multiple addresses",
-            "view_cart": "View Cart"
+            "view_cart": "View Basket"
         },
-        "label": "Your Cart ({quantity, plural, one {# item} other {# items}})",
-        "is_empty": "Your cart is empty",
+        "label": "Your Basket ({quantity, plural, one {# item} other {# items}})",
+        "is_empty": "Your basket is empty",
         "coupon_code": "Coupon Code",
         "discount": "Discount",
         "gift_certificate": "Gift Certificate",
@@ -93,12 +93,12 @@
             "remove": "Remove"
         },
         "shipping_estimator": {
-            "add_info": "Add Info",
+            "add_info": "Estimate shipping cost",
             "select_a_country": "Country",
-            "select_a_state": "State/province",
+            "select_a_state": "County",
             "estimate_shipping": "Estimate Shipping",
             "suburb_city": "Suburb/city",
-            "zip_postal_code": "Zip/postcode",
+            "zip_postal_code": "Postcode",
             "free_shipping": "Free shipping",
             "hide_ups_rates": "Hide UPS Rates",
             "show_ups_rates": "Show UPS Rates"
@@ -119,12 +119,12 @@
             "preview": "Preview"
         },
         "added_to_cart": {
-            "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your cart. What's next?",
-            "your_cart_contains": "Your cart contains {num_products, plural, one {1 item} other {# items}}",
+            "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your basket. What's next?",
+            "your_cart_contains": "Your basket contains {num_products, plural, one {1 item} other {# items}}",
             "proceed_to_checkout": "Proceed to checkout",
             "order_subtotal": "Order subtotal",
             "continue_shopping": "Continue Shopping",
-            "view_or_edit_cart": "View or edit your cart",
+            "view_or_edit_cart": "View or edit your basket",
             "you_might_also_like": "You may also like"
         }
     },
@@ -178,8 +178,8 @@
             "alpha_asc": "A to Z",
             "alpha_desc": "Z to A",
             "reviews": "By Review",
-            "price_asc": "Price: Ascending",
-            "price_desc": "Price: Descending"
+            "price_asc": "Price: Low to High",
+            "price_desc": "Price: High to Low"
         },
         "loading": "Loading",
         "month": "Month",
@@ -205,7 +205,7 @@
         "header": "Comparing {products, plural, one {# Product} other {# Products}}",
         "remove": "Remove",
         "no_remove": "At least 2 products are needed to make a valid comparison.",
-        "add_to_cart": "Add to cart"
+        "add_to_cart": "Add to basket"
     },
     "category": {
         "label": "Categories",
@@ -228,8 +228,8 @@
             "heading": "Redeem Gift Certificate",
             "intro": "To redeem a gift certificate at {store_name}, follow the simple steps below.",
             "item1": "You need your unique gift certificate code, which is part of the gift certificate that was emailed to you as an attachment. It will look something like Z50-Y6K-COS-402.",
-            "item2": "Browse the store and add items to your cart as you normally would.",
-            "item3": "Click the '<a href=\"{cart_url}\">View Cart</a>' link to view the contents of your shopping cart.",
+            "item2": "Browse the store and add items to your basket as you normally would.",
+            "item3": "Click the '<a href=\"{cart_url}\">View basket</a>' link to view the contents of your shopping basket.",
             "item4": "Type your gift certificate code in to the 'Redeem Gift Certificate' box and click 'Go'."
         },
         "balance": {
@@ -270,7 +270,7 @@
         "breadcrumb": "Your Account",
         "nav": {
             "overview": "Overview",
-            "orders": "Orders",
+            "orders": "My Orders",
             "returns": "Returns",
             "messages": "Messages ({num_new_messages})",
             "wishlists": "Wish Lists ({num_wishlists})",
@@ -334,7 +334,7 @@
                 "order_status": "Order status:",
                 "payment_date": "Order date:",
                 "payment_method": "Payment method:",
-                "comments": "Order Comments",
+                "comments": "Gift Message",
                 "download_items": "Download Items",
                 "card_ending": "ending in {card}",
                 "shipments": {
@@ -385,11 +385,11 @@
               "address_line_1": "Address Line 1",
               "address_line_2": "Address Line 2",
               "suburb_city": "Suburb/City",
-              "state_province": "State/Province",
-              "choose_state": "Choose a State",
+              "state_province": "County",
+              "choose_state": "Choose a County",
               "country": "Country",
               "choose_country": "Choose a Country",
-              "zip_postcode": "Zip/Postcode"
+              "zip_postcode": "Postcode"
             }
         },
         "returns": {
@@ -422,7 +422,7 @@
             }
         },
         "settings": {
-            "heading": "Account Settings",
+            "heading": "My Account",
             "first_name": "First Name",
             "last_name": "Last Name",
             "email": "Email Address",
@@ -551,8 +551,8 @@
             "address2": "Address Line 2",
             "city": "Suburb/City",
             "country": "Country",
-            "state": "State/Province",
-            "postal_code": "Zip/Postcode",
+            "state": "County",
+            "postal_code": "Postcode",
             "choose_country": "Choose a Country",
             "default_instrument": "Default Payment Method"
         },
@@ -570,7 +570,7 @@
                 "agree2": "I agree that Gift Certificates are nonrefundable",
                 "preview": "Preview",
                 "preview_error": "There was a problem loading the preview. Please try again later.",
-                "submit_value": "Add Gift Certificate to Cart"
+                "submit_value": "Add Gift Certificate to Basket"
             },
             "balance": {
                 "code": "Gift Certificate Code",
@@ -618,7 +618,9 @@
             },
             "refine": "Refine Search",
             "brand": "Brands",
-            "searchsubs": "Automatically search sub categories"
+            "searchsubs": "Automatically search sub categories",
+            "clearsearch": "Clear search",
+            "allresults": "See all results"
         },
         "wishlist": {
             "name": "Wish List Name:",
@@ -684,7 +686,7 @@
         "related_products": "Related Products",
         "top": "Most Popular Products",
         "similar_by_views": "Customers Also Viewed",
-        "featured": "Featured Products",
+        "featured": "Recommended Wines",
         "file_option_set": "Currently: <a href=\"{url}\" target=\"_blank\">{name}</a>",
         "new": "New Products",
         "warranty": "Warranty Information",
@@ -692,8 +694,9 @@
             "hide": "Hide Reviews",
             "new": "Write a Review",
             "show": "Show Reviews",
+            "title": "Customer Reviews",
             "header": "{total, plural, =0{0 Reviews} one {# Review} other {# Reviews}}",
-            "link_to_review": "({total, plural, =0{No reviews yet} one {# review} other {# reviews}})",
+            "link_to_review": "{total, plural, =0{No reviews yet} one {Based on # review} other {Based on # reviews}}",
             "post_on_by": "Posted by { name } on { date }",
             "rating_label": "Rating",
             "select_rating": "Select Rating",
@@ -719,8 +722,8 @@
             "hide": "Hide Videos",
             "show": "Show Videos"
         },
-        "add_to_cart": "Add to Cart",
-        "adding_to_cart": "Adding to cart…",
+        "add_to_cart": "Add to Basket",
+        "adding_to_cart": "Adding...",
         "options": "Options",
         "none": "None",
         "sku": "SKU:",
@@ -768,7 +771,9 @@
             "percent": "and get {discount} off",
             "price": "and get {discount} off",
             "fixed": "and pay only {discount} each"
-        }
+        },
+        "only_discount_text": "Only",
+        "multi_buy_discount_text": "per bottle when you mix 12+ bottles"
     },
     "invoice": {
         "for_order": "{name} Invoice for Order #{id}",
@@ -788,7 +793,7 @@
         "comments": "Comments"
     },
     "newsletter": {
-        "subscribe": "Get £15 voucher",
+        "subscribe": "Get £10 voucher",
         "subscribe_intro": "When you sign up to the newsletter",
         "subscribe_submit": "Sign Up",
         "email_placeholder": "Your email address",
@@ -823,7 +828,7 @@
                 "title": "Refine by",
                 "rating-label": "Rated {rating, plural, one {# Star} other {# Stars}} Or More",
                 "no-filters": "No filters applied",
-                "clear-all": "Clear all"
+                "clear-all": "Clear all filters"
             },
             "range": {
                 "update": "Update",
@@ -846,8 +851,8 @@
         }
     },
     "page_not_found": {
-        "page_heading": "404 Error - Page not found",
-        "message": "Uh oh, looks like the page you are looking for has moved or no longer exists."
+        "page_heading": "Strange.",
+        "message": "We seem to be missing something."
     },
     "server_error": {
         "page_heading": "Something Went Wrong...",

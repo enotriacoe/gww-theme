@@ -9,6 +9,8 @@
 
     .navList {
         margin-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 }
 
@@ -38,6 +40,8 @@
 //
 // -----------------------------------------------------------------------------
 .accordion--navList {
+    margin: 0;
+    
     @include breakpoint("medium") {
         border: 0;
     }
@@ -49,16 +53,50 @@
     }
 
     .accordion-block {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        float: left;
+        background-color: $xl-green;
+        
         @include breakpoint("medium") {
-            margin-top: $accordion-navList-spacing;
+            // width: 31%;
+            width: calc(25% - 10px);
+            margin-right: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid darken($xl-green, 10%);
+        }
+
+        @include breakpoint("large") {
+            width: calc(20% - 22px);
+            margin-right: 22px;
+            margin-bottom: 25px;
         }
     }
 
     .accordion-content {
         padding: $accordion-navList-padding;
-
+        
         @include breakpoint("medium") {
             padding: 0;
+            position: absolute;
+            border: 1px solid darken($xl-green, 10%);
+            border-top: none;
+            width: calc(100% + 2px);
+            background: $xl-green;
+            left: -1px;
+            top: 99%;
+            z-index: 10;
+        }
+
+        .form-minMaxRow {
+            padding: 10px;
+        }
+
+        .toggleLink {
+            padding-left: 8px;
+            padding-right: 8px;
         }
     }
 
@@ -76,7 +114,7 @@
         text-transform: inherit;
 
         @include breakpoint("medium") {
-            margin-bottom: spacing("half");
+            margin-bottom: 0;
             margin-top: 0;
             padding: 0;
         }
@@ -139,6 +177,10 @@
     position: absolute;
     right: $accordion-navigation-paddingHorizontal;
     top: $accordion-navigation-paddingVertical;
+
+    .facetedSearch-clearLink {
+        display: none;
+    }
 
     > a {
         color: stencilColor("color-textSecondary");

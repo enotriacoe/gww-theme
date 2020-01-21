@@ -17,6 +17,7 @@
     display: block;
     margin-bottom: $facetedSearch-toggle-verticalSpacing;
     padding: $facetedSearch-toggle-padding;
+    background-color: $xl-green;
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
@@ -34,6 +35,10 @@
 .facetedSearch-toggle-indicator {
     display: block;
     font-weight: normal;
+
+    .icon svg{
+        fill: #757575;
+    }
 }
 
 .facetedSearch-toggle-text {
@@ -112,10 +117,10 @@
 //
 // -----------------------------------------------------------------------------
 .facetedSearch-refineFilters {
-    display: none;
+    margin-bottom: 30px;
 
     @include breakpoint("medium") {
-        display: block; // 1
+        margin-bottom: 0px;
     }
 }
 

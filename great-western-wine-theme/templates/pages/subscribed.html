@@ -9,12 +9,21 @@
                 {{lang 'newsletter.subscribed_heading'}}
             {{/if}}
         </h1>
-
+        
         {{#if subscription.error}}
-            {{> components/common/alert-error subscription.error}}
+        {{> components/common/alert-error subscription.error}}
         {{else}}
-            {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+            <h3 class="discount-code">Use code WELCOME10 to receive £10 off your first order when you spend over £50</h3>
+            <div id="newsletter-success">
+                {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+            </div>
         {{/if}}
+
+        <div class="newsletter-cta-cont">
+            <a href="/wine/" class="button button--primary newsletter-cta">Browse all Wines</a>
+            <a href="/spirits/" class="button button--primary newsletter-cta">Browse all Spirits</a>
+            <a href="/offers/" class="button button--primary newsletter-cta">Browse all Offers</a>
+        </div>
 
     </div>
 </section>

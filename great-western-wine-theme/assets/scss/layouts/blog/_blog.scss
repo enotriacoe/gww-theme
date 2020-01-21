@@ -39,6 +39,7 @@
 .blog-title {
     font-size: fontSize("large");
     margin: 0 spacing("single") spacing("quarter");
+    margin-left: 0;
 
     a {
         text-decoration: none;
@@ -48,7 +49,7 @@
 .blog-date,
 .blog-author {
     color: stencilColor("color-textSecondary");
-    text-align: center;
+    // text-align: center;
 }
 
 .blog-author {
@@ -63,7 +64,9 @@
 .blog-thumbnail {
     margin: 0 auto (spacing("base") * 2);
     position: relative;
-    max-width: get_width(stencilString('blog_size'));
+    max-width: 90%;
+    max-height: 250px;
+    overflow: hidden;
 
     img {
         width: 100%;
@@ -73,17 +76,19 @@
 .blog-post-figure {
     display: block;
     margin: auto;
-    text-align: center;
+    // text-align: center;
 
     @include breakpoint("medium") {
-        width: grid-calc(8, $total-columns);
+        width: grid-calc(3, $total-columns);
+        display: inline-block;
+        vertical-align: top;
     }
 }
 
 .blog-post-body {
     display: block;
     margin: 0 auto;
-    text-align: center;
+    // text-align: center;
     width: 100%;
 
     @include breakpoint("small") {
@@ -92,6 +97,7 @@
 
     @include breakpoint("medium") {
         width: grid-calc(8, $total-columns);
+        display: inline-block;
     }
 
     @include breakpoint("large") {

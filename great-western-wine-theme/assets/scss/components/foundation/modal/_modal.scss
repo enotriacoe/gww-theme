@@ -5,7 +5,7 @@
 
 .modal {
     margin: 0;
-    max-height: 90%;
+    max-height: 500px;
     max-width: 95%;
     min-height: 240px;
     outline: none;
@@ -38,7 +38,7 @@
 
 .modal-close {
     @include square($reveal-close-height);
-    color: stencilColor("icon-color");
+    color: #666666;
     font-size: 26px;
     line-height: remCalc($reveal-close-height);
     padding: 0;
@@ -57,9 +57,25 @@
 }
 
 .modal-body {
-    overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: $reveal-modal-padding;
+    
+    .productView-img-container {
+        height: 80%;
+
+        @include breakpoint("medium") {
+            height: 100%;
+        }
+    }
+    
+    .productGrid .product {
+        width: 33%;
+    }
+}
+
+.modal-content {
+    max-height: 500px;
+    overflow: scroll;
 }
 
 .modal--alert {
@@ -95,4 +111,8 @@
             color: $alert-button-colorActive;
         }
     }
+}
+
+.previewModal-img {
+    max-height: 400px !important;
 }

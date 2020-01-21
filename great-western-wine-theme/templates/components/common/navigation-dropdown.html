@@ -7,13 +7,35 @@
             <li class="navPage-subMenu-item-child">
                 {{#if children}}
                     <a class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" data-collapsible="navPages-{{id}}">
-                        {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                        {{name}}<i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
                     </a>
-                    {{> components/common/navigation-dropdown}}
+                    {{> components/common/navigation-dropdown-lower}}
                 {{else}}
                     <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}" href="{{url}}">{{name}}</a>
                 {{/if}}
             </li>
         {{/each}}
+        {{#if parent '===' 'Wine'}}
+            <li class="navPage-subMenu-item-child">
+                <a class="navPage-subMenu-action navPages-action navPages-action-depth-max food-rec-lnk" href="/whats-on-the-menu/">What's on the menu?</a>
+            </li>
+        {{/if}}
     </ul>
-</div>
+    {{#if parent '===' 'Wine'}}
+        {{> components/custom/menu-highlight-wine}}
+    {{/if}}
+    {{#if parent '===' 'Offers'}}
+        {{> components/custom/menu-highlight-offers}}
+    {{/if}}
+    {{#if parent '===' 'Spirits'}}
+        {{> components/custom/menu-highlight-spirits}}
+    {{/if}}
+    {{#if parent '===' 'Gifts & More'}}
+        {{> components/custom/menu-highlight-gifts}}
+    {{/if}}
+
+
+     {{#if parent '===' 'Wine'}}
+        <a href="/whats-on-the-menu/" class="btn btn-coral-line btn-mega-menu">What's on the menu?<i class="fas fa-chevron-right icon"></i></a>
+     {{/if}}
+</div>   

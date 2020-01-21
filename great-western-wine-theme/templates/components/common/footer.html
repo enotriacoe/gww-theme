@@ -22,7 +22,7 @@
     <div class="container">
         <section class="footer-info">
             <div class="footer-details">
-                <img src="{{cdn 'assets/img/great-western-wine-logo-white.png'}}" class="footer-logo" alt="White Great Western Wine Logo" />
+                <img src="{{cdn 'assets/img/great-western-wine-logo-white-on-black.svg'}}" class="footer-logo" alt="White Great Western Wine Logo" />
                 {{> components/common/social-links}}
 
                 {{#if settings.address}}
@@ -34,46 +34,51 @@
                 </article>
                 {{/if}}
             </div>
+            
+            <div class="footer-row">
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">Legal</h5>
+                    <ul class="footer-info-list">
+                        <li><a href="/terms-conditions/">Terms & Conditions</a></li>
+                        <li><a href="/promotional-terms-conditions/">Promotional Terms & Conditions</a></li>
+                        <li><a href="/privacy/">Privacy</a></li>
+                        <li><a href="/modern-slavery-act/">Modern Slavery Act</a></li>
+                        <li><a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a></li>
+                    </ul>
+                </article>
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'footer.about_us'}}</h5>
+                    <ul class="footer-info-list">
+                        <li><a href="/our-story/">Our Story</a></li>
+                        <li><a href="/our-team/">Our Team</a></li>
+                        <li><a href="/blog/">Our Blog</a></li>
+                    </ul>
+                </article>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'footer.help'}}</h5>
-                <ul class="footer-info-list">
-                    <li><a href="/contact-us/">Contact Us</a></li>
-                    <li><a href="/delivery/">Delivery</a></li>
-                    <li><a href="/returns/">Returns</a></li>
-                    <li><a href="/">Terms & Conditions</a></li>
-                    <li><a href="/privacy/">Privacy</a></li>
-                    <li><a href="/">Modern Slavery Act</a></li>
-                    <li><a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a></li>
-                </ul>
-            </article>
+            </div>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'footer.careers'}}</h5>
-                <ul class="footer-info-list">
-                    <li><a href="/">Work with us</a></li>
-                </ul>
-            </article>
+            <div class="footer-row">
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">Shopping</h5>
+                    <ul class="footer-info-list">
+                        <li><a href="/our-shop/">Our Bath Shop</a></li>
+                        <li><a href="/occasions/">Occasions</a></li>
+                        <li><a href="/courses-events/">Courses and Events</a></li>
+                        <li><a href="/wine-school/">Wine School</a></li>
+                    </ul>
+                </article>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'footer.about_us'}}</h5>
-                <ul class="footer-info-list">
-                    <li><a href="/">Our Story</a></li>
-                    <li><a href="/">Our Team</a></li>
-                    <li><a href="/">Our Shop</a></li>
-                    <li><a href="/">Why Choose us?</a></li>
-                    <li><a href="/">Press Coverage</a></li>
-                </ul>
-            </article>
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">Help</h5>
+                    <ul class="footer-info-list">
+                        <li><a href="/delivery/">Delivery</a></li>
+                        <li><a href="/returns/">Returns</a></li>
+                        <li><a href="/faq/">FAQ</a></li>
+                        <li><a href="/contact-us/">Contact Us</a></li>
+                    </ul>
+                </article>
+            </div>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h5 class="footer-info-heading">{{lang 'footer.service'}}</h5>
-                <ul class="footer-info-list">
-                    <li><a href="/">Shop</a></li>
-                    <li><a href="/">Occasions</a></li>
-                    <li><a href="/">Accounts</a></li>
-                </ul>
-            </article>
         </section>
         {{#if theme_settings.geotrust_ssl_common_name}}
             <div class="footer-geotrust-ssl-seal">
@@ -93,5 +98,4 @@
             </div>
         </div>
     {{/if}}
-    </div>
 </footer>

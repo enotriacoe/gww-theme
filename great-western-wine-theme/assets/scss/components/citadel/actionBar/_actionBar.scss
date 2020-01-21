@@ -10,6 +10,7 @@
         border: $actionBar-form-field-border;
         border-radius: $actionBar-form-field-radius;
         overflow: hidden;
+        margin: 0;
 
         // scss-lint:disable NestingDepth
         &:hover {
@@ -42,5 +43,20 @@
     .form-select {
         color: stencilColor("color-textLink");
         height: $input-small-height - remCalc($input-border-width * 2);
+    }
+}
+
+.change-list-view {
+    display: none;
+
+    @include breakpoint("medium") {
+        display: inline-block;
+        float: right;
+        margin: 1px 10px;
+
+        .icon {
+            height: 30px;
+            width: 30px;
+        }
     }
 }

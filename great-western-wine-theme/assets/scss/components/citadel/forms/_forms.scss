@@ -389,3 +389,11 @@
         text-decoration: line-through;
     }
 }
+
+.form-field--inputPassword:nth-of-type(2) {
+    clear: both;
+}
+
+.form-field--inputPassword:nth-of-type(3) {
+    clear: none !important;
+}
