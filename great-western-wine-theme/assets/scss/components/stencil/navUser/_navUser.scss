@@ -300,7 +300,7 @@
 .dropdown--quickSearch {
     background-color: none;
     padding: spacing("single") 0;
-    position: unset;
+    position: static;
 
     @include breakpoint("small") {
         padding: 0;
@@ -337,7 +337,7 @@
 
     .form-input {
         font-size: fontSize("small");
-        height: unset;
+        height: auto;
         border-radius: 2px;
         background: $xl-green;
         border-color: darken($xl-green, 10%);
@@ -376,7 +376,7 @@
     width: 20px; // 1
 
     @include breakpoint("medium") {
-        position: unset;
+        position: static;
     }
 }
 
