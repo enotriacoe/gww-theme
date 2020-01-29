@@ -70,7 +70,11 @@ class FacetedSearch {
         // Close filter on choice or click elsewhere
 
         $(document).click((e) => {
-            if (($(e.target).closest($('.accordion-block')).length === 0)) {
+            if (
+                ($(e.target).closest($('.accordion-block')).length === 0)
+             && ($('.facetedSearch-toggle').has($(e.target)).length === 0)
+             && !(($(e.target).hasClass('facetedSearch-toggle')))
+            ) {
                 this.collapseAllFacets();
             }
         });
