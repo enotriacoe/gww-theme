@@ -14,5 +14,5 @@
 
 .header-container {
     @extend .container;
-    position: unset;
+    position: static;
 }

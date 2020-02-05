@@ -2,6 +2,10 @@
 
 .productView-options.add-to-cart-form {
     margin-bottom: 0;
+
+    .btn-oos {
+        min-width: 230px;
+    }
 }
 
 .add-to-cart-cont {
@@ -46,7 +50,7 @@
             }
 
             &:nth-child(3) {
-                top: unset;
+                top: auto;
                 bottom: 0;
                 transform: translateY(-20%) rotate(180deg);
             }

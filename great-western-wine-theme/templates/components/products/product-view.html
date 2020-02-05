@@ -188,6 +188,8 @@
                             </div>
                             {{#if product.can_purchase}}
                                 {{> components/products/add-to-cart}}
+                            {{else}}
+                                <div class="button btn-oos">OUT OF STOCK</div>
                             {{/if}}
                             {{#if product.out_of_stock}}
                                 {{#if product.out_of_stock_message}}
