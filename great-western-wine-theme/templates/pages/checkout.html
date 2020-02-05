@@ -37,27 +37,11 @@
 {{> layout/empty}}
 
 <script>
-    function changeOrderCommentWording() {
-        setTimeout(function(){
-            let orderCommentLabel = document.querySelector('label[for="orderComment"]');
-            let orderCommentLegend = orderCommentLabel.parentElement.parentElement.previousSibling;
-            orderCommentLegend.innerText = "Gift Message";
-        }, 900);
-    }
-
     window.addEventListener('load', function () {
         let cartPriceLabels = document.querySelector('div[data-test="cart-taxes"]');
         if (cartPriceLabels) {
             cartPriceLabels.style.display = "none";
         };
-
-        document.addEventListener('click', function(event) {
-        if (event.target.id = 'checkout-customer-continue') {
-            changeOrderCommentWording();
-        }
-        }, false);
-
-        changeOrderCommentWording();
     });
 </script>
 
