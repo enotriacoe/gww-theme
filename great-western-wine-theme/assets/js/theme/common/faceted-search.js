@@ -136,7 +136,8 @@ class FacetedSearch {
         this.collapseAllFacets();
 
         // eslint-disable-next-line no-undef
-        updateListView();
+
+        this.updateListView();
     }
 
     updateView() {
@@ -423,6 +424,42 @@ class FacetedSearch {
             this.collapsedFacets = _.union(this.collapsedFacets, [id]);
         } else {
             this.collapsedFacets = _.without(this.collapsedFacets, id);
+        }
+    }
+
+    activeGridView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($gridViewButton.not('.current-view')) {
+            $listViewButton.removeClass('current-view');
+            $gridViewButton.addClass('current-view');
+            $productView.removeClass('product-list');
+            sessionStorage.setItem('productsView', 'grid-view');
+        }
+    }
+
+    activeListView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($listViewButton.not('.current-view')) {
+            $gridViewButton.removeClass('current-view');
+            $listViewButton.addClass('current-view');
+            $productView.addClass('product-list');
+            sessionStorage.setItem('productsView', 'list-view');
+        }
+    }
+
+    updateListView() {
+        if ($('.page-content').hasClass('grid-with-sub-items') !== true) {
+            if (sessionStorage.getItem('productsView') === 'grid-view') {
+                this.activeGridView();
+            } else if (sessionStorage.getItem('productsView') === 'list-view') {
+                this.activeListView();
+            }
         }
     }
 }
