@@ -318,11 +318,47 @@
                 {{/filter}}
             {{/if}}
         </article>
-        
-        {{#filter product.custom_fields 'foodRecommendation' property='name' }}
+
+        {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
         <div class="productView-food-recommendation">
             <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
-            <p>{{value}}</p>
+            <p>
+        {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_1' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_2' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_3' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_4' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_5' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_6' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_7' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_8' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_9' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_10' property='name' }}
+                    {{value}}
+                {{/filter}}
+        {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
+            </p>
         </div>
         {{/filter}}
     </div>
@@ -352,12 +388,47 @@
     </div>
     <div class="row">
         {{> components/products/product-spec }}
-
-        {{#filter product.custom_fields 'winemaking' property='name' }}
-            <div class="productView-creation">
-                <h3 class="stylised-medium">Winemaking</h3>
-                <p>{{value}}</p>
-            </div>
+        {{#filter product.custom_fields 'winemaking_0' property='name' }}
+        <div class="productView-creation">
+            <h3 class="stylised-medium">Winemaking</h3>
+            <p>
+        {{/filter}}
+                {{#filter product.custom_fields 'winemaking_0' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_1' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_2' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_3' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_4' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_5' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_6' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_7' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_8' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_9' property='name' }}
+                    {{value}}
+                {{/filter}}
+                {{#filter product.custom_fields 'winemaking_10' property='name' }}
+                    {{value}}
+                {{/filter}}
+        {{#filter product.custom_fields 'winemaking_0' property='name' }}
+            </p>
+        </div>
         {{/filter}}
     </div>
 </div>
