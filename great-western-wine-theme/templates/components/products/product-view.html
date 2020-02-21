@@ -204,8 +204,8 @@
                     
                 </div>
 
-            {{#filter product.custom_fields 'type' property='name' }}
-            {{#contains value 'Wine'}}
+            {{#filter product.custom_fields 'isMultibuy' property='name' }}
+            {{#contains value 'Yes'}}
             <div class="multibuy-cont">
             {{else}}
             <div class="multibuy-cont" style="display:none">
