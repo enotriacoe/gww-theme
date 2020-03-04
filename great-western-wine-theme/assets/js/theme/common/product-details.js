@@ -18,6 +18,11 @@ export default class ProductDetails {
         Wishlist.load(this.context);
         this.getTabRequests();
 
+        const productFunction = this;
+
+        this.fetchApiContent(productFunction, '.producer-cat-wrap');
+        this.fetchApiContent(productFunction, '.country-cat-wrap');
+
         const $form = $('form[data-cart-item-add]', $scope);
         const $productOptionsElement = $('[data-product-option-change]', $form);
         const hasOptions = $productOptionsElement.html().trim().length;
@@ -741,5 +746,29 @@ export default class ProductDetails {
                     .removeClass('is-active');
             }
         }
+    }
+
+    OutputApiContent(dataReturned, currentCategoryClass) {
+        // Get all of the countries from the API/Proxy
+        if (dataReturned) {
+            const currentCategoryDiv = $(currentCategoryClass);
+            const currentCategoryData = dataReturned.data;
+            currentCategoryDiv.find('.product-cat-title').text(currentCategoryData.name);
+            currentCategoryDiv.find('img').attr('src', currentCategoryData.image_url);
+            currentCategoryDiv.find('p').text(currentCategoryData.description);
+            currentCategoryDiv.find('a').attr('href', currentCategoryData.custom_url.url);
+            currentCategoryDiv.show();
+        }
+    }
+
+    fetchApiContent(productFunction, currentCategoryClass) {
+        const currentCategoryDiv = $(currentCategoryClass);
+        const currentCategoryId = currentCategoryDiv.data('cat-id');
+        const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
+        fetch(categoryUrl)
+            .then((response) => response.json())
+            .then((returnedJson) => {
+                productFunction.OutputApiContent(returnedJson, currentCategoryClass);
+            });
     }
 }
