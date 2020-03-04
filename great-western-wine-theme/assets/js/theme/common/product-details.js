@@ -747,6 +747,14 @@ export default class ProductDetails {
         }
     }
 
+    handleApiErrors(response) {
+        if (!response.ok) {
+            $('.product-category-cont').remove();
+            throw Error(response.statusText);
+        }
+        return response;
+    }
+
     OutputApiContent(dataReturned, currentCategoryClass) {
         // Get all of the countries from the API/Proxy
         if (dataReturned) {
@@ -766,9 +774,13 @@ export default class ProductDetails {
         const currentCategoryId = currentCategoryDiv.data('cat-id');
         const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
         fetch(categoryUrl)
+            .then(productFunction.handleApiErrors)
             .then((response) => response.json())
             .then((returnedJson) => {
                 productFunction.OutputApiContent(returnedJson, currentCategoryClass);
+            })
+            .catch((error) => {
+                console.log(error);
             });
     }
 }
