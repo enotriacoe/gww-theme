@@ -13,7 +13,6 @@ export default class ProductDetails {
         this.context = context;
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
-        this.listenQuantityChange();
         this.initRadioAttributes();
         Wishlist.load(this.context);
         this.getTabRequests();
@@ -755,6 +754,7 @@ export default class ProductDetails {
             const currentCategoryData = dataReturned.data;
             currentCategoryDiv.find('.product-cat-title').text(currentCategoryData.name);
             currentCategoryDiv.find('img').attr('src', currentCategoryData.image_url);
+            currentCategoryDiv.find('img').attr('alt', (currentCategoryData.name + ' category image'));
             currentCategoryDiv.find('p').text(currentCategoryData.description);
             currentCategoryDiv.find('a').attr('href', currentCategoryData.custom_url.url);
             currentCategoryDiv.show();
