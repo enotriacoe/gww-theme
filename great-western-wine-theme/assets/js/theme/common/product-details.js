@@ -772,15 +772,18 @@ export default class ProductDetails {
     fetchApiContent(productFunction, currentCategoryClass) {
         const currentCategoryDiv = $(currentCategoryClass);
         const currentCategoryId = currentCategoryDiv.data('cat-id');
-        const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
-        fetch(categoryUrl)
-            .then(productFunction.handleApiErrors)
-            .then((response) => response.json())
-            .then((returnedJson) => {
-                productFunction.OutputApiContent(returnedJson, currentCategoryClass);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        debugger;
+        if (currentCategoryId) {
+            const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
+            fetch(categoryUrl)
+                .then(productFunction.handleApiErrors)
+                .then((response) => response.json())
+                .then((returnedJson) => {
+                    productFunction.OutputApiContent(returnedJson, currentCategoryClass);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     }
 }
