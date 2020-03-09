@@ -580,7 +580,7 @@
     .highlight-wrap {
         background-color: white;
         text-align: left;
-        border-left: 4px solid #e1675c;
+        border-left: 4px solid $peach;
         position: absolute;
         top: 5%;
         left: 5%;
@@ -624,7 +624,7 @@
         max-width: 20%;
 
         &:hover {
-            color: #e1675c;
+            color: $peach;
         }
 
         .icon {

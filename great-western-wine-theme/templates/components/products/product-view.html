@@ -399,6 +399,33 @@
         </div>
         {{/filter}}
     </div>
+    
+    <hr class="productView-divider">
+
+    <div class="product-category-cont">
+        <div class="product-cat-wrap producer-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'producerCategoryId' property='name' }}{{value}}{{/filter}}">
+            <div class="product-cat-info">
+                <img class="product-cat-img" src="" alt="">
+                <div class="product-cat-heading">
+                    <span>An introduction to</span>
+                    <h4 class="product-cat-title"></h4>
+                </div>
+            </div>
+            <p></p>
+            <a href="#" class="btn btn-coral-line">See more from this producer <i class="fa fa-chevron-right"></i></a>
+        </div>
+        <div class="product-cat-wrap country-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'countryCategoryId' property='name' }}{{value}}{{/filter}}">
+            <div class="product-cat-info">
+                <img class="product-cat-img" src="" alt="">
+                <div class="product-cat-heading">
+                    <span>Wine from</span>
+                    <h4 class="product-cat-title"></h4>
+                </div>
+            </div>
+            <p></p>
+            <a href="#" class="btn btn-coral-line">See more from this country <i class="fa fa-chevron-right"></i></a>
+        </div>
+    </div>
 </div>
 
 <div id="previewModal" class="modal modal--large" data-reveal>
