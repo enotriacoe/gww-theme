@@ -205,11 +205,9 @@
                 </div>
 
             {{#filter product.custom_fields 'isMultibuy' property='name' }}
-            {{#contains value 'Yes'}}
             <div class="multibuy-cont">
             {{else}}
             <div class="multibuy-cont" style="display:none">
-            {{/contains}}
             {{/filter}}
                 <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
                 <span class="multibuy-price">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
