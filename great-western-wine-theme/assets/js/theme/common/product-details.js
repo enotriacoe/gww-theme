@@ -755,7 +755,7 @@ export default class ProductDetails {
         return response;
     }
 
-    OutputApiContent(dataReturned, currentCategoryClass) {
+    outputApiContent(dataReturned, currentCategoryClass) {
         // Get all of the countries from the API/Proxy
         if (dataReturned) {
             const currentCategoryDiv = $(currentCategoryClass);
@@ -778,9 +778,10 @@ export default class ProductDetails {
                 .then(productFunction.handleApiErrors)
                 .then((response) => response.json())
                 .then((returnedJson) => {
-                    productFunction.OutputApiContent(returnedJson, currentCategoryClass);
+                    productFunction.outputApiContent(returnedJson, currentCategoryClass);
                 })
                 .catch((error) => {
+                    // eslint-disable-next-line no-console
                     console.log(error);
                 });
         }
