@@ -79,6 +79,12 @@
         transform: none;
         border: 0;
     }
+
+    &:active {
+        background-color: lightgray;
+        transform: none;
+        border: 0;
+    }
 }
 
 .btn-back {
