@@ -21,15 +21,30 @@ carousel: {{theme_settings.homepage_show_carousel}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <div class="page">
-    <div>
-        <img class="header-logo-image" src="/stencil/00000000-0000-0000-0000-000000000001/img/GWW-Logo-black-on-white.svg" alt="Great Western Wine Logo" title="Great Western Wine">
-        <p>Welcome to your unique landing page for all MCC members.</p>
+
+
+
+    <div class="partner-info">
+        <img class="partner-logo" src="/stencil/00000000-0000-0000-0000-000000000001/img/GWW-Logo-black-on-white.svg" alt="INSERT NAME Logo" title="Title">
+        <p class="partner-desc">Welcome to your unique landing page for all MCC members.</p>
+    </div>
+    <div class="partner-featured-cont">
+        <a href="/countries/">
+            <div class="heroCarousel-image-wrapper">
+                <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1200w/carousel/51/Spain_KO.jpg?c=2">
+            </div>
+            <div class="heroCarousel-content">
+                <p class="heroCarousel-description">This is the desc</p>
+                <h1 class="heroCarousel-title">Heading here</h1>
+                <span class="heroCarousel-action btn btn-coral-line">Button text</span>
+            </div>        
+            </a>    
     </div>
     <div class="what-eating-cont">
         <a href="/whats-on-the-menu/"><img src="{{cdn '/assets/img/charcuterie-platter-with-rose-wine.jpg'}}" alt="Charcuterie Platter with Wine & Cheese"></a>
         <h2 class="stylised-title"><a href="/whats-on-the-menu/">What's on the menu?</a></h2>
         <p>Find the perfect wine to suit your dinner plans</p>
-        <a href="/whats-on-the-menu/" class="btn btn-coral-line">Find my perfect wine</a>
+        <a href="/whats-on-the-menu/" class="btn btn-coral-line">Find my perfect wine</a>§
     </div>
     <div class="home-banner-grid">
     
@@ -78,6 +93,9 @@ carousel: {{theme_settings.homepage_show_carousel}}
             </a>
         </div>
     </div>
+
+
+
     <main class="page-content" id="product-listing-container">
         {{#if category.products}}
             {{> components/category/product-listing}}
