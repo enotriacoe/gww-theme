@@ -12,7 +12,7 @@
             "infinite": "true"
         }'>
             {{#each carousel.slides}}
-            <a href="{{url}}">
+            <a href="{{url}}" aria-label="Slide{{@index}}">
                 <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
                     <div class="heroCarousel-image-wrapper">
                         {{#if @first}}
