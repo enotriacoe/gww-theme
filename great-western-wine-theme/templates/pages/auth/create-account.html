@@ -3,7 +3,9 @@
     {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
     <div class="account account--fixed account--new">
-        <h1 class="page-heading stylised-medium title--edit">{{lang 'create_account.heading' }}</h1>
+        <div class="register-header">
+            <h1 class="page-heading stylised-medium title--edit">{{lang 'create_account.heading' }}</h1>
+        </div>
         <div class="account-body">
             {{#if forms.create_account.error}}
                 {{> components/common/alert-error forms.create_account.error}}
@@ -22,6 +24,9 @@
                     </div>
                     {{{ forms.create_account.recaptcha.markup}}}
                     <div class="form-actions">
+                        <div class="partner-confirm-cont" style="display:none;">
+                            <p class="partner-confirm-text"></p>
+                        </div>
                         <div class="btn">
                             <input type="submit" class="button button--primary" value="{{lang 'forms.create_account.submit_value' }}" />
                         </div>
