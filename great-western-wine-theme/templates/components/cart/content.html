@@ -150,11 +150,13 @@
                     {{#if can_modify}}
                         <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
                             <svg><use xlink:href="#icon-close"></use></svg>
+                            <span class="visually-hidden">{{lang 'cart.confirm_delete'}}</span>
                         </a>
                     {{else}}
                         {{#if type '==' 'GiftCertificate'}}
                             <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
                                 <svg><use xlink:href="#icon-close"></use></svg>
+                                <span class="visually-hidden">{{lang 'cart.confirm_delete'}}</span>
                             </a>
                         {{/if}}
                     {{/if}}

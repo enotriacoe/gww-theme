@@ -1,4 +1,5 @@
 import './global/jquery-migrate';
+import './global/accessibility';
 import './common/select-option-plugin';
 import PageManager from './page-manager';
 import quickSearch from './global/quick-search';
