@@ -13,10 +13,14 @@ export default class ProductDetails {
         this.context = context;
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
-        this.listenQuantityChange();
         this.initRadioAttributes();
         Wishlist.load(this.context);
         this.getTabRequests();
+
+        const productFunction = this;
+
+        this.fetchApiContent(productFunction, '.producer-cat-wrap');
+        this.fetchApiContent(productFunction, '.country-cat-wrap');
 
         const $form = $('form[data-cart-item-add]', $scope);
         const $productOptionsElement = $('[data-product-option-change]', $form);
@@ -55,7 +59,7 @@ export default class ProductDetails {
 
         this.previewModal = modalFactory('#previewModal')[0];
 
-        $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
+        $('.body').on('click', '[data-dropdown^="wishlist-dropdown"]', (e) => {
             e.stopImmediatePropagation();
             const target = $(e.currentTarget);
             const targetsParent = $(e.currentTarget).parent();
@@ -71,15 +75,15 @@ export default class ProductDetails {
         });
 
         $(document).click((e) => {
-            if (($(e.target).closest($('[data-dropdown="wishlist-dropdown"]')).length === 0)) {
+            if (($(e.target).closest($('[data-dropdown^="wishlist-dropdown"]')).length === 0)) {
                 this.closeAllWishlists();
             }
         });
     }
 
     closeAllWishlists() {
-        if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
-            $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
+        if ($('[data-dropdown^="wishlist-dropdown"]').hasClass('is-open')) {
+            $('[data-dropdown^="wishlist-dropdown"]').each(function closeWishlist() {
                 const target = $(this);
                 const targetsParent = $(this).parent();
 
@@ -740,6 +744,46 @@ export default class ProductDetails {
                     .siblings()
                     .removeClass('is-active');
             }
+        }
+    }
+
+    handleApiErrors(response) {
+        if (!response.ok) {
+            $('.product-category-cont').remove();
+            throw Error(response.statusText);
+        }
+        return response;
+    }
+
+    outputApiContent(dataReturned, currentCategoryClass) {
+        // Get all of the countries from the API/Proxy
+        if (dataReturned) {
+            const currentCategoryDiv = $(currentCategoryClass);
+            const currentCategoryData = dataReturned.data;
+            currentCategoryDiv.find('.product-cat-title').text(currentCategoryData.name);
+            currentCategoryDiv.find('img').attr('src', currentCategoryData.image_url);
+            currentCategoryDiv.find('img').attr('alt', (`${currentCategoryData.name} category image`));
+            currentCategoryDiv.find('p').text(currentCategoryData.description);
+            currentCategoryDiv.find('a').attr('href', currentCategoryData.custom_url.url);
+            currentCategoryDiv.show();
+        }
+    }
+
+    fetchApiContent(productFunction, currentCategoryClass) {
+        const currentCategoryDiv = $(currentCategoryClass);
+        const currentCategoryId = currentCategoryDiv.data('cat-id');
+        if (currentCategoryId) {
+            const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
+            fetch(categoryUrl)
+                .then(productFunction.handleApiErrors)
+                .then((response) => response.json())
+                .then((returnedJson) => {
+                    productFunction.outputApiContent(returnedJson, currentCategoryClass);
+                })
+                .catch((error) => {
+                    // eslint-disable-next-line no-console
+                    console.log(error);
+                });
         }
     }
 }

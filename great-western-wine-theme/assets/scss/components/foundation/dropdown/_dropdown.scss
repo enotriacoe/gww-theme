@@ -80,7 +80,7 @@
     }
 }
 
-#wishlist-dropdown.is-open {
+[id^=wishlist-dropdown-].is-open {
     background: transparent;
     left: -200px !important;
     max-width: none !important;
