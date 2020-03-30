@@ -1,6 +1,6 @@
 export function closeAllWishlists() {
-    if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
-        $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
+    if ($('[data-dropdown^="wishlist-dropdown"]').hasClass('is-open')) {
+        $('[data-dropdown^="wishlist-dropdown"]').each(function closeWishlist() {
             const target = $(this);
             const targetsParent = $(this).parent();
 
@@ -11,7 +11,7 @@ export function closeAllWishlists() {
 }
 
 export function closeWishlistOnClick() {
-    $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
+    $('.body').on('click', '[data-dropdown^="wishlist-dropdown"]', (e) => {
         e.stopImmediatePropagation();
 
         const target = $(e.currentTarget).parent();

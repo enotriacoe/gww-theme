@@ -112,6 +112,7 @@
                                 <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-keyboard-arrow-down" /></svg></i>
                             </button>
                         {{/if}}
+                        <label for="qty-{{id}}" class="visually-hidden">Quantity</label>
                         <input class="form-input form-input--incrementTotal cart-item-qty-input"
                                id="qty-{{id}}"
                                name="qty-{{id}}"
@@ -149,11 +150,13 @@
                     {{#if can_modify}}
                         <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
                             <svg><use xlink:href="#icon-close"></use></svg>
+                            <span class="visually-hidden">{{lang 'cart.confirm_delete'}}</span>
                         </a>
                     {{else}}
                         {{#if type '==' 'GiftCertificate'}}
                             <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
                                 <svg><use xlink:href="#icon-close"></use></svg>
+                                <span class="visually-hidden">{{lang 'cart.confirm_delete'}}</span>
                             </a>
                         {{/if}}
                     {{/if}}

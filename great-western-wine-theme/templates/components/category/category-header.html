@@ -7,7 +7,9 @@
         }}
     {{/if}}
     <div class="category-text">
-        <h1 class="stylised-title">{{category.name}}</h1>
+        {{#if category.name}}
+            <h1 class="stylised-title">{{category.name}}</h1>
+        {{/if}}
         <p class="show-read-more">{{{category.description}}}</p>
     </div>
 </div>

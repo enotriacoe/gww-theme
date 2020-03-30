@@ -59,7 +59,7 @@ export default class ProductDetails {
 
         this.previewModal = modalFactory('#previewModal')[0];
 
-        $('.body').on('click', '[data-dropdown="wishlist-dropdown"]', (e) => {
+        $('.body').on('click', '[data-dropdown^="wishlist-dropdown"]', (e) => {
             e.stopImmediatePropagation();
             const target = $(e.currentTarget);
             const targetsParent = $(e.currentTarget).parent();
@@ -75,15 +75,15 @@ export default class ProductDetails {
         });
 
         $(document).click((e) => {
-            if (($(e.target).closest($('[data-dropdown="wishlist-dropdown"]')).length === 0)) {
+            if (($(e.target).closest($('[data-dropdown^="wishlist-dropdown"]')).length === 0)) {
                 this.closeAllWishlists();
             }
         });
     }
 
     closeAllWishlists() {
-        if ($('[data-dropdown="wishlist-dropdown"]').hasClass('is-open')) {
-            $('[data-dropdown="wishlist-dropdown"]').each(function closeWishlist() {
+        if ($('[data-dropdown^="wishlist-dropdown"]').hasClass('is-open')) {
+            $('[data-dropdown^="wishlist-dropdown"]').each(function closeWishlist() {
                 const target = $(this);
                 const targetsParent = $(this).parent();
 
