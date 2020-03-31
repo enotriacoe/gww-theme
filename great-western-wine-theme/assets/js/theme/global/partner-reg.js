@@ -18,6 +18,7 @@ export function getPartnerInfo() {
             $('.form-label:contains(Membership Number)').text(`${membershipText}`);
             $('.partner-confirm-text').text(`${confirmText}`);
             $('.partner-confirm-cont').show();
+            $('#FormField_26').show();
         });
     }
 }
