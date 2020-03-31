@@ -1,0 +1,119 @@
+---
+category:
+    shop_by_price: false
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+
+carousel: {{theme_settings.homepage_show_carousel}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<div class="page">
+
+
+
+    <div class="partner-info">
+        <img class="partner-logo" src="https://cdn11.bigcommerce.com/s-968tlwt7s4/stencil/5650fee0-5027-0138-558c-0242ac11000c/e/8eb07060-49d4-0138-21b3-0242ac110010/img/GWW-Logo-black-on-white.svg" alt="INSERT NAME Logo" title="Title">
+        <p class="partner-desc">Welcome to your unique landing page for all MCC members.</p>
+    </div>
+    <div class="partner-featured-cont">
+        <a href="/countries/">
+            <div class="heroCarousel-image-wrapper">
+                <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/images/stencil/1200w/carousel/51/Spain_KO.jpg?c=2">
+            </div>
+            <div class="heroCarousel-content">
+                <p class="heroCarousel-description">This is the desc</p>
+                <h1 class="heroCarousel-title">Heading here</h1>
+                <span class="heroCarousel-action btn btn-coral-line">Button text</span>
+            </div>        
+            </a>    
+    </div>
+    <div class="what-eating-cont">
+        <a href="/whats-on-the-menu/"><img src="https://cdn11.bigcommerce.com/s-968tlwt7s4/stencil/5650fee0-5027-0138-558c-0242ac11000c/e/8eb07060-49d4-0138-21b3-0242ac110010/img/charcuterie-platter-with-rose-wine.jpg" alt="Charcuterie Platter with Wine & Cheese"></a>
+        <h2 class="stylised-title"><a href="/whats-on-the-menu/">What's on the menu?</a></h2>
+        <p>Find the perfect wine to suit your dinner plans</p>
+        <a href="/whats-on-the-menu/" class="btn btn-coral-line">Find my perfect wine</a>§
+    </div>
+    <div class="home-banner-grid">
+    
+        <div class="home-banner-full">
+            <a href="/blog/following-fellini-seresin/">
+                <div class="banner-cont">
+                    <div class="banner-image-wrapper">
+                        <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/product_images/uploaded_images/full-width-homepage-banners-seresin.jpg">
+                    </div>
+                    <div class="banner-content">
+                        <p class="banner-description">Our newest edition from New Zeland</p>
+                        <h1 class="banner-title">Seresin</h1>
+                        <span class="btn btn-coral-line">Find out more</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    
+        <div class="home-banner-half">
+            <a href="/armagnac-castarede-vsop-bas-armagnac-nv">
+                <div class="banner-cont">
+                    <div class="banner-image-wrapper">
+                        <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/product_images/uploaded_images/half-width-homepage-banner-castarede.jpg">
+                    </div>
+                    <div class="banner-content">
+                        <p class="banner-description">Now only £35 - a delicious freshness & texture</p>
+                        <h1 class="banner-title">VSOP Bas Armagnac</h1>
+                        <span class="btn btn-coral-line">Shop now</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    
+        <div class="home-banner-half">
+            <a href="/les-mougeottes-chardonnay-igp-pays-d-oc-2018">
+                <div class="banner-cont">
+                    <div class="banner-image-wrapper">
+                        <img src="https://cdn11.bigcommerce.com/s-1ev3losdup/product_images/uploaded_images/half-width-homepage-banner-mougeottes-chard.jpg">
+                    </div>
+                    <div class="banner-content">
+                        <p class="banner-description">Our best-selling white wine now only £8.95</p>
+                        <h1 class="banner-title">Les Mougeottes, Chardonnay</h1>
+                        <span class="btn btn-coral-line">Shop now</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}}
+            {{> components/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+        {{{region name="category_below_content"}}}
+    </main>
+</div>
+
+<div id="previewModal" class="modal modal--large" data-reveal>
+    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+        <span aria-hidden="true">&#215;</span>
+    </a>
+    <div class="modal-content"></div>
+    <div class="loadingOverlay"></div>
+</div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

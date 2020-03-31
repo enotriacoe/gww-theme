@@ -1,0 +1,26 @@
+// Styling for partnership landing pages
+
+.partner-info {
+    text-align: center;
+}
+
+.partner-logo {
+    margin-bottom: 20px;
+    max-height: 120px;
+}
+
+.partner-featured-cont{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 30px;
+
+    @include breakpoint ("medium") {
+        width: 65%;
+        margin: 0;
+    }
+}
+
+.partner-desc {
+    font-size: 1.2em;
+}
