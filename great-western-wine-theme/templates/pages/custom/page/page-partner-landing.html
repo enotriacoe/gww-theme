@@ -3,12 +3,6 @@
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <main class="page">
-    {{#unless theme_settings.hide_page_heading }}
-    <div class="page-content page-content--centered">
-        <h1 class="page-content page-content--centered page-heading-left stylised-medium">{{ page.title }}</h1>
-    </div>
-    {{/unless}}
-
     {{#if page.sub_pages}}
     <nav class="navBar navBar--sub">
         <ul class="navBar-section account-navigation">
