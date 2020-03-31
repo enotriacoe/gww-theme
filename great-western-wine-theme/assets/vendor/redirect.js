@@ -162,29 +162,22 @@
 	return init(function () {});
 }));
 (function () {
-	function getUrlParameter(name) {
-		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-		var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-		var results = regex.exec(location.search);
-		return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-	};
-    var redir = Cookies.get("redir");
+    var redir = Cookies.get("cookieRedirect");
     if (redir) {
-        Cookies.remove("redir");
 		const redirObj = JSON.parse(redir);
-		if (redirObj) {
-			var froms = redirObj.from.split('|');
-			for (var i = 0; i < froms.length; i++) {
-				if (window.location.pathname === froms[i]) window.location.replace(redirObj.to);
-			}
-            
-        }
-    } else {
-		var redirFrom = getUrlParameter('redirFrom');
-		var redirTo = getUrlParameter('redirTo');
-        if (redirFrom && redirTo) {
-			const redirObj = { from: redirFrom, to: redirTo };
-            Cookies.set("redir", JSON.stringify(redirObj), { expires: 1/48, sameSite: true });
+		if (redirObj && redirObj.redirects && redirObj.redirects.length) {
+            for (var i = 0; i < redirObj.redirects.length; i++) {
+                var regex = new RegExp(redirObj.redirects[i].from);
+                var match = regex.exec(window.location.href);
+				if (match) {
+					window.location.replace(redirObj.redirects[i].to);
+                    Cookies.remove("cookieRedirect");
+				}
+			}            
         }
     }
+	// Global function to set cookie
+	window.setRedirectCookie = function(redirectObject, expiry) {
+		window.Cookies.set('cookieRedirect', JSON.stringify(redirectObject), { expires: expiry || 1/48 });
+	}
 })();
