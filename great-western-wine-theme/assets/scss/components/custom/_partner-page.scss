@@ -24,3 +24,9 @@
 .partner-desc {
     font-size: 1.2em;
 }
+
+// Used to specifically hide the membership number field on both live and test
+
+#FormField_26 {
+    display: none;
+}
