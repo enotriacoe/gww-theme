@@ -1,5 +1,6 @@
-var googleMapWrapper = document.getElementById('google-map');
-if (googleMapWrapper != null) {
-    var googleMapIframe = googleMapWrapper.getElementsByTagName("iframe")[0];
-    googleMapIframe.setAttribute("title", "Our Location");
+const googleMapWrapper = document.getElementById('google-map');
+let googleMapIframe;
+if (googleMapWrapper !== null) {
+    googleMapIframe = googleMapWrapper.getElementsByTagName('iframe')[0];
+    googleMapIframe.setAttribute('title', 'Our Location');
 }
