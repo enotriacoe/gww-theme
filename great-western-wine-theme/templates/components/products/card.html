@@ -95,17 +95,16 @@
                                 {{#if theme_settings.show_product_quantity_box}}
                                     <div class="form-field form-field--increments">
                                             <div class="form-increment form-increment-{{id}}" data-quantity-change>
-                                                <label for="qty[]-{{id}}" class="visually-hidden">Quantity</label>
                                                 <input class="form-input-{{id}} form-input--incrementTotal"
-                                                    id="qty[]-{{id}}"
-                                                    name="qty[]"
-                                                    type="tel"
-                                                    value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
-                                                    data-quantity-min="0"
-                                                    data-quantity-max="0"
-                                                    min="1"
-                                                    pattern="[0-9]*"
-                                                    aria-live="polite">
+                                                id="qty[]-{{id}}"
+                                                name="qty[]"
+                                                type="tel"
+                                                value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
+                                                data-quantity-min="0"
+                                                data-quantity-max="0"
+                                                min="1"
+                                                pattern="[0-9]*"
+                                                aria-live="polite">
                                                 <button class="button button--icon" data-action="inc">
                                                     <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
                                                     <i class="fas fa-triangle"></i>
@@ -114,6 +113,7 @@
                                                     <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
                                                     <i class="fas fa-triangle"></i>
                                                 </button>
+                                                <label for="qty[]-{{id}}" class="visually-hidden">Quantity</label>
                                             </div>
                                     </div>
                                 {{/if}}
