@@ -57,7 +57,7 @@ function buildRequiredCheckboxValidation($formField, validation) {
 
             cb(result);
         },
-        errorMessage: `The '${validation.label}' field cannot be blank.`,
+        errorMessage: 'You must confirm your acceptance to proceed',
     };
 }
 

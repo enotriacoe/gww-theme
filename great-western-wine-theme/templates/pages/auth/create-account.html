@@ -23,11 +23,10 @@
                         {{inject 'state_error' (lang 'errors.state_error')}}
                     </div>
                     <label for="g-recaptcha-response" class="visually-hidden">Google Recaptcha</label>
+                    <div class="confirm-cont">
+                    </div>
                     {{{ forms.create_account.recaptcha.markup}}}
                     <div class="form-actions">
-                        <div class="partner-confirm-cont" style="display:none;">
-                            <p class="partner-confirm-text"></p>
-                        </div>
                         <div class="btn">
                             <input type="submit" class="button button--primary" value="{{lang 'forms.create_account.submit_value' }}" />
                         </div>

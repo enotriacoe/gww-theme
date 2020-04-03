@@ -16,8 +16,7 @@ export function getPartnerInfo() {
 
             $('.register-header').html(headerHTML);
             $('.form-label:contains(Membership Number)').text(`${membershipText}`);
-            $('.partner-confirm-text').text(`${confirmText}`);
-            $('.partner-confirm-cont').show();
+            $('#FormField_28 .checkbox-label').text(`${confirmText}`);
             $('#FormField_26').show();
         });
     }
