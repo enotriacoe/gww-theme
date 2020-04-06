@@ -40,6 +40,8 @@ function buildRequiredCheckboxValidation($formField, validation) {
     const formFieldId = $formField.attr('id');
     const primarySelector = `#${formFieldId} input:first-of-type`;
     const secondarySelector = `#${formFieldId} input`;
+    // eslint-disable-next-line no-unused-vars
+    const fieldLabel = validation.label;
 
     return {
         selector: primarySelector,
@@ -57,7 +59,7 @@ function buildRequiredCheckboxValidation($formField, validation) {
 
             cb(result);
         },
-        errorMessage: `The '${validation.label}' field cannot be blank.`,
+        errorMessage: 'You must confirm your acceptance to proceed',
     };
 }
 

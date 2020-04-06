@@ -18,6 +18,7 @@ import objectFitImages from './global/object-fit-polyfill';
 import { closeWishlistOnClick } from './global/wishlist-open';
 import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-func';
 import { getPartnerInfo } from './global/partner-reg';
+import moveTermsCheckboxToBottom from './global/create-account';
 
 
 export default class Global extends PageManager {
@@ -39,5 +40,6 @@ export default class Global extends PageManager {
         addToCartClickEvent();
         quantityChangeEvent();
         getPartnerInfo();
+        moveTermsCheckboxToBottom();
     }
 }
