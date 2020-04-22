@@ -1,0 +1,11 @@
+// IE in general and with the native styling in Stencil can have some issues, this is to fix that
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .card-image {
+        width: auto !important;
+    }
+
+    .productView-img-container img {
+        width: auto !important;
+    }
+}
