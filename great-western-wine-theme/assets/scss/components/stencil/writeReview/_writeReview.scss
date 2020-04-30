@@ -31,6 +31,7 @@
 
     img {
         @include lazy-loaded-img;
+        min-width: 50%;
     }
 
     @include lazy-loaded-padding('product_size');
