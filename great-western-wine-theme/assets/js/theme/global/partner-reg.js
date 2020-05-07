@@ -15,9 +15,11 @@ export function getPartnerInfo() {
             const membershipText = json.partnership.showMembershipNumber;
 
             $('.register-header').html(headerHTML);
-            $('.form-label:contains(Membership Number)').text(`${membershipText}`);
+            if (membershipText !== false) {
+                $('.form-label:contains(Membership Number)').text(`${membershipText}`);
+                $('#FormField_26').show();
+            }
             $('#FormField_28 .checkbox-label').text(`${confirmText}`);
-            $('#FormField_26').show();
         });
     }
 }
