@@ -21,6 +21,19 @@
     }
 }
 
+#FormField_30 {
+    display: none;
+    
+    .form-label {
+        display: none;
+    }
+    
+    .form-label.checkbox-label {
+        display: block;
+        text-transform: none;
+    }
+}
+
 // Field 2 is the first Password field
 #FormField_2 {
     clear: both;
