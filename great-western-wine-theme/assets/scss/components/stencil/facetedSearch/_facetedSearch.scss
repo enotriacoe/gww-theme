@@ -17,7 +17,7 @@
     display: block;
     margin-bottom: $facetedSearch-toggle-verticalSpacing;
     padding: $facetedSearch-toggle-padding;
-    background-color: $xl-green;
+    background-color: $blue-grey-lt;
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule

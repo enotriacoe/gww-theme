@@ -34,9 +34,9 @@
         transition: color 0.15s ease;
     }
     &:hover {
-        color: $grey-hover;
+        color: $grey-md;
         & + svg {
-            color: $grey-hover; 
+            color: $grey-md; 
         }
     }
 }

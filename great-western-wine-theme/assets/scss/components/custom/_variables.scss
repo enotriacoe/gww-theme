@@ -4,11 +4,15 @@
 // file in any non-disruptive way.
 // =============================================================================
 
-$xl-green:    #E9F0F2;
-$peach:       #E1675C; // Default accent colour
 
-$black:       #1D1D1B; // Black for fonts
-$grey-bg:     #E9F0F2; // Background colour for input fields
-$dark-grey:   #666666; // Placeholder input fields
+// All variables are available here, regardless of use in config.json file or not
 
-$grey-hover:  #757575; // Color text hover
+$green:         #357044; // Primary brand colour
+$peach:         #E1675C; // Primary brand accent colour
+
+$blue-grey-lt:  #E9F0F2; // Background colour for input fields
+
+$grey-md:       #757575; // Placeholder input fields & some hover, used often in config.json
+$grey-dk:       #333333; // Primary use in config.json
+
+$black:         #1D1D1B; // Black for fonts
