@@ -53,7 +53,6 @@
         height: auto;
         padding: 0;
         position: relative;
-        background-color: $color-tertiary;
     }
 
     &.is-open {
@@ -580,7 +579,7 @@
     .highlight-wrap {
         background-color: white;
         text-align: left;
-        border-left: 4px solid $peach;
+        border-left: 4px solid $coral;
         position: absolute;
         top: 5%;
         left: 5%;
@@ -624,7 +623,7 @@
         max-width: 20%;
 
         &:hover {
-            color: $peach;
+            color: $coral;
         }
 
         .icon {
