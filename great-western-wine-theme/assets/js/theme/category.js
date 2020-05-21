@@ -19,7 +19,7 @@ export default class Category extends CatalogPage {
 
         // Grid View with Cookies
         if (sessionStorage.getItem('productsView') === null) {
-            sessionStorage.setItem('productsView', 'list-view');
+            sessionStorage.setItem('productsView', 'grid-view');
         }
 
         function activeGridView() {
