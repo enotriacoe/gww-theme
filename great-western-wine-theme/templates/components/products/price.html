@@ -36,9 +36,8 @@ If you are making a change here or in price-range.html, you probably want to mak
             </span>
         </div>
         <div class="price-section price-section--withTax non-sale-price--withTax" {{#unless price.non_sale_price_with_tax}}style="display: none;"{{/unless}}>
-            {{theme_settings.pdp-non-sale-price-label}}
             <span data-product-non-sale-price-with-tax class="price price--non-sale">
-                {{price.non_sale_price_with_tax.formatted}}
+                {{theme_settings.pdp-non-sale-price-label}} {{price.non_sale_price_with_tax.formatted}}
             </span>
             <span class="price price-saving">Save: £{{toFixed (subtract price.non_sale_price_with_tax.value price.with_tax.value) 2}}</span>
         </div>
