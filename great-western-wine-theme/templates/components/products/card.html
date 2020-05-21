@@ -52,8 +52,9 @@
                 <a href="{{url}}" class="card-read-more">Read more</a>
             </div>
 
-            <p class="card-year-size">
-                {{#filter custom_fields 'vintage' property='name' }}{{value}}{{/filter}} | <span class="brand-color-text">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
+            <p class="card-info">
+                {{#filter custom_fields 'vintage' property='name' }}{{value}}{{/filter}} | {{#filter custom_fields 'abv' property='name' }}{{value}}{{/filter}} ABV
+                <span class="card-text-size">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
             </p>
             {{#if product.num_reviews '>' 0}}
                 <p class="card-rating">{{> components/products/ratings rating=rating}}</p>

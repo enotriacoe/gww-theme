@@ -424,7 +424,7 @@
         "default_image_brand": "img/BrandDefault.gif",
         "default_image_product": "img/gww-placeholder-image.jpg",
         "default_image_gift_certificate": "img/GiftCertificate.png",
-        "body-font": "Google_Source+Sans+Pro_700",
+        "body-font": "Google_Source+Sans+Pro_400",
         "headings-font": "Google_Cormorant_700",
         "fontSize-root": 16,
         "fontSize-h1": 28,

@@ -174,14 +174,21 @@
 }
 
 .card-title-cont {
-    height: (remCalc(22px * 5));
+    height: (remCalc(22px * 3));
     overflow: hidden;
     line-height: 1.4rem;
+    margin-bottom: 15px;
 }
 
-.card-year-size {
+.card-info {
     display: inline-block;
     margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.card-text-size {
+    color: $primary-color;
+    float: right;
 }
 
 .card-rating {
