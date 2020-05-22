@@ -44,13 +44,7 @@
         }
 
         .wishlist-grid-view {
-            display: inline-block;
-        }
-
-        .form-wishlist {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            float: right;        
         }
 
         .wishlist-list-view {
