@@ -155,9 +155,7 @@
                 {{#if num_reviews '>' 0}}
                     <p class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</p>
                 {{else}}
-                    <a>
-                        Add a review
-                    </a>
+                    <a href="{{url}}#write_review">Write a Review</a>
                 {{/if}}
                 <div class="wishlist-grid-view">
                     {{> components/common/wishlist-dropdown}}
