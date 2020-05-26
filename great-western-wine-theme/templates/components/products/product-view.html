@@ -216,9 +216,13 @@
 
             <div class="productView-price-usp">
                 <i class="fal fa-truck icon"></i>
-                <h3 class="usp-title">Free Delivery</h3>
-                <p class="usp-txt">When you spend over £50</p>
-                <p class="usp-extra-txt">We aim to deliver in 3 working days</p>
+                <h3 class="usp-title">Delivery</h3>
+                {{#filter product.custom_fields 'deliveryText' property='name'}}
+                    <p class="usp-txt">{{value}}</p>
+                {{else}}
+                    <p class="usp-txt">Free when you spend over £50</p>
+                    <p class="usp-extra-txt">We aim to deliver in 3 working days</p>
+                {{/filter}}
             </div>
 
             {{{region name="product_below_price"}}}
