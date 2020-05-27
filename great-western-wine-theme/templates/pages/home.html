@@ -12,7 +12,6 @@ blog:
         limit: {{theme_settings.homepage_blog_posts_count}}
 ---
 {{#partial "hero"}}
-    {{> components/custom/usp-block}}
     <div class="container">
         {{{region name="home_below_menu"}}}
         {{#if carousel}}
@@ -21,7 +20,7 @@ blog:
         <!-- {{{region name="home_below_carousel"}}} -->
         {{> components/what-eating-home}}
     </div>
-    <hr class="hr-black">
+    {{> components/custom/usp-block}}
 {{/partial}}
 
 {{#partial "page"}}
