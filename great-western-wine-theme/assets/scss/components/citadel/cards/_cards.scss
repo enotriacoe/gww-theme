@@ -251,9 +251,9 @@
         .tooltip-text {
             position: absolute;
             z-index: 1;
-            top: calc(100% + 10px);
+            bottom: calc(100% + 10px);
             left: 0;
-            margin-left: -75px;
+            margin-left: -45px;
             padding: 6px 8px;
             width: 150px;
             color: $grey-dk;
@@ -267,13 +267,13 @@
                 content: '';
                 display: block;
                 position: absolute;
-                top: -11px;
-                left: 80%;
+                bottom: -11px;
+                left: 50%;
                 width: 0;
                 height: 0;
                 border-top: 7px solid transparent;
                 border-bottom: 7px solid transparent;
-                border-right: 7px solid $grey-lt;
+                border-left: 7px solid $grey-lt;
                 transform: translateX(-50%) rotate(90deg);
                 z-index: 5;
             }
@@ -282,13 +282,13 @@
                 content: '';
                 display: block;
                 position: absolute;
-                top:-10px;
-                left: 80%;
+                bottom: -10px;
+                left: 50%;
                 width: 0;
                 height: 0;
                 border-top: 7px solid transparent;
                 border-bottom: 7px solid transparent;
-                border-right: 7px solid white;
+                border-left: 7px solid white;
                 transform: translateX(-50%) rotate(90deg);
                 z-index: 10;
             }
