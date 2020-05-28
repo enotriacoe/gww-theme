@@ -318,7 +318,32 @@
                 {{/filter}}
             {{/if}}
         </article>
+    </div>
+    
+    <div class="row">
+        {{> components/products/product-spec }}
+    </div>
+    
+    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
+        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+    {{/all}}
 
+    <hr class="productView-divider">
+
+    <div class="row">
+        {{#filter product.custom_fields 'winemaking_0' property='name' }}
+        <div class="productView-creation">
+            <h3 class="stylised-medium">Winemaking</h3>
+            <p>
+        {{/filter}}
+
+            {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
+        
+        {{#filter product.custom_fields 'winemaking_0' property='name' }}
+            </p>
+        </div>
+        {{/filter}}
+        
         {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
         <div class="productView-food-recommendation">
             <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
@@ -361,48 +386,8 @@
             </p>
         </div>
         {{/filter}}
-    </div>
 
-    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
-        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-    {{/all}}
-
-    <div class="productView-press-reviews">
-        {{#filter product.custom_fields 'press1Text' property='name'}}
-        <div class="press-review-cont">
-            <blockquote class="press-review-quote">{{value}}</blockquote>{{/filter}}
-            {{#filter product.custom_fields 'press1Attribution' property='name'}}
-            <h4 class="press-review-title">
-                {{value}}
-            </h4>
-        </div>
-        {{/filter}}
-        {{#filter product.custom_fields 'press2Text' property='name'}}
-        <div class="press-review-cont">
-            <blockquote class="press-review-quote">{{value}}</blockquote>
-            <h4 class="press-review-title">{{/filter}}
-                {{#filter product.custom_fields 'press2Attribution' property='name'}}{{value}}
-            </h4>
-        </div>
-        {{/filter}}
     </div>
-    <div class="row">
-        {{> components/products/product-spec }}
-        {{#filter product.custom_fields 'winemaking_0' property='name' }}
-        <div class="productView-creation">
-            <h3 class="stylised-medium">Winemaking</h3>
-            <p>
-        {{/filter}}
-
-            {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
-        
-        {{#filter product.custom_fields 'winemaking_0' property='name' }}
-            </p>
-        </div>
-        {{/filter}}
-    </div>
-    
-    <hr class="productView-divider">
 
     <div class="product-category-cont">
         <div class="product-cat-wrap producer-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'producerCategoryId' property='name' }}{{value}}{{/filter}}">

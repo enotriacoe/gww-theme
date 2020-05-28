@@ -575,7 +575,12 @@
     background-color: $blue-grey-lt;
     display: inline-block;
     padding: 30px 30px 14px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    vertical-align: top;
+
+    @include breakpoint("medium") {
+        width: 48%;
+    }
     
     @include breakpoint("large") {
         width: 30%;
@@ -668,13 +673,16 @@
 .productView-creation {
     width: 100%;
     display: inline-block;
-    vertical-align: top;
-    margin-top: 2.25rem;
     
     @include breakpoint("medium") {
-        width: 30%;
-        padding-left: 30px;
-        border-left: solid 1px lightgrey;
+        width: 48%;
+        margin-right: 2%;
+        padding: 30px 0 14px;
+    }
+
+    @include breakpoint("large") {
+        width: 64%;
+        margin-right: 2%;
     }
 }
 
