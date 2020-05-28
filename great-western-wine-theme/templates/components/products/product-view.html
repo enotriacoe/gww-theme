@@ -304,11 +304,8 @@
 
             </dl>
         </div>
-    </section>
-
-    <div class="row">        
-        <article class="productView-description"{{#if schema}} itemprop="description"{{/if}}>
-            <hr class="productView-divider">
+            
+        <article class="productView-description-cont"{{#if schema}} itemprop="description"{{/if}}>
             {{#if theme_settings.show_product_details_tabs}}
                 {{> components/products/description-tabs}}
             {{else}}
@@ -318,7 +315,8 @@
                 {{/filter}}
             {{/if}}
         </article>
-    </div>
+
+    </section>
 
     <hr class="productView-divider">
     

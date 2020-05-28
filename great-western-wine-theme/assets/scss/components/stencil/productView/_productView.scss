@@ -138,10 +138,6 @@
 // -----------------------------------------------------------------------------
 
 .productView-product {
-    @include breakpoint("medium") {
-        border-bottom: container("border");
-    }
-
     > :last-child {
         margin-bottom: 0;
     }
