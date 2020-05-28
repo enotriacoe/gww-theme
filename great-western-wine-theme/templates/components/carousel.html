@@ -10,26 +10,22 @@
                     lazyload='disabled'
                 }}
             </div>
-            <div class="container">
-                <section class="heroCarousel">
-                    <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
-                        <div class="heroCarousel-image-wrapper">
-                        </div>
-                        <a href="{{url}}" aria-label="Slide{{@index}}">
-                            {{#if heading}}
-                            {{> components/carousel-content show_background=true}}
-                            {{else}}
-                            {{#if text}}
-                            {{> components/carousel-content show_background=true}}
-                            {{else}}
-                            {{#if button_text}}
-                            {{> components/carousel-content show_background=false}}
-                            {{/if}}
-                            {{/if}}
-                            {{/if}}
-                        </a>
-                    </div>
-                </section>
+            <div class="hero-content-cont">
+                <div class="container heroCarousel-slide">
+                    <a href="{{url}}" aria-label="Slide{{@index}}">
+                        {{#if heading}}
+                        {{> components/carousel-content show_background=true}}
+                        {{else}}
+                        {{#if text}}
+                        {{> components/carousel-content show_background=true}}
+                        {{else}}
+                        {{#if button_text}}
+                        {{> components/carousel-content show_background=false}}
+                        {{/if}}
+                        {{/if}}
+                        {{/if}}
+                    </a>
+                </div>
             </div>
         </div>
     </div>
