@@ -8,8 +8,13 @@
 }
 
 .btn-coral-line {
-    border-bottom: 4px solid $color-warning;
+    border-bottom: 4px solid $coral;
     color: $black;
+
+    .icon {
+        height: 13px;
+        margin-left: 10px;
+    }
     
     &:after {
         content: "\f054";
