@@ -776,7 +776,8 @@
         "save_price_label": "Save",
         "single_bottle_text": "Single",
         "multibuy_bottle_text": "Multibuy",
-        "multibuy_discount_text": "Buy 12+"
+        "multibuy_discount_text": "Buy 12+",
+        "multibuy_product_view_text": "per bottle when you mix 12+ bottles"
     },
     "invoice": {
         "for_order": "{name} Invoice for Order #{id}",

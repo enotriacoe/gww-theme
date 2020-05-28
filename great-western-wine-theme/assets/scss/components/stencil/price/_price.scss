@@ -2,6 +2,12 @@
 // PRICE (CSS)
 // =============================================================================
 
+.price--rrp,
+.price--non-sale,
+.price--discounted {
+    text-decoration: line-through;
+}
+
 .price-section--minor {
     color: color("greys", "light");
 }
@@ -9,6 +15,7 @@
 .price--withTax {
     font-size: 30px;
     font-weight: $fontWeight-bold;
+    line-height: 1;
 }
 
 .non-sale-price--withTax {
@@ -17,7 +24,7 @@
 
 .price-saving {
     display: block;
-    color: $green;
+    color: $navy;
     font-weight: 600;
 }
 
