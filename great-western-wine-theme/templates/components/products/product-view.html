@@ -319,6 +319,8 @@
             {{/if}}
         </article>
     </div>
+
+    <hr class="productView-divider">
     
     <div class="row">
         {{> components/products/product-spec }}
@@ -343,7 +345,7 @@
             </p>
         </div>
         {{/filter}}
-        
+
         {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
         <div class="productView-food-recommendation">
             <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>

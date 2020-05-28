@@ -611,11 +611,7 @@
 .productView-spec {
     width: 100%;
     display: inline-block;
-    margin-top: 2.25rem;
-    
-    @include breakpoint("medium") {
-        width: 66%;
-    }
+    margin-bottom: 35px;
     
     li {
         width: 100%;
@@ -625,9 +621,17 @@
 
 .product-spec-list {
     margin: 0;
-    width: 49%;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
+
+    @include breakpoint("small") {
+        width: 49%;
+    }
+
+    @include breakpoint("medium") {
+        width: 32%;
+    }
 
     li {
         span {
@@ -649,12 +653,16 @@
 }
 
 .productView-spec-item {
-    width: 49%;
+    width: 180px;
     max-width: 40em;
     padding: 0;
     overflow-x: hidden;
     list-style: none;
     display: inline-block;
+
+    @include breakpoint("small") {
+        width: 42%
+    }
 
     :before {
         float: left;
