@@ -36,11 +36,10 @@
     background-color: rgba($carousel-bgColor, 1);
     padding: spacing("half") spacing("single") (spacing("single"));
     text-align: left;
-    border-left: 4px solid $coral;
 
     @include breakpoint("medium") {
         background-color: rgba($carousel-bgColor, 1);
-        left: 0;
+        left: 20px;
         margin: 0 auto;
         padding: 1.3rem (spacing("single") * 1.5);
         position: absolute;
