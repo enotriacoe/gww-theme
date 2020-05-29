@@ -233,66 +233,6 @@
         display: inline-block;
         font-size: 16px;
         line-height: 1;
-        
-        .tooltip-border {
-            display: inline-block;
-            border-bottom: 1px dotted black;
-            margin-bottom: -2px;
-        }
-
-        &:hover {
-            cursor: help;
-
-            .tooltip-text {
-                visibility: visible;
-            }
-        }
-
-        .tooltip-text {
-            position: absolute;
-            z-index: 1;
-            bottom: calc(100% + 10px);
-            left: 0;
-            margin-left: -45px;
-            padding: 6px 8px;
-            width: 150px;
-            color: $grey-dk;
-            font-size: 12px;
-            background-color: white;
-            border-radius: 5px;
-            border: 1px solid $grey-lt;
-            visibility: hidden;
-           
-            &:before {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: -11px;
-                left: 50%;
-                width: 0;
-                height: 0;
-                border-top: 7px solid transparent;
-                border-bottom: 7px solid transparent;
-                border-left: 7px solid $grey-lt;
-                transform: translateX(-50%) rotate(90deg);
-                z-index: 5;
-            }
-
-            &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                width: 0;
-                height: 0;
-                border-top: 7px solid transparent;
-                border-bottom: 7px solid transparent;
-                border-left: 7px solid white;
-                transform: translateX(-50%) rotate(90deg);
-                z-index: 10;
-            }
-        }
     }
 
     .price {
@@ -311,6 +251,69 @@
         color: $black;
         font-weight: 600;
         font-size: 14px;
+    }
+}
+
+.multibuy-price-title {
+    
+    .tooltip-border {
+        display: inline-block;
+        border-bottom: 1px dotted black;
+        margin-bottom: -2px;
+    }
+
+    &:hover {
+        cursor: help;
+
+        .tooltip-text {
+            visibility: visible;
+        }
+    }
+
+    .tooltip-text {
+        position: absolute;
+        z-index: 1;
+        bottom: calc(100% + 10px);
+        left: 0;
+        margin-left: -45px;
+        padding: 6px 8px;
+        width: 150px;
+        color: $grey-dk;
+        font-size: 12px;
+        background-color: white;
+        border-radius: 5px;
+        border: 1px solid $grey-lt;
+        visibility: hidden;
+       
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -11px;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 7px solid $grey-lt;
+            transform: translateX(-50%) rotate(90deg);
+            z-index: 5;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 7px solid white;
+            transform: translateX(-50%) rotate(90deg);
+            z-index: 10;
+        }
     }
 }
 

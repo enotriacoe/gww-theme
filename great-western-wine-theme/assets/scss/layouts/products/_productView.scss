@@ -35,7 +35,7 @@
 .productView-details {
     @include grid-column(12);
     padding-left: spacing("base");
-    padding-right: spacing("base");
+    padding-right: (spacing("base") / 2);
 
     @include breakpoint("medium") {
         clear: right;

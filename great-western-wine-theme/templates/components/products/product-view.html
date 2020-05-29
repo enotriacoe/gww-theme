@@ -165,66 +165,72 @@
                 </div>
             <hr class="icon-bottom">
 
-
-            <div class="productView-price">
-                <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
-                {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
-                    {{> components/products/price price=product.price schema_org=schema}}
-                {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}} 
-            </div>
-
-            {{#filter product.custom_fields 'isMultibuy' property='name' }}
-            <div class="multibuy-cont">
-            {{else}}
-            <div class="multibuy-cont" style="display:none">
-            {{/filter}}
-                <span class="multibuy-price-title">{{lang 'products.multibuy_bottle_text'}}</span>
-                <span class="multibuy-price">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
-                <p class="multibuy-label">{{lang 'products.multibuy_product_view_text'}}</p>
-            </div>
-
-            <div class="productView-cart-cont">
-                <div class="productView-options add-to-cart-form">
-                    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
-                        data-cart-item-add>
-                        <input type="hidden" name="action" value="add">
-                        <input type="hidden" name="product_id" value="{{product.id}}"/>
-                        <div data-product-option-change style="display:none;">
-                            {{#each product.options}}
-                                {{{dynamicComponent 'components/products/options'}}}
-                            {{/each}}
-                        </div>
-                        <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}" style="display:none;">
-                            <label class="form-label form-label--alternate">
-                                {{lang 'products.current_stock'}}
-                                <span data-product-stock>{{product.stock_level}}</span>
-                            </label>
-                        </div>
-                        {{#if product.can_purchase}}
-                            {{> components/products/add-to-cart}}
-                        {{else}}
-                            <div class="button btn-oos">OUT OF STOCK</div>
-                        {{/if}}
-                        {{#if product.out_of_stock}}
-                            {{#if product.out_of_stock_message}}
-                                <div class="btn-oos button">OUT OF STOCK</div>
-                            {{else}}
-                                {{> components/common/alert-error (lang 'products.sold_out')}}
-                            {{/if}}
-                        {{/if}}
-                    </form>
+            <div class="productView-pricing-cont">
+                <div class="productView-price">
+                    <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
+                    {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
+                        {{> components/products/price price=product.price schema_org=schema}}
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}} 
                 </div>
 
-                <div class="productView-price-usp">
-                    <i class="fal fa-truck icon"></i>
-                    <h3 class="usp-title">Delivery</h3>
-                    {{#filter product.custom_fields 'deliveryText' property='name'}}
-                        <p class="usp-txt">{{value}}</p>
-                    {{else}}
-                        <p class="usp-txt">Free when you spend over £50</p>
-                    {{/filter}}
+                {{#filter product.custom_fields 'isMultibuy' property='name' }}
+                <div class="multibuy-cont">
+                {{else}}
+                <div class="multibuy-cont" style="display:none">
+                {{/filter}}
+                    <div class="multibuy-price-title">
+                        <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
+                        <sub> ?</sub>
+                        <span class="tooltip-text">Only <strong>£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                    </div>
+                    <span class="price price--withTax">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
+                    <span class="multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                    <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
+                </div>
+
+                <div class="productView-cart-cont">
+                    <div class="productView-options add-to-cart-form">
+                        <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                            data-cart-item-add>
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="product_id" value="{{product.id}}"/>
+                            <div data-product-option-change style="display:none;">
+                                {{#each product.options}}
+                                    {{{dynamicComponent 'components/products/options'}}}
+                                {{/each}}
+                            </div>
+                            <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}" style="display:none;">
+                                <label class="form-label form-label--alternate">
+                                    {{lang 'products.current_stock'}}
+                                    <span data-product-stock>{{product.stock_level}}</span>
+                                </label>
+                            </div>
+                            {{#if product.can_purchase}}
+                                {{> components/products/add-to-cart}}
+                            {{else}}
+                                <div class="button btn-oos">OUT OF STOCK</div>
+                            {{/if}}
+                            {{#if product.out_of_stock}}
+                                {{#if product.out_of_stock_message}}
+                                    <div class="btn-oos button">OUT OF STOCK</div>
+                                {{else}}
+                                    {{> components/common/alert-error (lang 'products.sold_out')}}
+                                {{/if}}
+                            {{/if}}
+                        </form>
+                    </div>
+
+                    <div class="productView-price-usp">
+                        <i class="fal fa-truck icon"></i>
+                        <h3 class="usp-title">Delivery</h3>
+                        {{#filter product.custom_fields 'deliveryText' property='name'}}
+                            <p class="usp-txt">{{value}}</p>
+                        {{else}}
+                            <p class="usp-txt">Free when you spend over £50</p>
+                        {{/filter}}
+                    </div>
                 </div>
             </div>
 

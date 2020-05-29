@@ -183,7 +183,7 @@
     display: block;
     width: auto;
     margin-bottom: 10px;
-    padding: 7px 21px 14px;
+    padding: 7px 14px 7px;
 
     @include breakpoint("small") {
         width: 49%;
@@ -195,8 +195,13 @@
         font-size: fontSize("larger");
         width: auto;
         vertical-align: top;
-        margin-right: 3%;
+        margin-right: 1%;
         margin-bottom: 10px;
+        padding: 7px 4px;
+    }
+
+    @include breakpoint("large") {
+        padding: 7px 21px 14px;
     }
 
     .non-sale-price--withTax {
@@ -216,6 +221,7 @@
     .single-price-title {
         display: block;
         font-size: 16px;
+        line-height: 1;
     }
     
     .price--non-sale {
@@ -377,11 +383,10 @@
             text-transform: uppercase;
             margin: 0;
             line-height: normal;
-            min-width: 180px;
-            
-            &#form-action-addToCart {
-                margin: 0;
-                width: 100%;
+            padding: 0.875rem 13%;
+
+            @include breakpoint("large") {
+                padding: 0.875rem 2.5rem;
             }
         }
     }
@@ -498,7 +503,15 @@
         display: inline-block;
         vertical-align: top;
         background-color: $blue-grey-lt;
-        padding: 7px 21px 14px;
+        padding: 7px 21px 14px 21px;
+
+        @include breakpoint("medium") {
+            padding: 7px 11px 14px;
+        }
+
+        @include breakpoint("large") {
+            padding: 7px 21px 14px;
+        }
     }
 
     .multibuy-only-label, .multibuy-price, .multibuy-label {
@@ -515,7 +528,13 @@
 
     .multibuy-label {
         max-width: 113px;
-        margin-top: 10px;
+    }
+
+    .multibuy-saving {
+        display: block;
+        color: #1D1D1B;
+        font-weight: 600;
+        font-size: 14px;
     }
 }
 
@@ -564,7 +583,15 @@
 
 .productView-cart-cont {
     display: inline-block;
-    margin: 0 5%;
+    margin: 0;
+
+    @include breakpoint("medium") {
+        margin-left: 5px;
+    }
+
+    @include breakpoint("large") {
+        margin-left: 5%;
+    }
 }
 
 .productView-food-recommendation {
