@@ -49,7 +49,7 @@
             </div>
 
             <p class="card-stats">
-                {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} 
+                <span> {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} &nbsp; </span>
                 <span class="card-text-volume">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
             </p>
             <div class="wishlist-list-view">

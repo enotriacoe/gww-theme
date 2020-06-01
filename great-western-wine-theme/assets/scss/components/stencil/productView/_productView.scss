@@ -383,14 +383,15 @@
             text-transform: uppercase;
             margin: 0;
             line-height: normal;
-            padding: 0.875rem 12%;
+            padding: 0.6rem 12%;
+            height: 50px;
 
             @include breakpoint("small") {
                 width: 95%;
             }
 
             @include breakpoint("large") {
-                padding: 0.875rem 2.5rem;
+                padding: 0.6rem 2.5rem;
             }
         }
     }
