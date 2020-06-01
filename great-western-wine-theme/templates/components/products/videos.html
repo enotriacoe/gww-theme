@@ -1,31 +1,19 @@
-<section class="toggle videoGallery" data-video-gallery>
-    <h4 class="toggle-title">
-        {{lang 'products.videos.header'}}
-        <a href="#videoGallery-content" class="toggleLink is-open" data-collapsible>
-            <span class="toggleLink-text toggleLink-text--on">
-                {{lang 'products.videos.hide'}}
-            </span>
-            <span class="toggleLink-text toggleLink-text--off">
-                {{lang 'products.videos.show'}}
-            </span>
-        </a>
-    </h4>
-
-    <div class="toggle-content is-open" id="videoGallery-content">
-        <div class="videoGallery-main">
-            <iframe
-                id="player"
-                class="lazyload"
-                type="text/html"
-                width="640"
-                height="390"
-                frameborder="0"
-                webkitAllowFullScreen
-                mozallowfullscreen
-                allowFullScreen
-                data-src="//www.youtube.com/embed/{{this.featured.id}}"
-                data-video-player>
-            </iframe>
+<section class="videoGallery" data-video-gallery>
+    <div class="" id="videoGallery-content">
+        <div class="resp-cont">
+            <div class="videoGallery-main resp-iframe">
+                <iframe
+                    id="player"
+                    class="lazyload"
+                    type="text/html"
+                    frameborder="0"
+                    webkitAllowFullScreen
+                    mozallowfullscreen
+                    allowFullScreen
+                    data-src="//www.youtube.com/embed/QdRpdGb0sj0"
+                    data-video-player>
+                </iframe>
+            </div>
         </div>
         <ul class="videoGallery-list">
         {{#each this.list}}
