@@ -180,21 +180,21 @@
 
 .productView-price {
     font-size: fontSize("smaller");
-    display: block;
-    width: auto;
     margin-bottom: 10px;
     padding: 7px 14px 7px;
+    vertical-align: top;
+    float: left;
+    width: 49%;
 
     @include breakpoint("small") {
-        width: 49%;
-        display: inline-block;
+        width: auto;
+        margin: 0;
     }
     
     @include breakpoint("medium") {
         margin: 0;
         font-size: fontSize("larger");
         width: auto;
-        vertical-align: top;
         margin-right: 1%;
         margin-bottom: 10px;
         padding: 7px 4px;
@@ -383,7 +383,11 @@
             text-transform: uppercase;
             margin: 0;
             line-height: normal;
-            padding: 0.875rem 13%;
+            padding: 0.875rem 12%;
+
+            @include breakpoint("small") {
+                width: 95%;
+            }
 
             @include breakpoint("large") {
                 padding: 0.875rem 2.5rem;
@@ -499,11 +503,17 @@
 
 .productView-product {
     .multibuy-cont {
-        width: auto;
+        width: 49%;
         display: inline-block;
         vertical-align: top;
         background-color: $blue-grey-lt;
         padding: 7px 21px 14px 21px;
+        margin-left: 2%;
+
+        @include breakpoint("small") {
+            width: auto;
+            margin-left: 0;
+        }
 
         @include breakpoint("medium") {
             padding: 7px 11px 14px;
@@ -584,8 +594,15 @@
 .productView-cart-cont {
     display: inline-block;
     margin: 0;
+    width: 100%;
+
+    @include breakpoint("small") {
+        max-width: 46%;
+        width: auto;
+    }
 
     @include breakpoint("medium") {
+        max-width: 100%;
         margin-left: 5px;
     }
 
