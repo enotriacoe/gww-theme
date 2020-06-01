@@ -122,7 +122,7 @@
 .footer-copyright {
     text-align: center;
     padding: spacing("single") 0;
-    background-color: $crimson;
+    background-color: $maroon;
 
     @include breakpoint("small") {
         text-align: left;

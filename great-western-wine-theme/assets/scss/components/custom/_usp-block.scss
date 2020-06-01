@@ -3,7 +3,7 @@
 // =============================================================================
 
 .usp-wrap {
-    background-color: $crimson;
+    background-color: $maroon;
 }
 
 .usp-container {
@@ -46,7 +46,7 @@
     }
 
     &:hover {
-        background-color: $crimson-lt;
+        background-color: $maroon-lt;
     }
 
     @include breakpoint("medium") {
