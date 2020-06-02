@@ -40,7 +40,9 @@
             </div>
         </figure>
         <div class="productView-video">
+            {{#if product.videos.list.length}}
                 {{> components/products/videos product.videos}}
+            {{/if}}        
         </div>
     </section>
 
