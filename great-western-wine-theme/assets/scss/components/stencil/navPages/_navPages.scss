@@ -130,7 +130,7 @@
                 text-align: center;
 
                 @include breakpoint("medium") {
-                    background-color: black;
+                    background-color: $color-tertiary;
                     color: white;
                 }
             }
@@ -162,6 +162,7 @@
     .navPages-action-moreIcon {
         @include breakpoint("medium") {
             transform: rotate(0);
+            color: white;
         }
     }
 }
@@ -372,7 +373,7 @@
             .navPage-subMenu-horizontal {
                 width: 66.6%;
                 margin-left: 33.4%;
-                background-color: $color-tertiary;
+                background-color: $grey-xlt;
 
                 .navPage-subMenu-horizontal {
                     width: 50%;
@@ -428,7 +429,7 @@
                 width: 33.4%;
 
                 &:hover, &.is-open {
-                    background-color: $color-tertiary;  
+                    background-color: $grey-xlt;  
                 }
             }
             
