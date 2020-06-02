@@ -149,7 +149,8 @@
     margin: 0;
     
     @include breakpoint("large") {
-        font-size: fontSize("largest");
+        font-size: 34px;
+        line-height: 1;
     }
 }
 
@@ -161,7 +162,7 @@
     font-weight: 400;
 
     @include breakpoint("large") {
-        font-size: fontSize("largest");
+        font-size: 34px;
     }
 
     a {
