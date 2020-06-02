@@ -6,23 +6,29 @@
     display: inline-block;
     width: 100%;
     position: relative;
+    float: none;
 
     img {
-        width: 100%;
+        width: 66%;
+        float: right;
+
+        @include breakpoint ("medium") {
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
     }
 
-    @media screen and (min-width: 950px){
-        max-height: 350px;
-        min-height: 130px;
+    @include breakpoint ("medium") {
         overflow: hidden;
     }
 
-
     .stylised-title {
-        border-bottom: solid 5px $color-warning;
+        border-bottom: solid 5px $maroon;
         padding-bottom: 5px;
+        margin-top: 0;
 
         @include breakpoint ("medium") {
+            width: 33%;
             font-size: 35px;
             padding-bottom: 10px;
         }
@@ -41,17 +47,11 @@
 
 .category-text {
     background-color: white;
+    width: 100%;
 
-    @media screen and (min-width: 950px){
-        width: 60%;
-        padding: 0 25px;
-        position: absolute;
-        border-left: 5px solid $coral;
-        top: 20px;
-    }
-
-    @include breakpoint("large") {
-        top: 30px;  
+    @include breakpoint ("medium") {
+        width: 100%;
+        padding-right: 25px;
     }
 }
 
@@ -67,6 +67,11 @@
     display: inline-block;
 }
 
-.show-read-more .more-text{
-    display: none;
+.show-read-more {
+    max-height: 168px;
+    margin: 0;
+
+    .more-text {     
+        display: none;
+    }
 }

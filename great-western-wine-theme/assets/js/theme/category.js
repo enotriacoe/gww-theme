@@ -79,9 +79,9 @@ export default class Category extends CatalogPage {
         });
 
         if ($('.show-read-more')[0]) {
-            let maxLength = 220;
+            let maxLength = 200;
             if (screen.width >= 801) {
-                maxLength = 440;
+                maxLength = 420;
             }
 
             $('.show-read-more').each(function () {
@@ -99,6 +99,8 @@ export default class Category extends CatalogPage {
             $('.read-more').on('click', function () {
                 $(this).siblings('.more-text').contents().unwrap();
                 $('.more-text').show();
+                $('.show-read-more').css('max-height', 'none');
+                $('.category-text').css('width', '100%');
                 $(this).remove();
                 $('.read-more-dots').remove();
             });
