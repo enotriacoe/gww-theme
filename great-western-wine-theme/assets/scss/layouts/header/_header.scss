@@ -51,7 +51,7 @@
     }
 
     @include breakpoint("large") {
-        margin: (spacing("base") * 1.5) 0;
+        margin: (spacing("base") * 1.5) 0 spacing("base");
     }
 
     > a {
@@ -148,12 +148,11 @@
     display: inline-block;
 
     @include breakpoint("medium") {
-        max-height: none;
-        max-width: 230px;
+        max-height: 90px;
     }
 
     @include breakpoint("large") {
-        max-width: 250px;
+        max-height: 100px;
     }
 
 }
