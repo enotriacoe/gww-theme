@@ -46,9 +46,8 @@
     width: 100%;
     max-height: 50vh;
 
-
     @include breakpoint("medium") {
-        max-height: 100%;
+        max-height: 500px;
     }
 
     img {
@@ -138,10 +137,6 @@
 // -----------------------------------------------------------------------------
 
 .productView-product {
-    @include breakpoint("medium") {
-        border-bottom: container("border");
-    }
-
     > :last-child {
         margin-bottom: 0;
     }
@@ -154,7 +149,8 @@
     margin: 0;
     
     @include breakpoint("large") {
-        font-size: fontSize("largest");
+        font-size: 34px;
+        line-height: 1;
     }
 }
 
@@ -166,7 +162,7 @@
     font-weight: 400;
 
     @include breakpoint("large") {
-        font-size: fontSize("largest");
+        font-size: 34px;
     }
 
     a {
@@ -184,23 +180,28 @@
 
 .productView-price {
     font-size: fontSize("smaller");
-    display: block;
-    width: auto;
-    vertical-align: bottom;
-    margin: 0 auto 10px;
+    margin-bottom: 10px;
+    padding: 7px 14px 7px;
+    vertical-align: top;
+    float: left;
+    width: 49%;
 
     @include breakpoint("small") {
-        width: 49%;
-        display: inline-block;
+        width: auto;
+        margin: 0;
     }
     
     @include breakpoint("medium") {
         margin: 0;
         font-size: fontSize("larger");
         width: auto;
-        vertical-align: top;
-        margin-right: 3%;
+        margin-right: 1%;
         margin-bottom: 10px;
+        padding: 7px 4px;
+    }
+
+    @include breakpoint("large") {
+        padding: 7px 21px 14px;
     }
 
     .non-sale-price--withTax {
@@ -215,6 +216,21 @@
         border: 0;
         color: inherit;
         font-size: inherit;
+    }
+    
+    .single-price-title {
+        display: block;
+        font-size: 16px;
+        line-height: 1;
+    }
+    
+    .price--non-sale {
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    .price-saving {
+        font-size: 14px;
     }
 }
 
@@ -361,35 +377,21 @@
 
     .form-action {
 
-        @include breakpoint("small") {
-            float: left;
-            padding: 0 remCalc(10);
-            width: 50%;
-        }
-
-        @include breakpoint("medium") {
-            float: none;
-            padding: 0;
-            width: auto;
-        }
-
-        @include breakpoint("large") {
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
         // scss-lint:disable SelectorDepth, NestingDepth
         .button {
             width: 100%;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: normal;
+            padding: 0.6rem 12%;
+            height: 50px;
 
-            &.form-action-addToCart {
-                margin: 0;
-                width: 100%;
+            @include breakpoint("small") {
+                width: 95%;
             }
 
             @include breakpoint("large") {
-                margin-right: spacing("half");
-                width: auto;
+                padding: 0.6rem 2.5rem;
             }
         }
     }
@@ -504,15 +506,22 @@
     .multibuy-cont {
         width: 49%;
         display: inline-block;
-        padding: 17px 20px;
         vertical-align: top;
+        background-color: $blue-grey-lt;
+        padding: 7px 21px 14px 21px;
+        margin-left: 2%;
+
+        @include breakpoint("small") {
+            width: auto;
+            margin-left: 0;
+        }
 
         @include breakpoint("medium") {
-            width: 47%;
+            padding: 7px 11px 14px;
         }
 
         @include breakpoint("large") {
-            width: 32%;
+            padding: 7px 21px 14px;
         }
     }
 
@@ -520,48 +529,42 @@
         display: block;
     }
 
-    .multibuy-only-label {
-        text-transform: uppercase;
-        font-weight: 500;
-        line-height: 0.8rem;
+    .multibuy-price-title {
+        line-height: 1;
     }
 
     .multibuy-price {
-        line-height: 2rem;
+        line-height: 1;
     }
 
     .multibuy-label {
-        max-width: 100%;
-        font-size: 12px;
+        max-width: 113px;
+    }
+
+    .multibuy-saving {
+        display: block;
+        color: $maroon;
+        font-weight: 600;
+        font-size: 14px;
     }
 }
 
 .productView-price-usp {
-    width: 49%;
-    display: inline-block;
-    padding: 0 20px;
+    width: 100%;
+    display: block;
+    padding: 10px 40px;
     font-size: remCalc(14px);
     line-height: 1rem;
-    text-align: center;
-
-    @include breakpoint("small") {
-        width: 100%;
-    }
-
-    @include breakpoint("medium") {
-        text-align: left;
-        width: 47%;
-    }
-
-    @include breakpoint("large") {
-        width: 26%;
-    }
+    position: relative;
 
     .icon {
+        position: absolute;
+        top: 15px;
+        left: 5px;
         height: 25px;
         width: 25px;
         margin-right: 6px;
-        vertical-align: middle;
+        transform: scaleX(-1);
     }
 
     .usp-title {
@@ -569,7 +572,6 @@
         font-weight: 600;
         text-transform: uppercase;
         margin: 0;
-        display: inline-block;
         max-width: 70%;
         margin-bottom: 0;
         
@@ -578,7 +580,7 @@
         }
     }
 
-    .usp-txt {        
+    .usp-txt {
         margin-bottom: 0;
         display: inline-block;
         margin-left: 5px;
@@ -586,31 +588,40 @@
         @include breakpoint("medium") {
             margin-bottom: 8px;
             margin-left: 0px;
-        }
-    }
-
-    .usp-extra-txt {
-        font-size: remCalc(11px);
-        margin-bottom: 0;
-        display: inline-block;
-        margin-left: 5px;
-
-        @include breakpoint("medium") {
-            margin-bottom: 8px;
-            margin-left: 0px;
-            padding-top: 10px;
-        }
-        @include breakpoint("large") {
-            padding: 0;
         }
     }
 }
 
+.productView-cart-cont {
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+
+    @include breakpoint("small") {
+        max-width: 46%;
+        width: auto;
+    }
+
+    @include breakpoint("medium") {
+        max-width: 100%;
+        margin-left: 5px;
+    }
+
+    @include breakpoint("large") {
+        margin-left: 5%;
+    }
+}
+
 .productView-food-recommendation {
-    background-color: $xl-green;
+    background-color: $blue-grey-lt;
     display: inline-block;
     padding: 30px 30px 14px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    vertical-align: top;
+
+    @include breakpoint("medium") {
+        width: 48%;
+    }
     
     @include breakpoint("large") {
         width: 30%;
@@ -632,8 +643,12 @@
     border-top: solid 1px black;
 }
 
+.icon-bottom {
+    border-top: solid 1px black;
+}
+
 .productView-size {
-    background-color: $xl-green;
+    background-color: $blue-grey-lt;
     display: inline-block;
     padding: 5px 9px;
 }
@@ -641,11 +656,7 @@
 .productView-spec {
     width: 100%;
     display: inline-block;
-    margin-top: 2.25rem;
-    
-    @include breakpoint("medium") {
-        width: 66%;
-    }
+    margin-bottom: 35px;
     
     li {
         width: 100%;
@@ -655,9 +666,17 @@
 
 .product-spec-list {
     margin: 0;
-    width: 49%;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
+
+    @include breakpoint("small") {
+        width: 49%;
+    }
+
+    @include breakpoint("medium") {
+        width: 32%;
+    }
 
     li {
         span {
@@ -679,12 +698,16 @@
 }
 
 .productView-spec-item {
-    width: 49%;
+    width: 180px;
     max-width: 40em;
     padding: 0;
     overflow-x: hidden;
     list-style: none;
     display: inline-block;
+
+    @include breakpoint("small") {
+        width: 42%
+    }
 
     :before {
         float: left;
@@ -703,13 +726,16 @@
 .productView-creation {
     width: 100%;
     display: inline-block;
-    vertical-align: top;
-    margin-top: 2.25rem;
     
     @include breakpoint("medium") {
-        width: 30%;
-        padding-left: 30px;
-        border-left: solid 1px lightgrey;
+        width: 48%;
+        margin-right: 2%;
+        padding: 30px 0 14px;
+    }
+
+    @include breakpoint("large") {
+        width: 64%;
+        margin-right: 2%;
     }
 }
 
@@ -725,7 +751,7 @@
 
     @include breakpoint("medium") {
         flex-direction: row;
-        margin: 30px 0 10px;
+        margin: 20px 0 10px;
     }
 }
 
@@ -769,11 +795,10 @@
 
 .product-cat-heading {
     position: absolute;
-    left: 0;
+    left: 20px;
     bottom: 15%;
     display: inline-block;
     padding: 15px 15px;
-    border-left: 5px solid $peach;
     background-color: white;
     max-width: 90%;
     width: auto;

@@ -11,7 +11,7 @@
 
     .navBar-item {
         a, &.is-active {
-            font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+            font-family: "Cormorant", Arial, Helvetica, sans-serif;
             font-size: 17px;
             font-weight: 700;
             color: $black;
@@ -24,7 +24,7 @@
         &.is-active,
         &:hover{    
             padding-bottom: 5px;
-            border-bottom: solid 3px $peach;
+            border-bottom: solid 3px $coral;
         }
 
         .icon{
@@ -74,7 +74,7 @@
     }
 
     input:not([type=submit]), select{
-        background-color: $grey-bg;
+        background-color: $blue-grey-lt;
         border-radius: 0;
         border: none;
         padding: 9px 40px 9px 12px;
@@ -82,11 +82,11 @@
         // height: 2.5rem;
 
         &::placeholder{
-            color: $dark-grey;
+            color: $grey-md;
         }
 
         &:focus{
-            border-bottom: solid 5px $peach;
+            border-bottom: solid 5px $coral;
         }
     }
 

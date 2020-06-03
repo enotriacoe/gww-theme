@@ -2,6 +2,10 @@
 // USP BLOCK (CSS)
 // =============================================================================
 
+.usp-wrap {
+    background-color: $maroon;
+}
+
 .usp-container {
     margin-bottom: 20px;
 
@@ -17,8 +21,8 @@
 
 .usp-block {
     width: 100%;
-    border: 3px solid $primary-color;
     position: relative;
+    padding: 3px 0;
 
     &:not(:first-child) {
         display: none;
@@ -28,7 +32,7 @@
         margin-left: ($header-item-icon-size-mobile + 1rem);
         margin-bottom: 0;
         line-height: 1.2rem;
-        color: $primary-color;
+        color: white;
     }
 
     .icon {
@@ -38,7 +42,11 @@
         left: 10;
         top: 50%;
         transform: translateY(-50%);
-        color: $primary-color;
+        color: white;
+    }
+
+    &:hover {
+        background-color: $maroon-lt;
     }
 
     @include breakpoint("medium") {

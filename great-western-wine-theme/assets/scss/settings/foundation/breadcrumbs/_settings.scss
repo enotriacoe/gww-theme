@@ -52,12 +52,12 @@ $crumb-radius:                      null;
 
 // We use these to set various text styles for breadcrumbs.
 $crumb-font-size:                   fontSize("smallest");
-$crumb-font-color:                  stencilColor("color-textSecondary");
-$crumb-font-color-current:          stencilColor("color-textSecondary");
+$crumb-font-color:                  #a53051; //$maroon
+$crumb-font-color-current:          #a53051; //$maroon
 $crumb-font-color-unavailable:      color("greys", "light");
 $crumb-font-transform:              null;
 $crumb-link-decor:                  null;
 
 // We use these to control the slash between breadcrumbs
-$crumb-slash-color:                 stencilColor("color-textSecondary");
-$crumb-slash:                       "/";
+$crumb-slash-color:                 #a53051; //$maroon
+$crumb-slash:                       ">";

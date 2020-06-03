@@ -8,8 +8,13 @@
 }
 
 .btn-coral-line {
-    border-bottom: 4px solid $color-warning;
+    border-bottom: 4px solid $coral;
     color: $black;
+
+    .icon {
+        height: 13px;
+        margin-left: 10px;
+    }
     
     &:after {
         content: "\f054";
@@ -34,19 +39,28 @@
         transition: color 0.15s ease;
     }
     &:hover {
-        color: $grey-hover;
+        color: $grey-md;
         & + svg {
-            color: $grey-hover; 
+            color: $grey-md; 
         }
     }
 }
 
 .button--primary {
     background-color: $primary-color;
-    border-color: $primary-color;
+    border: 5px solid $primary-color;
     border-radius: 0;
+    border-left: 0;
+
     &:hover {
+        background-color: $green-lt;
+        color: white;
         border-color: $primary-color;
+    }
+
+    &:active {
+        border: 5px solid $primary-color;
+        border-left: 0;
     }
 }
 

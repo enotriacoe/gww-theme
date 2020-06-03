@@ -53,7 +53,6 @@
         height: auto;
         padding: 0;
         position: relative;
-        background-color: $color-tertiary;
     }
 
     &.is-open {
@@ -131,7 +130,7 @@
                 text-align: center;
 
                 @include breakpoint("medium") {
-                    background-color: black;
+                    background-color: $color-tertiary;
                     color: white;
                 }
             }
@@ -163,6 +162,7 @@
     .navPages-action-moreIcon {
         @include breakpoint("medium") {
             transform: rotate(0);
+            color: white;
         }
     }
 }
@@ -373,7 +373,7 @@
             .navPage-subMenu-horizontal {
                 width: 66.6%;
                 margin-left: 33.4%;
-                background-color: $color-tertiary;
+                background-color: $grey-xlt;
 
                 .navPage-subMenu-horizontal {
                     width: 50%;
@@ -429,7 +429,7 @@
                 width: 33.4%;
 
                 &:hover, &.is-open {
-                    background-color: $color-tertiary;  
+                    background-color: $grey-xlt;  
                 }
             }
             
@@ -580,7 +580,7 @@
     .highlight-wrap {
         background-color: white;
         text-align: left;
-        border-left: 4px solid $peach;
+        border-left: 4px solid $coral;
         position: absolute;
         top: 5%;
         left: 5%;
@@ -624,7 +624,7 @@
         max-width: 20%;
 
         &:hover {
-            color: $peach;
+            color: $coral;
         }
 
         .icon {

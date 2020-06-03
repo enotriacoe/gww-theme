@@ -23,9 +23,11 @@
     margin-bottom: 0;
     margin-top: 0;
 
+
     &.slick-initialized { // 2
-        max-height: remCalc(600px);
+        max-height: remCalc(500px);
         opacity: 1;
+        margin-bottom: 0;
     }
 
     &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
@@ -64,55 +66,70 @@
 
 .heroCarousel-slide {
     position: relative;
+    height: 100%;
+
     a {
         text-decoration: none;
     }
+}
 
-    .heroCarousel-image {
-        @include breakpoint("medium") {
-            object-fit: cover; // 1
-            max-height: remCalc(600px);
-            width: 100%;
-        }
+.heroCarousel-image {
+    object-fit: cover;
+    max-height: 150px;
+    width: 100%;
+
+    @include breakpoint("medium") {
+        max-height: 300px;
     }
 
-    .heroCarousel-image-wrapper {
-        @include breakpoint("medium") {
-            max-height: remCalc(500px);
-        }
+    @include breakpoint("large") {
+        max-height: 400px;
     }
 
-    &.compat-object-fit { // 1
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
-
-        &.stretch {
-            @include breakpoint("large") { // 4
-                background-size: 100% 100%;
-            }
-        }
-
-        .heroCarousel-image {
-            opacity: 0;
-        }
+    @include breakpoint("xlarge") {
+        max-height: 500px;
     }
 }
+
+.heroCarousel-image-wrapper {
+    @include breakpoint("medium") {
+        max-height: remCalc(500px);
+    }
+}
+
+&.compat-object-fit { // 1
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+
+    &.stretch {
+        @include breakpoint("large") { // 4
+            background-size: 100% 100%;
+        }
+    }
+
+    .heroCarousel-image {
+        opacity: 0;
+    }
+}
+
 
 .heroCarousel-content {
     background-color: rgba($carousel-bgColor, 1);
     padding: spacing("half") spacing("single") (spacing("single"));
     text-align: left;
-    border-left: 4px solid $peach;
 
     @include breakpoint("medium") {
         @include carouselOpaqueBackgrounds;
         background-color: rgba($carousel-bgColor, 1);
-        left: 0;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
         margin: 0 auto;
         padding: 1.3rem (spacing("single") * 1.5);
-        position: absolute;
-        bottom: 0;
+        overflow: hidden;
+        max-width: 60%;
+        max-height: 250px;
 
         &.heroCarousel-content--empty {
             background-color: transparent;
@@ -120,9 +137,8 @@
     }
     
     @include breakpoint("large") {
-        transform: translateY(-15%);
-        width: remCalc(600px);
-        max-height: 260px;
+        max-width: 50%;
+        max-height: 450px;
     }
 }
 
@@ -165,16 +181,35 @@
 // Containers & Wrappers for GWW 
 // ----------------------------------------------------------------------------
 
-.home-carousel-cont {
-    width: 100%;
-    display: inline-block;
-
-    @include breakpoint ("medium") {
-        width: 65%;
-    }
-}
-
 .home-carousel-wrap {
     width: 100%;
     display: inline-block;
+    max-height: remCalc(500px);
+}
+
+.home-carousel-cont {
+    width: 100%;
+    display: inline-block;
+    max-height: 500px;
+    height: 300px;
+    position: relative;
+
+    @include breakpoint("large") {
+        height: 400px;
+    }
+
+    @include breakpoint("xlarge") {
+        height: 500px;
+    }
+}
+
+.hero-img-cont {
+    max-height: 100%;
+}
+
+.hero-content-cont {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }

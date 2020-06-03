@@ -11,13 +11,11 @@
 .add-to-cart-cont {
     height: 50px;
     display: flex;
-    background-color: $primary-color;
     
     .form-input--incrementTotal { 
-        width: 2.5rem;
+        width: 5.5rem;
         height: 2.5rem;
         border-radius: 0;
-        margin-right: 5px;
         color: black;
     }
 
@@ -25,8 +23,6 @@
         display: inline-block;
         height: 50px;
         background: $primary-color;
-        width: 65px;
-        max-width: 65px;
         margin: 0;
         vertical-align: top;
     }
@@ -34,25 +30,32 @@
     .form-increment {
         position: relative;
         padding: 5px;
-        padding-right: 10px;
 
+        // These button icons are rotated, so attributes need to be +/- 90 degress from what you're intending to do
         .button {
             padding: 0;
             border: 0;
+            top: 11px;
             position: absolute;
-            top: 0;
+            width: 2.5rem;
+            height: 1.7rem;
             transform: translateY(20%);
 
             svg {
-                color: white;
+                color: $green;
                 height: 10px;
                 width: 10px;
+                margin-bottom: 2px;
             }
 
-            &:nth-child(3) {
-                top: auto;
-                bottom: 0;
-                transform: translateY(-20%) rotate(180deg);
+            &[data-action="inc"] {
+                right: -2px;
+                transform: rotate(90deg);
+            }
+            
+            &[data-action="dec"] {   
+                left: -2px;
+                transform: rotate(-90deg);
             }
         }
     } 
@@ -66,20 +69,7 @@
         padding: 5px;
 
         @include breakpoint("medium"){
-            padding: 14px 36px;
-        }
-    }
-
-    #form-action-addToCart {
-        margin: 0;
-        height: 100%;
-        width: 100%;
-        text-transform: uppercase;
-        font-weight: 600;
-        padding: 5px;
-
-        @include breakpoint("medium"){
-            padding: 14px 36px;
+            padding: 14px;
         }
     }
 }

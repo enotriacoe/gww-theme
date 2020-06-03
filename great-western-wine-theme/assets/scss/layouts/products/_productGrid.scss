@@ -23,17 +23,9 @@
         font-size: fontSize("base"); // 1
         vertical-align: top;
         padding: spacing("single") 20px;
-        border-bottom: 1px solid lightgrey;
-
-        @include breakpoint("medium") {
-            border-bottom: 0;
-        }
 
         @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
-            &:not(:nth-child(4n)) {
-                border-right: 1px solid lightgrey;
-            }
         }
 
         .card-desc-cont {
@@ -44,13 +36,7 @@
         }
 
         .wishlist-grid-view {
-            display: inline-block;
-        }
-
-        .form-wishlist {
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            float: right;        
         }
 
         .wishlist-list-view {
@@ -62,16 +48,6 @@
         margin: 0;
     }
 }
-
-@media only screen and (min-width: 801px) and (max-width: 1260px) {
-    .productGrid .product {
-        width: grid-calc(6, $total-columns);
-        &:not(:nth-child(2n)) {
-            border-right: 1px solid lightgrey;
-        }
-    }
-} 
-
 
 // Product when sidebar is present
 // -----------------------------------------------------------------------------
