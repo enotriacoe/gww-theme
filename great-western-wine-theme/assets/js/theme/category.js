@@ -80,28 +80,28 @@ export default class Category extends CatalogPage {
 
         if ($('.show-read-more')[0]) {
             let maxLength = 200;
+            const textToMinimise = $('.show-read-more');
+
             if (screen.width >= 801) {
                 maxLength = 420;
             }
 
-            $('.show-read-more').each(function () {
-                const myStr = $(this).text();
-                if ($.trim(myStr).length > maxLength) {
-                    let newStr = myStr.substring(0, maxLength);
-                    newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(' ')));
-                    const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
-                    $(this).empty().html(newStr);
-                    $(this).append('<span class="read-more-dots">...</span>');
-                    $(this).append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
-                    $(this).append(`<span class="more-text">${removedStr}</span>`);
-                }
-            });
-            $('.read-more').on('click', function () {
+            const myStr = textToMinimise.text();
+            if ($.trim(myStr).length > maxLength) {
+                let newStr = myStr.substring(0, maxLength);
+                newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(' ')));
+                const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
+                textToMinimise.empty().html(newStr);
+                textToMinimise.append('<span class="read-more-dots">...</span>');
+                textToMinimise.append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
+                textToMinimise.append(`<span class="more-text">${removedStr}</span>`);
+            }
+
+            $('.read-more').on('click', (e) => {
                 $(this).siblings('.more-text').contents().unwrap();
                 $('.more-text').show();
-                $('.show-read-more').css('max-height', 'none');
-                $('.category-text').css('width', '100%');
-                $(this).remove();
+                $('.show-read-more').addClass('read-more-open');
+                $(e.target).remove();
                 $('.read-more-dots').remove();
             });
         }
