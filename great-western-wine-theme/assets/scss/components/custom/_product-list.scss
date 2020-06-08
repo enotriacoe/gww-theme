@@ -28,7 +28,7 @@
                 }
 
                 .card-body {
-                    width: 62%;
+                    width: 58%;
                     display: inline-block;
                     position: relative;
 
@@ -49,21 +49,6 @@
                     font-weight: fontWeight("bold");
                 }
 
-                .wishlist-grid-view {
-                    display: none;
-                }
-                
-                .wishlist-list-view {
-                    display: inline-block;
-                    position: absolute;
-                    bottom: 15px;
-                    right: 0;
-                }
-
-                .form-wishlist {
-                    position: initial;
-                }
-
                 .card-title-cont {
                     height: (remCalc(30px * 3));
                     line-height: 1.6rem;
@@ -77,8 +62,8 @@
                     font-size: 20px;
                 }
 
-                .card-pricing{
-                    width: 37%;
+                .card-price-wrap {
+                    width: 41%;
                     display: inline-block;
                     padding-left: 2%;
                     vertical-align: top;
