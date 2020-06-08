@@ -41,10 +41,19 @@
 }
 
 .header-carousel {
+    .stylised-medium {
+        margin-bottom: 10px;
+
+        @include breakpoint("medium") {
+            margin-bottom: 1.5rem;
+        }    
+    }
+
     .carousel-controls {
         width: auto;
         display: inline-flex;
         flex-direction: row;
+        margin-bottom: 20px;
 
         .prev-arrow, .next-arrow {
             display: inline-block;
@@ -69,6 +78,10 @@
 
         .next-arrow {
             order: 3
+        }
+
+        @include breakpoint("medium") {
+            margin-bottom: 0;
         }
     }
     
