@@ -383,7 +383,7 @@
             text-transform: uppercase;
             margin: 0;
             line-height: normal;
-            padding: 0.6rem 12%;
+            padding: 0.6rem 7%;
             height: 50px;
 
             @include breakpoint("small") {
@@ -391,7 +391,7 @@
             }
 
             @include breakpoint("large") {
-                padding: 0.6rem 2.5rem;
+                padding: 0.6rem 2rem;
             }
         }
     }
