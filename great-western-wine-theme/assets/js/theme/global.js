@@ -41,6 +41,5 @@ export default class Global extends PageManager {
         quantityChangeEvent();
         getPartnerInfo();
         moveTermsCheckboxToBottom();
-        toggleMenuBackground();
     }
 }
