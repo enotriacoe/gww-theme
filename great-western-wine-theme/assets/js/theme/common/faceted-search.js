@@ -138,6 +138,7 @@ class FacetedSearch {
         // eslint-disable-next-line no-undef
 
         this.updateListView();
+        this.updateReadMore();
     }
 
     updateView() {
@@ -460,6 +461,36 @@ class FacetedSearch {
             } else if (sessionStorage.getItem('productsView') === 'list-view') {
                 this.activeListView();
             }
+        }
+    }
+
+    updateReadMore() {
+        if ($('.show-read-more')[0]) {
+            let maxLength = 200;
+            const textToMinimise = $('.show-read-more');
+
+            if (screen.width >= 801) {
+                maxLength = 420;
+            }
+
+            const myStr = textToMinimise.text();
+            if ($.trim(myStr).length > maxLength) {
+                let newStr = myStr.substring(0, maxLength);
+                newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(' ')));
+                const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
+                textToMinimise.empty().html(newStr);
+                textToMinimise.append('<span class="read-more-dots">...</span>');
+                textToMinimise.append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
+                textToMinimise.append(`<span class="more-text">${removedStr}</span>`);
+            }
+
+            $('.read-more').on('click', (e) => {
+                $(this).siblings('.more-text').contents().unwrap();
+                $('.more-text').show();
+                $('.show-read-more').addClass('read-more-open');
+                $(e.target).remove();
+                $('.read-more-dots').remove();
+            });
         }
     }
 }
