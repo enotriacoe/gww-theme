@@ -531,7 +531,7 @@
         "navUser-dropdown-borderColor": "#cccccc",
         "navUser-indicator-backgroundColor": "#333333",
         "navPages-color": "#333333",
-        "navPages-color-hover": "#000000",
+        "navPages-color-hover": "#ffffff",
         "navPages-subMenu-backgroundColor": "#ffffff",
         "navPages-subMenu-separatorColor": "#cccccc",
         "dropdown--quickSearch-backgroundColor": "#e5e5e5",
