@@ -52,11 +52,6 @@
                 <span> {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} &nbsp; </span>
                 <span class="card-text-volume">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
             </p>
-            <div class="wishlist-list-view">
-                {{#if settings.show_wishlist}}
-                    {{> components/common/wishlist-dropdown-card}}
-                {{/if}}
-            </div>
         </div>
         <div class="card-price-wrap">
             <div class="card-price-cont">
