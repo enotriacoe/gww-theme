@@ -2,14 +2,29 @@
 
 .filter-sort-cont {
     display: flex;
-    margin-top: 2rem;
     justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint("medium") {
+        flex-direction: row;
+        margin-top: 2rem;
+    }
 }
 
 .toggle-filters {
     float: right;
-    padding: 12px 16px 7px 5px;
+    margin: 12px 10px 7px 5px;
     font-size: 13px;
+    display: none;
+
+    &:focus {
+        border-color: #245fcc;
+        box-shadow: 0 0 3px #245fcc;
+    }
+
+    @include breakpoint("medium") {
+        display: block;
+    }
 
     .toggle-filter-icon {
         font-size: 10px;

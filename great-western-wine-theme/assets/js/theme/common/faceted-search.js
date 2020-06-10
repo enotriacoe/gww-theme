@@ -63,7 +63,7 @@ class FacetedSearch {
 
         $('.navList').each(function hideSingleValueFilters() {
             if ($(this).children().length === 1) {
-                $(this).parent().parent().hide();
+                $(this).parent().parent().remove();
             }
         });
 

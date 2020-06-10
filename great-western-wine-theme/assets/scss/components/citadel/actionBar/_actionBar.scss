@@ -3,6 +3,8 @@
 // =============================================================================
 
 .actionBar {
+    margin: 20px 0 0 0;
+
     @include breakpoint("medium") {
         min-width: 264px;
         margin: 0;
@@ -11,6 +13,11 @@
 }
 
 .actionBar-section {
+    float: right;
+
+    @include breakpoint("medium") {
+        float: left;
+    }
 
     .form-field {
         background-color: $input-bg-color;
