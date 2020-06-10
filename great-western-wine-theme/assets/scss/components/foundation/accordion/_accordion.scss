@@ -60,8 +60,7 @@
         background-color: $blue-grey-lt;
         
         @include breakpoint("medium") {
-            // width: 31%;
-            width: calc(25% - 10px);
+            width: calc(33% - 10px);
             margin-right: 10px;
             margin-bottom: 20px;
             padding: 10px;
@@ -69,7 +68,7 @@
         }
 
         @include breakpoint("large") {
-            width: calc(20% - 22px);
+            width: calc(25% - 22px);
             margin-right: 22px;
             margin-bottom: 25px;
         }

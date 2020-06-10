@@ -1,0 +1,22 @@
+// Styling for the custom Filter & Sort container and it's custom children
+
+.filter-sort-cont {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.toggle-filters {
+    float: right;
+    padding: 12px 16px 7px 5px;
+    font-size: 13px;
+
+    .toggle-filter-icon {
+        font-size: 10px;
+        margin-left: 8px;
+
+        &.flipped {
+            transform: rotateX(180deg);
+        }
+    }
+}

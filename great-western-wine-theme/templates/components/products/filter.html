@@ -1,4 +1,5 @@
 <form class="actionBar" method="get" data-sort-by>
+    {{> components/category/sort-box sort=sort}}
     <div class="change-list-view">
         <a href="javascript:void(0);" id="grid-view" class="no-decoration">
             <i class="fas fa-th-large icon"></i>
@@ -9,5 +10,4 @@
             <span class="visually-hidden">List View</span>
         </a>    
     </div>
-    {{> components/category/sort-box sort=sort}}
 </form>
