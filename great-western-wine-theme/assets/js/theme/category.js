@@ -106,7 +106,7 @@ export default class Category extends CatalogPage {
             });
         }
 
-        $('.toggle-filters').on('click', (e) => {
+        $('.toggle-filters').on('click', () => {
             const filterButtonText = $('.toggle-filter-txt');
             const filterButtonIcon = $('.toggle-filter-icon');
 
