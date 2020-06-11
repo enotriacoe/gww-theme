@@ -60,11 +60,11 @@ export default class Category extends CatalogPage {
 
         updateListView();
 
-        $('.page-content').on('click', '#grid-view', function () {
+        $('.change-list-view').on('click', '#grid-view', function () {
             activeGridView();
         });
 
-        $('.page-content').on('click', '#list-view', function () {
+        $('.change-list-view').on('click', '#list-view', function () {
             activeListView();
         });
 
