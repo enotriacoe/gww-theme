@@ -41,6 +41,12 @@
 }
 
 .header-carousel {
+    margin-top: 20px;
+
+    @include breakpoint("medium") {
+        margin-top: 30px;
+    }
+
     .stylised-medium {
         margin-bottom: 10px;
 
