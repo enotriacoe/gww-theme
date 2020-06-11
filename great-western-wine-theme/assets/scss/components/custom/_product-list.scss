@@ -47,10 +47,16 @@
                     text-decoration: none;
                     color: $primary-color;
                     font-weight: fontWeight("bold");
+                    margin-bottom: 10px;
+
+                    .icon {
+                        font-size: 11px;
+                        margin-left: 10px;
+                    }
                 }
 
                 .card-title-cont {
-                    height: (remCalc(30px * 3));
+                    height: (remCalc(25px * 3));
                     line-height: 1.6rem;
                 }
 
@@ -81,6 +87,11 @@
 
                 .card-year-size {
                     margin-top: 2rem;
+                }
+
+                .card-text-volume {
+                    float: none;
+                    margin-left: 100px;
                 }
             }
         }
