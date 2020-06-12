@@ -29,7 +29,8 @@
     color: stencilColor("color-white");
     display: inline-block;
     font-size: fontSize("base"); // 2
-    margin-bottom: spacing("double");
+    margin-top: spacing("single");
+    margin-bottom: spacing("half");
     text-align: center;
     vertical-align: top;
 

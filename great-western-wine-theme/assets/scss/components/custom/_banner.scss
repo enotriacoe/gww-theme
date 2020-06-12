@@ -34,26 +34,28 @@
 
 .banner-content {
     background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half") spacing("single") (spacing("single"));
+    padding: spacing("half") spacing("single");
     text-align: left;
 
     @include breakpoint("medium") {
         background-color: rgba($carousel-bgColor, 1);
         left: 20px;
         margin: 0 auto;
-        padding: 1.3rem (spacing("single") * 1.5);
         position: absolute;
         bottom: 20px;
+        max-width: calc(100% - 40px);
+        max-height: calc(100% - 40px);
     }
     
 }
 
 .banner-title {
     color: $carousel-title-color;
-    font-size: 35px;
+    font-size: 30px;
     margin-top: 0;
     font-family: $fontFamily-headings;
     font-weight: 700;
+    line-height: 1.2;
 
     @include breakpoint("medium") {
         font-size: $fontSize-largest;
@@ -67,7 +69,7 @@
 
 .banner-description {
     color: $carousel-description-color;
-    font-size: fontSize("large");
+    font-size: 20px;
     margin-bottom: 0;
 
     @include breakpoint("medium") {
@@ -76,6 +78,10 @@
 }
 
 .banner-image-wrapper {
-    max-height: 340px;
+    max-height: 180px;
     overflow: hidden;
+    
+    @include breakpoint("medium"){
+        max-height: 340px;
+    }
 }
