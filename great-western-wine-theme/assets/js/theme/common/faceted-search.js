@@ -59,16 +59,9 @@ class FacetedSearch {
         // Init collapsibles
         collapsibleFactory();
 
-        // If there's only one option under a filter, hide that filter entirely
-
-        $('.navList').each(function hideSingleValueFilters() {
-            if ($(this).children().length === 1) {
-                $(this).parent().parent().remove();
-            }
-        });
+        this.removeSingleItemFilters();
 
         // Close filter on choice or click elsewhere
-
         $(document).click((e) => {
             if (
                 ($(e.target).closest($('.accordion-block')).length === 0)
@@ -139,6 +132,7 @@ class FacetedSearch {
 
         this.updateListView();
         this.updateReadMore();
+        this.removeSingleItemFilters();
     }
 
     updateView() {
@@ -493,6 +487,16 @@ class FacetedSearch {
             });
         }
     }
+
+    // If there's only one option under a filter, hide that filter entirely
+    removeSingleItemFilters() {
+        $('.navList').each(function hideSingleValueFilters() {
+            if ($(this).children().length === 1) {
+                $(this).parent().parent().remove();
+            }
+        });
+    }
+    
 }
 
 export default FacetedSearch;
