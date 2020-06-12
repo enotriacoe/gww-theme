@@ -2,13 +2,25 @@
 // ACTION BAR (CSS)
 // =============================================================================
 
+.actionBar {
+    margin: 20px 0 0 0;
+
+    @include breakpoint("medium") {
+        min-width: 264px;
+        margin: 0;
+        margin-top: 5px;
+    }
+}
 
 .actionBar-section {
+    float: right;
+
+    @include breakpoint("medium") {
+        float: left;
+    }
 
     .form-field {
         background-color: $input-bg-color;
-        border: $actionBar-form-field-border;
-        border-radius: $actionBar-form-field-radius;
         overflow: hidden;
         margin: 0;
 
@@ -24,7 +36,8 @@
         font-size: $actionBar-form-label-fontSize;
         line-height: $actionBar-form-label-lineHeight;
         margin-bottom: 0;
-        padding-left: $actionBar-form-label-padding;
+        padding-left: ($actionBar-form-label-padding / 2);
+        cursor: default;
     }
 
     .form-input,
@@ -32,6 +45,10 @@
         border: 0;
         padding-left: $actionBar-form-input-padding;
         width: auto;
+
+        &:focus {
+            outline: -webkit-focus-ring-color auto 5px;
+        }
     }
 
     .form-label,
@@ -51,8 +68,7 @@
 
     @include breakpoint("medium") {
         display: inline-block;
-        float: right;
-        margin: 1px 10px;
+        margin: 2px 0 0 10px;
 
         .icon {
             height: 30px;

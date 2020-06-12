@@ -1,0 +1,37 @@
+// Styling for the custom Filter & Sort container and it's custom children
+
+.filter-sort-cont {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include breakpoint("medium") {
+        flex-direction: row;
+        margin-top: 2rem;
+    }
+}
+
+.toggle-filters {
+    float: right;
+    margin: 12px 10px 7px 5px;
+    font-size: 13px;
+    display: none;
+
+    &:focus {
+        border-color: #245fcc;
+        box-shadow: 0 0 3px #245fcc;
+    }
+
+    @include breakpoint("medium") {
+        display: block;
+    }
+
+    .toggle-filter-icon {
+        font-size: 10px;
+        margin-left: 8px;
+
+        &.flipped {
+            transform: rotateX(180deg);
+        }
+    }
+}

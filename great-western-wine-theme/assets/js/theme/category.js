@@ -60,11 +60,11 @@ export default class Category extends CatalogPage {
 
         updateListView();
 
-        $('.page-content').on('click', '#grid-view', function () {
+        $('.change-list-view').on('click', '#grid-view', function () {
             activeGridView();
         });
 
-        $('.page-content').on('click', '#list-view', function () {
+        $('.change-list-view').on('click', '#list-view', function () {
             activeListView();
         });
 
@@ -105,6 +105,21 @@ export default class Category extends CatalogPage {
                 $('.read-more-dots').remove();
             });
         }
+
+        $('.toggle-filters').on('click', () => {
+            const filterButtonText = $('.toggle-filter-txt');
+            const filterButtonIcon = $('.toggle-filter-icon');
+
+            $('.facetedSearch-navList').toggleClass('show-all-filters');
+
+            if (filterButtonText.text() === 'More Filters') {
+                filterButtonText.text('Less Filters');
+            } else {
+                filterButtonText.text('More Filters');
+            }
+
+            filterButtonIcon.toggleClass('flipped');
+        });
 
         // Open and close only the wishlist that is clicked
         $('.page-content').on('click', '[data-dropdown^="wishlist-dropdown-"]', (e) => {
