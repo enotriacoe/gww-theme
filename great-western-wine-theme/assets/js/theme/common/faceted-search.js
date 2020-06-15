@@ -496,7 +496,6 @@ class FacetedSearch {
             }
         });
     }
-    
 }
 
 export default FacetedSearch;
