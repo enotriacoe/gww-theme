@@ -38,6 +38,30 @@
             overflow-wrap: break-word;
         }
     }
+
+    .wishlist-grid-view {
+        .dropdown-menu {
+            bottom: 7px !important;
+            top: auto !important;
+            left: -228px !important;
+
+            &:before {
+                top: auto;
+                bottom: -10px;
+                right: 18px;
+                border-left: 7px solid $buttonStyle-default-borderColor;
+                border-right: 0;
+            }
+        
+            &:after {
+                top: auto;
+                bottom: -8px;
+                right: 18px;
+                border-left: 7px solid white;
+                border-right: 0;
+            }
+        }
+    }
 }
 
 .headed-carousel {
