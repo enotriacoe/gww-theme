@@ -19,7 +19,7 @@
 .navUser {
     @include nav($style: "navBar", $wrapper: "nav");
     @include verticalPositionMiddle("absolute");
-    right: 45px;
+    right: 49px;
     top: 26px; // 2
     z-index: zIndex("lowest"); // 5.
 
@@ -153,8 +153,14 @@
     .icon {
         height: $header-item-icon-size-mobile;
         width: $header-item-icon-size-mobile;
-        margin: 0 auto;
+        margin: 0 10px;
         display: block;
+    }
+
+    .btn-show-search {
+        .icon {
+            padding: 0.15rem 0;
+        }
     }
 
     @include breakpoint("medium") {
@@ -162,7 +168,8 @@
 
         .icon {
             height: $header-item-icon-size;
-            width: $header-item-icon-size
+            width: $header-item-icon-size;
+            margin: 0 auto;
         }
 
         &.navUser-item--social {
@@ -178,8 +185,27 @@
     }
 }
 
+.navUser-item--search {
+    display: block;
+    float: left;
+
+    @include breakpoint("medium") {
+        display: none;
+    }
+
+    .navUser-action {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .icon {
+        
+    }
+}
+
 .navUser-item--cart {
     display: block;
+    float: left;
 
     .navUser-action {
         color: stencilColor("navUser-color");

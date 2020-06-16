@@ -507,7 +507,9 @@
 
 .navPages-quickSearch {
     border-bottom: container("border");
+    margin-top: (spacing("half") / 2);
     margin-bottom: spacing("half");
+    display: none;
 
     @include breakpoint("medium") {
         display: none;

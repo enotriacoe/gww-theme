@@ -17,16 +17,16 @@
 
 .header {
     background-color: $header-bg;
-    border-bottom: container("border");
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: zIndex("higher");
+    border-bottom: 1px solid $grey-md;
 
     @include breakpoint("medium") {
         border-bottom: container("border");
         overflow: visible;
-        position: relative;
+        position: fixed;
     }
 
     &.is-open {
@@ -43,7 +43,7 @@
     font-size: 0;   // 1
     margin: 0;
     text-align: center;
-    padding: 0.75rem 0;
+    padding: 0.3rem 0;
 
     @include breakpoint("medium") {
         margin: (spacing("base")) 0;
@@ -144,7 +144,7 @@
 }
 
 .header-logo-image {
-    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+    max-height: remCalc($header-height);
     display: inline-block;
 
     @include breakpoint("medium") {
@@ -172,12 +172,13 @@
 // -----------------------------------------------------------------------------
 
 .mobileMenu-toggle {
-    @include square($header-toggle-width);
+    height: $header-toggle-width;
+    width: 2.8125rem;
     display: inline-block;
     font-size: 0;
-    right: 0;
+    right: 5px;
     overflow: hidden;
-    padding: 0 remCalc(18);
+    padding: 0 remCalc(12) 0;
     position: absolute;
     z-index: zIndex("high");
 
