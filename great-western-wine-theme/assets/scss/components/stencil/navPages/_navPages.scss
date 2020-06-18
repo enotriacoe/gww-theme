@@ -57,8 +57,14 @@
 
     &.is-open {
         display: block;
-        padding-top: $header-height;
         z-index: 0;
+        top: 55px;
+        border-top: 1px solid black;
+
+        @include breakpoint("medium") {
+            top: auto;
+            border-top: none;
+        }
     }
 }
 
