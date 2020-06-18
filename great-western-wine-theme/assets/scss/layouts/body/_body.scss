@@ -10,7 +10,11 @@
 
 .body {
     margin-bottom: spacing("double");
-    margin-top: 121px;
+    margin-top: 0;
+
+    @include breakpoint("medium") {
+        margin-top: 121px;
+    }
 }
 
 .page {
