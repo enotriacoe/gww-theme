@@ -1,6 +1,5 @@
 import foundation from './foundation';
 
-const bodyActiveClass = 'has-activeModal';
 const loadingOverlayClass = 'loadingOverlay';
 const modalBodyClass = 'modal-body';
 const modalContentClass = 'modal-content';
@@ -171,7 +170,7 @@ export class Modal {
             this.clearContent();
         }
 
-        this.$modal.foundation('reveal', 'open', { root_element: '.navUser-item--cart' } );
+        this.$modal.foundation('reveal', 'open', { root_element: '.navUser-item--cart' });
     }
 
     close() {

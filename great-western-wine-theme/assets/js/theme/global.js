@@ -20,7 +20,7 @@ import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-f
 import { getPartnerInfo } from './global/partner-reg';
 import moveTermsCheckboxToBottom from './global/create-account';
 import toggleMobileSearch from './global/mobile-search-toggle';
-import { toggleMenuOnScroll, closePreviewCartModal} from './global/sticky-header';
+import { toggleMenuOnScroll, closePreviewCartModal } from './global/sticky-header';
 
 export default class Global extends PageManager {
     onReady() {

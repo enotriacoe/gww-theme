@@ -1,7 +1,5 @@
 // All JS for the Sticky header
 
-import foundation from './foundation';
-
 // Hiding/showing of the menu on scroll for desktop/larger screens
 
 export function toggleMenuOnScroll() {
