@@ -171,7 +171,7 @@ export class Modal {
             this.clearContent();
         }
 
-        this.$modal.foundation('reveal', 'open');
+        this.$modal.foundation('reveal', 'open', { root_element: '.navUser-item--cart' } );
     }
 
     close() {
@@ -197,7 +197,6 @@ export class Modal {
     }
 
     onModalClose() {
-        $('body').removeClass(bodyActiveClass);
     }
 
     onModalClosed() {
@@ -205,7 +204,6 @@ export class Modal {
     }
 
     onModalOpen() {
-        $('body').addClass(bodyActiveClass);
     }
 
     onModalOpened() {

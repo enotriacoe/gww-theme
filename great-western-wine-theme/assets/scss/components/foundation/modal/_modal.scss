@@ -11,15 +11,10 @@
     outline: none;
     overflow: hidden;
     padding: 0;
-    left: 50%;
-    top: 50% !important;
+    left: 0;
+    position: absolute;
+    top: 0 !important;
     transform: translate(-50%, -50%);
-}
-
-.modal--large {
-    @include breakpoint("large") {
-        width: $modal-width--large;
-    }
 }
 
 .modal-header {

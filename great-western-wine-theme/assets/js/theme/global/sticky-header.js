@@ -1,8 +1,10 @@
 // All JS for the Sticky header
 
+import foundation from './foundation';
+
 // Hiding/showing of the menu on scroll for desktop/larger screens
 
-export default function toggleMenuOnScroll() {
+export function toggleMenuOnScroll() {
     let didScroll;
     let lastScrollTop = 0;
     const delta = 10; // How many pixels need to be scrolled before we toggle
@@ -44,4 +46,12 @@ export default function toggleMenuOnScroll() {
             didScroll = false;
         }
     }, 250);
+}
+
+export function closePreviewCartModal() {
+    $('body').on('click', e => {
+        if ($(e.target).closest('#previewModal').length === 0) {
+            $('#previewModal').foundation('reveal', 'close');
+        }
+    });
 }
