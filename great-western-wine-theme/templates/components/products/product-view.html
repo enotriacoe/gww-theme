@@ -426,14 +426,6 @@
     </div>
 </div>
 
-<div id="previewModal" class="modal modal--large" data-reveal>
-    <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
-        <span aria-hidden="Yes">&#215;</span>
-    </a>
-    <div class="modal-content"></div>
-    <div class="loadingOverlay"></div>
-</div>
-
 <script>
     var productName = "{{product.title}}";
     var productPrice = "{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}";

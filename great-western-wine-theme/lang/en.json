@@ -119,10 +119,10 @@
             "preview": "Preview"
         },
         "added_to_cart": {
-            "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your basket. What's next?",
-            "your_cart_contains": "Your basket contains {num_products, plural, one {1 item} other {# items}}",
+            "what_next": "A total of {num_products, plural, one {1 item is} other {# items are}} in your basket.",
+            "your_cart_contains": "Your basket now contains {num_products, plural, one {1 item} other {# items}}",
             "proceed_to_checkout": "Proceed to checkout",
-            "order_subtotal": "Order subtotal",
+            "order_subtotal": "Basket total:",
             "continue_shopping": "Continue Shopping",
             "view_or_edit_cart": "View or edit your basket",
             "you_might_also_like": "You may also like"
