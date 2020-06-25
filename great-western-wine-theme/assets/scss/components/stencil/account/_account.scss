@@ -318,7 +318,7 @@
         width: 2rem;
 
         @include breakpoint("large") {
-            left: -2.5rem;
+            left: 0;
         }
 
         // scss-lint:disable SelectorDepth, NestingDepth
@@ -340,7 +340,7 @@
         margin-right: 0;
 
         @include breakpoint("large") {
-            left: -2rem;
+            left: -1rem;
         }
     }
 
