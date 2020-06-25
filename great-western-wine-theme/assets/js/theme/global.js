@@ -19,7 +19,8 @@ import { closeWishlistOnClick } from './global/wishlist-open';
 import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-func';
 import { getPartnerInfo } from './global/partner-reg';
 import moveTermsCheckboxToBottom from './global/create-account';
-
+import toggleMobileSearch from './global/mobile-search-toggle';
+import toggleMenuOnScroll from './global/sticky-header';
 
 export default class Global extends PageManager {
     onReady() {
@@ -41,5 +42,7 @@ export default class Global extends PageManager {
         quantityChangeEvent();
         getPartnerInfo();
         moveTermsCheckboxToBottom();
+        toggleMobileSearch();
+        toggleMenuOnScroll();
     }
 }
