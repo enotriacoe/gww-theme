@@ -11,7 +11,7 @@
 
     .navBar-item {
         a, &.is-active {
-            font-family: "Cormorant", Garamond, "Hoefler Text", "Times New Roman", Times, serif;
+            font-family: fontFamily("sans");
             font-size: 17px;
             font-weight: 700;
             color: $black;
@@ -24,7 +24,7 @@
         &.is-active,
         &:hover{    
             padding-bottom: 5px;
-            border-bottom: solid 3px $coral;
+            border-bottom: solid 5px $coral;
         }
 
         .icon{
