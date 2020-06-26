@@ -1,6 +1,6 @@
 .press-review-cont {
     width: 100%;
-    background-color: $blue-grey-lt;
+    background-color: $grey-xlt;
     display: inline-block;
     text-align: center;
     padding: 40px;
@@ -41,6 +41,6 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 4em;
-        color: #1D1D1B;
+        color: $black;
     }
 }

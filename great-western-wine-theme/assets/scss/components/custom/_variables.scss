@@ -22,11 +22,12 @@ $olive:         #98a85a;
 $yellow:        #f2d884;
 
 // Additional colours
-$blue-grey-lt:  #E9F0F2; // Background colour for input fields
 
-$grey-xlt:      #f2f4f4;
-$grey-lt:       #b6b6b6; // Placeholder input fields & some hover, used often in config.json
-$grey-md:       #757575; // Placeholder input fields & some hover, used often in config.json
-$grey-dk:       #333333; // Primary use in config.json
+$grey-xlt:      #f1f4f6; // Background colour for input fields
+$grey-lt:       #a4bfce; // Placeholder input fields & some hover, used often in config.json
+$grey-md:       #718590; // Placeholder input fields & some hover, used often in config.json
+$grey-dk:       #353d41; // Primary use in config.json
 
-$black:         #1D1D1B; // Black for fonts
+$black:         #121618; // Black for fonts
+
+$focus-color: #245fcc

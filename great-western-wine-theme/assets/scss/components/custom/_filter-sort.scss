@@ -18,8 +18,8 @@
     display: none;
 
     &:focus {
-        border-color: #245fcc;
-        box-shadow: 0 0 3px #245fcc;
+        border-color: $focus-color;
+        box-shadow: 0 0 3px $focus-color;
     }
 
     @include breakpoint("medium") {

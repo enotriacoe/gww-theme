@@ -33,7 +33,7 @@
 
 .modal-close {
     @include square($reveal-close-height);
-    color: #666666;
+    color: $color-greyDark;
     font-size: 26px;
     line-height: remCalc($reveal-close-height);
     padding: 0;
