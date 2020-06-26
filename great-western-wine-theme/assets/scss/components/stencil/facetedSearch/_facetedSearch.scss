@@ -22,7 +22,7 @@
     display: block;
     margin-bottom: 0;
     padding: $facetedSearch-toggle-padding;
-    background-color: $blue-grey-lt;
+    background-color: $grey-xlt;
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule

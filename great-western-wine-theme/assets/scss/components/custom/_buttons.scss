@@ -64,7 +64,7 @@
 }
 
 .button--light {
-    background-color: lightgray;
+    background-color: $grey-xlt;
     color: black;
 }
 
@@ -77,7 +77,7 @@
 }
 
 .btn-oos {
-    background-color: lightgray;
+    background-color: $grey-xlt;
     color: black;
     border-radius: 0;
     width: 100%;
@@ -88,13 +88,13 @@
     cursor: default;
 
     &:hover {
-        background-color: lightgray;
+        background-color: $grey-xlt;
         transform: none;
         border: 0;
     }
 
     &:active {
-        background-color: lightgray;
+        background-color: $grey-xlt;
         transform: none;
         border: 0;
     }

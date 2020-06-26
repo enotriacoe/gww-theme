@@ -57,14 +57,14 @@
         display: inline-block;
         position: relative;
         float: left;
-        background-color: $blue-grey-lt;
+        background-color: $grey-xlt;
         
         @include breakpoint("medium") {
             width: calc(33% - 10px);
             margin-right: 10px;
             margin-bottom: 20px;
             padding: 10px;
-            border: 1px solid darken($blue-grey-lt, 10%);
+            border: 1px solid darken($grey-xlt, 10%);
         }
 
         @include breakpoint("large") {
@@ -80,10 +80,10 @@
         @include breakpoint("medium") {
             padding: 0;
             position: absolute;
-            border: 1px solid darken($blue-grey-lt, 10%);
+            border: 1px solid darken($grey-xlt, 10%);
             border-top: none;
             width: calc(100% + 2px);
-            background: $blue-grey-lt;
+            background: $grey-xlt;
             left: -1px;
             top: 99%;
             z-index: 10;
