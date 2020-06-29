@@ -27,7 +27,7 @@ blog:
 
     <main class="page-content">
         {{#each blog.posts}}
-            {{> components/blog/post post=this}}
+            {{> components/blog/post-teaser post=this}}
         {{/each}}
 
         {{> components/common/paginator pagination.blog}}
