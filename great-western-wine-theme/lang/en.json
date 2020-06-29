@@ -119,10 +119,10 @@
             "preview": "Preview"
         },
         "added_to_cart": {
-            "what_next": "Ok, {num_products, plural, one {1 item was} other {# items were}} added to your basket. What's next?",
-            "your_cart_contains": "Your basket contains {num_products, plural, one {1 item} other {# items}}",
+            "what_next": "A total of {num_products, plural, one {1 item is} other {# items are}} in your basket.",
+            "your_cart_contains": "Your basket now contains {num_products, plural, one {1 item} other {# items}}",
             "proceed_to_checkout": "Proceed to checkout",
-            "order_subtotal": "Order subtotal",
+            "order_subtotal": "Basket total:",
             "continue_shopping": "Continue Shopping",
             "view_or_edit_cart": "View or edit your basket",
             "you_might_also_like": "You may also like"
@@ -685,7 +685,7 @@
         "min_purchase_quantity": "Minimum Purchase:",
         "related_products": "Related Products",
         "top": "Most Popular Products",
-        "similar_by_views": "Customers Also Viewed",
+        "similar_by_views": "People also bought",
         "featured": "Recommended Wines",
         "file_option_set": "Currently: <a href=\"{url}\" target=\"_blank\">{name}</a>",
         "new": "New Products",
@@ -772,8 +772,12 @@
             "price": "and get {discount} off",
             "fixed": "and pay only {discount} each"
         },
-        "only_discount_text": "Only",
-        "multi_buy_discount_text": "per bottle when you mix 12+ bottles"
+        "was_price_label": "Was",
+        "save_price_label": "Save",
+        "single_bottle_text": "Single",
+        "multibuy_bottle_text": "Multibuy",
+        "multibuy_discount_text": "Buy 12+",
+        "multibuy_product_view_text": "per bottle when you mix 12+ bottles"
     },
     "invoice": {
         "for_order": "{name} Invoice for Order #{id}",
@@ -813,7 +817,7 @@
     "search": {
         "quick_search": {
             "input_label": "Search",
-            "input_placeholder": "Search the store"
+            "input_placeholder": "Search"
         },
         "results": {
             "form_label": "Search Keyword:",

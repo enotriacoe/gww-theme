@@ -15,31 +15,31 @@
 .price--withTax {
     font-size: 30px;
     font-weight: $fontWeight-bold;
-
-}
-
-.price-section {
-    display: inline-block;
-    line-height: 2.2rem;
+    line-height: 1.3;
+    min-width: 95px;
+    display: block;
 }
 
 .non-sale-price--withTax {
-    float: right;
-    text-align: right;
     line-height: 1rem;
 }
 
 .price-saving {
     display: block;
-    color: #D43E57;
+    color: $maroon;
     font-weight: 600;
-    font-size: 17px;
 }
 
 .multibuy-cont {
-    background-color: $xl-green;
+    background-color: $grey-xlt;
     width: 100%;
     padding: 7px 7px; 
+
+    .multibuy-price-title {
+        position: relative;
+        font-size: 16px;
+        line-height: 1;
+    }
 }
 
 .multibuy-only-label {

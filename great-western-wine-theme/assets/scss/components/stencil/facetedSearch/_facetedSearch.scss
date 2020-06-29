@@ -9,15 +9,20 @@
 // 1. Do not show if viewport is over "medium" breakpoint
 //
 // -----------------------------------------------------------------------------
+.facetedSearch {
+    flex-basis: 75%;
+    flex-grow: 1;
+}
+
 .facetedSearch-toggle {
     @include grid-row;
     border: $facetedSearch-toggle-border;
     border-radius: $facetedSearch-toggle-borderRadius;
     border-width: $facetedSearch-toggle-borderWidth;
     display: block;
-    margin-bottom: $facetedSearch-toggle-verticalSpacing;
+    margin-bottom: 0;
     padding: $facetedSearch-toggle-padding;
-    background-color: $xl-green;
+    background-color: $grey-xlt;
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
@@ -37,7 +42,7 @@
     font-weight: normal;
 
     .icon svg{
-        fill: #757575;
+        fill: $color-greyMedium;
     }
 }
 
@@ -66,7 +71,28 @@
 
     @include breakpoint("medium") {
         // scss-lint:disable ImportantRule
-        display: block !important; // 1
+        display: inline-block !important; // 1
+        width: calc(100% - 110px);
+
+        .accordion-block {
+            display: none;
+
+            &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+                display: inline-block;
+            }
+
+            @include breakpoint("large") { 
+                &:nth-child(4) {
+                    display: inline-block;
+                }
+            }
+        }
+
+        &.show-all-filters {
+            .accordion-block {
+                display: inline-block;
+            }
+        }
     }
 
     &.is-open {
@@ -82,7 +108,7 @@
 
     .facetedSearch-toggle + &,
     .sidebarBlock + & {
-        margin-top: $facetedSearch-toggle-verticalSpacing;
+        margin-top: 0;
     }
 
 

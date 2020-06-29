@@ -10,13 +10,12 @@
 
 .body {
     margin-bottom: spacing("double");
-    margin-top: spacing("single"); // 1
+    margin-top: 0;
 
     @include breakpoint("medium") {
-        margin-top: spacing("single"); // 1
+        margin-top: 121px;
     }
 }
-
 
 .page {
     @include grid-row(

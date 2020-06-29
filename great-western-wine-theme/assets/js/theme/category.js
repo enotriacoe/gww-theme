@@ -19,7 +19,7 @@ export default class Category extends CatalogPage {
 
         // Grid View with Cookies
         if (sessionStorage.getItem('productsView') === null) {
-            sessionStorage.setItem('productsView', 'list-view');
+            sessionStorage.setItem('productsView', 'grid-view');
         }
 
         function activeGridView() {
@@ -60,11 +60,11 @@ export default class Category extends CatalogPage {
 
         updateListView();
 
-        $('.page-content').on('click', '#grid-view', function () {
+        $('.change-list-view').on('click', '#grid-view', function () {
             activeGridView();
         });
 
-        $('.page-content').on('click', '#list-view', function () {
+        $('.change-list-view').on('click', '#list-view', function () {
             activeListView();
         });
 
@@ -79,30 +79,47 @@ export default class Category extends CatalogPage {
         });
 
         if ($('.show-read-more')[0]) {
-            let maxLength = 220;
+            let maxLength = 200;
+            const textToMinimise = $('.show-read-more');
+
             if (screen.width >= 801) {
-                maxLength = 440;
+                maxLength = 420;
             }
 
-            $('.show-read-more').each(function () {
-                const myStr = $(this).text();
-                if ($.trim(myStr).length > maxLength) {
-                    let newStr = myStr.substring(0, maxLength);
-                    newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(' ')));
-                    const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
-                    $(this).empty().html(newStr);
-                    $(this).append('<span class="read-more-dots">...</span>');
-                    $(this).append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
-                    $(this).append(`<span class="more-text">${removedStr}</span>`);
-                }
-            });
-            $('.read-more').on('click', function () {
+            const myStr = textToMinimise.text();
+            if ($.trim(myStr).length > maxLength) {
+                let newStr = myStr.substring(0, maxLength);
+                newStr = newStr.substr(0, Math.min(newStr.length, newStr.lastIndexOf(' ')));
+                const removedStr = myStr.substring(newStr.length, $.trim(myStr).length);
+                textToMinimise.empty().html(newStr);
+                textToMinimise.append('<span class="read-more-dots">...</span>');
+                textToMinimise.append(' <a href="javascript:void(0);" class="read-more">Read more</a>');
+                textToMinimise.append(`<span class="more-text">${removedStr}</span>`);
+            }
+
+            $('.read-more').on('click', (e) => {
                 $(this).siblings('.more-text').contents().unwrap();
                 $('.more-text').show();
-                $(this).remove();
+                $('.show-read-more').addClass('read-more-open');
+                $(e.target).remove();
                 $('.read-more-dots').remove();
             });
         }
+
+        $('.toggle-filters').on('click', () => {
+            const filterButtonText = $('.toggle-filter-txt');
+            const filterButtonIcon = $('.toggle-filter-icon');
+
+            $('.facetedSearch-navList').toggleClass('show-all-filters');
+
+            if (filterButtonText.text() === 'More Filters') {
+                filterButtonText.text('Less Filters');
+            } else {
+                filterButtonText.text('More Filters');
+            }
+
+            filterButtonIcon.toggleClass('flipped');
+        });
 
         // Open and close only the wishlist that is clicked
         $('.page-content').on('click', '[data-dropdown^="wishlist-dropdown-"]', (e) => {

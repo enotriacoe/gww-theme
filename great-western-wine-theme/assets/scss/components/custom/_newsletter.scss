@@ -1,10 +1,12 @@
 .newsletter-title {
-    font-family: "Playfair Display", Arial, Helvetica, sans-serif;
+    font-family: "Cormorant", Garamond, "Hoefler Text", "Times New Roman", Times, serif;
     text-align: center;
     font-size: ($fontSize-largest * 1.5);
     font-weight: $fontWeight-black;
     text-transform: none;
     margin-bottom: 0;
+    margin-top: 10px;
+    line-height: 1.2;
 }
 
 .newsletter-intro {

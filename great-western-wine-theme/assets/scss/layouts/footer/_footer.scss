@@ -29,7 +29,8 @@
     color: stencilColor("color-white");
     display: inline-block;
     font-size: fontSize("base"); // 2
-    margin-bottom: spacing("double");
+    margin-top: spacing("single");
+    margin-bottom: spacing("half");
     text-align: center;
     vertical-align: top;
 
@@ -122,7 +123,7 @@
 .footer-copyright {
     text-align: center;
     padding: spacing("single") 0;
-    background-color: $primary-color;
+    background-color: $maroon;
 
     @include breakpoint("small") {
         text-align: left;

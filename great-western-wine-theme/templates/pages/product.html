@@ -21,11 +21,22 @@ product:
 
         {{{region name="product_below_content"}}}
 
-        {{#if product.videos.list.length}}
-            {{> components/products/videos product.videos}}
-        {{/if}}
-
         {{> components/products/tabs}}
+
+        {{#if product.similar_by_views}}
+            <div class="headed-carousel">
+                <div aria-hidden="{{#if product.related_products}}true{{else}}false{{/if}}" class="tab-content has-jsContent{{#unless product.related_products}} is-active{{/unless}}" id="tab-similar">
+                    <h1 class="page-heading-left stylised-medium">{{lang 'products.similar_by_views'}}</h1>
+                
+                    <div class="carousel-controls">
+                        <div class="prev-arrow"><i class="fal fa-chevron-left"></i></div>
+                        <div class="next-arrow"><i class="fal fa-chevron-right"></i></div>
+                    </div>
+                    
+                    {{> components/products/carousel products=product.similar_by_views columns=4 list="Customers Also Viewed"}}
+                </div>
+            </div>
+        {{/if}}
 
         {{> components/common/subscription-form}}
     </div>

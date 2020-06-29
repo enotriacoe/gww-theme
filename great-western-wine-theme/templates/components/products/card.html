@@ -29,10 +29,6 @@
         </a>
 
         {{> components/products/product-card-icons }}
-
-        <div class="wishlist-grid-view">
-            {{> components/common/wishlist-dropdown-card}}
-        </div>
     </figure>
     <div class="card-details">
         <div class="card-body">
@@ -49,28 +45,38 @@
 
             <div class="card-desc-cont">
                 {{summary}}
-                <a href="{{url}}" class="card-read-more">Read more</a>
+                <a href="{{url}}" class="card-read-more">Read more<i class="fal fa-chevron-right icon"></i></a>
             </div>
 
-            <p class="card-year-size">
-                {{#filter custom_fields 'vintage' property='name' }}{{value}}{{/filter}} | <span class="brand-color-text">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
+            <p class="card-stats">
+                <span> {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} &nbsp; </span>
+                <span class="card-text-volume">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
             </p>
-            {{#if product.num_reviews '>' 0}}
-                <p class="card-rating">{{> components/products/ratings rating=rating}}</p>
-            {{/if}}
-            <div class="wishlist-list-view">
-                {{#if settings.show_wishlist}}
-                    {{> components/common/wishlist-dropdown-card}}
-                {{/if}}
-            </div>
         </div>
-        <div class="card-pricing">
-            <div class="card-text" data-test-info-type="price">
-                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-                    {{> components/products/price price=price}}
+        <div class="card-price-wrap">
+            <div class="card-price-cont">
+                <div class="card-single-cont" data-test-info-type="price">
+                    <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
+                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                        {{> components/products/price price=price}}
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}}
+                </div>
+                {{#filter custom_fields 'isMultibuy' property='name' }}
+                <div class="card-multibuy-cont">
                 {{else}}
-                    {{> components/common/login-for-pricing}}
-                {{/or}}
+                <div class="card-multibuy-cont" style="display:none">
+                {{/filter}}
+                    <div class="multibuy-price-title">
+                        <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
+                        <sub> ?</sub>
+                        <span class="tooltip-text">Only <strong>£{{toFixed (multiply price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                    </div>
+                    <span class="price price--withTax">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
+                    <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                    <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
+                </div>
             </div>
             <div class="grid-add-cart">
                 <div class="productView-options add-to-cart-form">
@@ -140,14 +146,15 @@
                     {{/if}}
                 </div>        
             </div>
-            {{#filter custom_fields 'isMultibuy' property='name' }}
-            <div class="multibuy-cont">
-            {{else}}
-            <div class="multibuy-cont" style="display:none">
-            {{/filter}}
-                <span class="multibuy-only-label">{{lang 'products.only_discount_text'}}</span>
-                <span class="multibuy-price">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
-                <p class="multibuy-label">{{lang 'products.multi_buy_discount_text'}}</p>
+            <div class="card-review-cont">
+                {{#if num_reviews '>' 0}}
+                    <p class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</p>
+                {{else}}
+                    <a href="{{url}}#write_review">Write a Review</a>
+                {{/if}}
+                <div class="wishlist-grid-view">
+                    {{> components/common/wishlist-dropdown}}
+                </div>
             </div>
         </div>
     </div>
