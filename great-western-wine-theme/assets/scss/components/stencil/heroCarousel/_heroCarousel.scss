@@ -75,19 +75,19 @@
 
 .heroCarousel-image {
     object-fit: cover;
-    max-height: 150px;
+    height: 150px;
     width: 100%;
 
     @include breakpoint("medium") {
-        max-height: 300px;
+        height: 300px;
     }
 
     @include breakpoint("large") {
-        max-height: 400px;
+        height: 400px;
     }
 
     @include breakpoint("xlarge") {
-        max-height: 500px;
+        height: 500px;
     }
 }
 
