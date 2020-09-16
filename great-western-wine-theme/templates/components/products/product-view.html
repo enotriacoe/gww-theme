@@ -78,13 +78,12 @@
                         {{/if}}
                     </span>
                     {{#if settings.show_product_reviews}}
-                    <span class="productView-reviewLink">
+                    <span class="productView-reviewLink show-review-form">
                         <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
                            {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
                            {{lang 'products.reviews.new'}}
                         </a>
                     </span>
-                    {{> components/products/modals/writeReview}}
                 {{/if}}
                 {{/if}}
             </div>
@@ -191,7 +190,7 @@
                 </div>
 
                 <div class="productView-cart-cont">
-                    <div class="productView-options add-to-cart-form">
+                    <div class="add-to-cart-form">
                         <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
                             data-cart-item-add>
                             <input type="hidden" name="action" value="add">

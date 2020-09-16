@@ -3,13 +3,6 @@
     <h4 class="toggle-title">
         <span class="stylised-medium">{{lang 'products.reviews.title' }}</span>
         {{#if settings.show_product_reviews}}
-        <span class="productView-reviewLink">
-            <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-               {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
-               {{lang 'products.reviews.new'}}
-            </a>
-        </span>
-        {{> components/products/modals/writeReview}}
         {{#if theme_settings.show_product_reviews_tabs '!==' true}}
             <a class="toggleLink is-open" data-collapsible href="#productReviews-content">
                 <span class="toggleLink-text toggleLink-text--on">
@@ -32,11 +25,11 @@
                             {{> components/products/ratings rating=rating}}
                             <span class="productReview-ratingNumber" itemprop="ratingValue">{{ rating }}</span>
                         </span>
-                        <h5 itemprop="name" class="productReview-title">{{ title }}</h5>
+                        <h5 itemprop="name" class="productReview-title">{{{ sanitize title }}}</h5>
                         {{#if name}}
                             <meta itemprop="author" content="{{name}}">
                             <p class="productReview-author">
-                                {{lang 'products.reviews.post_on_by' date=date name=name }}
+                                {{{ sanitize (lang 'products.reviews.post_on_by' date=date name=name) }}}
                             </p>
                         {{else}}
                             <p class="productReview-author">
@@ -44,12 +37,22 @@
                             </p>
                         {{/if}}
                     </header>
-                    <p itemprop="reviewBody" class="productReview-body">{{nl2br text}}</p>
+                    <p itemprop="reviewBody" class="productReview-body">{{{ sanitize text }}}</p>
                 </article>
             </li>
             {{/each}}
         </ul>
         {{> components/common/paginator pagination.reviews}}
+        <div class="add-review">
+            <span class="productView-reviewLink center">
+                <button class="button button--primary show-review-form">
+                    {{lang 'products.reviews.new'}}
+                </button>
+            </span>
+        </div>
+        <div class="static-review-form">
+            {{> components/products/modals/writeReview}}
+        </div>
     </div>
 </section>
 {{/if}}
