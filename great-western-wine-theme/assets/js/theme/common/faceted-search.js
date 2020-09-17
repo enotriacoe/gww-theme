@@ -60,6 +60,7 @@ class FacetedSearch {
         collapsibleFactory();
 
         this.removeSingleItemFilters();
+        this.additionFilterFunctions();
 
         // Close filter on choice or click elsewhere
         $(document).click((e) => {
@@ -133,6 +134,7 @@ class FacetedSearch {
         this.updateListView();
         this.updateReadMore();
         this.removeSingleItemFilters();
+        this.additionFilterFunctions();
     }
 
     updateView() {
@@ -494,6 +496,23 @@ class FacetedSearch {
             if ($(this).children().length === 1) {
                 $(this).parent().parent().remove();
             }
+        });
+    }
+
+    additionFilterFunctions() {
+        $('.toggle-filters').on('click', () => {
+            const filterButtonText = $('.toggle-filter-txt');
+            const filterButtonIcon = $('.toggle-filter-icon');
+
+            $('.facetedSearch-navList').toggleClass('show-all-filters');
+
+            if (filterButtonText.text() === 'More Filters') {
+                filterButtonText.text('Less Filters');
+            } else {
+                filterButtonText.text('More Filters');
+            }
+
+            filterButtonIcon.toggleClass('flipped');
         });
     }
 }
