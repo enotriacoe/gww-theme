@@ -59,7 +59,12 @@
 
     &:active {
         border: 5px solid $primary-color;
-        border-left: 0;
+    }
+
+    &:focus {
+        background-color: $green-lt;
+        color: white;
+        border-color: $primary-color;
     }
 }
 
