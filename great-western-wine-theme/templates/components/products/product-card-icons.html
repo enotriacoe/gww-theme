@@ -22,11 +22,6 @@
     </div>
     {{/if}}
     {{/filter}}
-    {{#filter custom_fields 'awardName' property='name' }}
-    <div class="product-card-icon-cont" title="Award-Winning - {{value}}">
-        <i class="fal fa-medal"></i>
-    </div>
-    {{/filter}}
     {{#filter custom_fields 'organic' property='name' }}
     {{#if value '===' 'Yes'}}
     <div class="product-card-icon-cont" title="Organic">
