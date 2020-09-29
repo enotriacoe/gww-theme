@@ -121,3 +121,17 @@
     margin: 0 1%;
     padding: 0.875rem 1rem;
 }
+
+.btn-close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    .fa-times {
+        color: black;
+        fill: black;
+        height: 20px;
+        width: 20px;
+        font-size: 20px;
+    }
+}
