@@ -48,7 +48,7 @@ export function toggleMenuOnScroll() {
 
 export function closePreviewCartModal() {
     $('body').on('click', e => {
-        if ($(e.target).closest('#previewModal').length === 0) {
+        if (($('#previewModal').is(':visible')) && ($(e.target).closest('#previewModal').length === 0)) {
             $('#previewModal').foundation('reveal', 'close');
         }
     });

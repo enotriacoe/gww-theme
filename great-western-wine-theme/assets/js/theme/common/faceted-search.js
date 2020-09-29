@@ -45,7 +45,7 @@ class FacetedSearch {
             priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
             showMoreToggleSelector: '#facetedSearch .accordion-content .toggleLink',
             facetedSearchFilterItems: '#facetedSearch-filterItems .form-input',
-            modal: modalFactory('#modal')[0],
+            modal: modalFactory('#modal-filter')[0],
             modalOpen: false,
         };
 
@@ -61,17 +61,7 @@ class FacetedSearch {
 
         this.removeSingleItemFilters();
         this.additionFilterFunctions();
-
-        // Close filter on choice or click elsewhere
-        $(document).click((e) => {
-            if (
-                ($(e.target).closest($('.accordion-block')).length === 0)
-             && ($('.facetedSearch-toggle').has($(e.target)).length === 0)
-             && !(($(e.target).hasClass('facetedSearch-toggle')))
-            ) {
-                this.collapseAllFacets();
-            }
-        });
+        this.closeFilterOptions();
 
         // Init price validator
         this.initPriceValidator();
@@ -110,6 +100,7 @@ class FacetedSearch {
         this.filterFacetItems = this.filterFacetItems.bind(this);
 
         this.bindEvents();
+        this.hideMoreFiltersIfNone();
     }
 
     // Public methods
@@ -135,6 +126,8 @@ class FacetedSearch {
         this.updateReadMore();
         this.removeSingleItemFilters();
         this.additionFilterFunctions();
+        this.closeFilterOptions();
+        this.hideMoreFiltersIfNone();
     }
 
     updateView() {
@@ -513,6 +506,37 @@ class FacetedSearch {
             }
 
             filterButtonIcon.toggleClass('flipped');
+        });
+    }
+
+    hideMoreFiltersIfNone() {
+        let filters = $('.accordion-block');
+        if ($(window).width() >= 1261) {
+            if (filters.length <= 4) {
+                $('.toggle-filters').hide();
+            } else {
+                $('.toggle-filters').show();
+            }
+        } else if ($(window).width() >= 801) {
+            if (filters.length <= 3) {
+                $('.toggle-filters').hide();
+            } else {
+                $('.toggle-filters').show();
+            }
+        }
+    }
+
+    closeFilterOptions() {
+
+        // Close filter on choice or click elsewhere
+        $(document).click((e) => {
+            if (
+                ($(e.target).closest($('.accordion-block')).length === 0)
+                && ($('.facetedSearch-toggle').has($(e.target)).length === 0)
+                && !(($(e.target).hasClass('facetedSearch-toggle')))
+            ) {
+                this.collapseAllFacets();
+            }
         });
     }
 }
