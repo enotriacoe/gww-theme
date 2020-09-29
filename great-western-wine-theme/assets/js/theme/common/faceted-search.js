@@ -527,9 +527,13 @@ class FacetedSearch {
     }
 
     closeFilterOptions() {
+        // Make 'close modal' button work when in 'show more' view
+        $(document).on('click', '.btn-close-modal', () => {
+            $('#modal-filter').foundation('reveal', 'close');
+        });
 
         // Close filter on choice or click elsewhere
-        $(document).click((e) => {
+        $(document).on('click', (e) => {
             if (
                 ($(e.target).closest($('.accordion-block')).length === 0)
                 && ($('.facetedSearch-toggle').has($(e.target)).length === 0)
