@@ -78,13 +78,12 @@
                         {{/if}}
                     </span>
                     {{#if settings.show_product_reviews}}
-                    <span class="productView-reviewLink">
+                    <span class="productView-reviewLink jump-review-form">
                         <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
                            {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
                            {{lang 'products.reviews.new'}}
                         </a>
                     </span>
-                    {{> components/products/modals/writeReview}}
                 {{/if}}
                 {{/if}}
             </div>

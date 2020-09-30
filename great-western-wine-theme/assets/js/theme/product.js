@@ -52,6 +52,7 @@ export default class Product extends PageManager {
 
         this.productReviewHandler();
         this.bulkPricingHandler();
+        this.setupReviewFormToggle();
     }
 
     productReviewHandler() {
@@ -64,5 +65,23 @@ export default class Product extends PageManager {
         if (this.url.indexOf('#bulk_pricing') !== -1) {
             this.$bulkPricingLink.trigger('click');
         }
+    }
+
+    setupReviewFormToggle() {
+        function toggleReviewForm() {
+            if ($('.show-review-form').text() === 'Hide review form') {
+                $('.show-review-form').text('Write a review');
+            } else {
+                $('.show-review-form').text('Hide review form');
+            }
+            $('.static-review-form').slideToggle();
+            $('html, body').animate({
+                scrollTop: ($('.static-review-form').offset().top - 200)
+            }, 500);
+        }
+
+        $('.show-review-form, .jump-review-form').on('click', () => {
+            toggleReviewForm();
+        });
     }
 }
