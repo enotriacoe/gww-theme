@@ -157,7 +157,12 @@
                     {{/filter}}
                     {{#filter product.custom_fields 'awardName' property='name' }}
                     <div class="productView-icon">
-                        <i class="fal fa-medal icon"></i>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'awardImage' property='name' }}
+                            <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
+                        {{/filter}}
+                        {{#filter product.custom_fields 'awardName' property='name' }}
+                            alt="{{value}}" class="icon" />
                         {{value}}
                     </div>
                     {{/filter}}
