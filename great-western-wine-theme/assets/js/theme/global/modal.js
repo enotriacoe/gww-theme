@@ -170,7 +170,12 @@ export class Modal {
             this.clearContent();
         }
 
-        this.$modal.foundation('reveal', 'open', { root_element: '.navUser-item--cart' });
+        if ((this.$modal).attr('id') === 'modal-filter') {
+            this.$modal.foundation('reveal', 'open', { root_element: 'body' });
+            $('.reveal-modal-bg').attr('style', 'display: block !important');
+        } else {
+            this.$modal.foundation('reveal', 'open', { root_element: '.navUser-item--cart' });
+        }
     }
 
     close() {

@@ -36,3 +36,9 @@
 
     @include lazy-loaded-padding('product_size');
 }
+
+.static-review-form {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+}

@@ -37,30 +37,3 @@
         border-color: black;
     }
 }
-
-.newsletter-form {
-    margin: 0;
-    
-    .form-input, .form-prefixPostfix .button{
-        border-radius: 0;
-        margin: 0;
-        border-color: $primary-color;
-    }
-
-    .button {
-        text-transform: uppercase;
-        background-color: $primary-color;
-    }
-
-    .form-field {
-        margin: 0;
-    }
-}
-
-.discount-code {
-    text-align: center;
-}
-
-.newsletter-cta-cont {
-    display: flex;
-}

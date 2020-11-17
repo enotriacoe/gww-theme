@@ -106,21 +106,6 @@ export default class Category extends CatalogPage {
             });
         }
 
-        $('.toggle-filters').on('click', () => {
-            const filterButtonText = $('.toggle-filter-txt');
-            const filterButtonIcon = $('.toggle-filter-icon');
-
-            $('.facetedSearch-navList').toggleClass('show-all-filters');
-
-            if (filterButtonText.text() === 'More Filters') {
-                filterButtonText.text('Less Filters');
-            } else {
-                filterButtonText.text('More Filters');
-            }
-
-            filterButtonIcon.toggleClass('flipped');
-        });
-
         // Open and close only the wishlist that is clicked
         $('.page-content').on('click', '[data-dropdown^="wishlist-dropdown-"]', (e) => {
             e.stopImmediatePropagation();
