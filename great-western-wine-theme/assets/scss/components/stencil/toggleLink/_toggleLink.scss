@@ -11,10 +11,6 @@ $toggle-spacing: spacing("single") + spacing("half");
 .toggle {
     border-top: solid 1px black;
     margin-bottom: $toggle-spacing;
-
-    &:last-of-type {
-        margin-bottom: 0;
-    }
 }
 
 .toggle-title {

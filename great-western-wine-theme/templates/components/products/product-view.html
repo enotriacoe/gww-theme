@@ -342,6 +342,8 @@
     {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
         {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
     {{/all}}
+    
+    {{> components/products/press-reviews}}
 
     <hr class="productView-divider">
 
