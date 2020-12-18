@@ -781,3 +781,13 @@ $cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-sp
         }
     }
 }
+
+.close-modal-cont {
+    height: 12px;
+
+    .close-previewModal {
+        position: absolute;
+        right: 6px;
+        top: 6px
+    }
+}
