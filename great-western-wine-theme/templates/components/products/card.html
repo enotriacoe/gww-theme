@@ -18,6 +18,7 @@
         {{/or}}
         <a href="{{url}}" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>
             <div class="card-img-container">
+
                 {{> components/common/responsive-img
                     image=image
                     class="card-image"
@@ -25,6 +26,16 @@
                     lazyload=theme_settings.lazyload_mode
                     default_image=theme_settings.default_image_product
                 }}
+
+
+                {{#filter custom_fields 'awardName' property='name' }}
+                {{/filter}}
+                {{#filter custom_fields 'awardImage' property='name' }}
+                    <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
+                {{/filter}}
+                {{#filter custom_fields 'awardName' property='name' }}
+                    alt="{{value}}" class="card-img-medal" />
+                {{/filter}}
             </div>
         </a>
 
