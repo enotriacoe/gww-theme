@@ -52,4 +52,8 @@ export function closePreviewCartModal() {
             $('#previewModal').foundation('reveal', 'close');
         }
     });
+
+    $('#previewModal').on('click', '.close-previewModal', () => {
+        $('#previewModal').foundation('reveal', 'close');
+    });
 }
