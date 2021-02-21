@@ -231,7 +231,7 @@ export default class Category extends CatalogPage {
     }
 
     getAllProducers(categoryFunction) {
-        fetch('https://bcapi.greatwesternwine.co.uk/catalog/flattened-categories/producers')
+        fetch('https://bcapi.greatwine.co.uk/catalog/flattened-categories/producers')
             .then(function (response) {
                 return response.json();
             })

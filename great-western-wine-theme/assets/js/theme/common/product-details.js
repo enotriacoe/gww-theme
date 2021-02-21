@@ -773,7 +773,7 @@ export default class ProductDetails {
         const currentCategoryDiv = $(currentCategoryClass);
         const currentCategoryId = currentCategoryDiv.data('cat-id');
         if (currentCategoryId) {
-            const categoryUrl = `https://bcapi.greatwesternwine.co.uk/catalog/categories/${currentCategoryId}`;
+            const categoryUrl = `https://bcapi.greatwine.co.uk/catalog/categories/${currentCategoryId}`;
             fetch(categoryUrl)
                 .then(productFunction.handleApiErrors)
                 .then((response) => response.json())
