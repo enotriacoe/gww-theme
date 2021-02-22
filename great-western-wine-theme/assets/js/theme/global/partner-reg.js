@@ -8,7 +8,7 @@ export function getPartnerInfo() {
 
     if (urlParams.has('partner')) {
         const partner = urlParams.get('partner');
-        const requestURL = `https://cdn.greatwesternwine.co.uk/partners/${partner}.json`;
+        const requestURL = `https://cdn.greatwine.co.uk/partners/${partner}.json`;
         $.getJSON(requestURL, (json) => {
             const headerHTML = json.partnership.header;
             const confirmText = json.partnership.confirmText;
