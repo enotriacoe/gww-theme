@@ -6,7 +6,7 @@ export function toggleMenuOnScroll() {
     let didScroll;
     let lastScrollTop = 0;
     const delta = 10; // How many pixels need to be scrolled before we toggle
-    const navbarHeight = $('.header').outerHeight();
+    const navbarHeight = $('.header-container').outerHeight();
 
     function hasScrolled() {
         if ($(window).width() >= 801) {
@@ -29,6 +29,14 @@ export function toggleMenuOnScroll() {
                     $('.navPages-container').slideDown(100);
                 }
             }
+
+/*             if (currentScrollTop > (navbarHeight * 0.75)) {
+                $('.sticky-placeholder').addClass('visible');
+                $('.add-to-basket-wrap').addClass('sticky');
+            } else {
+                $('.sticky-placeholder').removeClass('visible');
+                $('.add-to-basket-wrap').removeClass('sticky');
+            } */
 
             lastScrollTop = currentScrollTop;
         }
