@@ -360,10 +360,7 @@
                         <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
                         <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
                     {{/if}}
-                    {{#if product.gift_wrapping_available}}
-                        <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
-                    {{/if}}
+
                     {{#if product.shipping}}
                         {{#if product.shipping.calculated}}
                             <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
