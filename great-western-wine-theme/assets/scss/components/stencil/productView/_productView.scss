@@ -568,8 +568,30 @@
     padding: 20px;
 
     .productView-kind {
-        margin-top: 30px;
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .kind-title {
+            margin: 0;
+        }
+
+        .productView-kind-desc {
+            width: 50%;
+            flex-grow: 1;
+            margin-top: 35px;
+
+            @include breakpoint("medium") {
+                padding: 0 15px;
+            }
+        }
+
+        .productView-icon {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
 
