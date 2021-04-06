@@ -163,7 +163,7 @@
     margin: 0;
     line-height: 1.2;
     
-    @include breakpoint("large") {
+    @include breakpoint("medium") {
         display: none;
     }
 }
@@ -175,7 +175,7 @@
     font-family: $fontFamily-headings;
     font-weight: 400;
 
-    @include breakpoint("large") {
+    @include breakpoint("medium") {
         display: none;
     }
 

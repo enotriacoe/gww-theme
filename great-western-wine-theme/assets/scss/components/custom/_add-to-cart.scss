@@ -153,15 +153,18 @@
         max-width: 1671px;
     }
 
+    @include breakpoint("large") {
+        flex-wrap: nowrap;
+    }
+
 
     .productView-pricing-cont {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 4px 8px;
         
         @include breakpoint("small") {
-            justify-content: flex-end;
             padding: 0 10px 0 20px;
         }
 
@@ -173,7 +176,12 @@
             margin-bottom: 0;
         }
 
-        .productView-price, .productView-price-multi {
+        .productView-price {
+            display: flex;
+            margin-right: 20px;
+        }
+
+        .productView-price-multi {
             display: flex;
 
             @include breakpoint("small") {
@@ -184,9 +192,12 @@
         .price--withTax {
             line-height: 1;
             font-size: 27px;
+            min-width: auto;
+            margin-right: 5px;
 
             @include breakpoint("large") {
                 font-size: 30px;
+                min-width: 95px;
             }
         }
 
