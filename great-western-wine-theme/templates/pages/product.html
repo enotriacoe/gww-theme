@@ -9,15 +9,21 @@ product:
     similar_by_views:
         limit: {{theme_settings.productpage_similar_by_views_count}}
 ---
-{{#partial "page"}}
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#partial "no-container"}}
+    <div class="container">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    </div>
 
     {{#each product.shipping_messages}}
-        {{> components/common/alert-info message}}
+    {{> components/common/alert-info message}}
     {{/each}}
-
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/products/product-view schema=true  }}
+    </div>
+
+{{/partial}}
+
+{{#partial "page"}}
 
         {{{region name="product_below_content"}}}
 
@@ -39,6 +45,5 @@ product:
         {{/if}}
 
         {{> components/common/subscription-form}}
-    </div>
 {{/partial}}
 {{> layout/base}}

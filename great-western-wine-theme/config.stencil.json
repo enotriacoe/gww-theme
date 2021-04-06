@@ -1,0 +1,26 @@
+{
+  "normalStoreUrl": "https://greatwine.co.uk/",
+  "port": "3000",
+  "customLayouts": {
+    "brand": {},
+    "category": {
+      "category-pgp-food.html": [
+        "/whats-on-the-menu/"
+      ],
+      "category-plp-food.html": [
+        "/red-meat/"
+      ],
+      "category-plp-blank.html": [
+        "/fortified-and-dessert-wine/dessert-wine/"
+      ],
+      "category-pgp-list.html": [
+        "/producers/"
+      ],
+      "category-pgp-offers.html": [
+        "/offers/"
+      ]
+    },
+    "page": {},
+    "product": {}
+  }
+}

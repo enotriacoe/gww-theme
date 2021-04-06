@@ -696,7 +696,7 @@
             "show": "Show Reviews",
             "title": "Customer Reviews",
             "header": "{total, plural, =0{0 Reviews} one {# Review} other {# Reviews}}",
-            "link_to_review": "{total, plural, =0{No reviews yet} one {Based on # review} other {Based on # reviews}}",
+            "link_to_review": "{total, plural, =0{No reviews yet} one {(#)} other {(#)}}",
             "post_on_by": "Posted by { name } on { date }",
             "rating_label": "Rating",
             "select_rating": "Select Rating",

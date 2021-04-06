@@ -8,6 +8,10 @@
 
 .productView {
     padding-top: spacing("base");
+    
+    @include breakpoint("medium") {
+        padding-top: spacing("half");
+    }
 }
 
 
@@ -15,7 +19,11 @@
 // -----------------------------------------------------------------------------
 
 .productView-images {
-    margin-bottom: spacing("double");
+    margin-bottom: spacing("single");
+
+    @include breakpoint("medium") {
+        margin-bottom: spacing("double");
+    }
 }
 
 .productView-image {
@@ -129,7 +137,14 @@
 // Details
 // -----------------------------------------------------------------------------
 
-.productView-details {
+.productView-quickInfo {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint("small") {
+        justify-content: space-between;
+        flex-direction: row;
+    }
 }
 
 
@@ -143,26 +158,25 @@
 }
 
 .productView-title {
-    font-size: fontSize("small");
     font-family: $fontFamily-headings;
     font-weight: 700;
     margin: 0;
+    line-height: 1.2;
     
-    @include breakpoint("large") {
-        font-size: 34px;
-        line-height: 1;
+    @include breakpoint("medium") {
+        display: none;
     }
 }
 
 .productView-brand {
     color: $productView-brand-link-color;
-    font-size: fontSize("small");
+    font-size: fontSize("larger");
     margin: 0 0 spacing("quarter");
     font-family: $fontFamily-headings;
     font-weight: 400;
 
-    @include breakpoint("large") {
-        font-size: 34px;
+    @include breakpoint("medium") {
+        display: none;
     }
 
     a {
@@ -178,61 +192,6 @@
 // Details - Product price
 // -----------------------------------------------------------------------------
 
-.productView-price {
-    font-size: fontSize("smaller");
-    margin-bottom: 10px;
-    padding: 7px 14px 7px;
-    vertical-align: top;
-    float: left;
-    width: 49%;
-
-    @include breakpoint("small") {
-        width: auto;
-        margin: 0;
-    }
-    
-    @include breakpoint("medium") {
-        margin: 0;
-        font-size: fontSize("larger");
-        width: auto;
-        margin-right: 1%;
-        margin-bottom: 10px;
-        padding: 7px 4px;
-    }
-
-    @include breakpoint("large") {
-        padding: 7px 21px 14px;
-    }
-
-    .non-sale-price--withTax {
-        font-size: 1rem;
-    }
-
-    .price-section--saving {
-        font-size: fontSize("smaller");
-    }
-
-    abbr {
-        border: 0;
-        color: inherit;
-        font-size: inherit;
-    }
-    
-    .single-price-title {
-        display: block;
-        font-size: 16px;
-        line-height: 1;
-    }
-    
-    .price--non-sale {
-        font-size: 14px;
-        font-weight: 300;
-    }
-
-    .price-saving {
-        font-size: 14px;
-    }
-}
 
 .productView-reviewLink {
     display: inline-block;
@@ -244,7 +203,6 @@
     }
 
     + .productView-reviewLink {
-        display: block;
         margin-left: auto;
 
         @include breakpoint("small") {
@@ -383,14 +341,11 @@
             text-transform: uppercase;
             margin: 0;
             line-height: normal;
-            padding: 0.6rem 7%;
+            padding: 0.6rem 2rem;
             height: 50px;
 
-            @include breakpoint("small") {
-                width: 95%;
-            }
-
             @include breakpoint("large") {
+                width: 95%;
                 padding: 0.6rem 2rem;
             }
         }
@@ -462,20 +417,20 @@
 // Custom Classes for GWW
 // -----------------------------------------------------------------------------
 
+.productView-icons {
+    display: flex;
+    justify-content: center;
+    padding: 0 12px;
+}
+
 .productView-icon {
     width: 32%;
     text-align: center;
     display: inline-block;
-    margin-top: 35px;
-    &:first-child, &:nth-child(2), &:nth-child(3){
-        margin-top: 0;
-    }
+    margin-top: 5px;
 
     @include breakpoint("small") {
-        width: 24%;
-        &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
-            margin-top: 0;
-        }
+        width: 25%;
     }
 
     .icon {
@@ -597,35 +552,61 @@
     margin: 0;
     width: 100%;
 
-    @include breakpoint("small") {
+    @include breakpoint("medium") {
         max-width: 46%;
+        margin-left: 5px;
         width: auto;
     }
 
-    @include breakpoint("medium") {
-        max-width: 100%;
-        margin-left: 5px;
-    }
-
     @include breakpoint("large") {
-        margin-left: 5%;
+        margin-left: 2%;
+    }
+}
+
+.productView-planet-friendly {
+    background: $green-xlt;
+    padding: 12px;
+    margin-top:1em;
+
+    .productView-kind {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .kind-title {
+            margin: 0;
+        }
+
+        .productView-kind-desc {
+            width: 50%;
+            flex-grow: 1;
+            margin: 15px 0 0;
+
+            @include breakpoint("medium") {
+                padding: 0 15px;
+                margin: 25px 0;
+            }
+        }
+
+        .productView-icon {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+    }
+}
+
+.info-carousel {
+    .slick-track {
+        margin-left: 0;
     }
 }
 
 .productView-food-recommendation {
-    background-color: $grey-xlt;
     display: inline-block;
-    padding: 30px 30px 14px;
-    margin-bottom: 10px;
-    vertical-align: top;
-
-    @include breakpoint("medium") {
-        width: 48%;
-    }
-    
-    @include breakpoint("large") {
-        width: 30%;
-    }
+    padding: 10px;
 }
 
 .productView-food-rec-title {
@@ -652,6 +633,16 @@
     display: inline-block;
     padding: 5px 9px;
 }
+
+// Product View info carousel
+
+.heroCarousel {
+    div {
+        width: 33.3%;
+    }
+}
+
+// Product View Specification section
 
 .productView-spec {
     width: 100%;
@@ -724,19 +715,8 @@
 }
 
 .productView-creation {
-    width: 100%;
     display: inline-block;
-    
-    @include breakpoint("medium") {
-        width: 48%;
-        margin-right: 2%;
-        padding: 30px 0 14px;
-    }
-
-    @include breakpoint("large") {
-        width: 64%;
-        margin-right: 2%;
-    }
+    padding: 10px;
 }
 
 .row {
