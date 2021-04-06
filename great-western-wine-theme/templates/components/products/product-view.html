@@ -8,190 +8,45 @@
         {{/if}}
     {{/each}}
 
-    <section class="productView-images" data-image-gallery>
-        {{!--
-            Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
-            for variant/rule image replacement
-        --}}
-        <figure class="productView-image"
-                data-image-gallery-main
-                {{#if product.main_image}}
-                data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
-                {{/if}}
-                >
-            <div class="productView-img-container">
-                {{!-- Remove the surrounding a-element if there is no main image. --}}
-                {{#if product.main_image}}
-                    <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
-                        target="_blank">
-                {{/if}}
-                {{> components/common/responsive-img
-                    image=product.main_image
-                    class="productView-image--default"
-                    fallback_size=theme_settings.product_size
-                    lazyload=theme_settings.lazyload_mode
-                    default_image=theme_settings.default_image_product
-                    otherAttributes="data-main-image"
-                }}
-                {{!-- Remove the surrounding a-element if there is no main image. --}}
-                {{#if product.main_image}}
-                    </a>
-                {{/if}}
-            </div>
-        </figure>
-        <div class="productView-video">
-            {{#if product.videos.list.length}}
-                {{> components/products/videos product.videos}}
-            {{/if}}        
-        </div>
-    </section>
-
-    <section class="productView-details">
-        <div class="productView-product">
-            <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
-                {{#filter product.custom_fields 'simpleName' property='name' }}
-                    {{value}}
-                {{/filter}}
-            </h1>
-            {{#if product.brand}}
-                <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
-                    <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span>
-                </h2>
-            {{/if}}
-            <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
-                {{#if settings.show_product_rating}}
-                    {{#if product.num_reviews '>' 0}}
-                        {{#if schema}}
-                            <meta itemprop="ratingValue" content="{{product.rating}}">
-                            <meta itemprop="ratingCount" content="{{product.num_reviews}}">
-                            <meta itemprop="reviewCount" content="{{product.num_reviews}}">
-                        {{/if}}
-                    {{/if}}
-                    {{> components/products/ratings rating=product.rating}}
-                    <span class="productView-reviewLink">
-                        {{#if product.num_reviews '>' 0}}
-                            <a href="{{product.url}}#product-reviews">
-                                {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
-                            </a>
+    <div class="add-to-basket-wrap">
+        <div class="full-width no-padding">
+            <div class="sticky-add-to-basket-cont">
+                <div class="product-title-desktop">
+                    <h3 class="product-title">
+                            {{#filter product.custom_fields 'simpleName' property='name' }}
+                            {{value}}
+                            {{/filter}}
+                    </h3>
+                    <h4 class="product-brand">{{#if product.brand}}{{product.brand.name}}{{/if}}</h4>
+                </div>      
+                            
+                <div class="productView-pricing-cont">
+                    <div class="productView-price">
+                        {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
+                            {{> components/products/price-sticky price=product.price schema_org=schema}}
                         {{else}}
-                            {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
-                        {{/if}}
-                    </span>
-                    {{#if settings.show_product_reviews}}
-                    <span class="productView-reviewLink jump-review-form">
-                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                           {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
-                           {{lang 'products.reviews.new'}}
-                        </a>
-                    </span>
-                {{/if}}
-                {{/if}}
-            </div>
-            {{#if settings.show_wishlist}}
-            {{> components/common/wishlist-dropdown}}
-            {{/if}}
-            {{#if product.call_for_price}}
-                <p class="productView-price">
-                    <span>{{product.call_for_price}}</span>
-                </p>
-            {{/if}}
-
-            <hr class="productView-divider">
-                <div class="productView-icons">
-                    {{#filter product.custom_fields 'colour' property='name' }}
-                    <div class="productView-icon">
-                        <i class="fal fa-wine-glass-alt icon"></i>
-                        {{value}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}} 
                     </div>
-                    {{/filter}}
-                    {{#filter product.custom_fields 'subType' property='name' }}
-                        {{#contains value 'Wine'}}
-                        {{else}}
-                            <div class="productView-icon">
-                                <i class="fal fa-wine-bottle icon"></i>
-                                {{value}}
-                            </div>
-                        {{/contains}}
-                        {{#contains value 'Dessert Wine'}}
-                            <div class="productView-icon">
-                                <i class="fal fa-wine-bottle icon"></i>
-                                {{value}}
-                            </div>
-                        {{/contains}}
-                    {{/filter}}
-                    {{#filter product.custom_fields 'countryCode' property='name' }}
-                    <div class="productView-icon">
-                        <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
-                    {{/filter}}
-                    {{#filter product.custom_fields 'country' property='name' }}
-                        {{value}}
-                    </div>
-                    {{/filter}}
-                    {{#filter product.custom_fields 'region' property='name' }}
-                    <div class="productView-icon">
-                        <i class="fal fa-map-marker-alt icon"></i>
-                        {{value}}
-                    </div>
-                    {{/filter}}
-                    {{#filter product.custom_fields 'vintage' property='name' }}
-                    <div class="productView-icon">
-                        <span class="vintage-icon">{{value}}</span>
-                        Vintage
-                    </div>
-                    {{/filter}}
-                    {{#filter product.custom_fields 'vegetarian' property='name' }}
-                    {{#if value '===' 'Yes'}}
-                    <div class="productView-icon">
-                        <span class="text-icon icon">V</span>
-                        Vegetarian
-                    </div>
-                    {{/if}}
-                    {{/filter}}
-                    {{#filter product.custom_fields 'vegan' property='name' }}
-                    {{#if value '===' 'Yes'}}
-                    <div class="productView-icon">
-                        <span class="text-icon icon">Vg</span>
-                        Vegan
-                    </div>
-                    {{/if}}
-                    {{/filter}}
-                    {{#filter product.custom_fields 'awardName' property='name' }}
-                    <div class="productView-icon">
-                        {{/filter}}
-                        {{#filter product.custom_fields 'awardImage' property='name' }}
-                            <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
-                        {{/filter}}
-                        {{#filter product.custom_fields 'awardName' property='name' }}
-                            alt="{{value}}" class="icon" />
-                        {{value}}
-                    </div>
-                    {{/filter}}
-                </div>
-            <hr class="icon-bottom">
-
-            <div class="productView-pricing-cont">
-                <div class="productView-price">
-                    <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
-                    {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
-                        {{> components/products/price price=product.price schema_org=schema}}
+    
+                    {{#filter product.custom_fields 'isMultibuy' property='name' }}
+                    <div class="productView-price-multi">
                     {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}} 
-                </div>
-
-                {{#filter product.custom_fields 'isMultibuy' property='name' }}
-                <div class="multibuy-cont">
-                {{else}}
-                <div class="multibuy-cont" style="display:none">
-                {{/filter}}
-                    <div class="multibuy-price-title">
-                        <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
-                        <sub> ?</sub>
-                        <span class="tooltip-text">Only <strong>£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                    <div class="productView-price-multi" style="display:none">
+                    {{/filter}}
+                        <div class="sticky-multi-price">
+                            <div class="multibuy-price-title">
+                                <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
+                                <sub> ?</sub>
+                                <span class="tooltip-text">Only <strong>£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                            </div>
+                            <span class="price price--withTax">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
+                        </div>
+                        <div class="sticky-multi-savings">
+                            <span class="multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                            <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply product.price.with_tax.value 0.1) 2}}</span>
+                        </div>
                     </div>
-                    <span class="price price--withTax">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
-                    <span class="multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
-                    <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply product.price.with_tax.value 0.1) 2}}</span>
                 </div>
 
                 <div class="productView-cart-cont">
@@ -225,209 +80,460 @@
                             {{/if}}
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <div class="productView-price-usp">
-                        <i class="fal fa-truck icon"></i>
-                        <h4 class="usp-title">Delivery</h4>
-                        {{#filter product.custom_fields 'deliveryText' property='name'}}
-                            <p class="usp-txt">{{value}}</p>
-                        {{else}}
-                            <p class="usp-txt">Free when you spend over £50</p>
+    <div class="container">
+        <section class="productView-images" data-image-gallery>
+            {{!--
+                Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
+                for variant/rule image replacement
+            --}}
+            <figure class="productView-image"
+                    data-image-gallery-main
+                    {{#if product.main_image}}
+                    data-zoom-image="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size }}"
+                    {{/if}}
+                    >
+                <div class="productView-img-container">
+                    {{!-- Remove the surrounding a-element if there is no main image. --}}
+                    {{#if product.main_image}}
+                        <a href="{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}"
+                            target="_blank">
+                    {{/if}}
+                    {{> components/common/responsive-img
+                        image=product.main_image
+                        class="productView-image--default"
+                        fallback_size=theme_settings.product_size
+                        lazyload=theme_settings.lazyload_mode
+                        default_image=theme_settings.default_image_product
+                        otherAttributes="data-main-image"
+                    }}
+                    {{!-- Remove the surrounding a-element if there is no main image. --}}
+                    {{#if product.main_image}}
+                        </a>
+                    {{/if}}
+                </div>
+            </figure>
+            <div class="productView-video">
+                {{#if product.videos.list.length}}
+                    {{> components/products/videos product.videos}}
+                {{/if}}        
+            </div>
+        </section>
+
+        <section class="productView-details">
+            <div class="productView-product">
+                <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
+                    {{#filter product.custom_fields 'simpleName' property='name' }}
+                        {{value}}
+                    {{/filter}}
+                </h1>
+                {{#if product.brand}}
+                    <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
+                        <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span>
+                    </h2>
+                {{/if}}
+
+                <div class="productView-quickInfo">
+                    <div class="productView-stats">
+                        <div class="productView-dataInfo">
+                            <span>{{#filter product.custom_fields 'vintage' property='name' }}{{value}} {{/filter}}</span>
+                            <span>{{#filter product.custom_fields 'abv' property='name' }}| {{value}} ABV {{/filter}}</span>
+                            <span>{{#filter product.custom_fields 'unitVolume' property='name' }}| {{value}} {{/filter}}</span>
+                        </div>
+                        <div class="productView-stockLevel">
+                            <span class="{{#unless product.stock_level}}u-hiddenVisually{{/unless}}"><p>{{product.stock_level}} in stock</p></span>
+                        </div>
+                    </div>
+                    
+                    <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
+                        {{#if settings.show_product_rating}}
+                            {{#if product.num_reviews '>' 0}}
+                                {{#if schema}}
+                                    <meta itemprop="ratingValue" content="{{product.rating}}">
+                                    <meta itemprop="ratingCount" content="{{product.num_reviews}}">
+                                    <meta itemprop="reviewCount" content="{{product.num_reviews}}">
+                                {{/if}}
+                            {{/if}}
+                            {{> components/products/ratings rating=product.rating}}
+                            <span class="productView-reviewLink">
+                                {{#if product.num_reviews '>' 0}}
+                                    <a href="{{product.url}}#product-reviews">
+                                        {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                                    </a>
+                                {{else}}
+                                    {{lang 'products.reviews.link_to_review' total=product.num_reviews}}
+                                {{/if}}
+                            </span>
+                            {{#if settings.show_product_reviews}}
+                            <span class="productView-reviewLink jump-review-form">
+                                <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                                {{#unless is_ajax }}data-reveal-id="modal-review-form"{{/unless}}>
+                                {{lang 'products.reviews.new'}}
+                                </a>
+                            </span>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                    {{#if settings.show_wishlist}}
+                    {{> components/common/wishlist-dropdown}}
+                    {{/if}}
+                    {{#if product.call_for_price}}
+                        <p class="productView-price">
+                            <span>{{product.call_for_price}}</span>
+                        </p>
+                    {{/if}}
+                </div>
+
+                <hr class="productView-divider">
+                    <div class="productView-icons">
+                        {{#filter product.custom_fields 'colour' property='name' }}
+                        <div class="productView-icon">
+                            <i class="fal fa-wine-glass-alt icon"></i>
+                            {{value}}
+                        </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'subType' property='name' }}
+                            {{#contains value 'Wine'}}
+                            {{else}}
+                                <div class="productView-icon">
+                                    <i class="fal fa-wine-bottle icon"></i>
+                                    {{value}}
+                                </div>
+                            {{/contains}}
+                            {{#contains value 'Dessert Wine'}}
+                                <div class="productView-icon">
+                                    <i class="fal fa-wine-bottle icon"></i>
+                                    {{value}}
+                                </div>
+                            {{/contains}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'countryCode' property='name' }}
+                        <div class="productView-icon">
+                            <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'country' property='name' }}
+                            {{value}}
+                        </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'region' property='name' }}
+                        <div class="productView-icon">
+                            <i class="fal fa-map-marker-alt icon"></i>
+                            {{value}}
+                        </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'vegetarian' property='name' }}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">V</span>
+                                Vegetarian
+                            </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'vegan' property='name' }}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">Vg</span>
+                                Vegan
+                            </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'awardName' property='name' }}
+                        <div class="productView-icon">
+                            {{/filter}}
+                            {{#filter product.custom_fields 'awardImage' property='name' }}
+                                <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
+                            {{/filter}}
+                            {{#filter product.custom_fields 'awardName' property='name' }}
+                                alt="{{value}}" class="icon" />
+                            {{value}}
+                        </div>
                         {{/filter}}
                     </div>
-                </div>
-            </div>
 
-            {{{region name="product_below_price"}}}
+                {{#any product.custom_fields name='planetFriendly'}}
+                    <div class="productView-planet-friendly">
+                        <div class="productView-kind">
+                        {{#any product.custom_fields name='planetFriendly' value='Organic'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-leaf icon"></i>
+                                Organic
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Biodynamic'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-leaf-heart icon"></i>
+                                Biodynamic
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Sustainable'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-seedling icon"></i>
+                                Sustainable
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Kind'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-heart icon"></i>
+                                Kind
+                            </div>
+                        {{/any}}
+                        {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                            <p class="productView-kind-desc">
+                                {{/filter}}
+                                    {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_10' property='name' }}{{value}}{{/filter}}
+                                {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                            </p>
+                        {{/filter}}
+                        </div>
+                    </div>
+                {{/any}}
 
-            {{product.detail_messages}}
-            <dl class="productView-info">
-                {{#if product.condition}}
-                    <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
-                    <dd class="productView-info-value">{{product.condition}}</dd>
-                {{/if}}
-                {{#if product.availability}}
-                    <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
-                    <dd class="productView-info-value">{{product.availability}}</dd>
-                {{/if}}
-                {{#all product.weight theme_settings.show_product_weight}}
-                    <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                    <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
-                {{/all}}
-                {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
-                    <dt class="productView-info-name">{{lang 'products.width'}}</dt>
-                    <dd class="productView-info-value" data-product-width>
-                        {{product.width}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                    <dt class="productView-info-name">{{lang 'products.height'}}</dt>
-                    <dd class="productView-info-value" data-product-height>
-                        {{product.height}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                    <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
-                    <dd class="productView-info-value" data-product-depth>
-                        {{product.depth}}
-                        {{#if settings.measurements.length '==' 'Centimeters'}}
-                        ({{lang 'products.measurement.metric'}})
-                        {{else}}
-                        ({{lang 'products.measurement.imperial'}})
-                        {{/if}}
-                    </dd>
-                {{/all}}
-                {{#if product.min_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.max_purchase_quantity}}
-                    <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                {{/if}}
-                {{#if product.gift_wrapping_available}}
-                    <dt class="productView-info-name">{{lang 'products.gift_wrapping'}}</dt>
-                    <dd class="productView-info-value">{{lang 'products.gift_wrapping_available'}}</dd>
-                {{/if}}
-                {{#if product.shipping}}
-                    {{#if product.shipping.calculated}}
-                        <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
-                    {{else}}
-                        {{#if product.shipping.price.value '===' 0}}
+                {{{region name="product_below_price"}}}
+
+                {{product.detail_messages}}
+                <dl class="productView-info">
+                    {{#if product.condition}}
+                        <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                        <dd class="productView-info-value">{{product.condition}}</dd>
+                    {{/if}}
+                    {{#if product.availability}}
+                        <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
+                        <dd class="productView-info-value">{{product.availability}}</dd>
+                    {{/if}}
+                    {{#all product.weight theme_settings.show_product_weight}}
+                        <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                        <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                    {{/all}}
+                    {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+                        <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+                        <dd class="productView-info-value" data-product-width>
+                            {{product.width}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                        <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+                        <dd class="productView-info-value" data-product-height>
+                            {{product.height}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                        <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+                        <dd class="productView-info-value" data-product-depth>
+                            {{product.depth}}
+                            {{#if settings.measurements.length '==' 'Centimeters'}}
+                            ({{lang 'products.measurement.metric'}})
+                            {{else}}
+                            ({{lang 'products.measurement.imperial'}})
+                            {{/if}}
+                        </dd>
+                    {{/all}}
+                    {{#if product.min_purchase_quantity}}
+                        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
+                    {{/if}}
+                    {{#if product.max_purchase_quantity}}
+                        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
+                    {{/if}}
+
+                    {{#if product.shipping}}
+                        {{#if product.shipping.calculated}}
                             <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                            <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
                         {{else}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                            {{#if product.shipping.price.value '===' 0}}
+                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                            {{else}}
+                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                            {{/if}}
                         {{/if}}
                     {{/if}}
-                {{/if}}
 
-                {{#if settings.bulk_discount_enabled}}
-                    <div class="productView-info-bulkPricing">
-                        {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                    {{#if settings.bulk_discount_enabled}}
+                        <div class="productView-info-bulkPricing">
+                            {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                        </div>
+                    {{/if}}
+
+
+                </dl>
+            </div>
+                
+            <article class="productView-description-cont"{{#if schema}} itemprop="description"{{/if}}>
+                {{#if theme_settings.show_product_details_tabs}}
+                    {{> components/products/description-tabs}}
+                {{else}}
+                    {{> components/products/description}}
+                    {{#filter product.custom_fields 'size' property='name'}}
+                        <p class="productView-size">{{value}}</p>
+                    {{/filter}}
+                {{/if}}
+            </article>
+
+        </section>
+
+        <hr class="productView-divider">
+
+        <section class="info-carousel"
+            data-slick='{
+            "slidesToShow": 3,
+            "slidesToScroll": 1,
+            "responsive": [
+                    {
+                        "breakpoint": 1200,
+                        "settings": {
+                            "slidesToShow": 1
+                        }
+                    }
+                ],
+            "arrows": false
+        }'>
+
+                {{#filter product.custom_fields 'press0Text_0' property='name' }}
+                    <div class="press-review-cont">
+                        <h3 class="stylised-medium">Press Review</h3>
+                        <blockquote class="press-review-quote">                
+                            "
+                {{/filter}}
+                        {{#filter product.custom_fields 'press0Text_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press0Text_10' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'press0Text_0' property='name' }}
+                            "
+                        </blockquote>
+                {{/filter}}
+
+                {{#filter product.custom_fields 'press0Rating' property='name' }}
+                        <footer class="press-review-title">                
+                {{/filter}}
+                            {{#filter product.custom_fields 'press0Rating' property='name' }}{{value}} |{{/filter}} {{#filter product.custom_fields 'press0Attribution' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'press0Rating' property='name' }}
+                        </footer>
                     </div>
-                {{/if}}
-
-
-            </dl>
-        </div>
-            
-        <article class="productView-description-cont"{{#if schema}} itemprop="description"{{/if}}>
-            {{#if theme_settings.show_product_details_tabs}}
-                {{> components/products/description-tabs}}
-            {{else}}
-                {{> components/products/description}}
-                {{#filter product.custom_fields 'size' property='name'}}
-                    <p class="productView-size">{{value}}</p>
                 {{/filter}}
-            {{/if}}
-        </article>
 
-    </section>
 
-    <hr class="productView-divider">
-    
-    <div class="row">
-        {{> components/products/product-spec }}
-    </div>
-    
-    {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
-        {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
-    {{/all}}
-    
-    {{> components/products/press-reviews}}
 
-    <hr class="productView-divider">
+                {{#filter product.custom_fields 'press1Text_0' property='name' }}
+                    <div class="press-review-cont">
+                        <h3 class="stylised-medium">Press Review</h3>
+                        <blockquote class="press-review-quote">                
+                            "
+                {{/filter}}
+                        {{#filter product.custom_fields 'press1Text_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Text_10' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'press1Text_0' property='name' }}
+                            "
+                        </blockquote>
+                {{/filter}}
 
-    <div class="row">
-        {{#filter product.custom_fields 'winemaking_0' property='name' }}
-        <div class="productView-creation">
-            <h3 class="stylised-medium">Winemaking</h3>
-            <p>
-        {{/filter}}
+                {{#filter product.custom_fields 'press1Rating' property='name' }}
+                        <footer class="press-review-title">                
+                {{/filter}}
+                            {{#filter product.custom_fields 'press1Rating' property='name' }}{{value}} |{{/filter}} {{#filter product.custom_fields 'press1Attribution' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'press1Rating' property='name' }}
+                        </footer>
+                    </div>
+                {{/filter}}
 
-            {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
-        
-        {{#filter product.custom_fields 'winemaking_0' property='name' }}
-            </p>
-        </div>
-        {{/filter}}
+                {{#filter product.custom_fields 'winemaking_0' property='name' }}
+                <div class="productView-creation">
+                    <h3 class="stylised-medium">Winemaking</h3>
+                    <p>
+                {{/filter}}
 
-        {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
-        <div class="productView-food-recommendation">
-            <h3 class="productView-food-rec-title">Our Expert Food Recommendation</h3>
-            <p>
-        {{/filter}}
+                    {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
+                
+                {{#filter product.custom_fields 'winemaking_0' property='name' }}
+                    </p>
+                </div>
+                {{/filter}}
+
                 {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
-                    {{value}}
+                <div class="productView-food-recommendation">
+                    <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                    <p>
                 {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_1' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_2' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_3' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_4' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_5' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_6' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_7' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_8' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_9' property='name' }}
-                    {{value}}
-                {{/filter}}
-                {{#filter product.custom_fields 'foodRecommendation_10' property='name' }}
-                    {{value}}
-                {{/filter}}
-        {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
-            </p>
-        </div>
-        {{/filter}}
-
-    </div>
-
-    <div class="product-category-cont">
-        <div class="product-cat-wrap producer-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'producerCategoryId' property='name' }}{{value}}{{/filter}}">
-            <div class="product-cat-info">
-                <img class="product-cat-img" src="" alt="">
-                <div class="product-cat-heading">
-                    <span>An introduction to</span>
-                    <h4 class="product-cat-title"></h4>
+                        {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_1' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_2' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_3' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_4' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_5' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_6' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_7' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_8' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_9' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'foodRecommendation_10' property='name' }}
+                            {{value}}
+                        {{/filter}}
+                {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
+                    </p>
                 </div>
-            </div>
-            <p></p>
-            <a href="#" class="btn btn-coral-line">See more from this producer <i class="fa fa-chevron-right icon"></i></a>
+                {{/filter}}
+
+        </section>
+        
+        {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
+            {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+        {{/all}}
+
+        <hr class="productView-divider">
+
+        <div class="row">
+            {{> components/products/product-spec }}
         </div>
-        <div class="product-cat-wrap country-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'countryCategoryId' property='name' }}{{value}}{{/filter}}">
-            <div class="product-cat-info">
-                <img class="product-cat-img" src="" alt="">
-                <div class="product-cat-heading">
-                    <span>Wine from</span>
-                    <h4 class="product-cat-title"></h4>
+
+        <hr class="productView-divider">
+        
+        <div class="product-category-cont">
+            <div class="product-cat-wrap producer-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'producerCategoryId' property='name' }}{{value}}{{/filter}}">
+                <div class="product-cat-info">
+                    <img class="product-cat-img" src="" alt="">
+                    <div class="product-cat-heading">
+                        <span>An introduction to</span>
+                        <h4 class="product-cat-title"></h4>
+                    </div>
                 </div>
+                <p></p>
+                <a href="#" class="btn btn-coral-line">See more from this producer <i class="fa fa-chevron-right icon"></i></a>
             </div>
-            <p></p>
-            <a href="#" class="btn btn-coral-line">See more from this country <i class="fa fa-chevron-right icon"></i></a>
+            <div class="product-cat-wrap country-cat-wrap" style="display:none" data-cat-id="{{#filter product.custom_fields 'countryCategoryId' property='name' }}{{value}}{{/filter}}">
+                <div class="product-cat-info">
+                    <img class="product-cat-img" src="" alt="">
+                    <div class="product-cat-heading">
+                        <span>Wine from</span>
+                        <h4 class="product-cat-title"></h4>
+                    </div>
+                </div>
+                <p></p>
+                <a href="#" class="btn btn-coral-line">See more from this country <i class="fa fa-chevron-right icon"></i></a>
+            </div>
         </div>
     </div>
 </div>
