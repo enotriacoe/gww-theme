@@ -280,12 +280,20 @@
                         </div>
                         {{/if}}
                         {{/filter}}
+                        {{#filter product.custom_fields 'sustainable' property='name' }}
+                        {{#if value '===' 'Yes'}}
+                        <div class="productView-icon">
+                            <i class="fal fa-leaf icon"></i>
+                            Sustainable
+                        </div>
+                        {{/if}}
+                        {{/filter}}
 
                         {{assignVar "kind" 0}}
                         {{#filter product.custom_fields 'planetFriendly' property='name'}}
                             {{#if (getVar "kind") '===' 0}}
                                 <div class="productView-icon">
-                                    <i class="fal fa-leaf icon"></i>
+                                    <i class="fal fa-heart icon"></i>
                                     <p class="kind-title">Kind</p>
                                 </div>
                                 <span style="display:none">{{incrementVar "kind"}}</span>
@@ -299,11 +307,12 @@
                         {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
                         </p>
                         {{/filter}}
-                        {{assignVar "kind" 0}}
+                {{assignVar "kind" 0}}
                 {{#filter product.custom_fields 'planetFriendly' property='name'}}
                     {{#if (getVar "kind") '===' 0}}
                         </div>
                     </div>
+                    <span style="display:none">{{incrementVar "kind"}}</span>
                     {{/if}}
                 {{/filter}}
 
