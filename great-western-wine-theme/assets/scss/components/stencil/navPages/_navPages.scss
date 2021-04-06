@@ -225,10 +225,17 @@
     font-weight: 500;
     padding: (spacing("base") / 2) 0;
     text-decoration: none;
+    white-space: nowrap;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) spacing("half");
+        padding: (spacing("half") + spacing("quarter")) spacing("quarter");
+        font-size: fontSize("smallest");
+    }
+
+    @include breakpoint("large") {
+        padding: spacing("half");
+        font-size: fontSize("smaller");
     }
 
     &:hover {
