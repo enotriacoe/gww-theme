@@ -566,6 +566,7 @@
 .productView-planet-friendly {
     background: $green-xlt;
     padding: 12px;
+    margin-top:1em;
 
     .productView-kind {
         display: flex;
@@ -581,7 +582,7 @@
         .productView-kind-desc {
             width: 50%;
             flex-grow: 1;
-            margin: 15px 0;
+            margin: 15px 0 0;
 
             @include breakpoint("medium") {
                 padding: 0 15px;

@@ -225,6 +225,18 @@
                             {{value}}
                         </div>
                         {{/filter}}
+                        {{#filter product.custom_fields 'vegetarian' property='name' }}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">V</span>
+                                Vegetarian
+                            </div>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'vegan' property='name' }}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">Vg</span>
+                                Vegan
+                            </div>
+                        {{/filter}}
                         {{#filter product.custom_fields 'awardName' property='name' }}
                         <div class="productView-icon">
                             {{/filter}}
@@ -237,31 +249,52 @@
                         </div>
                         {{/filter}}
                     </div>
-                <hr class="icon-bottom">
 
-                {{assignVar "kind" 0}}
-                {{#filter product.custom_fields 'planetFriendly' property='name'}}
-                    {{#if (getVar "kind") '===' 0}}
+                {{#any product.custom_fields name='planetFriendly'}}
                     <div class="productView-planet-friendly">
                         <div class="productView-kind">
-                    <span style="display:none">{{incrementVar "kind"}}</span>
-                    {{/if}}
-                {{/filter}}
-
-                        {{#filter product.custom_fields 'organic' property='name' }}
-                        {{#if value '===' 'Yes'}}
+                        {{#any product.custom_fields name='planetFriendly' value='Organic'}}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">O</span>
+                                Organic
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Biodynamic'}}
+                            <div class="productView-icon">
+                                <span class="text-icon icon">Bio</span>
+                                Biodynamic
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Sustainable'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-leaf icon"></i>
+                                Sustainable
+                            </div>
+                        {{/any}}
+                        {{#any product.custom_fields name='planetFriendly' value='Kind'}}
+                            <div class="productView-icon">
+                                <i class="fal fa-heart icon"></i>
+                                <p class="kind-title">Kind</p>
+                            </div>
+                        {{/any}}
+                        {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                            <p class="productView-kind-desc">
+                                {{/filter}}
+                                    {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_10' property='name' }}{{value}}{{/filter}}
+                                {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                            </p>
+                        {{/filter}}
+                    {{!--
+                    {{#any product.custom_fields name='planetFriendly' value='Organic'}}
                         <div class="productView-icon">
                             <span class="text-icon icon">O</span>
                             Organic
                         </div>
-                        {{/if}}
-                        {{/filter}}
+                    {{/any}}
+
                         {{#filter product.custom_fields 'biodynamic' property='name' }}
                         {{#if value '===' 'Yes'}}
-                        <div class="productView-icon">
-                            <span class="text-icon icon">Bio</span>
-                            Biodynamic
-                        </div>
+
                         {{/if}}
                         {{/filter}}
                         {{#filter product.custom_fields 'vegetarian' property='name' }}
@@ -307,14 +340,10 @@
                         {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
                         </p>
                         {{/filter}}
-                {{assignVar "kind" 0}}
-                {{#filter product.custom_fields 'planetFriendly' property='name'}}
-                    {{#if (getVar "kind") '===' 0}}
+                        --}}
                         </div>
                     </div>
-                    <span style="display:none">{{incrementVar "kind"}}</span>
-                    {{/if}}
-                {{/filter}}
+                {{/any}}
 
                 {{{region name="product_below_price"}}}
 
