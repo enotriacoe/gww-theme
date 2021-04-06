@@ -417,6 +417,12 @@
 // Custom Classes for GWW
 // -----------------------------------------------------------------------------
 
+.productView-icons {
+    display: flex;
+    justify-content: center;
+    padding: 0 12px;
+}
+
 .productView-icon {
     width: 32%;
     text-align: center;
@@ -424,7 +430,7 @@
     margin-top: 5px;
 
     @include breakpoint("small") {
-        width: 24%;
+        width: 25%;
     }
 
     .icon {
@@ -559,7 +565,7 @@
 
 .productView-planet-friendly {
     background: $green-xlt;
-    padding: 20px;
+    padding: 12px;
 
     .productView-kind {
         display: flex;
@@ -579,12 +585,14 @@
 
             @include breakpoint("medium") {
                 padding: 0 15px;
+                margin: 25px 0;
             }
         }
 
         .productView-icon {
             display: flex;
             flex-direction: column;
+            margin-top: 10px;
         }
     }
 }
