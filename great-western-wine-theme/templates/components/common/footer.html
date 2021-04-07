@@ -96,7 +96,7 @@
         {{/if}}
     </div>
     {{#if theme_settings.show_copyright_footer}}
-    <div class="footer-copyright">
+    <div class="footer-copyright" style="padding-bottom:6em;">
         <div class="container">
             <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} -
                 Registered in England: 1071904</p>
@@ -110,3 +110,18 @@
     </div>
     {{/if}}
 </footer>
+
+<div>
+    <style>
+      .pf-div { background:#e6eee5; color:#353d41; width:100%; position:fixed; bottom:0; left:0; padding:10px; font-size:1em; text-align:center; font-size:0.8em; }
+      .pf-div a { color:#357044; text-decoration:underline; }
+      .pf-div a strong { font-family:Cormorant, Georgia, 'Times New Roman', Times, serif; font-size:1.2em; }
+  
+      @media (min-width: 801px) {
+      .pf-div { font-size:1em; }
+      }
+    </style>
+    <div class="pf-div">
+      <a href="/offers/planet-friendly-wines/"><strong>Planet Friendly Wines</strong></a> &nbsp; We're donating 5% of all sales of <a href="/organic/">Organic</a>, <a href="/biodynamic/">Biodynamic</a>, <a href="/sustainable/">Sustainable</a> or <a href="/kind/">Kind</a> wines to UK conservation charities &nbsp; <a href="/offers/planet-friendly-wines/">Full details</a>   
+    </div>
+</div>
