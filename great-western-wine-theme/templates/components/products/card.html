@@ -27,6 +27,10 @@
                     default_image=theme_settings.default_image_product
                 }}
 
+                <div class="limited-stock-badge {{#unless product.stock_level}}u-hiddenVisually{{/unless}}">
+                    <p>Limited</br>Stock</p>
+                </div>
+    
 
                 {{#filter custom_fields 'awardName' property='name' }}
                 {{/filter}}
@@ -89,7 +93,16 @@
                     <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
                 </div>
             </div>
-            <div class="grid-add-cart">
+            <div class="grid-add-cart max-stock-parent">
+                <div class="max-stock-message-wrap">
+                    <div class="max-stock-message-cont">
+                        <p>There are only {{stock_level}} in stock</p>
+                        <button class="close-stock-message" title="Close max stock message"> 
+                            <i class="fa fa-times" title="Close max stock message" aria-label="Close max stock message"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="productView-options add-to-cart-form">
                     {{#if show_cart_action}}
                         {{#if add_to_cart_url }}
@@ -118,7 +131,7 @@
                                                 type="tel"
                                                 value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
                                                 data-quantity-min="0"
-                                                data-quantity-max="0"
+                                                data-quantity-max="{{#if product.stock_level}}{{product.stock_level}}{{else}}0{{/if}}"
                                                 min="1"
                                                 pattern="[0-9]*"
                                                 aria-live="polite">
@@ -153,7 +166,7 @@
                         </form>
                         {{/if}}
                     {{else}}
-                        <div class="button btn-oos">OUT OF STOCK</div>
+                        <div class="button btn-oos">Out of stock</div>
                     {{/if}}
                 </div>        
             </div>

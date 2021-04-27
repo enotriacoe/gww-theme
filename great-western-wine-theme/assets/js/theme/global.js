@@ -16,7 +16,7 @@ import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
 import objectFitImages from './global/object-fit-polyfill';
 import { closeWishlistOnClick } from './global/wishlist-open';
-import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-func';
+import { addToCartClickEvent, quantityChangeEvent, maxStockMessage } from './global/add-to-cart-func';
 import { getPartnerInfo } from './global/partner-reg';
 import moveTermsCheckboxToBottom from './global/create-account';
 import toggleMobileSearch from './global/mobile-search-toggle';

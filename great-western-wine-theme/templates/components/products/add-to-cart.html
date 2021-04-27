@@ -1,4 +1,13 @@
-<div class="add-to-cart-cont">
+<div class="add-to-cart-cont max-stock-parent">
+    <div class="max-stock-message-wrap">
+        <div class="max-stock-message-cont">
+            <p>There are only {{stock_level}} in stock</p>
+            <button class="close-stock-message" title="Close max stock message"> 
+                <i class="fa fa-times" title="Close max stock message" aria-label="Close max stock message"></i>
+            </button>
+        </div>
+    </div>
+
 {{#if theme_settings.show_product_quantity_box}}
     <div class="form-field form-field--increments">
             <div class="form-increment" data-quantity-change>
@@ -8,7 +17,7 @@
                 type="tel"
                 value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
                 data-quantity-min="{{product.min_purchase_quantity}}"
-                data-quantity-max="{{product.max_purchase_quantity}}"
+                data-quantity-max="{{#if product.stock_level}}{{product.stock_level}}{{else}}0{{/if}}"
                 min="1"
                 pattern="[0-9]*"
                 aria-live="polite">

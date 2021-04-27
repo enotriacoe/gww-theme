@@ -69,11 +69,11 @@
                             {{#if product.can_purchase}}
                                 {{> components/products/add-to-cart}}
                             {{else}}
-                                <div class="button btn-oos">OUT OF STOCK</div>
+                                <div class="button btn-oos">Out of stock</div>
                             {{/if}}
                             {{#if product.out_of_stock}}
                                 {{#if product.out_of_stock_message}}
-                                    <div class="btn-oos button">OUT OF STOCK</div>
+                                    <div class="button btn-oos">Out of stock</div>
                                 {{else}}
                                     {{> components/common/alert-error (lang 'products.sold_out')}}
                                 {{/if}}
@@ -144,9 +144,6 @@
                             <span>{{#filter product.custom_fields 'abv' property='name' }}| {{value}} ABV {{/filter}}</span>
                             <span>{{#filter product.custom_fields 'unitVolume' property='name' }}| {{value}} {{/filter}}</span>
                         </div>
-                        <div class="productView-stockLevel">
-                            <span class="{{#unless product.stock_level}}u-hiddenVisually{{/unless}}"><p>{{product.stock_level}} in stock</p></span>
-                        </div>
                     </div>
                     
                     <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
@@ -179,13 +176,16 @@
                         {{/if}}
                     </div>
                     {{#if settings.show_wishlist}}
-                    {{> components/common/wishlist-dropdown}}
+                        {{> components/common/wishlist-dropdown}}
                     {{/if}}
                     {{#if product.call_for_price}}
                         <p class="productView-price">
                             <span>{{product.call_for_price}}</span>
                         </p>
                     {{/if}}
+                    <div class="productView-stockLevel" {{#unless product.stock_level}}style="display:none"{{/unless}}>
+                        <span>{{product.stock_level}} in stock</span>
+                    </div>
                 </div>
 
                 <hr class="productView-divider">

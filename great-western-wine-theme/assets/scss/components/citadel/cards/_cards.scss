@@ -24,6 +24,16 @@
     }
 }
 
+.limited-stock-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1;
+    font-weight: 600;
+}
+
 .card-img-container {
     max-width: get-width(stencilString('productgallery_size'));
     padding-bottom: 200px;
@@ -326,6 +336,8 @@
 }
 
 .grid-add-cart {
+    position: relative;
+
     .productView-options .form-action .button {
         width: 100%;
     }
@@ -341,3 +353,40 @@
     display: flex;
     justify-content: space-between;
 }
+
+.max-stock-message-wrap {
+    display: none;
+    position: absolute;
+    height: 35px;
+    top: 0px;
+    width: 100%;
+    transition: top 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: $green;
+    display: none;
+    padding-left: 10px;
+    color: white;
+}
+
+.max-stock-message-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    
+    p {
+        font-size: 12px;
+        text-decoration: underline;
+        font-weight: 600;
+        margin: 0;
+        line-height: 11px;
+    } 
+
+    .close-stock-message {
+        height: 35px;
+        width: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;   
+    }
+}
+

@@ -11,6 +11,7 @@
 .add-to-cart-cont {
     height: 50px;
     display: flex;
+    position: relative;
     
     .form-input--incrementTotal { 
         width: 5.5rem;
@@ -245,7 +246,7 @@
 
             @include breakpoint("medium") {
                 height: 100%;
-                width: 100%;
+                width: 90%;
                 left: auto;
                 right: 0;
                 z-index: 0;
