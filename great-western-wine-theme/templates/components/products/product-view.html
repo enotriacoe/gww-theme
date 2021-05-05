@@ -66,18 +66,13 @@
                                     <span data-product-stock>{{product.stock_level}}</span>
                                 </label>
                             </div>
-                            {{#if product.can_purchase}}
+                            {{#and (unless product.out_of_stock) (if product.can_purchase) }}
                                 {{> components/products/add-to-cart}}
                             {{else}}
-                                <div class="button btn-oos">Out of stock</div>
-                            {{/if}}
-                            {{#if product.out_of_stock}}
-                                {{#if product.out_of_stock_message}}
-                                    <div class="button btn-oos">Out of stock</div>
-                                {{else}}
-                                    {{> components/common/alert-error (lang 'products.sold_out')}}
-                                {{/if}}
-                            {{/if}}
+                            <div class="button btn-oos" id="productView-oos">
+                                <p class="oos-txt">Out of stock</p>
+                            </div>
+                            {{/and}}
                         </form>
                     </div>
                 </div>
