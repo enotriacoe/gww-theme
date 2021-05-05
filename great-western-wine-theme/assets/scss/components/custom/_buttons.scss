@@ -135,3 +135,17 @@
         font-size: 20px;
     }
 }
+
+#productView-oos {
+    .btn-email-when-in-stock {
+        display: inline !important;
+    }
+}
+
+.btn-email-when-in-stock {
+    display: none !important;
+
+    @include breakpoint("medium") {
+        font-size: 12px;
+    }
+}
