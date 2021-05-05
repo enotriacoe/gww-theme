@@ -27,7 +27,7 @@
                     default_image=theme_settings.default_image_product
                 }}
 
-                <div class="limited-stock-badge {{#unless product.stock_level}}u-hiddenVisually{{/unless}}">
+                <div class="limited-stock-badge {{#unless stock_level}}u-hiddenVisually{{/unless}}">
                     <p>Limited</br>Stock</p>
                 </div>
     
@@ -131,7 +131,7 @@
                                                 type="tel"
                                                 value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
                                                 data-quantity-min="0"
-                                                data-quantity-max="{{#if product.stock_level}}{{product.stock_level}}{{else}}0{{/if}}"
+                                                data-quantity-max="{{#if stock_level}}{{stock_level}}{{else}}0{{/if}}"
                                                 min="1"
                                                 pattern="[0-9]*"
                                                 aria-live="polite">
