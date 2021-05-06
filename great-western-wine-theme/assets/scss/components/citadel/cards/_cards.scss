@@ -338,8 +338,13 @@
 .grid-add-cart {
     position: relative;
 
-    .productView-options .form-action .button {
+    .form-action .button {
         width: 100%;
+        text-transform: uppercase;
+        margin: 0;
+        line-height: normal;
+        padding: 0.6rem 2rem;
+        height: 50px;
     }
 }
 

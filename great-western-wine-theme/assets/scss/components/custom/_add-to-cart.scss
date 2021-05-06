@@ -131,6 +131,12 @@
             }
         }
     }
+
+    &.sticky-expanded {
+        @include breakpoint("medium") {
+            top: 134px;
+        }
+    }
 }
 
 .sticky-add-to-basket-cont {

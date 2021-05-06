@@ -328,8 +328,23 @@
             margin-left: 0;
         }
 
-        .btn-oos {
-            padding: 14px 36px;
+    }
+
+    .btn-oos {
+        padding: 14px 36px;
+        background: transparent;
+        line-height: 1;
+
+        &:hover {
+            background-color: transparent;
+            transform: none;
+            border: 0;
+        }
+    
+        &:active {
+            background-color: transparent;
+            transform: none;
+            border: 0;
         }
     }
 
@@ -346,7 +361,6 @@
 
             @include breakpoint("large") {
                 width: 95%;
-                padding: 0.6rem 2rem;
             }
         }
     }
