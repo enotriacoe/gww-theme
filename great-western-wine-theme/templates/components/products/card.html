@@ -27,9 +27,17 @@
                     default_image=theme_settings.default_image_product
                 }}
 
-                <div class="limited-stock-badge {{#unless stock_level}}u-hiddenVisually{{/unless}}">
-                    <p>Limited</br>Stock</p>
-                </div>
+
+                {{#if stock_level}}
+                    {{assignVar 'stockLevel' stock_level}}
+                    {{#filter custom_fields 'lowStock' property='name' }}
+                        {{#if (toInt (getVar 'stockLevel')) '<=' (toInt value)}}
+                            <div class="limited-stock-badge">
+                                <p>Limited</br>Stock</p>
+                            </div>
+                            {{/if}}
+                    {{/filter}}
+                {{/if}}
     
 
                 {{#filter custom_fields 'awardName' property='name' }}

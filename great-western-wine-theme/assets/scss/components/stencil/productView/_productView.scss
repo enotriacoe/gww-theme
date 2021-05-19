@@ -147,6 +147,17 @@
     }
 }
 
+.productView-stock-wish {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productView-stockLevel {
+    @include breakpoint("small") {
+        margin-right: 20px;
+    }
+}
+
 
 // Details - Product details
 // -----------------------------------------------------------------------------

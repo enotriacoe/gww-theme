@@ -170,17 +170,23 @@
                         {{/if}}
                         {{/if}}
                     </div>
-                    {{#if settings.show_wishlist}}
-                        {{> components/common/wishlist-dropdown}}
-                    {{/if}}
-                    {{#if product.call_for_price}}
-                        <p class="productView-price">
-                            <span>{{product.call_for_price}}</span>
-                        </p>
-                    {{/if}}
-                    <div class="productView-stockLevel" {{#unless product.stock_level}}style="display:none"{{/unless}}>
-                        <span>{{product.stock_level}} in stock</span>
+                    <div class="productView-stock-wish">
+                        {{#if product.stock_level}}
+                            {{assignVar 'stockLevel' product.stock_level}}
+                            {{#filter product.custom_fields 'lowStock' property='name' }}
+                                {{#if (toInt (getVar 'stockLevel')) '<=' (toInt value)}}
+                                    <div class="productView-stockLevel">
+                                        <span> {{getVar 'stockLevel'}} in stock</span>
+                                    </div>
+                                {{/if}}
+                            {{/filter}}
+                        {{/if}}
+
+                        {{#if settings.show_wishlist}}
+                            {{> components/common/wishlist-dropdown}}
+                        {{/if}}
                     </div>
+
                 </div>
 
                 <hr class="productView-divider">
