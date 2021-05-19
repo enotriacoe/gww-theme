@@ -171,6 +171,7 @@
 
 .heroCarousel-action {
     margin: 0;
+    display: block;
 
     @include breakpoint("medium") {
         margin-top: (spacing("single") / 3);
