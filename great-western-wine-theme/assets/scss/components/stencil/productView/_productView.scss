@@ -10,7 +10,7 @@
     padding-top: spacing("base");
     
     @include breakpoint("medium") {
-        padding-top: spacing("half");
+        padding-top: 0;
     }
 }
 

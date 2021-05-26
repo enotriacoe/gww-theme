@@ -229,7 +229,7 @@
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: (spacing("half") + spacing("quarter")) spacing("quarter");
+        padding: (spacing("half") + (spacing("quarter") / 2)) spacing("quarter");
         font-size: fontSize("smallest");
     }
 
