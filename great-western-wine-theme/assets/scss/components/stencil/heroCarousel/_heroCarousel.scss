@@ -148,6 +148,7 @@
     margin-top: 0;
     font-family: $fontFamily-headings;
     font-weight: 700;
+    display: block;
 
     @include breakpoint("medium") {
         font-size: $fontSize-largest;
