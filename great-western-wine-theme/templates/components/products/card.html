@@ -28,6 +28,18 @@
                 }}
 
 
+                {{#if stock_level}}
+                    {{assignVar 'stockLevel' stock_level}}
+                    {{#filter custom_fields 'lowStock' property='name' }}
+                        {{#if (toInt (getVar 'stockLevel')) '<=' (toInt value)}}
+                            <div class="limited-stock-badge">
+                                <p>Limited</br>Stock</p>
+                            </div>
+                            {{/if}}
+                    {{/filter}}
+                {{/if}}
+    
+
                 {{#filter custom_fields 'awardName' property='name' }}
                 {{/filter}}
                 {{#filter custom_fields 'awardImage' property='name' }}
@@ -89,8 +101,17 @@
                     <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
                 </div>
             </div>
-            <div class="grid-add-cart">
-                <div class="productView-options add-to-cart-form">
+            <div class="grid-add-cart max-stock-parent">
+                <div class="max-stock-message-wrap">
+                    <div class="max-stock-message-cont">
+                        <p>There are only {{stock_level}} in stock</p>
+                        <button class="close-stock-message" title="Close max stock message"> 
+                            <i class="fa fa-times" title="Close max stock message" aria-label="Close max stock message"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="add-to-cart-form">
                     {{#if show_cart_action}}
                         {{#if add_to_cart_url }}
                         <form name="form-{{id}}" class="form-{{id}}" method="post" action="{{add_to_cart_url}}" enctype="multipart/form-data"
@@ -118,7 +139,7 @@
                                                 type="tel"
                                                 value="{{#if min_purchase_quantity}}{{min_purchase_quantity}}{{else}}1{{/if}}"
                                                 data-quantity-min="0"
-                                                data-quantity-max="0"
+                                                data-quantity-max="{{#if stock_level}}{{stock_level}}{{else}}0{{/if}}"
                                                 min="1"
                                                 pattern="[0-9]*"
                                                 aria-live="polite">
@@ -151,9 +172,11 @@
                             </div>
                                 
                         </form>
+                        {{else}}
+                            <div class="button btn-oos">Out of stock</div>
                         {{/if}}
                     {{else}}
-                        <div class="button btn-oos">OUT OF STOCK</div>
+                        <div class="button btn-oos">Out of stock</div>
                     {{/if}}
                 </div>        
             </div>

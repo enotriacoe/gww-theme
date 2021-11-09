@@ -11,6 +11,7 @@
 .add-to-cart-cont {
     height: 50px;
     display: flex;
+    position: relative;
     
     .form-input--incrementTotal { 
         width: 5.5rem;
@@ -97,6 +98,20 @@
     }
 }
 
+.sticky-background-grad {
+    display: none;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%);
+    
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
 .add-to-basket-wrap {
     position: fixed;
     width: 100vw;
@@ -114,20 +129,31 @@
         margin-bottom: 1rem;
         max-width: none;
         overflow: auto;
+        padding-top: 1rem;
     }
     
     &.sticky {
+        @media (max-width: 800px) {
+            top: auto !important;
+        }
+
         @include breakpoint("medium") {
             position: fixed;
             width: 100vw;
             z-index: 100;
-            top: 96px;
+            top: 72px;
         }
         
         .sticky-add-to-basket-cont {
             @include breakpoint("medium") {
                 margin-left: -7px;
             }
+        }
+    }
+
+    &.static {
+        @include breakpoint("medium") {
+            top: 0 !important;
         }
     }
 }
@@ -245,7 +271,7 @@
 
             @include breakpoint("medium") {
                 height: 100%;
-                width: 100%;
+                width: 90%;
                 left: auto;
                 right: 0;
                 z-index: 0;

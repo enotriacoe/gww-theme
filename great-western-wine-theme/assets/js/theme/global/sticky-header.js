@@ -7,6 +7,8 @@ export function toggleMenuOnScroll() {
     let lastScrollTop = 0;
     const delta = 10; // How many pixels need to be scrolled before we toggle
     const navbarHeight = $('.header-container').outerHeight();
+    const addToBasketNoMenuOffset = '72px';
+    const addToBasketWithMenuOffset = '121px';
 
     function hasScrolled() {
         if ($(window).width() >= 801) {
@@ -17,26 +19,29 @@ export function toggleMenuOnScroll() {
                 return;
             }
 
-            // If they scrolled down and are past the navbar, add class .nav-up.
-            // This is necessary so you never see what is "behind" the navbar.
+            // If user has scrolled down far enough, past the normal navbar height, we slideup the navigation portion of the header and reduce the top value of the sticky add to basket to keep an even gap.
             if (currentScrollTop > lastScrollTop && currentScrollTop > navbarHeight) {
-                // Scroll Down
-                $('.navPages-container').slideUp(100);
-            } else {
-                // Scroll Up
-                // eslint-disable-next-line no-lonely-if
-                if (currentScrollTop + $(window).height() < $(document).height()) {
-                    $('.navPages-container').slideDown(100);
+                if ($('.navPages-container').is(':visible')) {
+                    $('.navPages-container').slideUp(100);
                 }
+                $('.add-to-basket-wrap').animate({ top: addToBasketNoMenuOffset }, 100);
+            } else {
+                // Show the nav as they've scrolled up, move the sticky add to basket to account for this
+                $('.navPages-container').slideDown(100);
+                $('.sticky').animate({ top: addToBasketWithMenuOffset }, 100);
             }
 
-/*             if (currentScrollTop > (navbarHeight * 0.75)) {
+            // The sticky class is self explanatory, but the static class was added to ensure the 'top' value of the div when
+            // not sticky is always 0, using JS to add/remove an inline style didn't work well enough
+            if (currentScrollTop > (navbarHeight * 0.75)) {
                 $('.sticky-placeholder').addClass('visible');
                 $('.add-to-basket-wrap').addClass('sticky');
+                $('.add-to-basket-wrap').removeClass('static');
             } else {
                 $('.sticky-placeholder').removeClass('visible');
                 $('.add-to-basket-wrap').removeClass('sticky');
-            } */
+                $('.add-to-basket-wrap').addClass('static');
+            }
 
             lastScrollTop = currentScrollTop;
         }
