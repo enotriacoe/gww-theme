@@ -3,88 +3,135 @@
 // =============================================================================
 
 .category-header {
-    display: inline-block;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  margin-top: 15px;
+
+  @include breakpoint('large') {
+    margin-top: 0px;
+  }
+
+  img {
     width: 100%;
-    position: relative;
-    margin-top: 15px;
+    float: none;
+    margin-bottom: 20px;
 
-    @include breakpoint ("large") {
-        margin-top: 0px;
+    @include breakpoint('medium') {
+      width: 66%;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      float: right;
     }
-    
-    img {
-        width: 100%;
-        float: none;
-        margin-bottom: 20px;
-        
-        @include breakpoint ("medium") {
-            width: 66%;
-            margin-left: 10px;
-            margin-bottom: 10px;
-            float: right;
-        }
+  }
+
+  @include breakpoint('medium') {
+    overflow: hidden;
+  }
+
+  .stylised-title {
+    border-bottom: solid 5px $maroon;
+    padding-bottom: 5px;
+    margin-top: 0;
+
+    @include breakpoint('medium') {
+      width: 33%;
+      font-size: 35px;
+      padding-bottom: 10px;
     }
 
-    @include breakpoint ("medium") {
-        overflow: hidden;
+    @include breakpoint('large') {
+      font-size: 45px;
     }
-
-    .stylised-title {
-        border-bottom: solid 5px $maroon;
-        padding-bottom: 5px;
-        margin-top: 0;
-
-        @include breakpoint ("medium") {
-            width: 33%;
-            font-size: 35px;
-            padding-bottom: 10px;
-        }
-        
-        @include breakpoint ("large") {
-            font-size: 45px;
-        }
-    }
+  }
 }
 
-.category-img {    
-    @include breakpoint("medium") {
-        width: 100%;
-    }
+.category-img {
+  @include breakpoint('medium') {
+    width: 100%;
+  }
 }
 
 .category-text {
-    background-color: white;
-    width: 100%;
-    margin-bottom: 20px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 20px;
 
-    @include breakpoint ("medium") {
-        width: 100%;
-        padding-right: 25px;
-        margin: 0;
-    }
+  @include breakpoint('medium') {
+    width: 100%;
+    padding-right: 25px;
+    margin: 0;
+  }
 }
 
 .header-buttons {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .stylised-title.title-with-back-btn {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .read-more {
-    display: inline-block;
+  display: inline-block;
 }
 
 .show-read-more {
-    max-height: 168px;
-    margin: 0;
+  max-height: 168px;
+  margin: 0;
 
-    .more-text {     
-        display: none;
-    }
+  .more-text {
+    display: none;
+  }
 }
 
 .read-more-open {
-    max-height: none;
+  max-height: none;
+}
+
+.category-grid-2 .category-grid-3,
+.category-grid-4,
+.category-grid-5,
+.category-grid-6 {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 1em 0;
+  gap: 1em;
+  padding: 0;
+  text-align: center;
+}
+.category-grid-2 {
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.category-grid-3 {
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.category-grid-4 {
+  @include breakpoint('medium') {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+.category-grid-5 {
+  @include breakpoint('medium') {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+.category-grid-6 {
+  @include breakpoint('medium') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 }
