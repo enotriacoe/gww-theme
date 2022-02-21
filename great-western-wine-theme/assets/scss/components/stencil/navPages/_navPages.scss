@@ -341,6 +341,37 @@
     }
 }
 
+.navPage-subMenu.small-dropdown {
+    @include breakpoint("medium") {
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+
+        &.is-open {
+            position: relative;
+            display: block;
+            left: 0;
+            width: auto !important;
+            height: auto !important;
+            background-color: white;
+
+            .navPage-subMenu-list {
+                position: absolute;
+                text-align: left;
+                top: 100%;
+                background-color: white;
+                height: auto;
+                border-top: 2px solid black;
+                
+                .navPage-subMenu-action {
+                    width: 100%;
+                    text-align: center;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
 .has-subMenu.is-root + .navPage-subMenu-horizontal {
     @include breakpoint("medium") {
         border-left: 0;
