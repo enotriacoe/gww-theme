@@ -231,6 +231,16 @@
         .sticky-multi-price {
             .multibuy-price-title {
                 position: relative;
+            
+                .tooltip-text {
+                    @include breakpoint("medium") {
+                        bottom: calc(100% + 5px);
+                        left: -65px;
+                        margin-left: 0;
+                        width: 270px;
+                        text-align: center;
+                    }
+                }
             }    
         }
 
