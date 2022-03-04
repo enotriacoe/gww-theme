@@ -37,18 +37,33 @@
                     {{else}}
                     <div class="productView-price-multi" style="display:none">
                     {{/filter}}
+                    {{#filter product.custom_fields 'isWine' property='name'}}
                         <div class="sticky-multi-price">
                             <div class="multibuy-price-title">
                                 <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
                                 <sub> ?</sub>
-                                <span class="tooltip-text">Only <strong>£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                                <span class="tooltip-text">Save 10%: <strong>£{{toFixed (multiply ../product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
                             </div>
-                            <span class="price price--withTax">£{{toFixed (multiply product.price.with_tax.value 0.9) 2}}</span>
+                            <span class="price price--withTax">£{{toFixed (multiply ../product.price.with_tax.value 0.9) 2}}</span>
                         </div>
                         <div class="sticky-multi-savings">
                             <span class="multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
-                            <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply product.price.with_tax.value 0.1) 2}}</span>
+                            <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply ../product.price.with_tax.value 0.1) 2}}</span>
                         </div>
+                    {{else}}
+                        <div class="sticky-multi-price">
+                            <div class="multibuy-price-title">
+                                <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
+                                <sub> ?</sub>
+                                <span class="tooltip-text">Save 10%: <strong>£{{toFixed (multiply ../product.price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                            </div>
+                            <span class="price price--withTax">£{{toFixed (multiply ../product.price.with_tax.value 0.9) 2}}</span>
+                        </div>
+                        <div class="sticky-multi-savings">
+                            <span class="multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                            <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply ../product.price.with_tax.value 0.1) 2}}</span>
+                        </div>
+                    {{/filter}}
                     </div>
                 </div>
 
