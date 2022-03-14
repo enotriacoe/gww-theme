@@ -8,20 +8,20 @@
   position: relative;
   margin-top: 15px;
 
-  @include breakpoint('large') {
-    margin-top: 0px;
-  }
-
   img {
     width: 100%;
     float: none;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
+    max-height: 240px;
+    object-fit: cover;
+    object-position: top center;
 
     @include breakpoint('medium') {
-      width: 66%;
-      margin-left: 10px;
-      margin-bottom: 10px;
       float: right;
+      max-width: 360px;
+      margin: 0 0 20px 30px;
+      object-fit: contain;
+      object-position: top right;
     }
   }
 
