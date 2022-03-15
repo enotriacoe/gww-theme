@@ -11,37 +11,23 @@
             </li>
         {{/each}}
         {{#unless theme_settings.hide_content_navigation}}
-            {{#each pages}}
-                <li class="navPages-item">
-                    <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}" href="{{url}}" data-collapsible="navPages-{{id}}">
-                        {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
-                    </a>
-                    <div class="navPage-subMenu small-dropdown navPage-subMenu-horizontal" id="navPages-{{id}}" aria-hidden="true" tabindex="-1">
-                        <ul class="navPage-subMenu-list">
+            <li class="navPages-item">
+                <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}" href="/our-story" data-collapsible="navPages-about">
+                    About Us
+                     <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                </a>
+                <div class="navPage-subMenu small-dropdown navPage-subMenu-horizontal" id="navPages-about" aria-hidden="true" tabindex="-1">
+                    <ul class="navPage-subMenu-list">
+                        {{#each pages}}
                             <li class="navPage-subMenu-item-child">
-                                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}"
-                                    href="our-shop">Our Shop
+                                <a class="navPage-subMenu-action navPages-action{{#if name '==' ../page.title}} activePage{{/if}}" href="{{url}}">
+                                    {{name}}
                                 </a>
                             </li>
-                            <li class="navPage-subMenu-item-child">
-                                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}"
-                                    href="our-story">Our Story
-                                </a>
-                            </li>
-                            <li class="navPage-subMenu-item-child">
-                                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}"
-                                    href="our-team">Our Team
-                                </a>
-                            </li>
-                            <li class="navPage-subMenu-item-child">
-                                <a class="navPage-subMenu-action navPages-action{{#if is_active}} activePage{{/if}}"
-                                    href="contact-us">Contact Us
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            {{/each}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </li>
         {{/unless}}
     </ul>
     <ul class="navPages-list navPages-list--user">
