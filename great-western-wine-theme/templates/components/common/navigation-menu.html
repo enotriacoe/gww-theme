@@ -11,11 +11,23 @@
             </li>
         {{/each}}
         {{#unless theme_settings.hide_content_navigation}}
-            {{#each pages}}
-                 <li class="navPages-item navPages-item-page">
-                     <a class="navPages-action{{#if name '==' ../page.title}} activePage{{/if}}" href="{{url}}">{{name}}</a>
-                 </li>
-             {{/each}}
+            <li class="navPages-item">
+                <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}" href="/our-story" data-collapsible="navPages-about">
+                    About Us
+                     <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>
+                </a>
+                <div class="navPage-subMenu small-dropdown navPage-subMenu-horizontal" id="navPages-about" aria-hidden="true" tabindex="-1">
+                    <ul class="navPage-subMenu-list">
+                        {{#each pages}}
+                            <li class="navPage-subMenu-item-child">
+                                <a class="navPage-subMenu-action navPages-action{{#if name '==' ../page.title}} activePage{{/if}}" href="{{url}}">
+                                    {{name}}
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </li>
         {{/unless}}
     </ul>
     <ul class="navPages-list navPages-list--user">
