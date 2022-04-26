@@ -245,16 +245,20 @@
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'vegetarian' property='name' }}
-                            <div class="productView-icon">
-                                <span class="text-icon icon">V</span>
-                                Vegetarian
-                            </div>
+                            {{#if value '==' 'Yes'}}
+                                <div class="productView-icon">
+                                    <span class="text-icon icon">V</span>
+                                    Vegetarian
+                                </div>
+                            {{/if}}
                         {{/filter}}
                         {{#filter product.custom_fields 'vegan' property='name' }}
-                            <div class="productView-icon">
-                                <span class="text-icon icon">Vg</span>
-                                Vegan
-                            </div>
+                            {{#if value '==' 'Yes'}}
+                                <div class="productView-icon">
+                                    <span class="text-icon icon">Vg</span>
+                                    Vegan
+                                </div>
+                            {{/if}}
                         {{/filter}}
                         {{#filter product.custom_fields 'awardName' property='name' }}
                         <div class="productView-icon">
