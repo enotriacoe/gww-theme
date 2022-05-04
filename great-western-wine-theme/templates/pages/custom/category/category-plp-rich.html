@@ -20,37 +20,35 @@ customer:
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-rich stuff here
 <div class="page">
-    {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/topbar}}
-        </aside>
-    {{else if category.subcategories}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/topbar}}
-        </aside>
-    {{else if category.shop_by_price}}
-        {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="page-sidebar" id="faceted-search-container">
-                {{> components/category/topbar}}
-            </aside>
-        {{/if}}
-    {{/if}}
-
-    <main class="page-content" id="product-listing-container">
-        {{#if category.products}}
-            {{> components/category/product-listing}}
-        {{else}}
-            <p>{{lang 'categories.no_products'}}</p>
-        {{/if}}
-        {{{region name="category_below_content"}}}
-    </main>
-
+    <aside class="page-sidebar" id="faceted-search-container">
+        <nav>
+            <div class="category-header-content-rich">
+                <div class="category-text">
+                    {{#if category.description}}
+                        {{{category.description}}}
+                    {{else if category.name}}
+                        <h1 class="stylised-title">{{category.name}}</h1>
+                    {{/if}}
+                </div>
+            </div>
+        
+            <div class="filter-sort-cont">
+                {{#if category.faceted_search_enabled}}
+                    {{> components/faceted-search/index category}}
+                {{else}}
+                    {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+                {{/if}}
+        
+                {{> components/products/filter sort=pagination.category.sort}}
+            </div>
+        </nav>
+    </aside>
             
-    <div class="larger-container">
-        <div class="bottom-category-text">
-        </div>
+    <div class="bottom-category-text">
+        {{#if category.description}}
+            {{{category.description}}}
+        {{/if}}
     </div>
 </div>
 

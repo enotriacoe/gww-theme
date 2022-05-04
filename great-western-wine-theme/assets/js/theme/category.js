@@ -124,6 +124,8 @@ export default class Category extends CatalogPage {
         if ((window.location.pathname.replace(/\//g, '')) === 'producers') {
             this.getAllProducers(categoryFunction);
         }
+
+        this.removeDuplicateDescZones();
     }
 
     closeAllWishlists() {
@@ -224,5 +226,14 @@ export default class Category extends CatalogPage {
                 categoryFunction.displayProducers(returnedJson);
                 categoryFunction.sortListAlphabetically();
             });
+    }
+
+    removeDuplicateDescZones() {
+        if ($('.desc-zone-bottom').length > 1) {
+            $('.desc-zone-bottom')[0].remove();
+        }
+        if ($('.desc-zone-top').length > 1) {
+            $('.desc-zone-top')[1].remove();
+        }
     }
 }
