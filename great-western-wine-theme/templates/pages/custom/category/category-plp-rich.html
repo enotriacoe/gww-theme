@@ -21,14 +21,7 @@ customer:
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <div class="page">
-    <main class="page-content" id="product-listing-container">
-        {{#if category.products}}
-            {{> components/category/product-listing}}
-        {{else}}
-            <p>{{lang 'categories.no_products'}}</p>
-        {{/if}}
-        {{{region name="category_below_content"}}}
-    </main>
+
     <aside class="page-sidebar" id="faceted-search-container">
         <nav>
             <div class="category-header-content-rich">
@@ -52,7 +45,16 @@ customer:
             </div>
         </nav>
     </aside>
-            
+
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}}
+            {{> components/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+        {{{region name="category_below_content"}}}
+    </main>
+    
     <div class="bottom-category-text">
         {{#if category.description}}
             {{{category.description}}}
