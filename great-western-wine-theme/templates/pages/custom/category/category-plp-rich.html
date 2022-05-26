@@ -24,15 +24,7 @@ customer:
 
     <aside class="page-sidebar" id="faceted-search-container">
         <nav>
-            <div class="category-header-content-rich">
-                <div class="category-text">
-                    {{#if category.description}}
-                        {{{category.description}}}
-                    {{else if category.name}}
-                        <h1 class="stylised-title">{{category.name}}</h1>
-                    {{/if}}
-                </div>
-            </div>
+            {{> components/category/category-header}}
         
             <div class="filter-sort-cont">
                 {{#if category.faceted_search_enabled}}

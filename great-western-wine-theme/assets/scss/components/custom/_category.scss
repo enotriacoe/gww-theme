@@ -8,6 +8,16 @@
   position: relative;
   margin-top: 15px;
 
+  &.full-width {
+    .stylised-title {
+      @include breakpoint('medium') {
+        width: auto;
+        display: inline-block;
+        padding-right: 40px;
+      }
+    }
+  }
+
   > img {
     width: 100%;
     float: none;
