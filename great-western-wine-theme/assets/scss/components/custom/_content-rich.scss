@@ -1,0 +1,49 @@
+// =============================================================================
+// Content Rich Category Pages
+// =============================================================================
+
+
+
+.content-rich-image-banner {
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+
+    .content-rich-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: 66%;
+    }
+
+    > img {
+        width: 50%;
+    }
+
+    .content-rich-img-main {
+        width: 100%;
+    }
+
+    .content-rich-img-sub {
+        display: none;
+    }
+
+    @include breakpoint("small") {
+        .content-rich-img-sub {
+            display: block;
+        }
+
+        .content-rich-img-main, .content-rich-img-sub {
+            width: 50%;
+        }
+    }
+}
+
+.bottom-category-text {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 100%;
+    float: left;
+}
