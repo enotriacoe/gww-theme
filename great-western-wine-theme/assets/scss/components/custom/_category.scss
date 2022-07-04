@@ -21,21 +21,25 @@
   > img {
     width: 100%;
     float: none;
-    margin: 0 0 20px 0;
-    max-height: 240px;
+    margin: 0 0 1em 0;
+    min-width:100%;
+    height: auto;
     object-fit: cover;
     object-position: top center;
+    aspect-ratio: 3/2;
 
-    @include breakpoint('medium') {
+    @include breakpoint('small') {
       float: right;
-      max-width: 360px;
-      margin: 0 0 20px 30px;
+      width:360px;
+      max-width: 50%;
+      min-width: auto;
+      margin: 0 0 1em 1em;
       object-fit: contain;
       object-position: top right;
     }
   }
 
-  @include breakpoint('medium') {
+  @include breakpoint('small') {
     overflow: hidden;
   }
 

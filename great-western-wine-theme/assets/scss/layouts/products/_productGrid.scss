@@ -22,11 +22,19 @@
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;
-        padding: spacing("single") 20px;
+        padding: spacing("single") 20px;        
+
+        @include breakpoint("small") {
+            width: grid-calc(6, $total-columns);
+        }       
+
+        @include breakpoint("medium") {
+            width: grid-calc(4, $total-columns);
+        }
 
         @include breakpoint("large") {
             width: grid-calc(3, $total-columns);
-        }
+        } 
 
         .card-desc-cont {
             display: none;
