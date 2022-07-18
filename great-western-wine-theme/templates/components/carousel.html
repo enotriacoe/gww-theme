@@ -1,17 +1,26 @@
-{{#each carousel.slides}}
-    {{#if @first}}
-    <div class="home-carousel-wrap">
-        <div class="home-carousel-cont">
-            <div class="hero-img-cont">
-                {{> components/common/responsive-img
-                    image=stencil_image
-                    class="heroCarousel-image"
-                    fallback_size='128w'
-                    lazyload='disabled'
-                }}
-            </div>
-            <div class="hero-content-cont">
-                <div class="container heroCarousel-slide">
+<div class="home-carousel-wrap">
+    <div class="home-carousel-cont"
+    data-slick='{
+        "arrows": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "autoplay": true,
+        "autoplaySpeed": {{carousel.swap_frequency}},
+        "lazyLoad": "anticipated",
+        "adaptiveHeight": "true",
+        "infinite": "true"
+    }'>
+        {{#each carousel.slides}}
+            <div class="heroCarousel-slide">
+                <div class="hero-img-cont">
+                    {{> components/common/responsive-img
+                        image=stencil_image
+                        class="heroCarousel-image"
+                        fallback_size='128w'
+                        lazyload='disabled'
+                    }}
+                </div>
+                <div class="container">
                     <a href="{{url}}" aria-label="Slide{{@index}}">
                         {{#if heading}}
                         {{> components/carousel-content show_background=true}}
@@ -27,9 +36,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        {{/each}}
     </div>
-    {{else}}
-    <!-- Do nothing -->
-    {{/if}}
-{{/each}}
+</div>
+
