@@ -128,6 +128,7 @@ class FacetedSearch {
         this.additionFilterFunctions();
         this.closeFilterOptions();
         this.hideMoreFiltersIfNone();
+        this.removeDuplicateDescZones();
     }
 
     updateView() {
@@ -542,6 +543,15 @@ class FacetedSearch {
                 this.collapseAllFacets();
             }
         });
+    }
+
+    removeDuplicateDescZones() {
+        if ($('.desc-zone-bottom').length > 1) {
+            $('.desc-zone-bottom')[0].remove();
+        }
+        if ($('.desc-zone-top').length > 1) {
+            $('.desc-zone-top')[1].remove();
+        }
     }
 }
 
