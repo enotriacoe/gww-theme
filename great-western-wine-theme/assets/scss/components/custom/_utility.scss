@@ -116,3 +116,28 @@
 .clear {
     clear: both;
 }
+
+// Panels
+
+.relative {
+    position: relative;
+}
+
+.banner-content {
+    &.custom-bg {
+    }
+
+    &.light {
+        .banner-description, .banner-title, .btn-coral-line {
+            border-color: white;
+            color: white;
+        }
+    }
+
+    &.dark {
+        .banner-description, .banner-title, .btn-coral-line {
+            border-color: black;
+            color: black;
+        }
+    }
+}
