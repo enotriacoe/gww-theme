@@ -124,7 +124,7 @@
         background-color: rgba($carousel-bgColor, 1);
         position: absolute;
         left: 20px;
-        bottom: 20px;
+        bottom: 30px;
         margin: 0 auto;
         padding: 1.3rem (spacing("single") * 1.5);
         overflow: hidden;
@@ -188,11 +188,12 @@
     max-height: remCalc(500px);
 }
 
-.home-carousel-cont {
+.home-carousel-cont.slick-slider {
     width: 100%;
     display: inline-block;
     max-height: 500px;
-    position: relative;
+    position: relative;    
+    margin-bottom: 0;
     
     @include breakpoint("medium") {
         height: 300px;
@@ -204,6 +205,10 @@
 
     @include breakpoint("xlarge") {
         height: 500px;
+    }
+
+    .slick-dots {
+        bottom: 3px;
     }
 }
 
