@@ -2,7 +2,11 @@
 // Content Rich Category Pages
 // =============================================================================
 
-
+.content-rich-no-title {
+    h1.stylised-title {
+        display: none !important;
+    }
+}
 
 .content-rich-image-banner {
     display: flex;
