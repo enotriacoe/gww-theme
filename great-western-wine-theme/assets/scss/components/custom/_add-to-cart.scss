@@ -235,9 +235,9 @@
                 .tooltip-text {
                     @include breakpoint("medium") {
                         bottom: calc(100% + 5px);
-                        left: -65px;
+                        left: -83px;
                         margin-left: 0;
-                        width: 270px;
+                        width: 300px;
                         text-align: center;
                     }
                 }
