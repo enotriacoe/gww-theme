@@ -1,6 +1,4 @@
 {
-  "normalStoreUrl": "https://greatwine.co.uk/",
-  "port": "3000",
   "customLayouts": {
     "brand": {},
     "category": {
@@ -25,5 +23,7 @@
     },
     "page": {},
     "product": {}
-  }
+  },
+  "normalStoreUrl": "https://greatwine.co.uk/",
+  "port": "3000"
 }
