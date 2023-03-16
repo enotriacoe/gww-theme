@@ -8,7 +8,7 @@
 <div class="account">
     <div class="account-body">
         {{#each order.status_messages}}
-            {{> components/common/alert-info message}}
+            {{> components/common/alert/alert-info message}}
         {{/each}}
         <div class="account-content account-content--fixedSmall">
             {{> components/account/order-contents order=order}}
@@ -55,14 +55,49 @@
                 <section class="account-sidebar-block">
                     <h3 class="account-heading">{{lang 'account.orders.details.ship_to'}}</h3>
                     <ul class="account-order-address">
-                        <li>{{order.shipping_address.full_name}}</li>
-                        <li>{{order.shipping_address.company}}</li>
-                        <li>{{order.shipping_address.address_lines.[0]}}</li>
-                        <li>{{order.shipping_address.address_lines.[1]}}</li>
-                        <li>{{order.shipping_address.city}}, {{order.shipping_address.state}} {{order.shipping_address.zip}}</li>
-                        <li>{{order.shipping_address.country}}</li>
+                        <li>{{{ sanitize order.shipping_address.full_name}}}</li>
+                        <li>{{{ sanitize order.shipping_address.company}}}</li>
+                        <li>{{{ sanitize order.shipping_address.address_lines.[0]}}}</li>
+                        <li>{{{ sanitize order.shipping_address.address_lines.[1]}}}</li>
+                        <li>{{{ sanitize order.shipping_address.city}}}, {{{ sanitize order.shipping_address.state}}} {{{ sanitize order.shipping_address.zip}}}</li>
+                        <li>{{{ sanitize order.shipping_address.country}}}</li>
                     </ul>
                 </section>
+            {{/if}}
+            {{#if order.pickup_address}}
+            <section class="account-sidebar-block">
+                <h3 class="account-heading">{{lang 'account.orders.details.pickup'}}</h3>
+                {{#each order.pickup_address}}
+                <dl class="definitionList">
+                    <dt class="definitionList-key">{{lang 'account.orders.details.pickup_method'}}</dt>
+                    <dd class="definitionList-value">{{sanitize pickup_method_display_name}}</dd>
+                </dl>
+
+                <ul class="account-order-address">
+                    <li><b>{{{ sanitize location_name}}}</b></li>
+                    <li>{{{ sanitize location_line_1}}}</li>
+                    <li>{{{ sanitize location_line_2}}}</li>
+                    <li>{{{ sanitize location_city}}}, {{{ sanitize location_state}}}, {{{ sanitize location_zip}}}</li>
+                    <li>{{{ sanitize location_country_name}}}</li>
+                </ul>
+
+                <dl class="definitionList">
+                    {{#if location_phone}}
+                    <dt class="definitionList-key">{{lang 'account.orders.details.phone'}}</dt>
+                    <dd class="definitionList-value">{{{ sanitize location_phone}}}</dd>
+                    {{/if}}
+                    {{#if order.pickup_address.location_email}}
+                    <dt class="definitionList-key">{{lang 'account.orders.details.email'}}</dt>
+                    <dd class="definitionList-value">{{{ sanitize location_email}}}</dd>
+                    {{/if}}
+                </dl>
+
+                <ul class="account-order-address">
+                    <li><b>{{{ lang 'account.orders.details.opening_hours'}}}</b></li>
+                    <li>{{{ sanitize collection_time_description}}}</li>
+                </ul>
+                {{/each}}
+            </section>
             {{else}}
                 {{#if order.has_multiple_shipping_addresses}}
                     <section class="account-sidebar-block">
@@ -77,12 +112,12 @@
             <section class="account-sidebar-block">
                 <h3 class="account-heading">{{lang 'account.orders.details.bill_to'}}</h3>
                 <ul class="account-order-address">
-                    <li>{{order.billing_address.full_name}}</li>
-                    <li>{{order.billing_address.company}}</li>
-                    <li>{{order.billing_address.address_lines.[0]}}</li>
-                    <li>{{order.billing_address.address_lines.[1]}}</li>
-                    <li>{{order.billing_address.city}}, {{order.billing_address.state}} {{order.billing_address.zip}}</li>
-                    <li>{{order.billing_address.country}}</li>
+                    <li>{{{ sanitize order.billing_address.full_name}}}</li>
+                    <li>{{{ sanitize order.billing_address.company}}}</li>
+                    <li>{{{ sanitize order.billing_address.address_lines.[0]}}}</li>
+                    <li>{{{ sanitize order.billing_address.address_lines.[1]}}}</li>
+                    <li>{{{ sanitize order.billing_address.city}}}, {{{ sanitize order.billing_address.state}}} {{{ sanitize order.billing_address.zip}}}</li>
+                    <li>{{{ sanitize order.billing_address.country}}}</li>
                 </ul>
             </section>
 

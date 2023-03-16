@@ -15,7 +15,7 @@ product:
     </div>
 
     {{#each product.shipping_messages}}
-    {{> components/common/alert-info message}}
+        {{> components/common/alert/alert-info message}}
     {{/each}}
     <div itemscope itemtype="http://schema.org/Product">
         {{> components/products/product-view schema=true  }}
