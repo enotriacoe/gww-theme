@@ -1101,6 +1101,51 @@
             "thank_you_customer_heading": "Thank you {name}!",
             "thank_you_heading": "Thank you!",
             "order_status_update_facebook_messenger_heading": "Get instant updates of your order to Messenger"
-        }
+        },
+        "validation_messages": {
+            "valid_email": "You must enter a valid email.",
+            "password": "You must enter a password.",
+            "password_match": "Your passwords do not match.",
+            "invalid_password": "Passwords must be at least 7 characters and contain both alphabetic and numeric characters.",
+            "field_not_blank": " field cannot be blank.",
+            "certificate_amount": "You must enter a gift certificate amount.",
+            "certificate_amount_range": "You must enter a certificate amount between [MIN] and [MAX]",
+            "price_min_evaluation": "Min. price must be less than max. price.",
+            "price_max_evaluation": "Min. price must be less than max. price.",
+            "price_min_not_entered": "Min. price is required.",
+            "price_max_not_entered": "Max. price is required.",
+            "price_invalid_value": "Input must be greater than 0.",
+            "invalid_gift_certificate": "Please enter your valid certificate code."
+        },
+        "validation_fallback_messages": {
+            "valid_email": "You must enter a valid email.",
+            "password": "You must enter a password.",
+            "password_match": "Your passwords do not match.",
+            "invalid_password": "Passwords must be at least 7 characters and contain both alphabetic and numeric characters.",
+            "field_not_blank": " field cannot be blank.",
+            "certificate_amount": "You must enter a gift certificate amount.",
+            "certificate_amount_range": "You must enter a certificate amount between [MIN] and [MAX]",
+            "price_min_evaluation": "Min. price must be less than max. price.",
+            "price_max_evaluation": "Min. price must be less than max. price.",
+            "price_min_not_entered": "Min. price is required.",
+            "price_max_not_entered": "Max. price is required.",
+            "price_invalid_value": "Input must be greater than 0.",
+            "invalid_gift_certificate": "Please enter your valid certificate code."
+        },
+        "validation_default_messages": {
+            "valid_email": "You must enter a valid email.",
+            "password": "You must enter a password.",
+            "password_match": "Your passwords do not match.",
+            "invalid_password": "Passwords must be at least 7 characters and contain both alphabetic and numeric characters.",
+            "field_not_blank": "The field cannot be blank.",
+            "certificate_amount": "You must enter a gift certificate amount.",
+            "certificate_amount_range": "You must enter a certificate amount between [MIN] and [MAX]",
+            "price_min_evaluation": "Min. price must be less than max. price.",
+            "price_max_evaluation": "Min. price must be less than max. price.",
+            "price_min_not_entered": "Min. price is required.",
+            "price_max_not_entered": "Max. price is required.",
+            "price_invalid_value": "Input must be greater than 0.",
+            "invalid_gift_certificate": "Please enter your valid certificate code."
+        },
     }
 }
