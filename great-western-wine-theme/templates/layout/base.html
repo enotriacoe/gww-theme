@@ -51,6 +51,7 @@
         {{{stylesheet '/assets/css/theme.css'}}}
 
         {{{head.scripts}}}
+        <script async src="{{cdn 'assets/js/minified/font-awesome.js' resourceHint='preload' as='script'}}"></script>
 
         {{~inject 'zoomSize' theme_settings.zoom_size}}
         {{~inject 'productSize' theme_settings.product_size}}
@@ -59,9 +60,6 @@
         {{~inject 'secureBaseUrl' settings.secure_base_url}}
         {{~inject 'cartId' cart_id}}
         {{~inject 'template' template}}
-        
-        <script src="https://kit.fontawesome.com/fb85a17606.js" crossorigin="anonymous"></script>
-
         {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
         {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
         {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
