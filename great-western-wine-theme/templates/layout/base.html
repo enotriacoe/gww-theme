@@ -61,13 +61,14 @@
         {{~inject 'template' template}}
         
         <script src="https://kit.fontawesome.com/fb85a17606.js" crossorigin="anonymous"></script>
-        </head>
+
         {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
         {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
         {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
         {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
         {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+        
     </head>
     <body>
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
