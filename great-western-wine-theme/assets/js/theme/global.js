@@ -1,3 +1,5 @@
+import 'focus-within-polyfill';
+
 import './global/jquery-migrate';
 import './global/accessibility';
 import './common/select-option-plugin';
@@ -10,11 +12,8 @@ import foundation from './global/foundation';
 import quickView from './global/quick-view';
 import cartPreview from './global/cart-preview';
 import privacyCookieNotification from './global/cookieNotification';
-import maintenanceMode from './global/maintenanceMode';
 import carousel from './common/carousel';
-import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
-import objectFitImages from './global/object-fit-polyfill';
 import { closeWishlistOnClick } from './global/wishlist-open';
 import { addToCartClickEvent, quantityChangeEvent, maxStockMessage } from './global/add-to-cart-func';
 import { getPartnerInfo } from './global/partner-reg';
@@ -33,10 +32,7 @@ export default class Global extends PageManager {
         menu();
         mobileMenuToggle();
         privacyCookieNotification();
-        maintenanceMode(this.context.maintenanceMode);
-        loadingProgressBar();
         svgInjector();
-        objectFitImages();
         closeWishlistOnClick();
         addToCartClickEvent();
         quantityChangeEvent();
