@@ -97,19 +97,21 @@
     }
 }
 
-&.compat-object-fit { // 1
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
+.heroCarousel-slide {
+    &.compat-object-fit { // 1
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
 
-    &.stretch {
-        @include breakpoint("large") { // 4
-            background-size: 100% 100%;
+        &.stretch {
+            @include breakpoint("large") { // 4
+                background-size: 100% 100%;
+            }
         }
-    }
 
-    .heroCarousel-image {
-        opacity: 0;
+        .heroCarousel-image {
+            opacity: 0;
+        }
     }
 }
 
