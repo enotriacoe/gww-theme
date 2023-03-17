@@ -703,6 +703,7 @@
             "rating_label": "Rating",
             "select_rating": "Select Rating",
             "anonymous_poster": "Unknown",
+            "rating_aria_label": "{rating_target} rating is {current_rating} of {max_rating}",
             "rating": {
                 "1": "1 star (worst)",
                 "2": "2 stars",
@@ -1042,6 +1043,16 @@
             "remove_action": "Remove",
             "store_credit_available_text": "Your account currently has {storeCredit} total store credit available",
             "toggle_action": "Voucher/Gift Certificate"
+        },
+        "carousel": {
+            "arrow_and_dot_aria_label": "Go to slide [SLIDE_NUMBER] of [SLIDES_QUANTITY]",
+            "active_dot_aria_label": "active",
+            "content_announce_message": "You are currently on slide [SLIDE_NUMBER] of [SLIDES_QUANTITY]",
+            "play_pause_button_play": "Play",
+            "play_pause_button_pause": "Pause",
+            "play_pause_button_aria_play": "Play carousel",
+            "play_pause_button_aria_pause": "Pause carousel",
+            "slide_number": "Slide number {slide_number}"
         },
         "remote": {
             "browser_unsupported": "The selected payment method requires a different web browser. Please choose another payment method.",
