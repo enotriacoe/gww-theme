@@ -23,16 +23,18 @@ import { toggleMenuOnScroll, closePreviewCartModal } from './global/sticky-heade
 
 export default class Global extends PageManager {
     onReady() {
-        cartPreview(this.context.secureBaseUrl, this.context.cartId);
+        const { cartId, secureBaseUrl } = this.context;
+        cartPreview(secureBaseUrl, cartId);
         quickSearch();
-        currencySelector();
+        currencySelector(cartId);
         foundation($(document));
         quickView(this.context);
-        carousel();
+        carousel(this.context);
         menu();
         mobileMenuToggle();
         privacyCookieNotification();
         svgInjector();
+        // Custom below
         closeWishlistOnClick();
         addToCartClickEvent();
         quantityChangeEvent();
