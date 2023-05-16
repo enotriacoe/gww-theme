@@ -1,5 +1,7 @@
 import foundation from './foundation';
+import * as focusTrap from 'focus-trap';
 
+const bodyActiveClass = 'has-activeModal';
 const loadingOverlayClass = 'loadingOverlay';
 const modalBodyClass = 'modal-body';
 const modalContentClass = 'modal-content';
@@ -15,6 +17,7 @@ export const ModalEvents = {
     closed: 'closed.fndtn.reveal',
     open: 'open.fndtn.reveal',
     opened: 'opened.fndtn.reveal',
+    loaded: 'loaded.data.custom',
 };
 
 function getSizeFromModal($modal) {
@@ -46,7 +49,12 @@ function wrapModalBody(content) {
 }
 
 function restrainContentHeight($content) {
+    if ($content.length === 0) return;
+
     const $body = $(`.${modalBodyClass}`, $content);
+
+    if ($body.length === 0) return;
+
     const bodyHeight = $body.outerHeight();
     const contentHeight = $content.outerHeight();
     const viewportHeight = getViewportHeight(0.9);
@@ -99,6 +107,8 @@ export class Modal {
         this.defaultSize = size || getSizeFromModal($modal);
         this.size = this.defaultSize;
         this.pending = false;
+        this.$preModalFocusedEl = null;
+        this.focusTrap = null;
 
         this.onModalOpen = this.onModalOpen.bind(this);
         this.onModalOpened = this.onModalOpened.bind(this);
@@ -148,13 +158,6 @@ export class Modal {
         this.$modal.on(ModalEvents.opened, this.onModalOpened);
     }
 
-    unbindEvents() {
-        this.$modal.off(ModalEvents.close, this.onModalClose);
-        this.$modal.off(ModalEvents.closed, this.onModalClosed);
-        this.$modal.off(ModalEvents.open, this.onModalOpen);
-        this.$modal.off(ModalEvents.opened, this.onModalOpened);
-    }
-
     open({
         size,
         pending = true,
@@ -191,6 +194,7 @@ export class Modal {
 
         this.pending = false;
         this.$content.html($content);
+        this.$modal.trigger(ModalEvents.loaded);
 
         restrainContentHeight(this.$content);
         foundation(this.$content);
@@ -200,17 +204,57 @@ export class Modal {
         this.$content.html('');
     }
 
+    setupFocusTrap() {
+        if (!this.$preModalFocusedEl) this.$preModalFocusedEl = $(document.activeElement);
+
+        if (!this.focusTrap) {
+            this.focusTrap = focusTrap.createFocusTrap(this.$modal[0], {
+                escapeDeactivates: false,
+                returnFocusOnDeactivate: false,
+                allowOutsideClick: true,
+                fallbackFocus: () => {
+                    const fallbackNode = this.$preModalFocusedEl && this.$preModalFocusedEl.length
+                        ? this.$preModalFocusedEl[0]
+                        : $('[data-header-logo-link]')[0];
+
+                    return fallbackNode;
+                },
+            });
+        }
+
+        this.focusTrap.deactivate();
+        this.focusTrap.activate();
+    }
+
     onModalClose() {
+        $('body').removeClass(bodyActiveClass);
+
+        this.clearContent();
     }
 
     onModalClosed() {
         this.size = this.defaultSize;
+
+        if (this.focusTrap) this.focusTrap.deactivate();
+
+        if (this.$preModalFocusedEl) this.$preModalFocusedEl.focus();
+
+        this.$preModalFocusedEl = null;
     }
 
     onModalOpen() {
+        $('body').addClass(bodyActiveClass);
     }
 
     onModalOpened() {
+        if (this.pending) {
+            this.$modal.one(ModalEvents.loaded, () => {
+                if (this.$modal.hasClass('open')) this.setupFocusTrap();
+            });
+        } else {
+            this.setupFocusTrap();
+        }
+
         restrainContentHeight(this.$content);
     }
 }
@@ -259,8 +303,43 @@ export function alertModal() {
 /*
  * Display the given message in the default alert modal
  */
-export function showAlertModal(message) {
+export function showAlertModal(message, options = {}) {
     const modal = alertModal();
+    const $cancelBtn = modal.$modal.find('.cancel');
+    const $confirmBtn = modal.$modal.find('.confirm');
+    const {
+        icon = 'error',
+        $preModalFocusedEl = null,
+        showCancelButton,
+        onConfirm,
+    } = options;
+
+    if ($preModalFocusedEl) {
+        modal.$preModalFocusedEl = $preModalFocusedEl;
+    }
+
     modal.open();
+    modal.$modal.find('.alert-icon').hide();
+
+    if (icon === 'error') {
+        modal.$modal.find('.error-icon').show();
+    } else if (icon === 'warning') {
+        modal.$modal.find('.warning-icon').show();
+    }
+
     modal.updateContent(`<span>${message}</span>`);
+
+    if (onConfirm) {
+        $confirmBtn.on('click', onConfirm);
+
+        modal.$modal.one(ModalEvents.closed, () => {
+            $confirmBtn.off('click', onConfirm);
+        });
+    }
+
+    if (showCancelButton) {
+        $cancelBtn.show();
+    } else {
+        $cancelBtn.hide();
+    }
 }

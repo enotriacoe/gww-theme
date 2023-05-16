@@ -1,5 +1,6 @@
 import modalFactory, { ModalEvents } from '../../../theme/global/modal';
 import $ from 'jquery';
+import '../../../theme/global/jquery-migrate';
 
 function attachHtml(html) {
     const $element = $(html);
@@ -15,6 +16,9 @@ describe('Modal', () => {
     beforeEach(() => {
         $element = attachHtml(`
             <div id="modal" class="modal" data-reveal>
+                <button class="modal-close" type="button">
+                    <span aria-hidden="true">&#215;</span>
+                </button>
                 <div class="modal-content"></div>
                 <div class="loadingOverlay"></div>
             </div>
@@ -46,8 +50,6 @@ describe('Modal', () => {
         let $modalBody;
 
         beforeEach(() => {
-            $('body').height(500);
-
             $modalBody = $(`
                 <div class="modal-body">
                     <div style="height: 700px;"></div>
@@ -55,6 +57,25 @@ describe('Modal', () => {
             `);
 
             modal.$content.html($modalBody);
+
+            //Force heights of each element since jsdom does not provide these
+            [
+                $('body')[0]
+            ].forEach((elm) => {
+                ['scollHeight', 'offsetHeight', 'clientHeight', 'innerHeight'].forEach((property) => {
+                    Object.defineProperty(elm, property, { configurable: true, value: 500});    
+                });
+            });
+            [
+                window.document.documentElement,
+                $modalBody[0],
+                $modalBody.find('div')[0],
+                modal.$content[0]
+            ].forEach((elm) => {
+                ['scollHeight', 'offsetHeight', 'clientHeight', 'innerHeight'].forEach((property) => {
+                    Object.defineProperty(elm, property, { configurable: true, value: 700});    
+                });
+            });
         });
 
         afterEach(() => {
@@ -64,7 +85,7 @@ describe('Modal', () => {
         it('should restrain content height', () => {
             modal.$modal.trigger(ModalEvents.opened);
 
-            expect(parseInt($modalBody.css('max-height'), 10)).toEqual(637);
+            expect(parseInt($modalBody.css('max-height'), 10)).toEqual(630);
         });
     });
 
