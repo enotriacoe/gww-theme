@@ -20,9 +20,9 @@
                             {{value}}
                             {{/filter}}
                     </h3>
-                    <h4 class="product-brand">{{#if product.brand}}{{product.brand.name}}{{/if}}</h4>
+                    <h4 class="product-brand"><a href="#">{{#if product.brand}}{{product.brand.name}}{{/if}}</a></h4>
                 </div>      
-                            
+                {{  product.brand.id }}
                 <div class="productView-pricing-cont">
                     <div class="productView-price">
                         {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
@@ -212,7 +212,7 @@
                         {{#filter product.custom_fields 'colour' property='name' }}
                         <div class="productView-icon">
                             <i class="fal fa-wine-glass-alt icon"></i>
-                            {{value}}
+                            <a href="#">{{value}}</a>
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'subType' property='name' }}
@@ -220,13 +220,13 @@
                             {{else}}
                                 <div class="productView-icon">
                                     <i class="fal fa-wine-bottle icon"></i>
-                                    {{value}}
+                                    <a href="#">{{value}}</a>
                                 </div>
                             {{/contains}}
                             {{#contains value 'Dessert Wine'}}
                                 <div class="productView-icon">
                                     <i class="fal fa-wine-bottle icon"></i>
-                                    {{value}}
+                                    <a href="#">{{value}}</a>
                                 </div>
                             {{/contains}}
                         {{/filter}}
@@ -235,13 +235,13 @@
                             <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
                         {{/filter}}
                         {{#filter product.custom_fields 'country' property='name' }}
-                            {{value}}
+                            <a href="#">{{value}}</a>
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'region' property='name' }}
                         <div class="productView-icon">
                             <i class="fal fa-map-marker-alt icon"></i>
-                            {{value}}
+                            <a href="#">{{value}}</a>
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'vegetarian' property='name' }}
@@ -405,24 +405,14 @@
 
         <hr class="productView-divider">
 
-        <section class="info-carousel"
-            data-slick='{
-            "slidesToShow": 3,
-            "slidesToScroll": 1,
-            "responsive": [
-                    {
-                        "breakpoint": 1200,
-                        "settings": {
-                            "slidesToShow": 1
-                        }
-                    }
-                ],
-            "arrows": false
-        }'>
+        <section class="info-carousel">
 
                 {{#filter product.custom_fields 'press0Text_0' property='name' }}
                     <div class="press-review-cont">
-                        <h3 class="stylised-medium">Press Review</h3>
+                        <div class="info-carousel-header">
+                            <i class="fal fa-wine-glass-alt icon"></i>
+                            <h3 class="stylised-medium">Press Review</h3>
+                        </div>
                         <blockquote class="press-review-quote">                
                             "
                 {{/filter}}
@@ -445,7 +435,10 @@
 
                 {{#filter product.custom_fields 'press1Text_0' property='name' }}
                     <div class="press-review-cont">
-                        <h3 class="stylised-medium">Press Review</h3>
+                        <div class="info-carousel-header">
+                            <i class="fal fa-wine-glass-alt icon"></i>
+                            <h3 class="stylised-medium">Press Review</h3>
+                        </div>
                         <blockquote class="press-review-quote">                
                             "
                 {{/filter}}
@@ -466,7 +459,10 @@
 
                 {{#filter product.custom_fields 'winemaking_0' property='name' }}
                 <div class="productView-creation">
-                    <h3 class="stylised-medium">Winemaking</h3>
+                    <div class="info-carousel-header">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        <h3 class="stylised-medium">Winemaking</h3>
+                    </div>
                     <p>
                 {{/filter}}
 
@@ -479,7 +475,10 @@
 
                 {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
                 <div class="productView-food-recommendation">
-                    <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                    <div class="info-carousel-header">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                    </div>
                     <p>
                 {{/filter}}
                         {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
@@ -521,6 +520,85 @@
                 {{/filter}}
 
         </section>
+
+        <section class="productView-producer-section">
+            <h3 class="stylised-medium">Producer Overview</h3>
+            <div class="productView-producer-cont">
+                <div class="productView-producer-info">
+                    <img src="{{cdn '/assets/img/Yealands_Estate_logo 1.svg'}}" class="" alt=""></a>
+                    <div>
+                        <h3 class="no-margin-top">About Yealand's wines</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur. Mauris ultricies lectus vel mauris sit elementum velit lobortis nibh. Commodo mauris bibendum platea tincidunt odio auctor ut fringilla. Libero in mauris sollicitudin odio eget sagittis.</p>
+                        <p>Arcu sagittis sit nibh orci sit vulputate a pellentesque eget. Ipsum facilisi adipiscing sagittis pellentesque nisl non. Dictum sit odio facilisis nullam ac velit. Dignissim nisl convallis nisi eget augue. Ac porta malesuada eleifend diam tincidunt. Sed est ac luctus sed fringilla turpis eget mauris. Eros fringilla sit tristique penatibus et. Donec eget neque eget arcu cursus. Vestibulum risus suspendisse.</p>
+                        <a href="#" class="button button--primary">View Producer page</a>
+                    </div>
+                </div>
+
+                <div class="productView-producer-image">
+                    <img src="{{cdn '/assets/img/yealands-test.jpg'}}" class="" alt=""></a>
+                </div>
+            </div>
+
+
+            <div class="headed-carousel">
+                {{#if header '===' true}}
+                    <h1 class="page-heading-left stylised-medium">Yealands Estate Producer</h1>
+                {{/if}}
+            
+                <div class="carousel-controls">
+                    <div class="prev-arrow"><i class="fal fa-chevron-left"></i></div>
+                    <div class="next-arrow"><i class="fal fa-chevron-right"></i></div>
+                </div>
+            
+                <section class="productCarousel {{#if header '===' true}}header-slider{{/if}}"
+                    data-list-name="{{list}}"
+                    data-slick='{
+                        "dots": true,
+                        "infinite": false,
+                        "mobileFirst": true,
+                        "slidesToShow": 1,
+                        "slidesToScroll": 1,
+                        "draggable": true,
+                        "prevArrow": ".prev-arrow",
+                        "appendDots": ".carousel-controls",
+                        "nextArrow": ".next-arrow",
+                        "responsive": [
+                            {
+                                "breakpoint": 1200,
+                                "settings": {
+                                    "slidesToShow": {{ columns }},
+                                    "slidesToScroll": {{ columns }}
+                                }
+                            },
+                            {
+                                "breakpoint": 888,
+                                "settings": {
+                                    "slidesToShow": 3,
+                                    "slidesToScroll": 3
+                                }
+                            },
+                            {
+                                "breakpoint": 650,
+                                "settings": {
+                                    "slidesToShow": 2,
+                                    "slidesToScroll": 2
+                                }
+                            }
+                        ]
+                    }'
+                >
+                    {{#each products}}
+                    <div class="productCarousel-slide">
+                        {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+                    </div>
+                    {{/each}}
+                </section>
+            </div>
+            
+
+
+        </section>
+
         
         {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
