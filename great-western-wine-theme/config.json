@@ -1,6 +1,6 @@
 {
-  "name": "The Great Wine Co Theme - Cyber-Duck",
-  "version": "1.0.0",
+  "name": "The Great Wine Co. Theme",
+  "version": "2.16",
   "meta": {
     "price": 0,
     "documentation_url": "https://bitbucket.org/CyberDuck/gww-theme/src/master/",
@@ -38,11 +38,7 @@
   },
   "css_compiler": "scss",
   "autoprefixer_cascade": true,
-  "autoprefixer_browsers": [
-    "> 1%",
-    "last 2 versions",
-    "Firefox ESR"
-  ],
+  "autoprefixer_browsers": ["> 1%", "last 2 versions", "Firefox ESR"],
   "settings": {
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
@@ -359,8 +355,7 @@
           "home_garden"
         ]
       },
-      "images": {
-      },
+      "images": {},
       "settings": {
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
@@ -416,7 +411,7 @@
         "zoom_size": "1280x1280",
         "blog_size": "190x250",
         "default_image_brand": "img/BrandDefault.gif",
-        "default_image_product": "img/gww-placeholder-image.jpg",
+        "default_image_product": "img/gwc-placeholder-image.jpg",
         "default_image_gift_certificate": "img/GiftCertificate.png",
         "body-font": "Google_Source+Sans+Pro_400",
         "headings-font": "Google_Cormorant_700",
@@ -658,11 +653,7 @@
           "sales_discounts",
           "large_catalog"
         ],
-        "industries": [
-          "arts_crafts",
-          "food_beverage",
-          "books_entertainment"
-        ]
+        "industries": ["arts_crafts", "food_beverage", "books_entertainment"]
       },
       "settings": {
         "homepage_featured_products_count": 6,
