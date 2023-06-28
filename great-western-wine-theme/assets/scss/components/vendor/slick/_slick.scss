@@ -184,3 +184,122 @@ div.slick-slider {
     *width: 100%;
 }
 
+//
+// iOS Safari fix https://github.com/kenwheeler/slick/issues/2156
+// -----------------------------------------------------------------------------
+.slick-slide .card-image,
+.slick-slide .heroCarousel-image {
+    -webkit-touch-callout: default;
+}
+
+//
+// Carousel tooltips for buttons and bullets
+// -----------------------------------------------------------------------------
+
+.carousel-tooltip {
+    @include addFocusTooltip($attr: aria-label);
+    display: none;
+    height: 1px;
+    margin-top: 10px;
+    position: relative;
+
+    @include breakpoint("small") {
+        display: block;
+    }
+
+    &::after {
+        padding: 15px 10px;
+        top: 10px;
+    }
+
+    .slick-prev:focus &,
+    .slick-next:focus &,
+    .slick-dots button:focus & {
+        &::before,
+        &::after {
+            display: block;
+        }
+    }
+
+    .slick-prev &,
+    .slick-next & {
+        &::before {
+            top: -7px;
+        }
+    }
+
+    .slick-prev & {
+        &::before {
+            right: -2px;
+        }
+
+        &::after {
+            left: -5px;
+            right: auto;
+        }
+    }
+
+    .slick-next & {
+        &::after {
+            right: -5px;
+        }
+    }
+
+    .slick-dots button & {
+        margin-top: 25px;
+
+        &::before,
+        &::after {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        &::before {
+            top: -7px;
+        }
+    }
+}
+
+//
+// Carousel Play/Pause button
+// -----------------------------------------------------------------------------
+
+.carousel-play-pause-button {
+    @include carouselOpaqueBackgrounds($slick-play-pause-button-bgColor);
+    border: 1px solid $slick-play-pause-button-borderColor;
+    bottom: spacing("third");
+    color: $slick-play-pause-button-color;
+    display: none;
+    font-size: 14px;
+    font-weight: 700;
+    height: 32px;
+    left: 15px;
+    line-height: 1.25;
+    max-width: 60px;
+    min-width: 60px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    transition: color 100ms ease-out;
+    white-space: nowrap;
+    z-index: zIndex("lowest");
+
+    @include breakpoint("small") {
+        font-size: 18px;
+        max-width: 150px;
+    }
+
+    @include breakpoint("medium") {
+        bottom: spacing("single");
+        left: 25px;
+    }
+
+    &:hover {
+        color: $slick-play-pause-button-color-hover;
+    }
+
+    @media (min-width: 375px) {
+        max-width: 90px;
+        min-width: 80px;
+    }
+}

@@ -4,14 +4,14 @@
             <strong>{{lang 'cart.checkout.subtotal'}}:</strong>
         </div>
         <div class="cart-total-value">
-            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#or customer (unless settings.hide_price_from_guests)}}
                 <span>{{cart.sub_total.formatted}}</span>
             {{else}}
                 {{> components/common/login-for-pricing}}
             {{/or}}
         </div>
     </li>
-    {{#if cart.gift_wrapping_cost.amount}}
+    {{#if cart.gift_wrapping_cost.value}}
         <li class="cart-total">
             <div class="cart-total-label">
                 <strong>{{lang 'cart.checkout.gift_wrapping'}}:</strong>
@@ -88,7 +88,7 @@
             <strong>{{lang 'cart.checkout.grand_total'}}:</strong>
         </div>
         <div class="cart-total-value cart-total-grandTotal">
-            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#or customer (unless settings.hide_price_from_guests)}}
                 <span>{{cart.grand_total.formatted}}</span>
             {{else}}
                 {{> components/common/login-for-pricing}}
