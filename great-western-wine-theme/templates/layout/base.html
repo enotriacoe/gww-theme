@@ -51,7 +51,6 @@
         {{{stylesheet '/assets/css/theme.css'}}}
 
         {{{head.scripts}}}
-        <script async src="{{cdn 'assets/js/minified/font-awesome.js' resourceHint='preload' as='script'}}"></script>
 
         {{~inject 'zoomSize' theme_settings.zoom_size}}
         {{~inject 'productSize' theme_settings.product_size}}
@@ -66,14 +65,9 @@
         {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
         {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
         {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
-        
     </head>
     <body>
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
-
-        {{~#and settings.privacy_cookie settings.is_eu_ip_address}}
-            {{> components/common/cookie}}
-        {{/and}}
 
         {{> components/common/header }}
         {{> components/common/body }}
