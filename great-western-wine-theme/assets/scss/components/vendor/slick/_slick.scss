@@ -58,26 +58,38 @@
 }
 
 .slick-next {
-    right: 0;
+    right: $slick-arrows-offset;
 
     @include breakpoint("large") {
-        right: 0;
+        right: -(spacing("double") + spacing("quarter"));
     }
 
     &::before {
-        background-image: $slick-arrow-next;
+        @include carousel-arrow-color( $slick-arrow-color, "next");
+    }
+
+    &:hover {
+        &::before {
+            @include carousel-arrow-color( $slick-arrow-color-hover, "next");
+        }
     }
 }
 
 .slick-prev {
-    left: 0;
+    left: $slick-arrows-offset;
 
     @include breakpoint("large") {
-        left: 0;
+        left: -(spacing("double") + spacing("quarter"));
     }
 
     &::before {
-        background-image: $slick-arrow-prev;
+        @include carousel-arrow-color( $slick-arrow-color, "prev");
+    }
+
+    &:hover {
+        &::before {
+            @include carousel-arrow-color( $slick-arrow-color-hover, "prev");
+        }
     }
 }
 
