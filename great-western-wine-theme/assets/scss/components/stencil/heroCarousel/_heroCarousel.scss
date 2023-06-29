@@ -18,84 +18,74 @@
 // -----------------------------------------------------------------------------
 
 .heroCarousel {
-    width: 1px;
-    min-width: 100%;
+  width: 1px;
+  min-width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+
+  &.slick-initialized {
+    // 2
+    max-height: 40vw;
+    opacity: 1;
     margin-bottom: 0;
-    margin-top: 0;
+  }
 
+  &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
+    display: none;
+  }
 
-    &.slick-initialized { // 2
-        max-height: remCalc(500px);
-        opacity: 1;
-        margin-bottom: 0;
+  a {
+    text-decoration: none;
+  }
+
+  .slick-next,
+  .slick-prev {
+    top: 50%;
+
+    &:before {
+      opacity: 1;
     }
+  }
 
-    &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
-        display: none;
+  .slick-next {
+    right: 0;
+  }
+
+  .slick-prev {
+    left: 0;
+  }
+
+  .slick-dots {
+    bottom: spacing('third');
+
+    @include breakpoint('medium') {
+      bottom: (spacing('single') * 1.2);
     }
-
-    a {
-        text-decoration: none;
-    }
-
-    .slick-next,
-    .slick-prev {
-        top: 50%;
-
-        &:before {
-            opacity: 1;
-        }
-    }
-
-    .slick-next {
-        right: 0
-    }
-
-    .slick-prev {
-        left: 0;
-    }
-
-    .slick-dots {
-        bottom: spacing("third");
-
-        @include breakpoint("medium") {
-            bottom: (spacing("single") * 1.2);
-        }   
-    }
+  }
 }
 
 .heroCarousel-slide {
-    position: relative;
-    height: 100%;
+  position: relative;
+  height: 100%;
 
-    a {
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
 }
 
 .heroCarousel-image {
-    object-fit: cover;
-    height: 150px;
-    width: 100%;
-
-    @include breakpoint("medium") {
-        height: 300px;
-    }
-
-    @include breakpoint("large") {
-        height: 400px;
-    }
-
-    @include breakpoint("xlarge") {
-        height: 500px;
-    }
+  object-fit: cover;
+  height: 40vw;
+  width: 100%;
+  @include breakpoint('large') {
+    height: 30vw;
+  }
 }
 
 .heroCarousel-image-wrapper {
-    @include breakpoint("medium") {
-        max-height: remCalc(500px);
-    }
-}
+  @include breakpoint('large') {
+    max-height: 30vw;
+  }
 
 .heroCarousel-slide {
     &.compat-object-fit { // 1
@@ -113,116 +103,106 @@
             opacity: 0;
         }
     }
+  }
 }
 
-
 .heroCarousel-content {
+  background-color: rgba($carousel-bgColor, 1);
+  padding: spacing('half');
+  text-align: left;
+
+  @include breakpoint('medium') {
+    @include carouselOpaqueBackgrounds;
     background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half");
-    text-align: left;
+    position: absolute;
+    left: 70px;
+    bottom: 30px;
+    margin: 0 auto;
+    padding: 1.3rem (spacing('single') * 1.5);
+    overflow: hidden;
+    max-width: 60%;
+    max-height: 250px;
 
-    @include breakpoint("medium") {
-        @include carouselOpaqueBackgrounds;
-        background-color: rgba($carousel-bgColor, 1);
-        position: absolute;
-        left: 70px;
-        bottom: 30px;
-        margin: 0 auto;
-        padding: 1.3rem (spacing("single") * 1.5);
-        overflow: hidden;
-        max-width: 60%;
-        max-height: 250px;
+    &.heroCarousel-content--empty {
+      background-color: transparent;
+    }
+  }
 
-        &.heroCarousel-content--empty {
-            background-color: transparent;
-        }
-    }
-    
-    @include breakpoint("large") {
-        max-width: 50%;
-        max-height: 450px;
-    }
+  @include breakpoint('large') {
+    max-width: 50%;
+    max-height: 20vw;
+  }
 }
 
 .heroCarousel-title {
-    color: $carousel-title-color;
-    font-size: 35px;
-    margin-top: 0;
-    font-family: $fontFamily-headings;
-    font-weight: 700;
-    display: block;
+  color: $carousel-title-color;
+  font-size: 36px;
+  margin-top: 0;
+  font-family: $fontFamily-headings;
+  font-weight: 700;
+  display: block;
 
-    @include breakpoint("medium") {
-        font-size: $fontSize-largest;
-        line-height: 1;
-    }
-    
-    @include breakpoint("large") {
-        font-size: $fontSize-hero;
-    }
+  @include breakpoint('medium') {
+    font-size: fontSize('largest');
+    line-height: 1;
+  }
+
+  @include breakpoint('large') {
+    font-size: fontSize('hero');
+  }
 }
 
 .heroCarousel-description {
-    color: $carousel-description-color;
-    font-size: fontSize("large");
-    margin-bottom: 0;
+  color: $carousel-description-color;
+  font-size: fontSize('base');
+  margin-bottom: 0;
 
-    @include breakpoint("medium") {
-        font-size: fontSize("large");
-    }
+  @include breakpoint('medium') {
+    font-size: fontSize('large');
+  }
 }
 
 .heroCarousel-action {
-    margin: 0;
+  margin: 0;
 
-    @include breakpoint("medium") {
-        margin-top: (spacing("single") / 3);
-    }
+  @include breakpoint('medium') {
+    margin-top: (spacing('single') / 3);
+  }
 }
 
-
-// Containers & Wrappers for GWW 
+// Containers & Wrappers for GWW
 // ----------------------------------------------------------------------------
 
 .home-carousel-wrap {
-    width: 100%;
-    display: inline-block;
-    max-height: remCalc(500px);
+  width: 100%;
+  display: inline-block;
+  max-height: 40vw;
 }
 
 .home-carousel-cont.slick-slider {
-    width: 100%;
-    display: inline-block;
-    max-height: 500px;
-    position: relative;    
-    margin-bottom: 0;
-    
-    @include breakpoint("medium") {
-        height: 300px;
-    }
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
 
-    @include breakpoint("large") {
-        height: 400px;
-    }
+  @include breakpoint('large') {
+    height: 30vw;
+  }
 
-    @include breakpoint("xlarge") {
-        height: 500px;
-    }
-
-    .slick-dots {
-        bottom: 3px;
-    }
+  .slick-dots {
+    bottom: 3px;
+  }
 }
 
 .hero-img-cont {
-    max-height: 100%;
+  max-height: 100%;
 }
 
 .hero-content-cont {
-    @include breakpoint("medium") {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-    }
+  @include breakpoint('medium') {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 }

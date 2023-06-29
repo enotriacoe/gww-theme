@@ -17,7 +17,13 @@
         {{> components/common/navigation}}
 
         <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
+            {{#if template '==' 'pages/home'}}
+                <h1>
+                    {{> components/common/store-logo}}
+                </h1>
+            {{ else }}
+                {{> components/common/store-logo}}
+            {{/if}}
         </div>
         
         <div class="navPages-quickSearch">
