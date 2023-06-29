@@ -1,24 +1,41 @@
-<article class="card {{#if alternate}}card--alternate{{/if}}" {{#if settings.data_tag_enabled}} data-event-type="{{event}}" data-entity-id="{{id}}" data-position="{{position}}" data-name="{{name}}" data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"  {{/if}}>
-    <figure class="card-figure">
-        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
-            {{#if theme_settings.product_sale_badges '===' 'sash'}}
-                <div class="sale-flag-sash">
-                    <span class="sale-text">On Sale!</span>
-                </div>
-            {{else if theme_settings.product_sale_badges '===' 'topleft'}}
-                <div class="sale-flag-side">
-                    <span class="sale-text">On Sale!</span>
-                </div>
-            {{else if theme_settings.product_sale_badges '===' 'burst'}}
-                <div class="starwrap">
-                    <div class="sale-text-burst">On Sale!</div>
-                    <div class="sale-flag-star"></div>
-                </div>
+<article
+    class="card
+    {{#if alternate}} card--alternate{{/if}}"
+    data-test="card-{{id}}"
+    {{#if settings.data_tag_enabled}}
+        data-event-type="{{event}}"
+        data-entity-id="{{id}}"
+        data-position="{{position}}"
+        data-name="{{name}}"
+        data-product-category="
+        {{#each category}}
+            {{#if @last}}
+                {{this}}
+            {{else}}
+                {{this}},
             {{/if}}
-        {{/or}}
-        <a href="{{url}}" title="{{name}}" {{#if settings.data_tag_enabled}} data-event-type="product-click"{{/if}}>
-            <div class="card-img-container">
+        {{/each}}"
+        data-product-brand="{{brand.name}}"
+        data-product-price="
+        {{#or customer (unless settings.hide_price_from_guests)}}
+            {{#if price.with_tax}}
+                {{price.with_tax.value}}
+            {{else}}
+                {{price.without_tax.value}}
+            {{/if}}
+        {{else}}
+            {{lang 'common.login_for_pricing'}}
+        {{/or}}"
+    {{/if}}>
+    <figure class="card-figure">
 
+
+        <a href="{{url}}"
+           class="card-figure__link"
+           aria-label="{{> components/products/product-info}}"
+           {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}
+        >
+            <div class="card-img-container">
                 {{> components/common/responsive-img
                     image=image
                     class="card-image"
@@ -26,7 +43,6 @@
                     lazyload=theme_settings.lazyload_mode
                     default_image=theme_settings.default_image_product
                 }}
-
 
                 {{#if stock_level}}
                     {{assignVar 'stockLevel' stock_level}}
@@ -38,10 +54,6 @@
                             {{/if}}
                     {{/filter}}
                 {{/if}}
-    
-
-                {{#filter custom_fields 'awardName' property='name' }}
-                {{/filter}}
                 {{#filter custom_fields 'awardImage' property='name' }}
                     <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
                 {{/filter}}
@@ -57,7 +69,9 @@
         <div class="card-body">
             <div class="card-title-cont">
                 <h3 class="card-title">
-                    <a href="{{url}}" title="{{name}}" {{#if settings.data_tag_enabled}} data-event-type="product-click"{{/if}}>
+                    <a href="{{url}}"
+                    {{#if settings.data_tag_enabled}} data-event-type="product-click"{{/if}}
+                    aria-label="{{> components/products/product-info}}">
                         {{#filter custom_fields 'simpleName' property='name' }}
                         {{value}}
                         {{/filter}}

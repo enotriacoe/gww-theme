@@ -10,6 +10,7 @@
         "prevArrow": ".prev-arrow",
         "appendDots": ".carousel-controls",
         "nextArrow": ".next-arrow",
+        "slide": "[data-product-slide]",
         "responsive": [
             {
                 "breakpoint": 1200,
@@ -36,8 +37,11 @@
     }'
 >
     {{#each products}}
-    <div class="productCarousel-slide">
+    <div data-product-slide class="productCarousel-slide">
         {{> components/products/card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
     </div>
     {{/each}}
+    {{#if products.length '>' 1}}
+        {{> components/carousel-content-announcement}}
+    {{/if}}
 </section>

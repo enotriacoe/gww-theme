@@ -1,5 +1,28 @@
-<div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
-{{#each product.reviews.messages}}
+{{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
+
+<div class="productView"
+    {{#if settings.data_tag_enabled}}
+    data-event-type="product"
+    data-entity-id="{{product.id}}"
+    data-name="{{product.title}}"
+    data-product-category="
+    {{#each product.category}}
+        {{#if @last}}{{this}}{{else}}{{this}}, {{/if}}
+    {{/each}}"
+    data-product-brand="{{product.brand.name}}"
+    data-product-price="
+    {{#or customer (unless settings.hide_price_from_guests)}}
+        {{#if product.price.with_tax}}
+            {{product.price.with_tax.value}}
+        {{else}}
+            {{product.price.without_tax.value}}
+        {{/if}}
+    {{else}}
+        {{lang 'common.login_for_pricing'}}
+    {{/or}}"
+    data-product-variant="single-product-option"{{/if}}>
+
+    {{#each product.reviews.messages}}
         {{#if error}}
             {{> components/common/alert/alert-error error}}
         {{/if}}
@@ -104,6 +127,9 @@
                 Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
                 for variant/rule image replacement
             --}}
+        {{#if product.images.length '>' 1 }}
+        {{> components/carousel-content-announcement}}
+        {{/if}}
             <figure class="productView-image"
                     data-image-gallery-main
                     {{#if product.main_image}}
@@ -137,7 +163,7 @@
             </div>
         </section>
 
-        <section class="productView-details">
+    <section class="productView-details product-data">
             <div class="productView-product">
                 <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
                     {{#filter product.custom_fields 'simpleName' property='name' }}
@@ -145,8 +171,8 @@
                     {{/filter}}
                 </h1>
                 {{#if product.brand}}
-                    <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
-                        <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span>
+                <h2 class="productView-brand">
+                    <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
                     </h2>
                 {{/if}}
 

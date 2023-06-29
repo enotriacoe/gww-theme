@@ -9,6 +9,7 @@ product:
     similar_by_views:
         limit: {{theme_settings.productpage_similar_by_views_count}}
 ---
+{{inject 'productId' product.id}}
 {{#partial "no-container"}}
     <div class="container">
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
@@ -45,5 +46,6 @@ product:
         {{/if}}
 
         {{> components/common/subscription-form}}
+        {{> components/products/schema}}
 {{/partial}}
 {{> layout/base}}
