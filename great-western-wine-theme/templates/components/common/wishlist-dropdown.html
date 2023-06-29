@@ -1,12 +1,10 @@
 <form action="{{product.add_to_wishlist_url}}{{add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
-    <a aria-controls="wishlist-dropdown-{{id}}"
+    <button aria-controls="wishlist-dropdown-{{id}}"
        aria-expanded="false"
-       class="button dropdown-menu-button"
        data-dropdown="wishlist-dropdown"
-       href="#"
     >
         <i class="fal fa-heart icon" aria-label="Add item to wishlist"></i>
-    </a>
+    </button>
     <ul aria-hidden="true" class="dropdown-menu" data-dropdown-content id="wishlist-dropdown-{{id}}">
         {{#if customer.wishlists}}
             {{#each customer.wishlists}}
