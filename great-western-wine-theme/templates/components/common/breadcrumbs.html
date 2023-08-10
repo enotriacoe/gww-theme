@@ -2,13 +2,12 @@
     <ol class="breadcrumbs">
         {{#unless theme_settings.hide_breadcrumbs }}
             {{#each breadcrumbs}}
-                <li class="breadcrumb {{#if @last}}is-active{{/if}}" {{#if @last}}{{#is name "Home"}}style="display:none"{{/is}}{{/if}}></li>
-                    <a class="breadcrumb-label"
-                       href="{{url}}"
-                       {{#if @last}}aria-current="page"{{/if}}
-                    >
-                        <span>{{name}}</span>
-                    </a>
+                <li class="breadcrumb {{#if @last}}is-active{{/if}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" {{#if @last}}{{#is name "Home"}}style="display:none"{{/is}}{{/if}}>
+                    {{#or @last (if url "==" null)}}
+                        <span class="breadcrumb-label">{{name}}</span>
+                    {{else}}
+                        <a href="{{url}}" class="breadcrumb-label"><span itemprop="name">{{name}}</span></a>
+                    {{/or}}
                 </li>
             {{/each}}
         {{/unless}}

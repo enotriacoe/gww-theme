@@ -18,6 +18,15 @@
     padding: (spacing("base") * 2) 0 0;
 }
 
+.footer-title-sr-only {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
+}
+
 .footer-info {
     @include grid-row($behavior: nest);
     font-size: 0; // 1
