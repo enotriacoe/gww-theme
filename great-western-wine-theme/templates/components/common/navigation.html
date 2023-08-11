@@ -48,29 +48,34 @@
                    href="{{urls.account.index}}"
                    aria-label="{{lang 'common.account'}}"
                 >
+                    <i class="fal fa-user icon"></i>
                     {{lang 'common.account'}}
                 </a>
+                
                 <a class="navUser-action"
                    href="{{urls.auth.logout}}"
                    aria-label="{{lang 'common.logout'}}"
                 >
-                    {{lang 'common.logout'}}
+                <i class="fal fa-sign-out icon"></i>
+                {{lang 'common.logout'}}
                 </a>
             {{else}}
                 <a class="navUser-action"
                    href="{{urls.auth.login}}"
                    aria-label="{{lang 'common.login'}}"
                 >
-                    {{lang 'common.login'}}
+                <i class="fal fa-sign-in icon"></i>{{lang 'common.login'}}
                 </a>
+
                 {{#if settings.account_creation_enabled}}
-                    <span class="navUser-or">{{lang 'common.or'}}</span>
                     <a class="navUser-action"
                        href="{{urls.auth.create_account}}"
                        aria-label="{{lang 'common.sign_up'}}"
                     >
+                    <i class="fal fa-user-plus icon"></i>
                         {{lang 'common.sign_up'}}
                     </a>
+
                 {{/if}}
             {{/if}}
         </li>
