@@ -326,11 +326,9 @@
                                 Kind
                             </div>
                         {{/any}}
-                        {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                        {{#filter product.custom_fields 'planetFriendlyText' property='name' }}
                             <p class="productView-kind-desc">
-                                {{/filter}}
-                                    {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'planetFriendlyText_10' property='name' }}{{value}}{{/filter}}
-                                {{#filter product.custom_fields 'planetFriendlyText_0' property='name' }}
+                                {{value}}
                             </p>
                         {{/filter}}
                         </div>
@@ -547,6 +545,31 @@
                 {{/filter}}
 
         </section>
+            {{#filter product.custom_fields 'winemakingOutput' property='name' }}
+            <div class="productView-creation">
+                <div class="info-carousel-header">
+                    <i class="fal fa-wine-glass-alt icon"></i>
+                    <h3 class="stylised-medium">Winemaking</h3>
+                </div>
+                <p>
+                    {{/filter}}{{#filter product.custom_fields 'winemaking' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'winemakingOutput' property='name' }}
+                </p>
+            </div>
+            {{/filter}}
+
+            {{#filter product.custom_fields 'foodRecommendationOutput' property='name' }}
+            <div class="productView-food-recommendation">
+                <div class="info-carousel-header">
+                    <i class="fal fa-wine-glass-alt icon"></i>
+                    <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                </div>
+                <p>
+                    {{/filter}}{{#filter product.custom_fields 'foodRecommendation' property='name' }}{{value}}{{/filter}}
+                {{#filter product.custom_fields 'foodRecommendationOutput' property='name' }}
+                </p>
+            </div>
+            {{/filter}}
 
         <section class="productView-producer-section">
             <h3 class="stylised-medium">Producer Overview</h3>
