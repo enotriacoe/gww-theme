@@ -1,12 +1,12 @@
 <div class="home-carousel-wrap">
-    <div class="home-carousel-cont"
+    <section class="home-carousel-cont"
     data-slick='{
-        "arrows": true,
+        "arrows": {{arrows}},
         "slidesToShow": 1,
         "slidesToScroll": 1,
         "autoplay": true,
         "autoplaySpeed": {{carousel.swap_frequency}},
-        "lazyLoad": "anticipated",
+        "lazyLoad": "anticipated"
     }'>
         {{#each carousel.slides}}
             <div class="heroCarousel-slide">
