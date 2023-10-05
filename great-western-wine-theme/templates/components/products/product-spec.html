@@ -95,9 +95,13 @@
             <div class="productView-spec-item">
                 <span class="productView-spec-label">Award</span>
             </div>
-            <span>{{value}}</span>
+            <span>
+                {{/filter}} 
+                {{#filter product.custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter product.custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}
+            {{#filter product.custom_fields 'awardName' property='name' }}
+            </span>
         </li>
-        {{/filter}}  
+        {{/filter}} 
         {{#filter product.custom_fields 'vegan' property='name' }}
         {{#if value '===' 'Yes'}}
         <li>

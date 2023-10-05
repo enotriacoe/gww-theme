@@ -286,15 +286,12 @@
                                 </div>
                             {{/if}}
                         {{/filter}}
-                        {{#filter product.custom_fields 'awardName' property='name' }}
+                        {{#filter product.custom_fields 'awardImage' property='name' }}
                         <div class="productView-icon">
-                            {{/filter}}
-                            {{#filter product.custom_fields 'awardImage' property='name' }}
-                                <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
-                            {{/filter}}
-                            {{#filter product.custom_fields 'awardName' property='name' }}
-                                alt="{{value}}" class="icon" />
-                            {{value}}
+                            <img src="{{value}}" alt="{{/filter}}{{#filter product.custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter product.custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}"
+                            class="icon" />
+                            {{#filter product.custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter product.custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}
+                        {{#filter product.custom_fields 'awardImage' property='name' }}
                         </div>
                         {{/filter}}
                     </div>
