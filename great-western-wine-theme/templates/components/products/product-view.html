@@ -382,14 +382,6 @@
                             {{/if}}
                         </dd>
                     {{/all}}
-                    {{#if product.min_purchase_quantity}}
-                        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                    {{/if}}
-                    {{#if product.max_purchase_quantity}}
-                        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                    {{/if}}
 
                     {{#if product.shipping}}
                         {{#if product.shipping.calculated}}
