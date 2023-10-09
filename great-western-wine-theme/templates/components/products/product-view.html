@@ -43,7 +43,7 @@
                             {{value}}
                             {{/filter}}
                     </h3>
-                    <h4 class="product-brand"><a href="#">{{#if product.brand}}{{product.brand.name}}{{/if}}</a></h4>
+                    <h4 class="product-brand">{{#if product.brand}}{{product.brand.name}}{{/if}}</h4>
                 </div>      
                 {{  product.brand.id }}
                 <div class="productView-pricing-cont">
@@ -238,7 +238,7 @@
                         {{#filter product.custom_fields 'colour' property='name' }}
                         <div class="productView-icon">
                             <i class="fal fa-wine-glass-alt icon"></i>
-                            <a href="#">{{value}}</a>
+                            {{value}}
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'subType' property='name' }}
@@ -246,13 +246,13 @@
                             {{else}}
                                 <div class="productView-icon">
                                     <i class="fal fa-wine-bottle icon"></i>
-                                    <a href="#">{{value}}</a>
+                                    {{value}}
                                 </div>
                             {{/contains}}
                             {{#contains value 'Dessert Wine'}}
                                 <div class="productView-icon">
                                     <i class="fal fa-wine-bottle icon"></i>
-                                    <a href="#">{{value}}</a>
+                                    {{value}}
                                 </div>
                             {{/contains}}
                         {{/filter}}
@@ -261,13 +261,13 @@
                             <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
                         {{/filter}}
                         {{#filter product.custom_fields 'country' property='name' }}
-                            <a href="#">{{value}}</a>
+                            {{value}}
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'region' property='name' }}
                         <div class="productView-icon">
                             <i class="fal fa-map-marker-alt icon"></i>
-                            <a href="#">{{value}}</a>
+                            {{value}}
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'vegetarian' property='name' }}
