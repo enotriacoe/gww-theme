@@ -214,6 +214,7 @@ div.slick-slider {
     height: 1px;
     margin-top: 10px;
     position: relative;
+    z-index: 2;
 
     @include breakpoint("small") {
         display: block;
