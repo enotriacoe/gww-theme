@@ -9,11 +9,6 @@
 // Slick carousel
 @import "vendor/slick/component";
 
-// Nanobar Ajax loading progress bar
-@import "vendor/nanobar/component";
-
-// SweetAlert2 replacement for JavaScript alert/confirmations
-@import "vendor/sweetalert2/component";
 
 // Custom components
 // -----------------------------------------------------------------------------
@@ -40,6 +35,7 @@
 @import "custom/press-review";
 @import "custom/content-rich";
 @import "custom/utility";
+@import "custom/producer";
 
 @import "custom/flag-icon-css/flag-icon.scss";
 

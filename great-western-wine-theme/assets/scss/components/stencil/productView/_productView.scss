@@ -458,6 +458,15 @@
         width: 25%;
     }
 
+    a {
+        text-decoration: none;
+        color: $maroon;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     .icon {
         display: block;
         margin: 0 auto 10px;
@@ -620,8 +629,36 @@
 }
 
 .info-carousel {
-    .slick-track {
-        margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    > div {
+        width: 100%;
+        flex-grow: 1;
+        
+        @include breakpoint("medium") {
+            width: 50%;
+        }
+
+        @include breakpoint("large") {
+            width: 25%;
+        }
+    }
+
+    .info-carousel-header {
+        display: flex;
+
+        .icon {
+            font-size: 35px;
+            height: 35px;
+            width: 35px;
+            margin-right: 10px;
+        }
+
+        h3 {
+            flex-grow: 1;
+        }
     }
 }
 

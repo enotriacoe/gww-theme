@@ -357,6 +357,10 @@
         margin: 0;
         display: inline-block;
 
+        a {
+            text-decoration: none;
+        }
+
         @include breakpoint("large") {
             display: block;
         }

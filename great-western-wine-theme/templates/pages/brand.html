@@ -2,6 +2,28 @@
 brand:
     products:
         limit: {{theme_settings.brandpage_products_per_page}}
+gql: "query brandById($brandId: [Int!]) {
+    site {
+        brands(entityIds: $brandId) {
+            edges {
+                node {
+                    entityId
+                    name
+                    path
+                    metafields(namespace: \"branding\") {
+                        edges {
+                            node {
+                                id
+                                key
+                                value
+                            }
+                        }
+                    }
+                }  
+            }
+        }
+    }
+}"
 ---
 {{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
 {{#partial "head"}}
@@ -14,31 +36,71 @@ brand:
 {{/partial}}
 
 {{#partial "page"}}
+
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-{{#if brand.image}}
-    <div class="brand-image-container">
-        {{> components/common/responsive-img
-            image=brand.image
-            fallback_size=theme_settings.thumb_size
-            lazyload='disabled'
-        }}
-    </div>
-{{/if}}
-<h1 class="page-heading">{{brand.name}}</h1>
-{{{region name="brand_below_header"}}}
+
 <div class="page">
+
+    <div class="brand-content-header">
+        {{#if gql.data.site.brands.edges }}
+            {{#each gql.data.site.brands.edges }}
+                {{#each node.metafields.edges }}
+                    {{#with node }}
+                        {{#if key '===' 'top_content'}}
+                            {{{ value}}}
+                        {{/if }}                    
+                    {{/with }}
+                {{/each }}
+            {{/each }}
+        {{/if }}
+    </div>
+
+    <div class="brand-content-main">
+        {{#if gql.data.site.brands.edges }}
+            {{#each gql.data.site.brands.edges }}
+                {{#each node.metafields.edges }}
+                    {{#with node }}
+                        {{#if key '===' 'main_content'}}
+                            {{{ value}}}
+                        {{/if }}                    
+                    {{/with }}
+                {{/each }}
+            {{/each }}
+        {{/if }}
+    </div>
+    {{{region name="brand_below_header"}}}
+
     <aside class="page-sidebar" id="faceted-search-container">
         {{> components/brand/topbar}}
     </aside>
 
-    <main class="page-content" id="product-listing-container">
-        {{#if brand.products}}
-            {{> components/brand/product-listing}}
+    <div class="page-content" id="product-listing-container">
+        {{#if brand.search_error }}
+            <p>{{lang 'search.errorMessage'}}</p>
         {{else}}
-            <p>{{lang 'brands.no_products'}}</p>
+            {{#if brand.products}}
+                {{> components/brand/product-listing}}
+            {{else}}
+                <p>{{lang 'brands.no_products'}}</p>
+            {{/if}}
+            {{{region name="brand_below_content"}}}
         {{/if}}
-        {{{region name="brand_below_content"}}}
-    </main>
+    </div>
+
+    <div class="brand-content-footer">
+        {{#if gql.data.site.brands.edges }}
+            {{#each gql.data.site.brands.edges }}
+                {{#each node.metafields.edges }}
+                    {{#with node }}
+                        {{#if key '===' 'below_content'}}
+                            {{{ value}}}
+                        {{/if }}                    
+                    {{/with }}
+                {{/each }}
+            {{/each }}
+        {{/if }}
+    </div>
+    
 </div>
 
 {{/partial}}

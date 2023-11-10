@@ -1,11 +1,29 @@
 import { hooks, api } from '@bigcommerce/stencil-utils';
 import _ from 'lodash';
 import Url from 'url';
-import urlUtils from './url-utils';
+import urlUtils from './utils/url-utils';
 import modalFactory from '../global/modal';
 import collapsibleFactory from './collapsible';
-import { Validators } from './form-utils';
+import { Validators } from './utils/form-utils';
 import nod from './nod';
+
+
+const defaultOptions = {
+    accordionToggleSelector: '#facetedSearch .accordion-navigation, #facetedSearch .facetedSearch-toggle',
+    blockerSelector: '#facetedSearch .blocker',
+    clearFacetSelector: '#facetedSearch .facetedSearch-clearLink',
+    componentSelector: '#facetedSearch-navList',
+    facetNavListSelector: '#facetedSearch .navList',
+    priceRangeErrorSelector: '#facet-range-form .form-inlineMessage',
+    priceRangeFieldsetSelector: '#facet-range-form .form-fieldset',
+    priceRangeFormSelector: '#facet-range-form',
+    priceRangeMaxPriceSelector: '#facet-range-form [name=max_price]',
+    priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
+    showMoreToggleSelector: '#facetedSearch .accordion-content .toggleLink',
+    facetedSearchFilterItems: '#facetedSearch-filterItems .form-input',
+    modal: modalFactory('#modal-filter')[0],
+    modalOpen: false,
+};
 
 /**
  * Faceted search view component
@@ -20,7 +38,7 @@ class FacetedSearch {
      * let requestOptions = {
      *      templates: {
      *          productListing: 'category/product-listing',
-     *          sidebar: 'category/topbar'
+     *          sidebar: 'category/sidebar'
      *     }
      * };
      *
@@ -32,23 +50,6 @@ class FacetedSearch {
      * let facetedSearch = new FacetedSearch(requestOptions, templatesDidLoad);
      */
     constructor(requestOptions, callback, options) {
-        const defaultOptions = {
-            accordionToggleSelector: '#facetedSearch .accordion-navigation, #facetedSearch .facetedSearch-toggle',
-            blockerSelector: '#facetedSearch .blocker',
-            clearFacetSelector: '#facetedSearch .facetedSearch-clearLink',
-            componentSelector: '#facetedSearch-navList',
-            facetNavListSelector: '#facetedSearch .navList',
-            priceRangeErrorSelector: '#facet-range-form .form-inlineMessage',
-            priceRangeFieldsetSelector: '#facet-range-form .form-fieldset',
-            priceRangeFormSelector: '#facet-range-form',
-            priceRangeMaxPriceSelector: '#facet-range-form [name=max_price]',
-            priceRangeMinPriceSelector: '#facet-range-form [name=min_price]',
-            showMoreToggleSelector: '#facetedSearch .accordion-content .toggleLink',
-            facetedSearchFilterItems: '#facetedSearch-filterItems .form-input',
-            modal: modalFactory('#modal-filter')[0],
-            modalOpen: false,
-        };
-
         // Private properties
         this.requestOptions = requestOptions;
         this.callback = callback;
@@ -119,9 +120,6 @@ class FacetedSearch {
         this.bindEvents();
 
         this.collapseAllFacets();
-
-        // eslint-disable-next-line no-undef
-
         this.updateListView();
         this.updateReadMore();
         this.removeSingleItemFilters();
@@ -132,7 +130,11 @@ class FacetedSearch {
     }
 
     updateView() {
+        $(this.options.blockerSelector).show();
+
         api.getPage(urlUtils.getUrl(), this.requestOptions, (err, content) => {
+            $(this.options.blockerSelector).hide();
+
             if (err) {
                 throw new Error(err);
             }
@@ -164,7 +166,7 @@ class FacetedSearch {
         const id = $navList.attr('id');
 
         // Toggle depending on `collapsed` flag
-        if (_.includes(this.collapsedFacetItems, id)) {
+        if (this.collapsedFacetItems.includes(id)) {
             this.getMoreFacetResults($navList);
 
             return true;
@@ -262,7 +264,7 @@ class FacetedSearch {
             minPriceSelector: this.options.priceRangeMinPriceSelector,
         };
 
-        Validators.setMinMaxPriceValidation(validator, selectors);
+        Validators.setMinMaxPriceValidation(validator, selectors, this.options.validationErrorMessages);
 
         this.priceRangeValidator = validator;
     }
@@ -274,7 +276,7 @@ class FacetedSearch {
         $navLists.each((index, navList) => {
             const $navList = $(navList);
             const id = $navList.attr('id');
-            const shouldCollapse = _.includes(this.collapsedFacetItems, id);
+            const shouldCollapse = this.collapsedFacetItems.includes(id);
 
             if (shouldCollapse) {
                 this.collapseFacetItems($navList);
@@ -291,7 +293,7 @@ class FacetedSearch {
             const $accordionToggle = $(accordionToggle);
             const collapsible = $accordionToggle.data('collapsibleInstance');
             const id = collapsible.targetId;
-            const shouldCollapse = _.includes(this.collapsedFacets, id);
+            const shouldCollapse = this.collapsedFacets.includes(id);
 
             if (shouldCollapse) {
                 this.collapseFacet($accordionToggle);
@@ -307,6 +309,7 @@ class FacetedSearch {
 
         // DOM events
         $(window).on('statechange', this.onStateChange);
+        $(window).on('popstate', this.onPopState);
         $(document).on('click', this.options.showMoreToggleSelector, this.onToggleClick);
         $(document).on('toggle.collapsible', this.options.accordionToggleSelector, this.onAccordionToggle);
         $(document).on('keyup', this.options.facetedSearchFilterItems, this.filterFacetItems);
@@ -321,6 +324,7 @@ class FacetedSearch {
     unbindEvents() {
         // DOM events
         $(window).off('statechange', this.onStateChange);
+        $(window).off('popstate', this.onPopState);
         $(document).off('click', this.options.showMoreToggleSelector, this.onToggleClick);
         $(document).off('toggle.collapsible', this.options.accordionToggleSelector, this.onAccordionToggle);
         $(document).off('keyup', this.options.facetedSearchFilterItems, this.filterFacetItems);
@@ -354,8 +358,8 @@ class FacetedSearch {
         this.toggleFacetItems($navList);
     }
 
-    onFacetClick(event) {
-        const $link = $(event.currentTarget);
+    onFacetClick(event, currentTarget) {
+        const $link = $(currentTarget);
         const url = $link.attr('href');
 
         event.preventDefault();
@@ -370,19 +374,23 @@ class FacetedSearch {
         }
     }
 
-    onSortBySubmit(event) {
+    onSortBySubmit(event, currentTarget) {
         const url = Url.parse(window.location.href, true);
-        const queryParams = $(event.currentTarget).serialize().split('=');
+        const queryParams = $(currentTarget).serialize().split('=');
 
         url.query[queryParams[0]] = queryParams[1];
         delete url.query.page;
 
+        // Url object `query` is not a traditional JavaScript Object on all systems, clone it instead
+        const urlQueryParams = {};
+        Object.assign(urlQueryParams, url.query);
+
         event.preventDefault();
 
-        urlUtils.goToUrl(Url.format({ pathname: url.pathname, search: urlUtils.buildQueryString(url.query) }));
+        urlUtils.goToUrl(Url.format({ pathname: url.pathname, search: urlUtils.buildQueryString(urlQueryParams) }));
     }
 
-    onRangeSubmit(event) {
+    onRangeSubmit(event, currentTarget) {
         event.preventDefault();
 
         if (!this.priceRangeValidator.areAll(nod.constants.VALID)) {
@@ -390,7 +398,7 @@ class FacetedSearch {
         }
 
         const url = Url.parse(window.location.href, true);
-        let queryParams = decodeURI($(event.currentTarget).serialize()).split('&');
+        let queryParams = decodeURI($(currentTarget).serialize()).split('&');
         queryParams = urlUtils.parseQueryParams(queryParams);
 
         for (const key in queryParams) {
@@ -399,7 +407,11 @@ class FacetedSearch {
             }
         }
 
-        urlUtils.goToUrl(Url.format({ pathname: url.pathname, search: urlUtils.buildQueryString(url.query) }));
+        // Url object `query` is not a traditional JavaScript Object on all systems, clone it instead
+        const urlQueryParams = {};
+        Object.assign(urlQueryParams, url.query);
+
+        urlUtils.goToUrl(Url.format({ pathname: url.pathname, search: urlUtils.buildQueryString(urlQueryParams) }));
     }
 
     onStateChange() {
@@ -552,6 +564,19 @@ class FacetedSearch {
         if ($('.desc-zone-top').length > 1) {
             $('.desc-zone-top')[1].remove();
         }
+    }
+
+    onPopState() {
+        const currentUrl = window.location.href;
+        const searchParams = new URLSearchParams(currentUrl);
+        // If searchParams does not contain a page value then modify url query string to have page=1
+        if (!searchParams.has('page')) {
+            const linkUrl = $('.pagination-link').attr('href');
+            const re = /page=[0-9]+/i;
+            const updatedLinkUrl = linkUrl.replace(re, 'page=1');
+            window.history.replaceState({}, document.title, updatedLinkUrl);
+        }
+        $(window).trigger('statechange');
     }
 }
 

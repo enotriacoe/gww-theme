@@ -1,6 +1,4 @@
 {
-  "normalStoreUrl": "https://greatwine.co.uk/",
-  "port": "3000",
   "customLayouts": {
     "brand": {},
     "category": {
@@ -21,9 +19,14 @@
       ],
       "category-plp-rich.html": [
         "/producers/bertani/"
+      ],
+      "category-plp-producer.html": [
+        "/producers/ken-forrester-wines/"
       ]
     },
     "page": {},
     "product": {}
-  }
+  },
+  "normalStoreUrl": "https://greatwine.co.uk/",
+  "port": "3000"
 }

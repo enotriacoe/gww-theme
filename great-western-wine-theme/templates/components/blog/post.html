@@ -34,7 +34,7 @@
                 <p>{{{post.summary}}}...</p>
             {{/if}}
             {{#if post.show_read_more}}
-                <a class="btn btn-coral-line" href="{{url}}">Read more</a>
+                    &hellip; <a href="{{url}}" class="btn btn-coral-line"  aria-label="{{post.title}} {{lang 'blog.read_more'}}">{{lang 'blog.read_more'}}</a>
             {{/if}}
         </div>
 
@@ -51,7 +51,7 @@
             {{/if}}
         {{/if}}
 
-        {{>components/common/share}}
+        {{>components/common/share url=post.url}}
 
     </div>
 </article>

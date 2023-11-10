@@ -1,10 +1,33 @@
-<div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
-{{#each product.reviews.messages}}
+{{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
+
+<div class="productView"
+    {{#if settings.data_tag_enabled}}
+    data-event-type="product"
+    data-entity-id="{{product.id}}"
+    data-name="{{product.title}}"
+    data-product-category="
+    {{#each product.category}}
+        {{#if @last}}{{this}}{{else}}{{this}}, {{/if}}
+    {{/each}}"
+    data-product-brand="{{product.brand.name}}"
+    data-product-price="
+    {{#or customer (unless settings.hide_price_from_guests)}}
+        {{#if product.price.with_tax}}
+            {{product.price.with_tax.value}}
+        {{else}}
+            {{product.price.without_tax.value}}
+        {{/if}}
+    {{else}}
+        {{lang 'common.login_for_pricing'}}
+    {{/or}}"
+    data-product-variant="single-product-option"{{/if}}>
+
+    {{#each product.reviews.messages}}
         {{#if error}}
-            {{> components/common/alert-error error}}
+            {{> components/common/alert/alert-error error}}
         {{/if}}
         {{#if success}}
-            {{> components/common/alert-success success}}
+            {{> components/common/alert/alert-success success}}
         {{/if}}
     {{/each}}
 
@@ -22,7 +45,7 @@
                     </h3>
                     <h4 class="product-brand">{{#if product.brand}}{{product.brand.name}}{{/if}}</h4>
                 </div>      
-                            
+                {{  product.brand.id }}
                 <div class="productView-pricing-cont">
                     <div class="productView-price">
                         {{#or customer (if theme_settings.restrict_to_login '!==' Yes)}}
@@ -104,6 +127,9 @@
                 Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
                 for variant/rule image replacement
             --}}
+        {{#if product.images.length '>' 1 }}
+        {{> components/carousel-content-announcement}}
+        {{/if}}
             <figure class="productView-image"
                     data-image-gallery-main
                     {{#if product.main_image}}
@@ -137,7 +163,7 @@
             </div>
         </section>
 
-        <section class="productView-details">
+    <section class="productView-details product-data">
             <div class="productView-product">
                 <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
                     {{#filter product.custom_fields 'simpleName' property='name' }}
@@ -145,8 +171,8 @@
                     {{/filter}}
                 </h1>
                 {{#if product.brand}}
-                    <h2 class="productView-brand"{{#if schema}} itemprop="brand" itemscope itemtype="http://schema.org/Brand"{{/if}}>
-                        <span{{#if schema}} itemprop="name"{{/if}}>{{product.brand.name}}</span>
+                <h2 class="productView-brand">
+                    <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
                     </h2>
                 {{/if}}
 
@@ -356,14 +382,6 @@
                             {{/if}}
                         </dd>
                     {{/all}}
-                    {{#if product.min_purchase_quantity}}
-                        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}</dd>
-                    {{/if}}
-                    {{#if product.max_purchase_quantity}}
-                        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
-                        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}</dd>
-                    {{/if}}
 
                     {{#if product.shipping}}
                         {{#if product.shipping.calculated}}
@@ -405,24 +423,14 @@
 
         <hr class="productView-divider">
 
-        <section class="info-carousel"
-            data-slick='{
-            "slidesToShow": 3,
-            "slidesToScroll": 1,
-            "responsive": [
-                    {
-                        "breakpoint": 1200,
-                        "settings": {
-                            "slidesToShow": 1
-                        }
-                    }
-                ],
-            "arrows": false
-        }'>
+        <section class="info-carousel">
 
                 {{#filter product.custom_fields 'press0Text_0' property='name' }}
                     <div class="press-review-cont">
-                        <h3 class="stylised-medium">Press Review</h3>
+                        <div class="info-carousel-header">
+                            <i class="fal fa-wine-glass-alt icon"></i>
+                            <h3 class="stylised-medium">Press Review</h3>
+                        </div>
                         <blockquote class="press-review-quote">                
                             "
                 {{/filter}}
@@ -438,14 +446,18 @@
                             {{#filter product.custom_fields 'press0Rating' property='name' }}{{value}} |{{/filter}} {{#filter product.custom_fields 'press0Attribution' property='name' }}{{value}}{{/filter}}
                 {{#filter product.custom_fields 'press0Rating' property='name' }}
                         </footer>
+                {{/filter}}
+                {{#filter product.custom_fields 'press0Text_0' property='name' }}
                     </div>
                 {{/filter}}
 
 
-
                 {{#filter product.custom_fields 'press1Text_0' property='name' }}
                     <div class="press-review-cont">
-                        <h3 class="stylised-medium">Press Review</h3>
+                        <div class="info-carousel-header">
+                            <i class="fal fa-wine-glass-alt icon"></i>
+                            <h3 class="stylised-medium">Press Review</h3>
+                        </div>
                         <blockquote class="press-review-quote">                
                             "
                 {{/filter}}
@@ -466,7 +478,10 @@
 
                 {{#filter product.custom_fields 'winemaking_0' property='name' }}
                 <div class="productView-creation">
-                    <h3 class="stylised-medium">Winemaking</h3>
+                    <div class="info-carousel-header">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        <h3 class="stylised-medium">Winemaking</h3>
+                    </div>
                     <p>
                 {{/filter}}
 
@@ -479,7 +494,10 @@
 
                 {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
                 <div class="productView-food-recommendation">
-                    <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                    <div class="info-carousel-header">
+                        <i class="fal fa-wine-glass-alt icon"></i>
+                        <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
+                    </div>
                     <p>
                 {{/filter}}
                         {{#filter product.custom_fields 'foodRecommendation_0' property='name' }}
@@ -521,6 +539,7 @@
                 {{/filter}}
 
         </section>
+
         
         {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}

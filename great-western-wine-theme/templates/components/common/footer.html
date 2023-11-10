@@ -21,6 +21,7 @@
 
 {{/if}}
 <footer class="footer" role="contentinfo">
+    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
     <div class="container">
         <section class="footer-info">
             <div class="footer-details">
@@ -90,11 +91,6 @@
             </div>
 
         </section>
-        {{#if theme_settings.geotrust_ssl_common_name}}
-        <div class="footer-geotrust-ssl-seal">
-            {{> components/common/geotrust-ssl-seal}}
-        </div>
-        {{/if}}
     </div>
     {{#if theme_settings.show_copyright_footer}}
     <div class="footer-copyright">
@@ -109,4 +105,5 @@
         </div>
     </div>
     {{/if}}
+    {{{region name="ssl_site_seal--global"}}}
 </footer>

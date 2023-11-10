@@ -4,6 +4,7 @@ product_results:
 ---
 {{inject 'categoryTree' forms.search.category_options}}
 {{inject 'searchProductsPerPage' theme_settings.searchpage_products_per_page}}
+{{inject 'searchResultsCount' (lang 'search.results.count' count=result_count search_query=(sanitize forms.search.query))}}
 {{#partial "head"}}
     {{#if pagination.product_results.previous}}
         <link rel="prev" href="{{pagination.product_results.previous}}">
@@ -14,18 +15,22 @@ product_results:
 {{/partial}}
 
 {{#partial "page"}}
+{{{ stylesheet '/assets/scss/vendor/jstree/style.css' }}}
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <section class="nav">
-    <nav class="navBar navBar--sub search-type">
-        <ul class="navBar-section account-navigation">
-            <li class="navBar-item">
-                <a id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
+    <nav class="navBar navBar--sub search-nav">
+        <span id="search-tabs-widget-description" class="aria-description--hidden">
+            {{lang 'search.tabs_accesibility_hint'}}
+        </span>
+        <ul role="tablist" class="navBar-section account-navigation" data-search-page-tabs>
+            <li role="presentation" class="navBar-item">
+                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="product-listing-container" id="search-results-product-count" class="navBar-action" href="{{forms.search.product_url}}" data-product-results-toggle>
                     {{>components/search/product-count}}
                 </a>
             </li>
-            <li class="navBar-item">
-                <a class="navBar-action" href="{{forms.search.content_url}}" data-content-results-toggle>
-                    {{lang 'search.results.content_count' count=pagination.content_results.total}}
+            <li role="presentation" class="navBar-item">
+                <a aria-describedby="search-tabs-widget-description" role="tab" aria-controls="search-results-content" id="search-results-content-count" class="navBar-action" href="{{forms.search.content_url}}" data-content-results-toggle>
+                    {{>components/search/content-count}}
                 </a>
             </li>
             {{#unless product_results.faceted_search_enabled}}
@@ -43,10 +48,10 @@ product_results:
         </ul>
     </nav>
     {{#if forms.search.query}}
-    <div id="search-results-heading">
-        {{>components/search/heading}}
-    </div>
-{{/if}}
+        <div id="search-results-heading">
+            {{>components/search/heading}}
+        </div>
+    {{/if}}
     {{#unless product_results.faceted_search_enabled}}
         {{>components/search/advanced-search}}
     {{/unless}}
@@ -59,30 +64,20 @@ product_results:
                 {{> components/faceted-search/index product_results}}
             </aside>
         {{/if}}
-        <main class="page-content">
+        <div class="page-content">
     {{else}}
-        <main class="page-content page-content--centered">
+        <div class="page-content page-content--centered">
     {{/if}}
+        <div role="tabpanel" id="search-results-content" aria-labelledby="search-results-content-count" {{#if forms.search.section '!=' 'content'}}class="u-hidden"{{/if}}>
+            {{> components/search/content-listing}}
+        </div>
 
-        {{#if content_results}}
-            <div id="search-results-content" {{#if forms.search.section '!=' 'content'}}class="u-hiddenVisually"{{/if}}>
-                {{> components/search/content-sort-box sort=pagination.content_results.sort}}
-                <ul>
-                    {{#each content_results}}
-                        <strong><a href="{{url}}">{{{title}}}</a></strong>({{type}})
-                        <p>{{{content}}}</p>
-                    {{/each}}
-                </ul>
-                {{> components/common/paginator pagination.content_results reload=true}}
-            </div>
-        {{/if}}
-
-        <div id="product-listing-container" {{#if forms.search.section '!=' 'product'}}class="u-hiddenVisually"{{/if}}>
+        <div role="tabpanel" id="product-listing-container" aria-labelledby="search-results-product-count" {{#if forms.search.section '!=' 'product'}}class="u-hidden"{{/if}}>
             {{> components/search/product-listing}}
         </div>
 
         {{{region name="search_below_content"}}}
-    </main>
+    </div>
 </section>
 
 {{/partial}}

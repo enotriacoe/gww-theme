@@ -2,20 +2,20 @@
 
 <section class="page">
     <div class="page-content page-content--centered">
-        <h1 class="page-heading">
+        <h1 class="page-heading" tabindex="0" role="status" aria-live="assertive">
             {{#if subscription.error}}
                 {{lang 'newsletter.subscribed_heading_error'}}
             {{else}}
                 {{lang 'newsletter.subscribed_heading'}}
             {{/if}}
         </h1>
-        
+
         {{#if subscription.error}}
-        {{> components/common/alert-error subscription.error}}
+            {{> components/common/alert/alert-error subscription.error}}
         {{else}}
             <h3 class="discount-code">Use code WELCOME10 to receive £10 off your first order when you spend over £50</h3>
             <div id="newsletter-success">
-                {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+                {{> components/common/alert/alert-success (lang 'newsletter.subscribed_message')}}
             </div>
         {{/if}}
 
@@ -27,6 +27,11 @@
 
     </div>
 </section>
+
+<script>
+    const subscriptionStatusElement = document.querySelector('.page-content > .page-heading');
+    if (subscriptionStatusElement) subscriptionStatusElement.focus();
+</script>
 
 {{/partial}}
 {{> layout/base}}

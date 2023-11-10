@@ -17,7 +17,7 @@
 //    from becoming cut off.
 // -----------------------------------------------------------------------------
 
-.heroCarousel {
+.home-carousel-cont {
   width: 1px;
   min-width: 100%;
   margin-bottom: 0;
@@ -25,7 +25,6 @@
 
   &.slick-initialized {
     // 2
-    max-height: 40vw;
     opacity: 1;
     margin-bottom: 0;
   }
@@ -87,21 +86,21 @@
     max-height: 30vw;
   }
 
-  .compat-object-fit {
-    // 1
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
+.heroCarousel-slide {
+    &.compat-object-fit { // 1
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
 
-    &.stretch {
-      @include breakpoint('large') {
-        // 4
-        background-size: 100% 100%;
-      }
-    }
+        &.stretch {
+            @include breakpoint("large") { // 4
+                background-size: 100% 100%;
+            }
+        }
 
-    .heroCarousel-image {
-      opacity: 0;
+        .heroCarousel-image {
+            opacity: 0;
+        }
     }
   }
 }
@@ -176,13 +175,11 @@
 .home-carousel-wrap {
   width: 100%;
   display: inline-block;
-  max-height: 40vw;
 }
 
 .home-carousel-cont.slick-slider {
   width: 100%;
   display: inline-block;
-  max-height: 40vw;
   position: relative;
   margin-bottom: 0;
 

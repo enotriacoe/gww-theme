@@ -1,14 +1,40 @@
-/* eslint-disable no-restricted-globals, no-shadow, prefer-arrow-callback, func-names */
 import { hooks } from '@bigcommerce/stencil-utils';
 import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
+import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
 
 export default class Category extends CatalogPage {
-    onReady() {
-        compareProducts(this.context.urls);
+    constructor(context) {
+        super(context);
+        this.validationDictionary = createTranslationDictionary(context);
+    }
 
-        const categoryFunction = this;
+    setLiveRegionAttributes($element, roleType, ariaLiveStatus) {
+        $element.attr({
+            role: roleType,
+            'aria-live': ariaLiveStatus,
+        });
+    }
+
+    makeShopByPriceFilterAccessible() {
+        if (!$('[data-shop-by-price]').length) return;
+
+        if ($('.navList-action').hasClass('is-active')) {
+            $('a.navList-action.is-active').focus();
+        }
+
+        $('a.navList-action').on('click', () => this.setLiveRegionAttributes($('span.price-filter-message'), 'status', 'assertive'));
+    }
+
+    onReady() {
+        this.arrangeFocusOnSortBy();
+
+        $('[data-button-type="add-cart"]').on('click', (e) => this.setLiveRegionAttributes($(e.currentTarget).next(), 'status', 'polite'));
+
+        this.makeShopByPriceFilterAccessible();
+
+        compareProducts(this.context);
 
         if ($('#facetedSearch').length > 0) {
             this.initFacetedSearch();
@@ -17,67 +43,143 @@ export default class Category extends CatalogPage {
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
 
+        $('a.reset-btn').on('click', () => this.setLiveRegionsAttributes($('span.reset-message'), 'status', 'polite'));
+
+        this.ariaNotifyNoProducts();
+
         // Grid View with Cookies
         if (sessionStorage.getItem('productsView') === null) {
             sessionStorage.setItem('productsView', 'grid-view');
         }
 
-        function activeGridView() {
-            const $gridViewButton = $('#grid-view');
-            const $listViewButton = $('#list-view');
-            const $productView = $('.productGrid');
+        this.updateListView();
 
-            if ($gridViewButton.not('.current-view')) {
-                $listViewButton.removeClass('current-view');
-                $gridViewButton.addClass('current-view');
-                $productView.removeClass('product-list');
-                sessionStorage.setItem('productsView', 'grid-view');
+        $('.change-list-view').on('click', '#grid-view', () => {
+            this.activeGridView();
+        });
+
+        $('.change-list-view').on('click', '#list-view', () => {
+            this.activeListView();
+        });
+
+        this.closeAllWishlists();
+        this.removeDuplicateDescZones();
+        this.toggleMoreDesc();
+        this.toggleSingleWishlistOnly();
+    }
+
+    ariaNotifyNoProducts() {
+        const $noProductsMessage = $('[data-no-products-notification]');
+        if ($noProductsMessage.length) {
+            $noProductsMessage.focus();
+        }
+    }
+
+    initFacetedSearch() {
+        const {
+            price_min_evaluation: onMinPriceError,
+            price_max_evaluation: onMaxPriceError,
+            price_min_not_entered: minPriceNotEntered,
+            price_max_not_entered: maxPriceNotEntered,
+            price_invalid_value: onInvalidPrice,
+        } = this.validationDictionary;
+        const $productListingContainer = $('#product-listing-container');
+        const $facetedSearchContainer = $('#faceted-search-container');
+        const productsPerPage = this.context.categoryProductsPerPage;
+        const requestOptions = {
+            config: {
+                category: {
+                    shop_by_price: true,
+                    products: {
+                        limit: productsPerPage,
+                    },
+                },
+            },
+            template: {
+                productListing: 'category/product-listing',
+                sidebar: 'category/topbar',
+            },
+            showMore: 'category/show-more',
+        };
+
+        this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
+            $productListingContainer.html(content.productListing);
+            $facetedSearchContainer.html(content.sidebar);
+
+            $('body').triggerHandler('compareReset');
+
+            $('html, body').animate({
+                scrollTop: 0,
+            }, 100);
+        }, {
+            validationErrorMessages: {
+                onMinPriceError,
+                onMaxPriceError,
+                minPriceNotEntered,
+                maxPriceNotEntered,
+                onInvalidPrice,
+            },
+        });
+    }
+
+    activeGridView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($gridViewButton.not('.current-view')) {
+            $listViewButton.removeClass('current-view');
+            $gridViewButton.addClass('current-view');
+            $productView.removeClass('product-list');
+            sessionStorage.setItem('productsView', 'grid-view');
+        }
+    }
+
+    activeListView() {
+        const $gridViewButton = $('#grid-view');
+        const $listViewButton = $('#list-view');
+        const $productView = $('.productGrid');
+
+        if ($listViewButton.not('.current-view')) {
+            $gridViewButton.removeClass('current-view');
+            $listViewButton.addClass('current-view');
+            $productView.addClass('product-list');
+            sessionStorage.setItem('productsView', 'list-view');
+        }
+    }
+
+    updateListView() {
+        if ($('.page-content').hasClass('grid-with-sub-items') !== true) {
+            if (sessionStorage.getItem('productsView') === 'grid-view') {
+                this.activeGridView();
+            } else if (sessionStorage.getItem('productsView') === 'list-view') {
+                this.activeListView();
             }
         }
+    }
 
-        function activeListView() {
-            const $gridViewButton = $('#grid-view');
-            const $listViewButton = $('#list-view');
-            const $productView = $('.productGrid');
+    closeAllWishlists() {
+        if ($('[data-dropdown^="wishlist-dropdown-"]').hasClass('is-open')) {
+            $('[data-dropdown^="wishlist-dropdown-"]').each(function closeWishlist() {
+                const target = $(this);
+                const targetsParent = $(this).parent();
 
-            if ($listViewButton.not('.current-view')) {
-                $gridViewButton.removeClass('current-view');
-                $listViewButton.addClass('current-view');
-                $productView.addClass('product-list');
-                sessionStorage.setItem('productsView', 'list-view');
-            }
+                target.removeClass('is-open').attr('aria-expanded', 'false');
+                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
+            });
         }
+    }
 
-        function updateListView() {
-            if ($('.page-content').hasClass('grid-with-sub-items') !== true) {
-                if (sessionStorage.getItem('productsView') === 'grid-view') {
-                    activeGridView();
-                } else if (sessionStorage.getItem('productsView') === 'list-view') {
-                    activeListView();
-                }
-            }
+    removeDuplicateDescZones() {
+        if ($('.desc-zone-bottom').length > 1) {
+            $('.desc-zone-bottom')[0].remove();
         }
+        if ($('.desc-zone-top').length > 1) {
+            $('.desc-zone-top')[1].remove();
+        }
+    }
 
-        updateListView();
-
-        $('.change-list-view').on('click', '#grid-view', function () {
-            activeGridView();
-        });
-
-        $('.change-list-view').on('click', '#list-view', function () {
-            activeListView();
-        });
-
-        $('.close-sub-items').on('click', function () {
-            const subItemList = $(this).parent();
-            subItemList.toggleClass('is-open');
-        });
-
-        $('.group-item-options').on('click', function () {
-            const groupItem = $(this).parent();
-            groupItem.toggleClass('is-open');
-        });
-
+    toggleMoreDesc() {
         if ($('.show-read-more')[0]) {
             let maxLength = 200;
             const textToMinimise = $('.show-read-more');
@@ -105,7 +207,9 @@ export default class Category extends CatalogPage {
                 $('.read-more-dots').remove();
             });
         }
+    }
 
+    toggleSingleWishlistOnly() {
         // Open and close only the wishlist that is clicked
         $('.page-content').on('click', '[data-dropdown^="wishlist-dropdown-"]', (e) => {
             e.stopImmediatePropagation();
@@ -121,119 +225,5 @@ export default class Category extends CatalogPage {
                 target.find('ul').addClass('is-open f-open-dropdown').attr('aria-hidden', 'false');
             }
         });
-        if ((window.location.pathname.replace(/\//g, '')) === 'producers') {
-            this.getAllProducers(categoryFunction);
-        }
-
-        this.removeDuplicateDescZones();
-    }
-
-    closeAllWishlists() {
-        if ($('[data-dropdown^="wishlist-dropdown-"]').hasClass('is-open')) {
-            $('[data-dropdown^="wishlist-dropdown-"]').each(function closeWishlist() {
-                const target = $(this);
-                const targetsParent = $(this).parent();
-
-                target.removeClass('is-open').attr('aria-expanded', 'false');
-                targetsParent.find('ul').removeClass('is-open f-open-dropdown').attr('aria-hidden', 'true');
-            });
-        }
-    }
-
-    initFacetedSearch() {
-        const $productListingContainer = $('#product-listing-container');
-        const $facetedSearchContainer = $('#faceted-search-container');
-        const productsPerPage = this.context.categoryProductsPerPage;
-        const requestOptions = {
-            config: {
-                category: {
-                    shop_by_price: true,
-                    products: {
-                        limit: productsPerPage,
-                    },
-                },
-            },
-            template: {
-                productListing: 'category/product-listing',
-                sidebar: 'category/topbar',
-            },
-            showMore: 'category/show-more',
-        };
-
-        this.facetedSearch = new FacetedSearch(requestOptions, (content) => {
-            $productListingContainer.html(content.productListing);
-            $facetedSearchContainer.html(content.sidebar);
-
-            $('html, body').animate({
-                scrollTop: 0,
-            }, 100);
-        });
-    }
-
-    displayProducers(dataReturned) {
-        // Get all of the countries from the API/Proxy
-        if (dataReturned) {
-            const producerList = dataReturned.data[0].children;
-            let currentProducerName;
-            let currentProducerUrl;
-            const producerDiv = document.querySelector('.group-list');
-            producerDiv.innerHTML = ('');
-
-            // Loop through each country and display
-            for (let i = 0, length = producerList.length; i < length; i++) {
-                currentProducerName = producerList[i].name;
-                currentProducerUrl = producerList[i].url;
-                producerDiv.innerHTML = (`${producerDiv.innerHTML}<li><a href='${currentProducerUrl}'>${currentProducerName}</a></li>`);
-            }
-        }
-    }
-
-    sortListAlphabetically() {
-        // Custom JS to sort category list PGP
-        const list = $('ul.group-list');
-        const items = $('li', list);
-
-        // sort the list
-        const sortedItems = items.get().sort((a, b) => {
-            const aText = $.trim($(a).text().toUpperCase());
-            const bText = $.trim($(b).text().toUpperCase());
-
-            return aText.localeCompare(bText);
-        });
-
-        list.append(sortedItems);
-
-        // create the titles
-        let lastLetter = '';
-        list.find('li').each(function addLetterHeaders() {
-            const $this = $(this);
-            const text = $.trim($this.text());
-            const firstLetter = text[0];
-
-            if (firstLetter !== lastLetter) {
-                $this.before(`<li class="splitter">${firstLetter}`);
-                lastLetter = firstLetter;
-            }
-        });
-    }
-
-    getAllProducers(categoryFunction) {
-        fetch('https://bcapi.greatwine.co.uk/catalog/flattened-categories/producers')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (returnedJson) {
-                categoryFunction.displayProducers(returnedJson);
-                categoryFunction.sortListAlphabetically();
-            });
-    }
-
-    removeDuplicateDescZones() {
-        if ($('.desc-zone-bottom').length > 1) {
-            $('.desc-zone-bottom')[0].remove();
-        }
-        if ($('.desc-zone-top').length > 1) {
-            $('.desc-zone-top')[1].remove();
-        }
     }
 }

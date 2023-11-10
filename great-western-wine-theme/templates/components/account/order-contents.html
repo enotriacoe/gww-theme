@@ -4,9 +4,11 @@
     {{#each order.items}}
         {{#if shipping_rows.length}}
             {{#each shipping_rows}}
-                <li class="account-listShipping">
-                    <h5 class="account-listShipping-title">{{lang 'account.orders.details.ship_to_multi' street=address city=city state=state zip=zip country=country}}</h5>
-                </li>
+                {{#if is_shipping}}
+                    <li class="account-listShipping">
+                        <h5 class="account-listShipping-title">{{lang 'account.orders.details.ship_to_multi' street=address city=city state=state zip=zip country=country}}</h5>
+                    </li>
+                {{/if}}
             {{/each}}
         {{/if}}
     <li class="account-listItem">
@@ -21,14 +23,18 @@
             </div>
             <figure class="account-product-figure">
                 {{#if type '===' 'giftcertificate'}}
-                    <img src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="Gift Certificate" title="Gift Certificate">
+                    <img
+                        src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                        alt="Gift Certificate"
+                        title="Gift Certificate"
+                    >
                 {{else}}
                     {{> components/common/responsive-img
                         image=image
                         class="account-product-image"
-                        fallback_size=../../theme_settings.productthumb_size
-                        lazyload=../../theme_settings.lazyload_mode
-                        default_image=../../theme_settings.default_image_product
+                        fallback_size=../theme_settings.productthumb_size
+                        lazyload=../theme_settings.lazyload_mode
+                        default_image=../theme_settings.default_image_product
                     }}
                 {{/if}}
                 {{#unless refunded}}
@@ -37,7 +43,7 @@
                             <span class="is-srOnly">{{lang 'account.orders.details.download_items'}}</span>
                             <span class="icon">
                                 <svg>
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-down"></use>
+                                    <use href="#icon-arrow-down"></use>
                                 </svg>
                             </span>
                         </a>
@@ -54,7 +60,7 @@
                 <dl class="definitionList">
                     {{#each options}}
                         <dt class="definitionList-key">{{name}}:</dt>
-                        <dd class="definitionList-value">{{value}}</dd>
+                        <dd class="definitionList-value">{{> components/common/product-options}}</dd>
                     {{/each}}
                 </dl>
                 {{/if}}
