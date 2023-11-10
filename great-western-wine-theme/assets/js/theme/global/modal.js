@@ -173,7 +173,7 @@ export class Modal {
             this.clearContent();
         }
 
-        if ((this.$modal).attr('id') === 'modal-filter') {
+        if ((this.$modal).attr('id') === 'modal-filter' || (this.$modal).attr('id') === 'alert-modal') {
             this.$modal.foundation('reveal', 'open', { root_element: 'body' });
             $('.reveal-modal-bg').attr('style', 'display: block !important');
         } else {
