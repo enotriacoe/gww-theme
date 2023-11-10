@@ -97,7 +97,7 @@ export default class Category extends CatalogPage {
             },
             template: {
                 productListing: 'category/product-listing',
-                sidebar: 'category/sidebar',
+                sidebar: 'category/topbar',
             },
             showMore: 'category/show-more',
         };
