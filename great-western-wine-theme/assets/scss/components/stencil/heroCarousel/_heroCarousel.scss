@@ -25,7 +25,6 @@
 
   &.slick-initialized {
     // 2
-    max-height: 40vw;
     opacity: 1;
     margin-bottom: 0;
   }
@@ -176,7 +175,6 @@
 .home-carousel-wrap {
   width: 100%;
   display: inline-block;
-  max-height: 40vw;
 }
 
 .home-carousel-cont.slick-slider {
