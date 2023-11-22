@@ -260,8 +260,16 @@
                         <div class="productView-icon">
                             <span class="flag-icon flag-icon-{{toLowerCase value}} flag-icon-squared icon"></span>
                         {{/filter}}
+                        {{#filter product.custom_fields 'countryUrl' property='name' }}
+                            <a href="{{ value }}">
+                        {{/filter}}
                         {{#filter product.custom_fields 'country' property='name' }}
                             {{value}}
+                        {{/filter}}
+                        {{#filter product.custom_fields 'countryUrl' property='name' }}
+                            </a>
+                        {{/filter}}
+                        {{#filter product.custom_fields 'country' property='name' }}
                         </div>
                         {{/filter}}
                         {{#filter product.custom_fields 'region' property='name' }}
