@@ -532,6 +532,27 @@
 
         <hr class="productView-divider">
 
+        <section class="productView-producer-section">
+            <h3 class="stylised-medium">Producer Overview</h3>
+            <div class="productView-producer-cont">
+                <div class="productView-producer-info">
+                    <img src="{{ getVar 'producerLogoUrl'}}" alt="{{ product.brand.name }} Logo">
+                    <div>
+                        <h3 class="no-margin-top">{{ product.brand.name }}</h3>
+                        <div>
+                            {{{ getVar 'producerRichDescription' }}}
+                        </div>
+                        <a href="#" class="button button--primary">View Producer page</a>
+                    </div>
+                </div>
+
+                <div class="productView-producer-image">
+                    <img src="{{{ getVar 'producerFeaturedImage' }}}" class="" alt=""></a>
+                </div>
+            </div>
+        </section>
+
+
         <div class="row">
             {{> components/products/product-spec }}
         </div>

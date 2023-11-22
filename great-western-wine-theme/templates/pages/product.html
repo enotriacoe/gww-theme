@@ -8,12 +8,63 @@ product:
         limit: {{theme_settings.productpage_related_products_count}}
     similar_by_views:
         limit: {{theme_settings.productpage_similar_by_views_count}}
+gql: "query productById($productId: Int!) {
+    site {
+        product(entityId: $productId) {
+            id
+            entityId
+            name
+            brand {
+                name
+                defaultImage {
+                    url300wide: url(width: 300)
+                }
+                metafields(namespace: \"branding\") {
+                    edges {
+                        node {
+                            id
+                            key
+                            value
+                        }
+                    }
+                }
+                products {
+                    edges {
+                        node {
+                            id
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}"
+
 ---
 {{inject 'productId' product.id}}
 {{#partial "no-container"}}
     <div class="container">
         {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
     </div>
+
+    {{#if gql.data.site.product.brand.metafields.edges }}
+        {{#each gql.data.site.product.brand.metafields.edges }}
+            {{#with node }}
+                {{#if key '===' 'rich_description'}}
+                    {{assignVar 'producerRichDescription' value}}
+                {{else if key '===' 'featured_image'}}
+                    {{assignVar 'producerFeaturedImage' value}}
+                {{/if }}
+            {{/with }}
+        {{/each }}
+    {{/if }}
+
+    {{#if gql.data.site.product.brand.defaultImage }}
+        {{#with gql.data.site.product.brand.defaultImage }}
+            {{assignVar 'producerLogoUrl' url300wide}}
+        {{/with }}
+    {{/if }}
 
     {{#each product.shipping_messages}}
         {{> components/common/alert/alert-info message}}
