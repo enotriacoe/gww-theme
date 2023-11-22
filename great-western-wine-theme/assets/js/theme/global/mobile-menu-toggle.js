@@ -43,6 +43,7 @@ export class MobileMenuToggle {
         this.onCartPreviewOpen = this.onCartPreviewOpen.bind(this);
         this.onMediumMediaQueryMatch = this.onMediumMediaQueryMatch.bind(this);
         this.onSubMenuClick = this.onSubMenuClick.bind(this);
+        this.onSubMenuBackClick = this.onSubMenuBackClick.bind(this);
 
         // Listen
         this.bindEvents();
@@ -135,8 +136,20 @@ export class MobileMenuToggle {
         this.hide();
     }
 
+    onSubMenuBackClick(event) {
+        const $closestAction = $(event.target).closest('.navPages-action');
+        const $parentMenu = $closestAction.closest('.navPage-subMenu.is-open');
+        const $parentMenuLink = $parentMenu.siblings('a.has-subMenu.is-open');
+        $parentMenu.removeClass('is-open');
+        $parentMenuLink.removeClass('is-open');
+    }
+
     onSubMenuClick(event) {
         const $closestAction = $(event.target).closest('.navPages-action');
+        if ($closestAction.hasClass('navPages-action-back')) {
+            this.onSubMenuBackClick(event);
+            return;
+        }
         const $parentSiblings = $closestAction.parent().siblings();
         const $parentAction = $closestAction.closest('.navPage-subMenu-horizontal').siblings('.navPages-action');
 
