@@ -55,10 +55,9 @@
                     {{/filter}}
                 {{/if}}
                 {{#filter custom_fields 'awardImage' property='name' }}
-                    <img src="https://res.cloudinary.com/enotria/image/upload/w_auto,dpr_auto/gwc/medals/{{value}}"
-                {{/filter}}
-                {{#filter custom_fields 'awardName' property='name' }}
-                    alt="{{value}}" class="card-img-medal" />
+                    <img src="{{value}}" alt="{{/filter}}{{#filter custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}"
+                {{#filter custom_fields 'awardImage' property='name' }}
+                    class="card-img-medal" />
                 {{/filter}}
             </div>
         </a>
