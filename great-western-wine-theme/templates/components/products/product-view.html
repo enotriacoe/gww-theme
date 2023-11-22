@@ -294,12 +294,13 @@
                                 </div>
                             {{/if}}
                         {{/filter}}
+
+                        {{#filter product.custom_fields 'awardName' property='name' }}{{assignVar 'awardName' value}}{{/filter}}
+                        {{#filter product.custom_fields 'awardMedal' property='name' }}{{assignVar 'awardMedal' value}}{{/filter}}                        
                         {{#filter product.custom_fields 'awardImage' property='name' }}
                         <div class="productView-icon">
-                            <img src="{{value}}" alt="{{/filter}}{{#filter product.custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter product.custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}"
-                            class="icon" />
-                            {{#filter product.custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter product.custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}
-                        {{#filter product.custom_fields 'awardImage' property='name' }}
+                            <img src="{{value}}" alt="{{getVar 'awardName'}} {{getVar 'awardMedal'}}" class="icon" />
+                            {{getVar 'awardName'}} {{getVar 'awardMedal'}}
                         </div>
                         {{/filter}}
                     </div>
