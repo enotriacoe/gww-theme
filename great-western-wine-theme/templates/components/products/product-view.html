@@ -436,7 +436,7 @@
                         <h3 class="stylised-medium">Press Review</h3>
                     </div>
                     <blockquote class="press-review-quote">                
-                        "{{/filter}}{{#filter product.custom_fields 'press1Text' property='name' }}{{ value}} {{/filter}}"
+                        "{{/filter}}{{#filter product.custom_fields 'press1Text' property='name' }}{{ value}}"{{/filter}}
                     {{#filter product.custom_fields 'press1Output' property='name' }}
                     </blockquote>
             {{/filter}}
@@ -471,7 +471,7 @@
                         <h3 class="stylised-medium">Press Review</h3>
                     </div>
                     <blockquote class="press-review-quote">                
-                        "{{/filter}}{{#filter product.custom_fields 'press2Text' property='name' }}{{ value}} {{/filter}}"
+                        "{{/filter}}{{#filter product.custom_fields 'press2Text' property='name' }}{{ value}} "{{/filter}}
                     {{#filter product.custom_fields 'press2Output' property='name' }}
                     </blockquote>
             {{/filter}}
@@ -524,7 +524,7 @@
                 </p>
             </div>
             {{/filter}}
-
+        </section>
         
         {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
