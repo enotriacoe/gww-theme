@@ -2,13 +2,13 @@
 
     <ul class="navPage-subMenu-list">
         <li class="navPage-subMenu-item-close">
-            <a class="navPage-subMenu-action navPages-action navPages-action-depth-max navPages-action-back" href="#">
+            <a class="navPage-subMenu-action navPages-action navPages-action-depth-max navPages-action-back">
                 <i class="icon navPages-action-backIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i>{{parent}}</a>
         </li>
         <li class="navPage-subMenu-item-parent">
             <a class="navPage-subMenu-action navPages-action navPages-action-depth-max" href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
         </li>
-        {{#each children}}
+        {{#each (limit children 18)}}
             <li class="navPage-subMenu-item-child">
                 {{#if children}}
                     <a class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}" href="{{url}}" data-collapsible="navPages-{{id}}">
@@ -20,5 +20,11 @@
                 {{/if}}
             </li>
         {{/each}}
+        {{#gt (length children) 18}}
+            <li class="navPage-subMenu-item-parent">
+                <a class="navPage-subMenu-action navPages-action navPages-action-depth-max"
+                    href="{{url}}">More...</a>
+            </li>
+        {{/gt}}
     </ul>
 </div>   
