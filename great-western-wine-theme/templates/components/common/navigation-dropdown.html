@@ -1,10 +1,11 @@
 <div class="navPage-subMenu navPage-subMenu-horizontal" id="navPages-{{id}}" aria-hidden="true"
     tabindex="-1">
-        <ul class="navPage-subMenu-list"><li class="navPage-subMenu-item-parent">
+    <ul class="navPage-subMenu-list">
+        <li class="navPage-subMenu-item-parent">
             <a class="navPage-subMenu-action navPages-action navPages-action-depth-max"
-                href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+                    href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
         </li>
-        {{#each children}}
+        {{#each (limit children 23)}}
         <li class="navPage-subMenu-item-child">
             {{#if children}}
                 <a class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}"
@@ -19,29 +20,11 @@
             {{/if}}
         </li>
         {{/each}}
+        {{#gt (length children) 23}}
+            <li class="navPage-subMenu-item-parent">
+                <a class="navPage-subMenu-action navPages-action navPages-action-depth-max"
+                    href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
+            </li>
+        {{/gt}}
     </ul>
-    {{#if parent '===' 'Offers'}}
-    {{> components/custom/menu-highlight-offers}}
-    {{/if}}
-    {{#if parent '===' 'Wine'}}
-    {{> components/custom/menu-highlight-wine}}
-    {{/if}}
-    {{#if parent '===' 'Champagne & Sparkling'}}
-    {{> components/custom/menu-highlight-champagne-sparkling}}
-    {{/if}}
-    {{#if parent '===' 'Fortified & Dessert'}}
-    {{> components/custom/menu-highlight-fortified-dessert}}
-    {{/if}}
-    {{#if parent '===' 'Spirits'}}
-    {{> components/custom/menu-highlight-spirits}}
-    {{/if}}
-    {{#if parent '===' 'Planet Friendly'}}
-    {{> components/custom/menu-highlight-planet-friendly}}
-    {{/if}}
-    {{#if parent '===' 'Beer & Cider'}}
-    {{> components/custom/menu-highlight-beer-cider}}
-    {{/if}}
-    {{#if parent '===' 'Gifts & More'}}
-    {{> components/custom/menu-highlight-gifts}}
-    {{/if}}
 </div>
