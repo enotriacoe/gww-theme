@@ -1,5 +1,6 @@
 ---
 brands:
+    limit: 100
 ---
 
 {{#partial "page"}}
@@ -7,18 +8,21 @@ brands:
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <section class="page">
-    <h1 class="page-heading">{{lang 'brand.label'}}</h1>
+    <div class="category-header">
+        <h1 class="stylised-title">{{lang 'brand.label'}}</h1>
+    </div>
+
     {{{region name="brands_below_header"}}}
     <ul class="brandGrid">
         {{#each brands}}
             <li class="brand">
-                <article class="card {{#if alternate}}card--alternate{{/if}}">
-                    <figure class="card-figure">
-                        <a class="card-figure__link" aria-label="{{name}}" href="{{url}}">
-                            <div class="card-img-container">
+                <article class="brand-card {{#if alternate}}card--alternate{{/if}}">
+                    <figure class="brand-card-figure">
+                        <a class="brand-card-figure__link" aria-label="{{name}}" href="{{url}}">
+                            <div class="brand-card-img-container">
                                 {{> components/common/responsive-img
                                     image=image
-                                    class="card-image"
+                                    class="brand-card-image"
                                     fallback_size=../theme_settings.brand_size
                                     lazyload=../theme_settings.lazyload_mode
                                     default_image=../theme_settings.default_image_brand
@@ -26,9 +30,9 @@ brands:
                             </div>
                         </a>
                     </figure>
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="{{url}}">{{name}}</a>
+                    <div class="brand-card-body">
+                        <h3 class="brand-card-title">
+                            <a href="{{url}}">{{name}} {{brand.id}}</a>
                         </h3>
                     </div>
                 </article>
