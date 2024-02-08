@@ -18,14 +18,6 @@
     }
 }
 
-
-.writeReview-form {
-
-    @include breakpoint("medium") {
-        @include grid-column(6);
-    }
-}
-
 .writeReview-productImage-container {
     position: relative;
 

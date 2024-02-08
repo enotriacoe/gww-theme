@@ -7,15 +7,14 @@ import collapsibleFactory from './common/collapsible';
 import ProductDetails from './common/product-details';
 import videoGallery from './product/video-gallery';
 import { classifyForm } from './common/utils/form-utils';
-import modalFactory from './global/modal';
 
 export default class Product extends PageManager {
     constructor(context) {
         super(context);
         this.url = window.location.href;
-        this.$reviewLink = $('[data-reveal-id="modal-review-form"]');
+        this.$reviewLink = $('.show-review-form');
         this.$bulkPricingLink = $('[data-reveal-id="modal-bulk-pricing"]');
-        this.reviewModal = modalFactory('#modal-review-form')[0];
+        this.reviewModal = $('#review-form')[0];
     }
 
     onReady() {
@@ -44,7 +43,7 @@ export default class Product extends PageManager {
 
         const review = new Review({ $reviewForm });
 
-        $('body').on('click', '[data-reveal-id="modal-review-form"]', () => {
+        $('body').on('click', '.show-review-form', () => {
             validator = review.registerValidation(this.context);
             this.ariaDescribeReviewInputs($reviewForm);
         });
@@ -58,8 +57,8 @@ export default class Product extends PageManager {
             return false;
         });
 
-        this.productReviewHandler();
         this.setupReviewFormToggle();
+        this.productReviewHandler();
     }
 
     ariaDescribeReviewInputs($form) {
