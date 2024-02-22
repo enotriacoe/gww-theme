@@ -2,7 +2,7 @@
 
 export default function moveTermsCheckboxToBottom() {
     // Moves the 'marketing opt in' checkbox from the middle of the page to prepend the 'create account' button then reveals it
-    if ($('.account--new')) {
+    if ($('.account--new')[0]) {
         $('#FormField_30').detach().appendTo('.confirm-cont');
         $('#FormField_30').show();
         // Moves the 'events opt in' checkbox from the middle of the page to prepend the 'create account' button then reveals it

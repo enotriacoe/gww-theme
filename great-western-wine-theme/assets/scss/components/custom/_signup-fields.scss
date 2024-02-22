@@ -8,15 +8,22 @@
 }
 
 #FormField_28, #FormField_30, #FormField_33 {
-    display: none;
-    
-    .form-label {
-        display: none;
-    }
-    
     .form-label.checkbox-label {
-        display: block;
         text-transform: none;
+    }
+}
+
+.account--new {
+    #FormField_28, #FormField_30, #FormField_33 {
+        display: none;
+        
+        .form-label {
+            display: none;
+        }
+        
+        .form-label.checkbox-label {
+            display: block;
+        }
     }
 }
 
