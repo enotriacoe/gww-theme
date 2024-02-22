@@ -7,21 +7,7 @@
     clear: none;
 }
 
-// Field 28 is the Terms and conditions checkbox field
-#FormField_28 {
-    display: none;
-    
-    .form-label {
-        display: none;
-    }
-    
-    .form-label.checkbox-label {
-        display: block;
-        text-transform: none;
-    }
-}
-
-#FormField_30 {
+#FormField_28, #FormField_30, #FormField_32 {
     display: none;
     
     .form-label {
