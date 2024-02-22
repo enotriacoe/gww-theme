@@ -806,13 +806,13 @@
         "comments": "Comments"
     },
     "newsletter": {
-        "subscribe": "Get £10 voucher",
-        "subscribe_intro": "When you sign up to the newsletter",
+        "subscribe": "Save £25 on your first order*",
+        "subscribe_intro": "When you sign up to our newsletter",
         "subscribe_submit": "Sign Up",
         "email_placeholder": "Your email address",
         "subscribed_heading": "Thanks for Subscribing!",
         "subscribed_heading_error": "Oops...",
-        "subscribed_message": "Thank you for joining our mailing list. You'll be sent the next issue of our newsletter shortly",
+        "subscribed_message": "Thank you for joining. You will find your £25 discount code in your inbox.",
         "unsubscribed_heading": "Unsubscribed!",
         "unsubscribed_message": "You will no longer receive marketing emails from <b>{store_name}</b>"
     },
