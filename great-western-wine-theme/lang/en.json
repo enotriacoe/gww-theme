@@ -223,8 +223,8 @@
         }
     },
     "brand": {
-        "label": "Brands",
-        "view_brands": "View all brands"
+        "label": "Explore Producers",
+        "view_brands": "View all producers"
     },
     "gift_certificate": {
         "heading": "Gift Certificates",

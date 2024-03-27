@@ -4,7 +4,12 @@
 
 .productView-producer-section {
     background-color: $blue-lt;
-    padding: 32px;
+    padding: 22px;
+    margin-bottom: 2.25rem;
+
+    @include breakpoint("medium") {
+        padding: 32px;
+    }
 }
 
 .productView-producer-cont {

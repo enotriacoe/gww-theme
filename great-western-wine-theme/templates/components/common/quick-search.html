@@ -1,20 +1,38 @@
-<form class="form" action="{{urls.search}}">
-    <fieldset class="form-fieldset">
-        <div class="form-field">
-            {{#if device '===' 'desktop'}}
-                <label class="is-srOnly" for="search_query">{{lang "search.quick_search.input_label"}}</label>
-                <input class="form-input" data-search-quick name="search_query" id="search_query" data-error-message="{{lang 'search.error.empty_field'}}" placeholder="{{lang 'search.quick_search.input_placeholder'}}" autocomplete="off">
-            {{else}}
-                <label class="is-srOnly" for="search_query_mobile">{{lang "search.quick_search.input_label"}}</label>
-                <input class="form-input" data-search-quick name="search_query" id="search_query_mobile" data-error-message="{{lang 'search.error.empty_field'}}" placeholder="{{lang 'search.quick_search.input_placeholder'}}" autocomplete="off">
-            {{/if}}
-            
-            <button class="btn-search-submit" type="submit">
-                <i class="fal fa-search search-icon"></i>
-                <span class="visually-hidden">Search</span>
-            </button>
-            <button class="btn-search-clear-text" style="display:none">Clear</button>
-        </div>
-    </fieldset>
+<div>
+    <form class="form" onsubmit="return false" data-url="{{urls.search}}" data-quick-search-form>
+        <fieldset class="form-fieldset">
+            <div class="form-field">
+                {{#if device '===' 'desktop'}}
+                    <label class="is-srOnly" for="search_query">{{lang "search.quick_search.input_label"}}</label>
+                    <input class="form-input" 
+                    data-search-quick 
+                    name="search_query" 
+                    id="search_query" 
+                    data-error-message="{{lang 'search.error.empty_field'}}" 
+                    placeholder="{{lang 'search.quick_search.input_placeholder'}}" 
+                    autocomplete="off">
+                {{else}}
+                    <label class="is-srOnly" for="search_query_mobile">{{lang "search.quick_search.input_label"}}</label>
+                    <input class="form-input" 
+                    data-search-quick 
+                    name="search_query_mobile" 
+                    id="search_query_mobile" 
+                    data-error-message="{{lang 'search.error.empty_field'}}" 
+                    placeholder="{{lang 'search.quick_search.input_placeholder'}}" 
+                    autocomplete="off">
+                {{/if}}
+                <button class="btn-search-submit" type="submit">
+                    <i class="fal fa-search search-icon"></i>
+                    <span class="visually-hidden">Search</span>
+                </button>
+                <button class="btn-search-clear-text" style="display:none">Clear</button>
+            </div>
+        </fieldset>
     <section class="quickSearchResults" data-bind="html: results"></section>
-</form>
+    <p role="status"
+        aria-live="polite"
+        class="aria-description--hidden"
+        data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
+    ></p>
+    </form>
+</div>

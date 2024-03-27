@@ -90,14 +90,19 @@
     </ul>
 
     <ul class="product-spec-list">
+        {{#filter product.custom_fields 'awardName' property='name' }}{{assignVar 'awardName' value}}{{/filter}}
+        {{#filter product.custom_fields 'awardMedal' property='name' }}{{assignVar 'awardMedal' value}}{{/filter}} 
         {{#filter product.custom_fields 'awardName' property='name' }}
         <li>
             <div class="productView-spec-item">
                 <span class="productView-spec-label">Award</span>
             </div>
-            <span>{{value}}</span>
+            <span>
+                {{getVar 'awardName'}} {{getVar 'awardMedal'}}
+            </span>
         </li>
-        {{/filter}}  
+        {{/filter}} 
+        
         {{#filter product.custom_fields 'vegan' property='name' }}
         {{#if value '===' 'Yes'}}
         <li>
