@@ -24,7 +24,8 @@
         "prefer-destructuring": 0,
         "import/no-named-as-default": 0,
         "import/no-named-as-default-member": 0,
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "linebreak-style": 0
     },
     "globals": {
         "$": true,
