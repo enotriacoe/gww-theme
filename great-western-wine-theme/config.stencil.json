@@ -20,6 +20,10 @@
       "category-plp-rich.html": [
         "/producers/bertani/"
       ],
+      "category-plp-rich-no-title.html": [
+        "/new-category-header-test/",
+        "/whiskey/"
+      ],
       "category-plp-producer.html": [
         "/producers/ken-forrester-wines/"
       ]
@@ -27,6 +31,7 @@
     "page": {},
     "product": {}
   },
-  "normalStoreUrl": "https://greatwine.co.uk/",
-  "port": "3000"
+  "normalStoreUrl": "https://store-968tlwt7s4.mybigcommerce.com/",
+  "port": "3000",
+  "packageManager": "npm"
 }

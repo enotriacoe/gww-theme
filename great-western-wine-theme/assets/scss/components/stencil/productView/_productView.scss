@@ -118,7 +118,6 @@
 }
 
 .productView-thumbnail-link {
-    border: container("border");
     display: inline-block;
     height: 67px;
     max-width: 75px;
@@ -126,11 +125,6 @@
     position: relative;
     text-align: center;
     width: 100%;
-
-    &:hover,
-    &.is-active {
-        border-color: color("greys", "darker");
-    }
 }
 
 
@@ -631,7 +625,7 @@
 .info-carousel {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     > div {
         width: 100%;
@@ -650,9 +644,9 @@
         display: flex;
 
         .icon {
-            font-size: 35px;
-            height: 35px;
-            width: 35px;
+            font-size: 26px;
+            height: 26px;
+            width: 26px;
             margin-right: 10px;
         }
 
@@ -662,9 +656,18 @@
     }
 }
 
-.productView-food-recommendation {
+.productView-content-section {
     display: inline-block;
     padding: 10px;
+
+    .content-section-header {
+        font-family: $fontFamily-headings;
+        font-weight: 700;
+        line-height: 1;
+        font-size: 26px;
+        margin-bottom: 0.8rem;
+        margin-top: 0;
+    }
 }
 
 .productView-food-rec-title {

@@ -1,10 +1,5 @@
 <div class="category-header {{#if category.image}}{{else}}full-width{{/if}}">
-    <div class="category-text">
-        {{#if category.name}}
-            <h1 class="stylised-title">{{category.name}}</h1>
-        {{/if}}
-        {{#if category.description}}
-            <p class="show-read-more">{{{category.description}}}</p>
-        {{/if}}
-    </div>
+    {{#if category.description}}
+        {{{category.description}}}
+    {{/if}}
 </div>

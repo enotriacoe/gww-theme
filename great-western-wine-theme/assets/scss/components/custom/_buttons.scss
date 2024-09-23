@@ -139,3 +139,26 @@
         font-size: 20px;
     }
 }
+
+.button--secondary {
+    background-color: $maroon;
+    border: 5px solid $maroon;
+    border-radius: 0;
+    color: white;
+
+    &:hover {
+        background-color: $maroon-lt;
+        color: white;
+        border-color: $maroon;
+    }
+
+    &:active {
+        border: 5px solid $maroon;
+    }
+
+    &:focus {
+        background-color: $maroon-lt;
+        color: white;
+        border-color: $maroon;
+    }
+}

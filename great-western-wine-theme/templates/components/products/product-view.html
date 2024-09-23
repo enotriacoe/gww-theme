@@ -156,6 +156,31 @@
                     {{/if}}
                 </div>
             </figure>
+            <ul class="productView-thumbnails"{{#gt product.images.length 5}} data-slick='{
+                "infinite": false,
+                "mobileFirst": true,
+                "slidesToShow": 5,
+                "slidesToScroll": 1
+            }'{{/gt}}>
+                {{#each product.images}}
+                    <li class="icon productView-thumbnail">
+                        <a
+                            class="productView-thumbnail-link"
+                            href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                            data-image-gallery-item
+                            data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
+                            data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
+                            data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
+                        >
+                        {{> components/common/responsive-img
+                            image=this
+                            fallback_size=../theme_settings.productview_thumb_size
+                            lazyload=../theme_settings.lazyload_mode
+                        }}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
             <div class="productView-video">
                 {{#if product.videos.list.length}}
                     {{> components/products/videos product.videos}}
@@ -349,10 +374,6 @@
                         <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
                         <dd class="productView-info-value">{{product.condition}}</dd>
                     {{/if}}
-                    {{#if product.availability}}
-                        <dt class="productView-info-name">{{lang 'products.availability'}}</dt>
-                        <dd class="productView-info-value">{{product.availability}}</dd>
-                    {{/if}}
                     {{#all product.weight theme_settings.show_product_weight}}
                         <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
                         <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
@@ -417,97 +438,128 @@
                     {{> components/products/description-tabs}}
                 {{else}}
                     {{> components/products/description}}
-                    {{#filter product.custom_fields 'size' property='name'}}
-                        <p class="productView-size">{{value}}</p>
-                    {{/filter}}
                 {{/if}}
             </article>
+
+            {{#filter product.custom_fields 'filterFlavour' property='name'}}
+            <div class="productView-flavour-cont">
+            {{else}}
+            <div class="productView-flavour-cont"  style="display:none">
+            {{/filter}}
+                <h3>Key Flavours</h3>
+                <div class="flavour-list">
+                    {{#filter product.custom_fields 'flavour' property='name' }}
+                        <div class="productView-flavour">
+                            <i class="icon icon-{{dashcase value}}" title="Has {{value}} flavour notes" aria-hidden="true"></i>
+                            <span>{{value}}</span>
+                        </div>
+                    {{/filter}}
+                </div>
+            </div>
+
+            {{#filter product.custom_fields 'curatorQuote' property='name' }}
+            <div class="productView-people productView-paragraph">
+                    <i class="fal fa-user icon" title="A Curator's review" aria-label="A Curator's review"></i>
+            {{/filter}}
+            {{#filter product.custom_fields 'curatorQuote' property='name' }}
+                <blockquote>"{{value}}"
+            {{/filter}}
+            {{#filter product.custom_fields 'curator' property='name' }}
+                    <footer>
+                        {{value}}   
+                    </footer>
+                </blockquote>
+            </div>
+            {{/filter}}
 
         </section>
 
         <hr class="productView-divider">
 
         <section class="info-carousel">
+            {{#filter product.custom_fields 'press1Publication' property='name' }}
+            <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-newspaper icon"></i>
+                    <h2 class="content-section-header">Press Review</h3>
+                </div>
+                <blockquote class="press-review-quote">"{{/filter}}{{#filter product.custom_fields 'press1Text' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Publication' property='name' }}"
+                </blockquote>
+            {{/filter}} 
 
-            {{#filter product.custom_fields 'press1Output' property='name' }}
-                <div class="press-review-cont">
+            {{#filter product.custom_fields 'press2Publication' property='name' }}
+                <div class="productView-content-section">
                     <div class="info-carousel-header">
-                        <i class="fal fa-wine-glass-alt icon"></i>
-                        <h3 class="stylised-medium">Press Review</h3>
+                        <i class="fal fa-newspaper icon"></i>
+                        <h2 class="content-section-header">Press Review</h3>
                     </div>
-                    <blockquote class="press-review-quote">                
-                        "{{/filter}}{{#filter product.custom_fields 'press1Text' property='name' }}{{ value}}"{{/filter}}
-                    {{#filter product.custom_fields 'press1Output' property='name' }}
+                    <blockquote class="press-review-quote">"{{/filter}}{{#filter product.custom_fields 'press2Text' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press2Publication' property='name' }}"
                     </blockquote>
-            {{/filter}}
-
-            {{#filter product.custom_fields 'press1Attribution' property='name' }}
-                <footer class="press-review-title">
-            {{/filter}}
-            {{#filter product.custom_fields 'press1Rating' property='name' }}{{value}}{{/filter}}
-            {{#filter product.custom_fields 'press1Attribution' property='name' }}, {{value}}{{/filter}}
-            {{#filter product.custom_fields 'press1Publication' property='name' }}, {{/filter}}
-            {{#filter product.custom_fields 'press1Url' property='name' }}
-                <a href="{{value}}" target="_blank">
-            {{/filter}}
-                {{#filter product.custom_fields 'press1Publication' property='name' }}{{value}}{{/filter}}
-            {{#filter product.custom_fields 'press1Url' property='name' }}
-            </a>
-            {{/filter}}
-            {{#filter product.custom_fields 'press1Date' property='name' }}, {{value}}{{/filter}}
-
-            {{#filter product.custom_fields 'press1Attribution' property='name' }}
-                </footer>
-            {{/filter}}
-            {{#filter product.custom_fields 'press1Output' property='name' }}
+                    <footer class="press-review-title">                
+                        {{value}}
+                    </footer>
                 </div>
             {{/filter}}
+        </section>
 
-
-            {{#filter product.custom_fields 'press2Output' property='name' }}
-                <div class="press-review-cont">
-                    <div class="info-carousel-header">
-                        <i class="fal fa-wine-glass-alt icon"></i>
-                        <h3 class="stylised-medium">Press Review</h3>
-                    </div>
-                    <blockquote class="press-review-quote">                
-                        "{{/filter}}{{#filter product.custom_fields 'press2Text' property='name' }}{{ value}} "{{/filter}}
-                    {{#filter product.custom_fields 'press2Output' property='name' }}
-                    </blockquote>
-            {{/filter}}
-
-            {{#filter product.custom_fields 'press2Attribution' property='name' }}
-                <footer class="press-review-title">
-            {{/filter}}
-            {{#filter product.custom_fields 'press2Rating' property='name' }}{{value}}{{/filter}}
-            {{#filter product.custom_fields 'press2Attribution' property='name' }}, {{value}}{{/filter}}
-            {{#filter product.custom_fields 'press2Publication' property='name' }}, {{/filter}}
-            {{#filter product.custom_fields 'press2Url' property='name' }}
-                <a href="{{value}}" target="_blank">
-            {{/filter}}
-                {{#filter product.custom_fields 'press2Publication' property='name' }}{{value}}{{/filter}}
-            {{#filter product.custom_fields 'press2Url' property='name' }}
-            </a>
-            {{/filter}}
-            {{#filter product.custom_fields 'press2Date' property='name' }}, {{value}}{{/filter}}
-
-            {{#filter product.custom_fields 'press2Attribution' property='name' }}
-                </footer>
-            {{/filter}}
-            {{#filter product.custom_fields 'press2Output' property='name' }}
-                </div>
-            {{/filter}}
-            
-
-            {{#filter product.custom_fields 'winemakingOutput' property='name' }}
-            <div class="productView-creation">
+        <section class="info-carousel">
+            {{#filter product.custom_fields 'serve' property='name' }}
+            <div class="productView-content-section">
                 <div class="info-carousel-header">
                     <i class="fal fa-wine-glass-alt icon"></i>
-                    <h3 class="stylised-medium">Winemaking</h3>
+                    <h2 class="content-section-header">Serve</h3>
+                </div>
+                <p>{{value}}</p>
+            </div>
+            {{/filter}}
+
+            {{#filter product.custom_fields 'process' property='name' }}
+            <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-flask-potion icon"></i>
+                    <h2 class="content-section-header">Process</h3>
+                </div>
+                <p>{{value}}</p>
+            </div>
+            {{/filter}}  
+        </section>
+
+        <section class="info-carousel">
+            {{#filter product.custom_fields 'people' property='name' }}
+            <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-users icon"></i>
+                    <h2 class="content-section-header">People</h3>
+                </div>
+                <p>{{value}}</p>
+            </div>
+            {{/filter}}
+
+            {{#filter product.custom_fields 'place' property='name' }}
+            <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-map-marker-alt icon"></i>
+                    <h2 class="content-section-header">Place</h3>
+                </div>
+                <p>{{value}}</p>
+            </div>
+            {{/filter}}  
+        </section>
+
+        <section class="info-carousel">
+            {{#filter product.custom_fields 'winemaking_0' property='name' }}
+            <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-wine-bottle icon"></i>
+                    <h2 class="content-section-header">Winemaking</h3>
                 </div>
                 <p>
-                    {{/filter}}{{#filter product.custom_fields 'winemaking' property='name' }}{{value}}{{/filter}}
-                {{#filter product.custom_fields 'winemakingOutput' property='name' }}
+            {{/filter}}
+
+                {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
+            
+            {{#filter product.custom_fields 'winemaking_0' property='name' }}
+>>>>>>> Stashed changes
                 </p>
             </div>
             {{/filter}}

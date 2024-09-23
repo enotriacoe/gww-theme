@@ -10,8 +10,6 @@
 }
 
 .brand {
-    margin: 30px 22px;
-
     .brand-card {
         border: 1px solid var(--light-grey, #D4DCE1);
 
@@ -51,5 +49,19 @@
         a{
             text-decoration: none;
         }
+    }
+}
+
+// Brands Listing Page
+
+.list-brands {
+    column-count: 1;
+
+    @include breakpoint("small") {
+        column-count: 2;
+    }
+
+    @include breakpoint("medium") {
+        column-count: 4;
     }
 }
