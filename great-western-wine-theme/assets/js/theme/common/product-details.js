@@ -20,7 +20,6 @@ export default class ProductDetails extends ProductDetailsBase {
         this.$overlay = $('[data-cart-item-add] .loadingOverlay');
         this.imageGallery = new ImageGallery($('[data-image-gallery]', this.$scope));
         this.imageGallery.init();
-        this.listenQuantityChange();
         this.$swatchOptionMessage = $('.swatch-option-message');
         this.swatchInitMessageStorage = {};
         this.swatchGroupIdList = $('[id^="swatchGroup"]').map((_, group) => $(group).attr('id'));
@@ -372,53 +371,6 @@ export default class ProductDetails extends ProductDetailsBase {
         } else {
             this.imageGallery.restoreImage();
         }
-    }
-
-    /**
-     *
-     * Handle action when the shopper clicks on + / - for quantity
-     *
-     */
-    listenQuantityChange() {
-        this.$scope.on('click', '[data-quantity-change] button', event => {
-            event.preventDefault();
-            const $target = $(event.currentTarget);
-            const viewModel = this.getViewModel(this.$scope);
-            const $input = viewModel.quantity.$input;
-            const quantityMin = parseInt($input.data('quantityMin'), 10);
-            const quantityMax = parseInt($input.data('quantityMax'), 10);
-
-            let qty = forms.numbersOnly($input.val()) ? parseInt($input.val(), 10) : quantityMin;
-            // If action is incrementing
-            if ($target.data('action') === 'inc') {
-                qty = forms.validateIncreaseAgainstMaxBoundary(qty, quantityMax);
-            } else if (qty > 1) {
-                qty = forms.validateDecreaseAgainstMinBoundary(qty, quantityMin);
-            }
-
-            // update hidden input
-            viewModel.quantity.$input.val(qty);
-            // update text
-            viewModel.quantity.$text.text(qty);
-            // perform validation after updating product quantity
-            this.addToCartValidator.performCheck();
-
-            this.updateProductDetailsData();
-        });
-
-        // Prevent triggering quantity change when pressing enter
-        this.$scope.on('keypress', '.form-input--incrementTotal', event => {
-            // If the browser supports event.which, then use event.which, otherwise use event.keyCode
-            const x = event.which || event.keyCode;
-            if (x === 13) {
-                // Prevent default
-                event.preventDefault();
-            }
-        });
-
-        this.$scope.on('keyup', '.form-input--incrementTotal', () => {
-            this.updateProductDetailsData();
-        });
     }
 
     /**
