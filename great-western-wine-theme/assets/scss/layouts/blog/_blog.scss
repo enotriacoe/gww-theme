@@ -93,19 +93,20 @@
 
 .blog-listing {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+
+    @include breakpoint("small") {
+        grid-template-columns: 1fr 1fr;
+    }
 
     @include breakpoint("medium") {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .blog-post-figure {
         display: block;
         margin: auto;
         width: 100%;
-    
-        @include breakpoint("medium") {
-            width: grid-calc(3, $total-columns);
-        }
     }
     
     .blog-post-body {
