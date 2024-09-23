@@ -25,13 +25,13 @@ blog:
         <hr class="productView-divider">
     </aside>
 
-    <div class="page-content">
+    <div class="page-content blog-listing">
         {{#each blog.posts}}
             {{> components/blog/post-teaser post=this}}
         {{/each}}
 
-        {{> components/common/paginator pagination.blog theme_settings=../theme_settings}}
     </div>
+    {{> components/common/paginator pagination.blog theme_settings=../theme_settings}}
 
 </div>
 

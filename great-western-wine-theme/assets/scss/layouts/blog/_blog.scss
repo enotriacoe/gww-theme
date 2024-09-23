@@ -6,19 +6,14 @@
 // Blog post
 // -----------------------------------------------------------------------------
 
+.blog-listing {
+    display: grid;
+    grid-template: 1fr 1fr 1fr;
+    gap: 20px
+}
+
 .blog {
     margin-bottom: spacing("single");
-
-    @include breakpoint("medium") {
-        margin: auto;
-        width: 100%;
-    }
-
-    + .blog {
-        border-top: container("border");
-        margin-top: spacing("double");
-        padding-top: spacing("double");
-    }
 
     .tags {
         margin-top: spacing("double");
@@ -37,10 +32,8 @@
 }
 
 .blog-title {
-    font-size: fontSize("largest");
-    margin: 0 spacing("single") spacing("quarter");
-    margin-left: 0;
-
+    margin: 0 spacing("single") spacing("single");
+    line-height:1.2em;
     a {
         text-decoration: none;
     }
@@ -49,7 +42,7 @@
 .blog-date,
 .blog-author {
     color: stencilColor("color-textSecondary");
-    // text-align: center;
+    text-align: center;
 }
 
 .blog-author {
@@ -57,16 +50,14 @@
 }
 
 .blog-post {
-    font-size: fontSize("smaller");
-    text-align: left;
+    font-size: fontSize("small");
+    text-align: justify;
 }
 
 .blog-thumbnail {
-    margin: 0 auto (spacing("base") * 2);
+    margin: 0 auto (spacing("base"));
     position: relative;
-    max-width: 90%;
-    max-height: 250px;
-    overflow: hidden;
+    max-width: get_width(stencilString('blog_size'));
 
     img {
         width: 100%;
@@ -76,19 +67,13 @@
 .blog-post-figure {
     display: block;
     margin: auto;
-    // text-align: center;
-
-    @include breakpoint("medium") {
-        width: grid-calc(3, $total-columns);
-        display: inline-block;
-        vertical-align: top;
-    }
+    text-align: center;
 }
 
 .blog-post-body {
     display: block;
-    margin: 0 auto;
-    // text-align: center;
+    margin: 1em auto;
+    text-align: center;
     width: 100%;
 
     @include breakpoint("small") {
@@ -96,11 +81,50 @@
     }
 
     @include breakpoint("medium") {
-        width: grid-calc(8, $total-columns);
-        display: inline-block;
+        width: grid-calc(10, $total-columns);
     }
 
     @include breakpoint("large") {
-        width: grid-calc(6, $total-columns);
+        width: grid-calc(10, $total-columns);
+    }
+}
+
+// Custom styling for the blog listing page as both the listings and posts use the same classes
+
+.blog-listing {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @include breakpoint("medium") {
+    }
+
+    .blog-post-figure {
+        display: block;
+        margin: auto;
+        width: 100%;
+    
+        @include breakpoint("medium") {
+            width: grid-calc(3, $total-columns);
+        }
+    }
+    
+    .blog-post-body {
+        display: block;
+        margin: 1em auto;
+        text-align: center;
+        width: 100%;
+
+        .blog-post {
+            font-size: 16px;
+            text-align: center;
+
+            @include breakpoint("medium") {
+                text-align: left;
+            }
+
+            .blog-summary {
+                text-align: justify;
+            }
+        }
     }
 }
