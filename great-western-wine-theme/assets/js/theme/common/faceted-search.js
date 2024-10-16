@@ -126,7 +126,7 @@ class FacetedSearch {
         this.additionFilterFunctions();
         this.closeFilterOptions();
         this.hideMoreFiltersIfNone();
-        this.removeDuplicateDescZones();
+        this.moveBottomDescZone();
     }
 
     updateView() {
@@ -557,12 +557,10 @@ class FacetedSearch {
         });
     }
 
-    removeDuplicateDescZones() {
-        if ($('.desc-zone-bottom').length > 1) {
-            $('.desc-zone-bottom')[0].remove();
-        }
-        if ($('.desc-zone-top').length > 1) {
-            $('.desc-zone-top')[1].remove();
+    moveBottomDescZone() {
+        if ($('.desc-zone-bottom')[0]) {
+            $('.desc-zone-bottom').detach().appendTo('.bottom-category-text');
+            $('.desc-zone-bottom').show();
         }
     }
 
