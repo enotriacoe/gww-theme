@@ -32,8 +32,9 @@
 }
 
 .blog-title {
-    margin: 0 spacing("single") spacing("single");
+    margin: 0 spacing("single") spacing("single") / 2;
     line-height:1.2em;
+    font-size: 25px;
     a {
         text-decoration: none;
     }
@@ -43,6 +44,7 @@
 .blog-author {
     color: stencilColor("color-textSecondary");
     text-align: center;
+    margin-bottom: spacing("single");
 }
 
 .blog-author {
