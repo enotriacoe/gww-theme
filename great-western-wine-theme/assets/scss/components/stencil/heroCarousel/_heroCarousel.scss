@@ -86,21 +86,23 @@
     max-height: 30vw;
   }
 
-.heroCarousel-slide {
-    &.compat-object-fit { // 1
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
+  .heroCarousel-slide {
+    &.compat-object-fit {
+      // 1
+      background-size: cover;
+      background-position: 50%;
+      background-repeat: no-repeat;
 
-        &.stretch {
-            @include breakpoint("large") { // 4
-                background-size: 100% 100%;
-            }
+      &.stretch {
+        @include breakpoint('large') {
+          // 4
+          background-size: 100% 100%;
         }
+      }
 
-        .heroCarousel-image {
-            opacity: 0;
-        }
+      .heroCarousel-image {
+        opacity: 0;
+      }
     }
   }
 }
@@ -108,18 +110,17 @@
 .heroCarousel-content {
   background-color: rgba($carousel-bgColor, 1);
   padding: spacing('half');
-  text-align: left;
+  text-align: center;
 
   @include breakpoint('medium') {
-    @include carouselOpaqueBackgrounds;
-    background-color: rgba($carousel-bgColor, 1);
+    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
-    left: 70px;
+    left: 0;
     bottom: 30px;
     margin: 0 auto;
     padding: 1.3rem (spacing('single') * 1.5);
     overflow: hidden;
-    max-width: 60%;
+    width: 100%;
     max-height: 250px;
 
     &.heroCarousel-content--empty {
@@ -128,7 +129,6 @@
   }
 
   @include breakpoint('large') {
-    max-width: 50%;
     max-height: 20vw;
   }
 }
@@ -140,14 +140,19 @@
   font-family: $fontFamily-headings;
   font-weight: 700;
   display: block;
+  line-height: 1;
 
   @include breakpoint('medium') {
-    font-size: fontSize('largest');
-    line-height: 1;
+    font-size: calc(fontSize('largest') * 1.5);
+    color: #fff;
   }
 
   @include breakpoint('large') {
     font-size: fontSize('hero');
+  }
+
+  p {
+    margin-bottom: 0;
   }
 }
 
@@ -158,6 +163,7 @@
 
   @include breakpoint('medium') {
     font-size: fontSize('large');
+    color: #fff;
   }
 }
 
@@ -166,6 +172,7 @@
 
   @include breakpoint('medium') {
     margin-top: (spacing('single') / 3);
+    color: #fff;
   }
 }
 

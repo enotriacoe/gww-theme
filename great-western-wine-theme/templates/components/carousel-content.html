@@ -1,5 +1,5 @@
 <div class="heroCarousel-content{{#unless show_background}} heroCarousel-content--empty{{/unless}}">
-    <span class="heroCarousel-title">{{{heading}}}</span>
+    <span class="heroCarousel-title">{{#markdown heading}}{{/markdown}}</span>
     <p class="heroCarousel-description">{{{text}}}</p>
     {{#if button_text}}
         <span class="heroCarousel-action btn btn-coral-line">{{button_text}} <i class="fa fa-chevron-right icon"></i></span>
