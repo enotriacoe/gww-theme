@@ -229,6 +229,10 @@
         }
 
         .sticky-multi-price {
+            .price--withTax {
+                color: $maroon;
+            }
+
             .multibuy-price-title {
                 position: relative;
             
@@ -263,7 +267,7 @@
 
         .multibuy-saving {
             display: block;
-            color: $green;
+            color: $maroon;
             font-weight: 600;
             line-height: 1;
         }
