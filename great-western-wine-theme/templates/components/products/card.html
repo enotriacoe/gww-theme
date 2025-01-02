@@ -54,11 +54,7 @@
                             {{/if}}
                     {{/filter}}
                 {{/if}}
-                {{#filter custom_fields 'awardImage' property='name' }}
-                    <img src="{{value}}" alt="{{/filter}}{{#filter custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}"
-                {{#filter custom_fields 'awardImage' property='name' }}
-                    class="card-img-medal" />
-                {{/filter}}
+                {{#filter custom_fields 'awardImage' property='name' }}<img class="card-img-medal" src="{{value}}" alt="{{/filter}}{{#filter custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}{{#filter custom_fields 'awardImage' property='name' }}" />{{/filter}}
             </div>
         </a>
 
@@ -85,13 +81,14 @@
             </div>
 
             <p class="card-stats">
-                <span> {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} &nbsp; </span>
-                <span class="card-text-volume">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
+                {{#filter custom_fields 'vintage' property='name' }}<span>{{value}}</span>{{/filter}}
+                {{#filter custom_fields 'abv' property='name' }}<span>{{value}} ABV</span>{{/filter}}
+                {{#filter custom_fields 'unitVolume' property='name' }}<span>{{value}}</span>{{/filter}}
             </p>
         </div>
         <div class="card-price-wrap">
             <div class="card-price-cont">
-                <div class="card-single-cont" data-test-info-type="price">
+                <div class="card-single-cont {{#filter custom_fields 'isWine' property='name'}} card-single-cont-with-multibuy{{/filter}}" data-test-info-type="price">
                     <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
                     {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                         {{> components/products/price price=price}}
@@ -193,9 +190,9 @@
             </div>
             <div class="card-review-cont">
                 {{#if num_reviews '>' 0}}
-                    <p class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</p>
+                    <div class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</div>
                 {{else}}
-                    <a href="{{url}}#write_review" title="Write a review">Write a Review</a>
+                    <div><a href="{{url}}#write_review" title="Write a review">Write a Review</a></div>
                 {{/if}}
                 <div class="wishlist-grid-view">
                     {{> components/common/wishlist-dropdown}}
