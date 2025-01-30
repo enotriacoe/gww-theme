@@ -45,28 +45,16 @@
 }
 
 .productView-description-cont {
-    @include grid-column(12);
     padding: 0;
     margin: 15px 0 30px 0;
 
-    @include breakpoint("large") {
-
-    }
-
-    .productView-title {
-        border-bottom: container("border");
-        margin-bottom: spacing("base");
-        padding-left: spacing("base");
-        padding-right: spacing("base");
-    }
-
-    .productView-description {
-        @include breakpoint("medium") {
-            clear: both;
-            float: none;
-            width: 100%;
-        }
-    }
+    // .productView-description {
+    //     @include breakpoint("medium") {
+    //         clear: both;
+    //         float: none;
+    //         width: 100%;
+    //     }
+    // }
 }
 
 // Mixed Case Description utility
@@ -149,8 +137,17 @@
 // Flavours
 
 .productView-flavour-cont {
-    margin-left: 50px;
-    margin-bottom: 30px;
+
+    margin-bottom: 2rem;
+
+    h3 {
+        font-family: $fontFamily-headings;
+        font-weight: 700;
+        line-height: 1;
+        font-size: 26px;
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
     
     .flavour-list {
         display: flex;

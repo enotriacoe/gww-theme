@@ -116,9 +116,9 @@
                 Note that these image sizes are coupled to image sizes used in /assets/js/theme/common/product-details.js
                 for variant/rule image replacement
             --}}
-        {{#if product.images.length '>' 1 }}
-        {{> components/carousel-content-announcement}}
-        {{/if}}
+            {{#if product.images.length '>' 1 }}
+            {{> components/carousel-content-announcement}}
+            {{/if}}
             <figure class="productView-image"
                     data-image-gallery-main
                     {{#if product.main_image}}
@@ -179,7 +179,7 @@
             </div>
         </section>
 
-    <section class="productView-details product-data">
+        <section class="productView-details product-data">
             <div class="productView-product">
                 <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>
                     {{#filter product.custom_fields 'simpleName' property='name' }}
@@ -321,7 +321,7 @@
                         {{/filter}}
                     </div>
 
-                {{#any product.custom_fields name='planetFriendly'}}
+                    {{#any product.custom_fields name='planetFriendly'}}
                     <div class="productView-planet-friendly">
                         <div class="productView-kind">
                         {{#any product.custom_fields name='planetFriendly' value='Organic'}}
@@ -355,73 +355,73 @@
                         {{/filter}}
                         </div>
                     </div>
-                {{/any}}
+                  {{/any}}
 
-                {{{region name="product_below_price"}}}
+                  {{{region name="product_below_price"}}}
 
-                {{product.detail_messages}}
-                <!-- <dl class="productView-info">
-                    {{#if product.condition}}
-                        <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
-                        <dd class="productView-info-value">{{product.condition}}</dd>
-                    {{/if}}
-                    {{#all product.weight theme_settings.show_product_weight}}
-                        <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
-                        <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
-                    {{/all}}
-                    {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
-                        <dt class="productView-info-name">{{lang 'products.width'}}</dt>
-                        <dd class="productView-info-value" data-product-width>
-                            {{product.width}}
-                            {{#if settings.measurements.length '==' 'Centimeters'}}
-                            ({{lang 'products.measurement.metric'}})
-                            {{else}}
-                            ({{lang 'products.measurement.imperial'}})
-                            {{/if}}
-                        </dd>
-                        <dt class="productView-info-name">{{lang 'products.height'}}</dt>
-                        <dd class="productView-info-value" data-product-height>
-                            {{product.height}}
-                            {{#if settings.measurements.length '==' 'Centimeters'}}
-                            ({{lang 'products.measurement.metric'}})
-                            {{else}}
-                            ({{lang 'products.measurement.imperial'}})
-                            {{/if}}
-                        </dd>
-                        <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
-                        <dd class="productView-info-value" data-product-depth>
-                            {{product.depth}}
-                            {{#if settings.measurements.length '==' 'Centimeters'}}
-                            ({{lang 'products.measurement.metric'}})
-                            {{else}}
-                            ({{lang 'products.measurement.imperial'}})
-                            {{/if}}
-                        </dd>
-                    {{/all}}
+                  {{product.detail_messages}}
+                  <!-- <dl class="productView-info">
+                      {{#if product.condition}}
+                          <dt class="productView-info-name">{{lang 'products.condition'}}</dt>
+                          <dd class="productView-info-value">{{product.condition}}</dd>
+                      {{/if}}
+                      {{#all product.weight theme_settings.show_product_weight}}
+                          <dt class="productView-info-name">{{lang 'products.weight'}}</dt>
+                          <dd class="productView-info-value" data-product-weight>{{product.weight}}</dd>
+                      {{/all}}
+                      {{#all product.width product.height product.depth theme_settings.show_product_dimensions}}
+                          <dt class="productView-info-name">{{lang 'products.width'}}</dt>
+                          <dd class="productView-info-value" data-product-width>
+                              {{product.width}}
+                              {{#if settings.measurements.length '==' 'Centimeters'}}
+                              ({{lang 'products.measurement.metric'}})
+                              {{else}}
+                              ({{lang 'products.measurement.imperial'}})
+                              {{/if}}
+                          </dd>
+                          <dt class="productView-info-name">{{lang 'products.height'}}</dt>
+                          <dd class="productView-info-value" data-product-height>
+                              {{product.height}}
+                              {{#if settings.measurements.length '==' 'Centimeters'}}
+                              ({{lang 'products.measurement.metric'}})
+                              {{else}}
+                              ({{lang 'products.measurement.imperial'}})
+                              {{/if}}
+                          </dd>
+                          <dt class="productView-info-name">{{lang 'products.depth'}}</dt>
+                          <dd class="productView-info-value" data-product-depth>
+                              {{product.depth}}
+                              {{#if settings.measurements.length '==' 'Centimeters'}}
+                              ({{lang 'products.measurement.metric'}})
+                              {{else}}
+                              ({{lang 'products.measurement.imperial'}})
+                              {{/if}}
+                          </dd>
+                      {{/all}}
 
-                    {{#if product.shipping}}
-                        {{#if product.shipping.calculated}}
-                            <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                            <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
-                        {{else}}
-                            {{#if product.shipping.price.value '===' 0}}
-                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                                <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
-                            {{else}}
-                                <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
-                                <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
-                            {{/if}}
-                        {{/if}}
-                    {{/if}}
+                      {{#if product.shipping}}
+                          {{#if product.shipping.calculated}}
+                              <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                              <dd class="productView-info-value">{{lang 'products.shipping_calculated'}}</dd>
+                          {{else}}
+                              {{#if product.shipping.price.value '===' 0}}
+                                  <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                  <dd class="productView-info-value">{{lang 'products.shipping_free'}}</dd>
+                              {{else}}
+                                  <dt class="productView-info-name">{{lang 'products.shipping'}}</dt>
+                                  <dd class="productView-info-value">{{lang 'products.shipping_fixed' amount=product.shipping.price.formatted}}</dd>
+                              {{/if}}
+                          {{/if}}
+                      {{/if}}
 
-                    {{#if settings.bulk_discount_enabled}}
-                        <div class="productView-info-bulkPricing">
-                            {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
-                        </div>
-                    {{/if}}
+                      {{#if settings.bulk_discount_enabled}}
+                          <div class="productView-info-bulkPricing">
+                              {{> components/products/bulk-discount-rates bulk_discount_rates=product.bulk_discount_rates}}
+                          </div>
+                      {{/if}}
 
 
-                </dl> -->
+                  </dl> -->
             </div>
                 
             <article class="productView-description-cont"{{#if schema}} itemprop="description"{{/if}}>
@@ -463,37 +463,81 @@
             </div>
             {{/filter}}
 
-        </section>
 
-        <hr class="productView-divider">
 
-        <section class="info-carousel">
-            {{#filter product.custom_fields 'press1Publication' property='name' }}
-            <div class="productView-content-section">
+        {{#each product.custom_fields}}
+          {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
+
+          {{#if name "===" "press1Text"}}{{assignVar "hasPress1Text" 1}}{{assignVar "press1Text" value}}{{/if}}
+          {{#if name "===" "press1Attribution"}}{{assignVar "hasPress1Attribution" 1}}{{assignVar "press1Attribution" value}}{{/if}}
+          {{#if name "===" "press1Publication"}}{{assignVar "hasPress1Publication" 1}}{{assignVar "press1Publication" value}}{{/if}}
+          {{#if name "===" "press1Date"}}{{assignVar "hasPress1Date" 1}}{{assignVar "press1Date" value}}{{/if}}
+          {{#if name "===" "press1Url"}}{{assignVar "hasPress1Url" 1}}{{assignVar "press1Url" value}}{{/if}}
+          {{#if name "===" "press1Vintage"}}{{assignVar "press1Vintage" value}}{{/if}}
+
+          {{#if name "===" "press2Text"}}{{assignVar "hasPress2Text" 1}}{{assignVar "press2Text" value}}{{/if}}
+          {{#if name "===" "press2Attribution"}}{{assignVar "hasPress2Attribution" 1}}{{assignVar "press2Attribution" value}}{{/if}}
+          {{#if name "===" "press2Publication"}}{{assignVar "hasPress2Publication" 1}}{{assignVar "press2Publication" value}}{{/if}}
+          {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{assignVar "press2Date" value}}{{/if}}
+          {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{assignVar "press2Url" value}}{{/if}}
+          {{#if name "===" "press2Vintage"}}{{assignVar "press2Vintage" value}}{{/if}}
+        {{/each}}
+
+        {{#all
+          (if (getVar "press1Vintage") '===' (getVar "vintage"))
+          (if (getVar "hasPress1Text") '>' 0)
+          (if (add (getVar "hasPress1Publication") (getVar "hasPress1Attribution")) '>' 0)
+          }}
+          {{assignVar "showPress1" 1}}
+        {{/all}}
+
+        {{#all
+          (if (getVar "press2Vintage") '===' (getVar "vintage"))
+          (if (getVar "hasPress2Text") '>' 0)
+          (if (add (getVar "hasPress2Publication") (getVar "hasPress2Attribution")) '>' 0)
+          }}
+          {{assignVar "showPress2" 1}}
+        {{/all}}
+
+        <div class="info-carousel">
+            {{#gt (getVar "showPress1") 0}}
+              <div class="productView-content-section">
                 <div class="info-carousel-header">
                     <i class="fal fa-newspaper icon"></i>
                     <h2 class="content-section-header">Press Review</h3>
                 </div>
-                <blockquote class="press-review-quote">"{{/filter}}{{#filter product.custom_fields 'press1Text' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press1Publication' property='name' }}"
+                <blockquote class="press-review-quote">
+                  <p>{{getVar 'press1Text'}}</p>
+                  <footer>-
+                    <cite>
+                      {{#if (getVar "hasPress1Url")}}<a href="{{getVar 'press1Url'}}">{{/if}}
+                      {{#if (getVar "hasPress1Attribution")}}{{getVar 'press1Attribution'}}{{/if}}{{#if (getVar "hasPress1Publication")}}{{#if (getVar "hasPress1Attribution")}}, {{/if}} {{getVar 'press1Publication'}}{{/if}}{{#if (getVar "hasPress1Date")}}, {{getVar 'press1Date'}}{{/if}}
+                      {{#if (getVar "hasPress1Url")}}</a>{{/if}}
+                    </cite>
+                  </footer>
                 </blockquote>
-            {{/filter}} 
+              </div>
+            {{/gt}} 
 
-            {{#filter product.custom_fields 'press2Publication' property='name' }}
-                <div class="productView-content-section">
-                    <div class="info-carousel-header">
-                        <i class="fal fa-newspaper icon"></i>
-                        <h2 class="content-section-header">Press Review</h3>
-                    </div>
-                    <blockquote class="press-review-quote">"{{/filter}}{{#filter product.custom_fields 'press2Text' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'press2Publication' property='name' }}"
-                    </blockquote>
-                    <footer class="press-review-title">                
-                        {{value}}
-                    </footer>
+            {{#gt (getVar "showPress2") 0}}
+              <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-newspaper icon"></i>
+                    <h2 class="content-section-header">Press Review</h3>
                 </div>
-            {{/filter}}
-        </section>
+                <blockquote class="press-review-quote">
+                  <p>{{getVar 'press2Text'}}</p>
+                  <footer>-
+                    <cite>
+                      {{#if (getVar "hasPress2Url")}}<a href="{{getVar 'press2Url'}}">{{/if}}
+                      {{#if (getVar "hasPress2Attribution")}}{{getVar 'press2Attribution'}}{{/if}}{{#if (getVar "hasPress2Publication")}}{{#if (getVar "hasPress2Attribution")}}, {{/if}} {{getVar 'press2Publication'}}{{/if}}{{#if (getVar "hasPress2Date")}}, {{getVar 'press2Date'}}{{/if}}
+                      {{#if (getVar "hasPress2Url")}}</a>{{/if}}
+                    </cite>
+                  </footer>
+                </blockquote>
+              </div>
+            {{/gt}} 
 
-        <section class="info-carousel">
             {{#filter product.custom_fields 'serve' property='name' }}
             <div class="productView-content-section">
                 <div class="info-carousel-header">
@@ -513,9 +557,7 @@
                 <p>{{value}}</p>
             </div>
             {{/filter}}  
-        </section>
-
-        <section class="info-carousel">
+            
             {{#filter product.custom_fields 'people' property='name' }}
             <div class="productView-content-section">
                 <div class="info-carousel-header">
@@ -534,24 +576,15 @@
                 </div>
                 <p>{{value}}</p>
             </div>
-            {{/filter}}  
-        </section>
+            {{/filter}} 
 
-        <section class="info-carousel">
             {{#filter product.custom_fields 'winemaking_0' property='name' }}
             <div class="productView-content-section">
                 <div class="info-carousel-header">
                     <i class="fal fa-wine-bottle icon"></i>
                     <h2 class="content-section-header">Winemaking</h3>
                 </div>
-                <p>
-            {{/filter}}
-
-                {{#filter product.custom_fields 'winemaking_0' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}
-            
-            {{#filter product.custom_fields 'winemaking_0' property='name' }}
->>>>>>> Stashed changes
-                </p>
+                <p>{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_0' property='name' }}</p>
             </div>
             {{/filter}}
 
@@ -567,7 +600,8 @@
                 </p>
             </div>
             {{/filter}}
-        </section>
+        </div>
+      </section>
         
         {{#all settings.show_product_reviews (if theme_settings.show_product_reviews_tabs '!==' Yes)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
