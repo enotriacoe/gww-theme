@@ -2,28 +2,27 @@
 
 {{#each product.custom_fields}}
     {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
-
-    {{#if name "===" "press1Text"}}{{assignVar "hasPress1Text" 1}}{{assignVar "press1Text" value}}{{/if}}
-    {{#if name "===" "press1Attribution"}}{{assignVar "hasPress1Attribution" 1}}{{assignVar "press1Attribution" value}}{{/if}}
-    {{#if name "===" "press1Publication"}}{{assignVar "hasPress1Publication" 1}}{{assignVar "press1Publication" value}}{{/if}}
-    {{#if name "===" "press1Date"}}{{assignVar "hasPress1Date" 1}}{{assignVar "press1Date" value}}{{/if}}
-    {{#if name "===" "press1Url"}}{{assignVar "hasPress1Url" 1}}{{assignVar "press1Url" value}}{{/if}}
+    {{#if name "===" "press1Text"}}{{assignVar "hasPress1Text" 1}}{{/if}}
+    {{#if name "===" "press1Attribution"}}{{assignVar "hasPress1Attribution" 1}}{{/if}}
+    {{#if name "===" "press1Publication"}}{{assignVar "hasPress1Publication" 1}}{{/if}}
+    {{#if name "===" "press1Date"}}{{assignVar "hasPress1Date" 1}}{{/if}}
+    {{#if name "===" "press1Url"}}{{assignVar "hasPress1Url" 1}}{{/if}}
     {{#if name "===" "press1Vintage"}}{{assignVar "press1Vintage" value}}{{/if}}
-
-    {{#if name "===" "press2Text"}}{{assignVar "hasPress2Text" 1}}{{assignVar "press2Text" value}}{{/if}}
-    {{#if name "===" "press2Attribution"}}{{assignVar "hasPress2Attribution" 1}}{{assignVar "press2Attribution" value}}{{/if}}
-    {{#if name "===" "press2Publication"}}{{assignVar "hasPress2Publication" 1}}{{assignVar "press2Publication" value}}{{/if}}
-    {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{assignVar "press2Date" value}}{{/if}}
-    {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{assignVar "press2Url" value}}{{/if}}
+    {{#if name "===" "press2Text"}}{{assignVar "hasPress2Text" 1}}{{/if}}
+    {{#if name "===" "press2Attribution"}}{{assignVar "hasPress2Attribution" 1}}{{/if}}
+    {{#if name "===" "press2Publication"}}{{assignVar "hasPress2Publication" 1}}{{/if}}
+    {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{/if}}
+    {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{/if}}
     {{#if name "===" "press2Vintage"}}{{assignVar "press2Vintage" value}}{{/if}}
-
-    {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{assignVar "awardName" value}}{{/if}}
-    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
-    {{#if name "===" "awardQuote"}}{{assignVar "hasAwardQuote" 1}}{{assignVar "awardQuote" value}}{{/if}}
+    {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{/if}}
     {{#if name "===" "awardImage"}}
-      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{assignVar "awardImage" value}}{{/if}}
+      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{/if}}
     {{/if}}
     {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
+    {{#if name "===" "winemaking"}}{{assignVar "hasWinemaking" 1}}{{/if}}
+    {{#if name "===" "foodRecommendation"}}{{assignVar "hasFoodRecommendation" 1}}{{/if}}
+    {{#if name "===" "planetFriendlyText"}}{{assignVar "hasPlanetFriendlyText" 1}}{{/if}}
 {{/each}}
 
 {{#all
@@ -518,11 +517,11 @@
                     <h2 class="content-section-header">Press Review</h3>
                 </div>
                 <blockquote class="press-review-quote">
-                  <p>{{getVar 'press1Text'}}</p>
+                  <p>{{#filter product.custom_fields 'press1Text' property='name' }}{{value}}{{/filter}}</p>
                   <footer>-
                     <cite>
-                      {{#if (getVar "hasPress1Url")}}<a href="{{getVar 'press1Url'}}">{{/if}}
-                      {{#if (getVar "hasPress1Attribution")}}{{getVar 'press1Attribution'}}{{/if}}{{#if (getVar "hasPress1Publication")}}{{#if (getVar "hasPress1Attribution")}}, {{/if}} {{getVar 'press1Publication'}}{{/if}}{{#if (getVar "hasPress1Date")}}, {{getVar 'press1Date'}}{{/if}}
+                      {{#if (getVar "hasPress1Url")}}<a href="{{#filter product.custom_fields 'press1Url' property='name' }}{{value}}{{/filter}}">{{/if}}
+                      {{#filter product.custom_fields 'press1Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress1Publication")}}{{#if (getVar "hasPress1Attribution")}}, {{/if}} {{#filter product.custom_fields 'press1Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress1Date")}}, {{#filter product.custom_fields 'press1Date' property='name' }}{{value}}{{/filter}}{{/if}}
                       {{#if (getVar "hasPress1Url")}}</a>{{/if}}
                     </cite>
                   </footer>
@@ -537,11 +536,11 @@
                     <h2 class="content-section-header">Press Review</h3>
                 </div>
                 <blockquote class="press-review-quote">
-                  <p>{{getVar 'press2Text'}}</p>
+                  <p>{{#filter product.custom_fields 'press2Text' property='name' }}{{value}}{{/filter}}</p>
                   <footer>-
                     <cite>
-                      {{#if (getVar "hasPress2Url")}}<a href="{{getVar 'press2Url'}}">{{/if}}
-                      {{#if (getVar "hasPress2Attribution")}}{{getVar 'press2Attribution'}}{{/if}}{{#if (getVar "hasPress2Publication")}}{{#if (getVar "hasPress2Attribution")}}, {{/if}} {{getVar 'press2Publication'}}{{/if}}{{#if (getVar "hasPress2Date")}}, {{getVar 'press2Date'}}{{/if}}
+                      {{#if (getVar "hasPress2Url")}}<a href="{{#filter product.custom_fields 'press2Url' property='name' }}{{value}}{{/filter}}">{{/if}}
+                      {{#filter product.custom_fields 'press2Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress2Publication")}}{{#if (getVar "hasPress2Attribution")}}, {{/if}} {{#filter product.custom_fields 'press2Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress2Date")}}, {{#filter product.custom_fields 'press2Date' property='name' }}{{value}}{{/filter}}{{/if}}
                       {{#if (getVar "hasPress2Url")}}</a>{{/if}}
                     </cite>
                   </footer>
@@ -589,28 +588,25 @@
             </div>
             {{/filter}} 
 
-            {{#filter product.custom_fields 'winemaking_0' property='name' }}
+            {{#gt (getVar 'hasWinemaking') 0}}
             <div class="productView-content-section">
                 <div class="info-carousel-header">
                     <i class="fal fa-wine-bottle icon"></i>
                     <h2 class="content-section-header">Winemaking</h3>
                 </div>
-                <p>{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_1' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_2' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_3' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_4' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_5' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_6' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_7' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_8' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_9' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_10' property='name' }}{{value}}{{/filter}}{{#filter product.custom_fields 'winemaking_0' property='name' }}</p>
+                <p>{{#filter product.custom_fields 'winemaking' property='name' }}{{value}}{{/filter}}</p>
             </div>
-            {{/filter}}
+            {{/gt}}
 
-            {{#filter product.custom_fields 'foodRecommendationOutput' property='name' }}
+            {{#gt (getVar 'hasFoodRecommendation') 0}}
             <div class="productView-food-recommendation">
                 <div class="info-carousel-header">
                     <i class="fal fa-wine-glass-alt icon"></i>
                     <h3 class="stylised-medium">Our Expert Food Recommendation</h3>
                 </div>
-                <p>
-                    {{/filter}}{{#filter product.custom_fields 'foodRecommendation' property='name' }}{{value}}{{/filter}}
-                {{#filter product.custom_fields 'foodRecommendationOutput' property='name' }}
-                </p>
+                <p>{{#filter product.custom_fields 'foodRecommendation' property='name' }}{{value}}{{/filter}}</p>
             </div>
-            {{/filter}}
+            {{/gt}}
         </div>
       </section>
         
