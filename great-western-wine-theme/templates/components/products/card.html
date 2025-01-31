@@ -1,3 +1,21 @@
+{{#each custom_fields}}
+    {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
+    {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{assignVar "awardName" value}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
+    {{#if name "===" "awardQuote"}}{{assignVar "hasAwardQuote" 1}}{{assignVar "awardQuote" value}}{{/if}}
+    {{#if name "===" "awardImage"}}
+      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{assignVar "awardImage" value}}{{/if}}
+    {{/if}}
+    {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
+{{/each}}
+
+{{#all
+    (if (getVar "awardVintage") '===' (getVar "vintage"))
+    (if (add (add (getVar "hasAwardName") (getVar "hasAwardCompetition")) (getVar "hasAwardImage")) '>' 2)
+    }}
+    {{assignVar "showAward" 1}}
+{{/all}}
+
 <article
     class="card
     {{#if alternate}} card--alternate{{/if}}"
@@ -54,7 +72,10 @@
                             {{/if}}
                     {{/filter}}
                 {{/if}}
-                {{#filter custom_fields 'awardImage' property='name' }}<img class="card-img-medal" src="{{value}}" alt="{{/filter}}{{#filter custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}{{#filter custom_fields 'awardImage' property='name' }}" />{{/filter}}
+
+                {{#if (getVar 'showAward' '>' 0) }}
+                    <img class="card-img-medal" src="https://res.cloudinary.com/enotria/image/upload/w_131,h_131,dpr_auto/gwc/medals/{{getVar 'awardImage'}}" title="{{getVar 'awardCompetition'}} {{getVar 'awardName'}}" alt="{{getVar 'awardCompetition'}} {{getVar 'awardName'}}" />
+                {{/if}}
             </div>
         </a>
 

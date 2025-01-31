@@ -435,17 +435,23 @@
 .productView-icons {
     display: flex;
     justify-content: center;
-    padding: 0 12px;
+    padding: 0;
+    gap: 0.5em;
+    flex-wrap: wrap;
 }
 
 .productView-icon {
-    width: 32%;
+    width: calc(33.3% - 0.5em);
     text-align: center;
     display: inline-block;
     margin-top: 5px;
 
-    @include breakpoint("small") {
-        width: 25%;
+    @include breakpoint('small') {
+        width: calc(25% - 0.5em);
+    }
+
+    @include breakpoint('large') {
+        width: calc(16.6% - 0.5em);
     }
 
     a {

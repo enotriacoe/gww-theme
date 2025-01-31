@@ -1,5 +1,54 @@
 {{inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
 
+{{#each product.custom_fields}}
+    {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
+
+    {{#if name "===" "press1Text"}}{{assignVar "hasPress1Text" 1}}{{assignVar "press1Text" value}}{{/if}}
+    {{#if name "===" "press1Attribution"}}{{assignVar "hasPress1Attribution" 1}}{{assignVar "press1Attribution" value}}{{/if}}
+    {{#if name "===" "press1Publication"}}{{assignVar "hasPress1Publication" 1}}{{assignVar "press1Publication" value}}{{/if}}
+    {{#if name "===" "press1Date"}}{{assignVar "hasPress1Date" 1}}{{assignVar "press1Date" value}}{{/if}}
+    {{#if name "===" "press1Url"}}{{assignVar "hasPress1Url" 1}}{{assignVar "press1Url" value}}{{/if}}
+    {{#if name "===" "press1Vintage"}}{{assignVar "press1Vintage" value}}{{/if}}
+
+    {{#if name "===" "press2Text"}}{{assignVar "hasPress2Text" 1}}{{assignVar "press2Text" value}}{{/if}}
+    {{#if name "===" "press2Attribution"}}{{assignVar "hasPress2Attribution" 1}}{{assignVar "press2Attribution" value}}{{/if}}
+    {{#if name "===" "press2Publication"}}{{assignVar "hasPress2Publication" 1}}{{assignVar "press2Publication" value}}{{/if}}
+    {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{assignVar "press2Date" value}}{{/if}}
+    {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{assignVar "press2Url" value}}{{/if}}
+    {{#if name "===" "press2Vintage"}}{{assignVar "press2Vintage" value}}{{/if}}
+
+    {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{assignVar "awardName" value}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
+    {{#if name "===" "awardQuote"}}{{assignVar "hasAwardQuote" 1}}{{assignVar "awardQuote" value}}{{/if}}
+    {{#if name "===" "awardImage"}}
+      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{assignVar "awardImage" value}}{{/if}}
+    {{/if}}
+    {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
+{{/each}}
+
+{{#all
+    (if (getVar "press1Vintage") '===' (getVar "vintage"))
+    (if (getVar "hasPress1Text") '>' 0)
+    (if (add (getVar "hasPress1Publication") (getVar "hasPress1Attribution")) '>' 0)
+    }}
+    {{assignVar "showPress1" 1}}
+{{/all}}
+
+{{#all
+    (if (getVar "press2Vintage") '===' (getVar "vintage"))
+    (if (getVar "hasPress2Text") '>' 0)
+    (if (add (getVar "hasPress2Publication") (getVar "hasPress2Attribution")) '>' 0)
+    }}
+    {{assignVar "showPress2" 1}}
+{{/all}}
+
+{{#all
+    (if (getVar "awardVintage") '===' (getVar "vintage"))
+    (if (add (add (getVar "hasAwardName") (getVar "hasAwardCompetition")) (getVar "hasAwardImage")) '>' 2)
+    }}
+    {{assignVar "showAward" 1}}
+{{/all}}
+
 <div class="productView"
     {{#if settings.data_tag_enabled}}
     data-event-type="product"
@@ -311,14 +360,12 @@
                             {{/if}}
                         {{/filter}}
 
-                        {{#filter product.custom_fields 'awardName' property='name' }}{{assignVar 'awardName' value}}{{/filter}}
-                        {{#filter product.custom_fields 'awardMedal' property='name' }}{{assignVar 'awardMedal' value}}{{/filter}}                        
-                        {{#filter product.custom_fields 'awardImage' property='name' }}
+                        {{#if (getVar 'showAward') '>' 0}}
                         <div class="productView-icon">
-                            <img src="{{value}}" alt="{{getVar 'awardName'}} {{getVar 'awardMedal'}}" class="icon" />
-                            {{getVar 'awardName'}} {{getVar 'awardMedal'}}
+                            <img src="https://res.cloudinary.com/enotria/image/upload/w_45,h_45,dpr_auto/gwc/medals/{{getVar 'awardImage'}}" alt="{{getVar 'awardCompetition'}} {{getVar 'awardName'}}" class="icon" />
+                            {{getVar 'awardCompetition'}} {{getVar 'awardName'}}
                         </div>
-                        {{/filter}}
+                        {{/if}}
                     </div>
 
                     {{#any product.custom_fields name='planetFriendly'}}
@@ -462,42 +509,6 @@
                 </blockquote>
             </div>
             {{/filter}}
-
-
-
-        {{#each product.custom_fields}}
-          {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
-
-          {{#if name "===" "press1Text"}}{{assignVar "hasPress1Text" 1}}{{assignVar "press1Text" value}}{{/if}}
-          {{#if name "===" "press1Attribution"}}{{assignVar "hasPress1Attribution" 1}}{{assignVar "press1Attribution" value}}{{/if}}
-          {{#if name "===" "press1Publication"}}{{assignVar "hasPress1Publication" 1}}{{assignVar "press1Publication" value}}{{/if}}
-          {{#if name "===" "press1Date"}}{{assignVar "hasPress1Date" 1}}{{assignVar "press1Date" value}}{{/if}}
-          {{#if name "===" "press1Url"}}{{assignVar "hasPress1Url" 1}}{{assignVar "press1Url" value}}{{/if}}
-          {{#if name "===" "press1Vintage"}}{{assignVar "press1Vintage" value}}{{/if}}
-
-          {{#if name "===" "press2Text"}}{{assignVar "hasPress2Text" 1}}{{assignVar "press2Text" value}}{{/if}}
-          {{#if name "===" "press2Attribution"}}{{assignVar "hasPress2Attribution" 1}}{{assignVar "press2Attribution" value}}{{/if}}
-          {{#if name "===" "press2Publication"}}{{assignVar "hasPress2Publication" 1}}{{assignVar "press2Publication" value}}{{/if}}
-          {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{assignVar "press2Date" value}}{{/if}}
-          {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{assignVar "press2Url" value}}{{/if}}
-          {{#if name "===" "press2Vintage"}}{{assignVar "press2Vintage" value}}{{/if}}
-        {{/each}}
-
-        {{#all
-          (if (getVar "press1Vintage") '===' (getVar "vintage"))
-          (if (getVar "hasPress1Text") '>' 0)
-          (if (add (getVar "hasPress1Publication") (getVar "hasPress1Attribution")) '>' 0)
-          }}
-          {{assignVar "showPress1" 1}}
-        {{/all}}
-
-        {{#all
-          (if (getVar "press2Vintage") '===' (getVar "vintage"))
-          (if (getVar "hasPress2Text") '>' 0)
-          (if (add (getVar "hasPress2Publication") (getVar "hasPress2Attribution")) '>' 0)
-          }}
-          {{assignVar "showPress2" 1}}
-        {{/all}}
 
         <div class="info-carousel">
             {{#gt (getVar "showPress1") 0}}
