@@ -42,6 +42,11 @@
     text-align: center;
 }
 
+h1.page-content {
+  margin-top: 1rem;
+  font-size: 36px;
+}
+
 .page-sidebar {
     @include grid-column(12);
     position: relative;

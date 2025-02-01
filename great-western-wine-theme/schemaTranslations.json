@@ -220,22 +220,22 @@
     "no": "Roboto",
     "ko": "Roboto"
   },
-  "i18n.SourceSansPro": {
-    "default": "Source Sans Pro",
-    "fr": "Source Sans Pro",
-    "it": "Source Sans Pro",
-    "zh": "Source Sans Pro",
-    "de": "Source Sans Pro",
-    "es": "Fuente Sans Pro",
-    "nl": "Source Sans Pro",
-    "pt": "Source Sans Pro",
-    "pt-BR": "Source Sans Pro",
-    "sv": "Source Sans Pro",
-    "es-MX": "Fuente Sans Pro",
-    "es-419": "Fuente Sans Pro",
-    "da": "Source Sans Pro",
-    "no": "Source Sans Pro",
-    "ko": "Source Sans Pro"
+  "i18n.HelveticaNowTextRegular": {
+    "default": "HelveticaNowTextRegular",
+    "fr": "HelveticaNowTextRegular",
+    "it": "HelveticaNowTextRegular",
+    "zh": "HelveticaNowTextRegular",
+    "de": "HelveticaNowTextRegular",
+    "es": "HelveticaNowTextRegular",
+    "nl": "HelveticaNowTextRegular",
+    "pt": "HelveticaNowTextRegular",
+    "pt-BR": "HelveticaNowTextRegular",
+    "sv": "HelveticaNowTextRegular",
+    "es-MX": "HelveticaNowTextRegular",
+    "es-419": "HelveticaNowTextRegular",
+    "da": "HelveticaNowTextRegular",
+    "no": "HelveticaNowTextRegular",
+    "ko": "HelveticaNowTextRegular"
   },
   "i18n.BodyTextFontSize": {
     "default": "Body text font size",

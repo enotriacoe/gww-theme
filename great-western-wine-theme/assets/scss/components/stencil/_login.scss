@@ -3,65 +3,63 @@
 // =============================================================================
 
 .login {
-    margin: spacing("double") auto spacing("double")*2;
-    max-width: remCalc(900px);
+  margin: spacing('double') auto spacing('double') * 2;
+  max-width: remCalc(900px);
 
-    .forgot-password{
-        display: inline-block;
-        margin-top: 3px;
-        float: right;
-    }
+  .forgot-password {
+    display: inline-block;
+    margin-top: 3px;
+    float: right;
+  }
 }
 
 .login-row {
-    @include grid-row();
-    @include breakpoint("medium") {
-        margin-top: spacing("double");
-    }
+  @include grid-row();
+  @include breakpoint('medium') {
+    margin-top: spacing('double');
+  }
 }
 
 .login-form {
-    @include grid-column(12);
+  @include grid-column(12);
 
-    @include breakpoint("medium") {
-        @include grid-column(6);
+  @include breakpoint('medium') {
+    @include grid-column(6);
 
-        margin-top: spacing("double");
-    }
+    margin-top: spacing('double');
+  }
 }
 
 .new-customer {
-    @include grid-column(12);
-    @include breakpoint("medium") {
-        @include grid-column(6);
-    }
+  @include grid-column(12);
+  @include breakpoint('medium') {
+    @include grid-column(6);
+  }
 
-    .panel-header{
-        padding-top: spacing("double");
-        background-color: $grey-xlt;
+  .panel-header {
+    padding-top: spacing('double');
+    background-color: $stone-xlt;
 
-        .stylised-medium{
-            margin-bottom: 0;
-            font-size: 30px;
-        }
+    .stylised-medium {
+      margin-bottom: 0;
+      font-size: 30px;
     }
+  }
 
-    .panel-body{
-        background-color: $grey-xlt;
-        padding-top: 3rem;
-    }
+  .panel-body {
+    background-color: $stone-xlt;
+    padding-top: 3rem;
+  }
 }
 
 .new-customer-intro {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .new-customer-fact-list {
-    margin-left: spacing("double");
+  margin-left: spacing('double');
 }
 
 .new-customer-fact {
-    padding-left: spacing("half");
+  padding-left: spacing('half');
 }
-
-

@@ -1,164 +1,161 @@
 .btn {
-    display: inline-block;
-    padding: 5px 0;
-    line-height: 1.15;
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: 500;
+  display: inline-block;
+  padding: 5px 0;
+  line-height: 1.15;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-coral-line {
-    border-bottom: 5px solid $coral;
-    color: $black;
+  border-bottom: 5px solid $coral;
+  color: $black;
 
-    .icon {
-        height: 13px;
-        margin-left: 10px;
-    }
-    
-    &:after {
-        content: "\f054";
-        font-family: "Font Awesome 5 Pro"; 
-        font-weight: 700; 
-        display: none;
-    }
+  .icon {
+    height: 13px;
+    margin-left: 10px;
+  }
+
+  &:after {
+    content: '\f054';
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 700;
+    display: none;
+  }
 }
 
 .fa-f054 {
-    font-size: 11px;
-    margin-bottom: 1px;
-    margin-left: 7px;
+  font-size: 11px;
+  margin-bottom: 1px;
+  margin-left: 7px;
 }
 
-.input-btn{
-    border: none;
-    padding: 0;
-    width: auto !important;
+.input-btn {
+  border: none;
+  padding: 0;
+  width: auto !important;
+  transition: color 0.15s ease;
+  & + svg {
     transition: color 0.15s ease;
+  }
+  &:hover {
+    color: $stone;
     & + svg {
-        transition: color 0.15s ease;
+      color: $stone;
     }
-    &:hover {
-        color: $grey-md;
-        & + svg {
-            color: $grey-md; 
-        }
-    }
+  }
 }
 
 .button--primary {
-    background-color: $primary-color;
+  background-color: $primary-color;
+  border: 5px solid $primary-color;
+  border-radius: 0;
+
+  &:hover {
+    background-color: $green-lt;
+    color: white;
+    border-color: $primary-color;
+  }
+
+  &:active {
     border: 5px solid $primary-color;
-    border-radius: 0;
+  }
 
-    &:hover {
-        background-color: $green-lt;
-        color: white;
-        border-color: $primary-color;
-    }
-
-    &:active {
-        border: 5px solid $primary-color;
-    }
-
-    &:focus {
-        background-color: $green-lt;
-        color: white;
-        border-color: $primary-color;
-    }
+  &:focus {
+    background-color: $green-lt;
+    color: white;
+    border-color: $primary-color;
+  }
 }
 
 .button--light {
-    background-color: $grey-xlt;
-    color: black;
+  background-color: $stone-xlt;
+  color: $black;
 }
 
 .btn-half {
-    display: inline-block;
-    margin: 0 0.75rem 0.75rem;
-    border-radius: 0;
-    padding: spacing("base");
-    flex-grow: 1;
+  display: inline-block;
+  margin: 0 0.75rem 0.75rem;
+  border-radius: 0;
+  padding: spacing('base');
+  flex-grow: 1;
 }
 
 .btn-oos {
-    background-color: $grey-xlt;
-    color: black;
-    border-radius: 0;
-    width: 100%;
-    height: 50px;
-    line-height: 1.5;
+  background-color: $stone-xlt;
+  color: $black;
+  border-radius: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 1.5;
+  border: 0;
+  margin: 0;
+  cursor: default;
+
+  &:hover {
+    background-color: $stone-xlt;
+    transform: none;
     border: 0;
+  }
+
+  &:active {
+    background-color: $stone-xlt;
+    transform: none;
+    border: 0;
+  }
+
+  .oos-txt {
     margin: 0;
-    cursor: default;
-
-    &:hover {
-        background-color: $grey-xlt;
-        transform: none;
-        border: 0;
-    }
-
-    &:active {
-        background-color: $grey-xlt;
-        transform: none;
-        border: 0;
-    }
-
-    .oos-txt {
-        margin: 0;
-    }
+  }
 }
 
 .btn-back {
-    font-size: 18px;
-    font-weight: 500;
+  font-size: 18px;
 
-    .icon {
-        margin-right: 10px;
-        margin-bottom: 2px;
-    }
-
+  .icon {
+    margin-right: 10px;
+    margin-bottom: 2px;
+  }
 }
 
 .newsletter-cta {
-    flex: 1 1 auto;
-    margin: 0 1%;
-    padding: 0.875rem 1rem;
+  flex: 1 1 auto;
+  margin: 0 1%;
+  padding: 0.875rem 1rem;
 }
 
 .btn-close-modal {
-    position: absolute;
-    top: 20px;
-    right: 40px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
 
-    .fa-times {
-        color: black;
-        fill: black;
-        height: 20px;
-        width: 20px;
-        font-size: 20px;
-    }
+  .fa-times {
+    color: $black;
+    fill: black;
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+  }
 }
 
 .button--secondary {
-    background-color: $maroon;
-    border: 5px solid $maroon;
-    border-radius: 0;
+  background-color: $red;
+  border: 5px solid $red;
+  border-radius: 0;
+  color: white;
+
+  &:hover {
+    background-color: $red-lt;
     color: white;
+    border-color: $red;
+  }
 
-    &:hover {
-        background-color: $maroon-lt;
-        color: white;
-        border-color: $maroon;
-    }
+  &:active {
+    border: 5px solid $red;
+  }
 
-    &:active {
-        border: 5px solid $maroon;
-    }
-
-    &:focus {
-        background-color: $maroon-lt;
-        color: white;
-        border-color: $maroon;
-    }
+  &:focus {
+    background-color: $red-lt;
+    color: white;
+    border-color: $red;
+  }
 }

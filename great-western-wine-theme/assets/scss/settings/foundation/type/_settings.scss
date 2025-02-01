@@ -77,14 +77,14 @@ $font-smoothing:                antialiased;
 
 // We use these to control header font styles
 $header-font-family:            stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
-$header-font-weight:            stencilFontWeight("headings-font");
+$header-font-weight:            normal;
 $header-font-style:             null;
 $header-font-color:             stencilColor("color-textHeading");
 $header-line-height:            null;
 $header-top-margin:             spacing("double");
 $header-bottom-margin:          spacing("half");
 $header-text-rendering:         null;
-$header-letter-spacing:         letterSpacing("small");
+$header-letter-spacing:         letterSpacing("large");
 
 // We use these to control header font sizes
 $h1-font-size:                  fontSize("largest");
