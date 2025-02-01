@@ -80,6 +80,7 @@
 }
 
 .card-brand {
+  font-family: $juana;
   font-size: $card-title-fontSize;
   margin: 0;
   > a {
@@ -88,6 +89,7 @@
 }
 
 .card-title {
+  font-family: $helveticaBold;
   font-size: $card-title-fontSize;
   margin: $card-title-margin;
   margin: 0;
@@ -195,6 +197,7 @@
 .card-stats {
   display: inline-block;
   width: 100%;
+  font-size: 0.875rem;
 
   span {
     padding: 0 0.5rem;
