@@ -136,24 +136,25 @@
 }
 
 .banner-title {
-  color: $red;
+  color: $grey-dk;
   font-size: 24px;
   margin-top: 0;
   line-height: 1.2;
 
   @include breakpoint('medium') {
-    color: $carousel-title-color;
     line-height: 1;
+    font-size: 30px;
+    color: $stone-xlt;
   }
 }
 
 .banner-description {
-  color: $red;
+  color: $grey-dk;
   font-size: 18px;
   line-height: 1;
 
   @include breakpoint('medium') {
-    color: $carousel-description-color;
+    color: $stone-xlt;
   }
 }
 

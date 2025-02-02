@@ -36,42 +36,53 @@
 }
 
 .banner-content {
-    background-color: rgba($carousel-bgColor, 1);
     padding: spacing("half") spacing("single");
     text-align: left;
 
     @include breakpoint("medium") {
-        background-color: rgba($carousel-bgColor, 1);
-        left: 20px;
-        margin: 0 auto;
+        left: 1.5em;
+        bottom: 1.5em;
+        margin: 0;
         position: absolute;
-        bottom: 20px;
-        max-width: calc(100% - 40px);
-        max-height: calc(100% - 40px);
+        max-width: 75%;
+    }
+
+    .btn {
+        margin: 0;
+        width: auto;
+        padding: 0.5em 2em;
+        color: black;
+        background-color: $stone;
+        display: inline-block;
+        font-family: $button-font;
+
+        @include breakpoint('medium') {
+            margin-top: 0.5em;
+        }
     }
 }
 
 .banner-title {
-    color: $carousel-title-color;
+    color: $grey-dk;
     font-size: 30px;
-    margin-top: 0;
     font-family: $fontFamily-headings;
-    line-height: 1.2;
+    // line-height: 1.2;
+    margin-bottom: 0.25em;
 
     @include breakpoint("medium") {
-        font-size: $fontSize-largest;
-        line-height: 1;
+        font-size: $stone-xlt;
+        font-size: 36px;
     }
     
     @include breakpoint("large") {
-        font-size: ($fontSize-hero / 2);
+        font-size: 48px;
     }
 }
 
 .banner-description {
     color: $carousel-description-color;
     font-size: 20px;
-    margin-bottom: 0;
+    margin-bottom: 0.5em;
 
     @include breakpoint("medium") {
         font-size: fontSize("large");
@@ -91,4 +102,22 @@
         height:100%;
         object-fit: cover;
     }
+}
+
+.banner-image-wrapper::after {
+  @include breakpoint('medium') {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at 5em 65%,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 }

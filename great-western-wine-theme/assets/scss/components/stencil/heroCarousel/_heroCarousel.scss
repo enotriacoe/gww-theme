@@ -158,12 +158,12 @@
   line-height: 1;
 
   @include breakpoint('medium') {
-    font-size: calc(fontSize('largest') * 1.5);
+    font-size: 48px;
     color: #fff;
   }
 
   @include breakpoint('large') {
-    font-size: fontSize('hero');
+    font-size: 72px;
   }
 
   p {
@@ -192,7 +192,7 @@
   font-family: $button-font;
 
   @include breakpoint('medium') {
-    margin-top: (spacing('single'));
+    margin-top: 1em;
   }
 }
 
