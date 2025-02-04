@@ -16,8 +16,29 @@
   }
 }
 
+.content-rich-intro,
+.content-rich-body {
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2,
+  h3 {
+    font-family: $juana;
+  }
+
+  h4 {
+    font-family: $helveticaBold;
+  }
+}
+
+.img-100 {
+  margin: 0 auto 1em;
+  display: block;
+  width: 100%;
+}
+
 .img-50 {
-  margin: 0 auto 20px;
+  margin: 0 auto 1em;
   display: block;
   width: 100%;
 
@@ -31,7 +52,7 @@
 }
 
 .img-33 {
-  margin: 0 auto 20px;
+  margin: 0 auto 1em;
   display: block;
   width: 100%;
 
@@ -49,7 +70,7 @@
 }
 
 .img-25 {
-  margin: 0 auto 20px;
+  margin: 0 auto 1em;
   display: block;
   width: 100%;
 
@@ -70,22 +91,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
+  gap: 1em;
 
   &.space-between {
     justify-content: space-between;
   }
+}
+
+.img-full {
+  width: 100%;
+  position: relative;
+}
+
+.img-half {
+  width: 100%;
+  position: relative;
 
   @include breakpoint('medium') {
-    margin: 0 auto 15px;
-
-    > div:last-child {
-      margin-right: 0;
-    }
-  }
-
-  @include breakpoint('large') {
-    flex-wrap: nowrap;
+    width: calc(50% - 0.5em);
   }
 }
 
@@ -94,13 +118,24 @@
   position: relative;
 
   @include breakpoint('medium') {
-    width: calc(32.5% - 15px);
+    width: calc(33.3% - 0.666666em);
+  }
+}
+
+.img-quarter {
+  width: 100%;
+  position: relative;
+
+  @include breakpoint('medium') {
+    width: calc(25% - 0.75em);
   }
 }
 
 .center {
   display: block;
   margin: 0 auto;
+  width: auto;
+  text-align: center;
 }
 
 .clear-left {
@@ -142,4 +177,19 @@
       color: $black;
     }
   }
+}
+
+.desc-zone-top,
+.desc-zone-bottom {
+  background-color: $stone-xlt;
+  padding: 0 0.75em 1em;
+  clear: both;
+
+  .content-rich-image-banner {
+    margin: 0 -0.75em;
+  }
+}
+
+.desc-zone-bottom {
+  padding-top: 1em;
 }

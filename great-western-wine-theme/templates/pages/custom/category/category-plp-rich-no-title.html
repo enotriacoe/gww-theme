@@ -21,10 +21,11 @@ customer:
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 <div class="page">
+  
+  {{> components/category/category-header-no-img}}
 
     <aside class="page-sidebar" id="faceted-search-container">
         <nav class="content-rich-no-title">
-            {{> components/category/category-header-no-img}}
         
             <div class="filter-sort-cont">
                 {{#if category.faceted_search_enabled}}

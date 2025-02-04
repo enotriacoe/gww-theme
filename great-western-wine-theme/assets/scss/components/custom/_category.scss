@@ -6,7 +6,6 @@
   display: inline-block;
   width: 100%;
   position: relative;
-  margin-top: 15px;
 
   &.full-width {
     .stylised-title {
@@ -14,6 +13,7 @@
         width: auto;
         display: inline-block;
         padding-right: 40px;
+        margin-top: 1.5em;
       }
     }
   }
