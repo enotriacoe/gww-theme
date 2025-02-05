@@ -64,6 +64,7 @@ export default class Category extends CatalogPage {
 
         this.closeAllWishlists();
         this.moveBottomDescZone();
+        this.removeTextNodesFromImageRow();
         this.toggleMoreDesc();
         this.toggleSingleWishlistOnly();
     }
@@ -175,6 +176,13 @@ export default class Category extends CatalogPage {
             $('.desc-zone-bottom').detach().appendTo('.bottom-category-text');
             $('.desc-zone-bottom').show();
         }
+    }
+
+    removeTextNodesFromImageRow() {
+        // eslint-disable-next-line func-names
+        $('.img-row').contents().filter(function () {
+            return this.nodeType === Node.TEXT_NODE;
+        }).remove();
     }
 
     toggleMoreDesc() {

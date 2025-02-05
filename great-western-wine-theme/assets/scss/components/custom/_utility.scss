@@ -16,119 +16,149 @@
   }
 }
 
-.content-rich-intro,
-.content-rich-body {
-  max-width: 800px;
-  margin: 0 auto;
+.desc-zone-top,
+.desc-zone-bottom {
+  background-color: $stone-xlt;
+  padding: 0 0.75em 1em;
+  clear: both;
 
-  h2,
-  h3 {
-    font-family: $juana;
+  > div {
+    max-width: 800px;
+    margin: 1em auto 0;
+
+    h2,
+    h3 {
+      font-family: $juana;
+    }
+
+    h4 {
+      font-family: $helveticaBold;
+    }
   }
 
-  h4 {
-    font-family: $helveticaBold;
+  > div.content-rich-image-banner {
+    max-width: calc(100% + 1.5em);
+    margin: 0 -0.75em 0 -0.75em;
+  }
+
+  .content-rich-intro {
+    font-weight: bold;
+
+    @include breakpoint('medium') {
+      font-size: 1.25em;
+    }
+  }
+
+  .img-100 {
+    margin: 0 auto 1em;
+    display: block;
+    width: 100%;
+  }
+
+  .img-50 {
+    margin: 0 auto 1em;
+    display: block;
+    width: 100%;
+
+    @include breakpoint('small') {
+      width: 60%;
+    }
+
+    @include breakpoint('medium') {
+      width: 50%;
+    }
+  }
+
+  .img-33 {
+    margin: 0 auto 1em;
+    display: block;
+    width: 100%;
+
+    @include breakpoint('small') {
+      width: 50%;
+    }
+
+    @include breakpoint('medium') {
+      width: 40%;
+    }
+
+    @include breakpoint('large') {
+      width: 33%;
+    }
+  }
+
+  .img-25 {
+    margin: 0 auto 1em;
+    display: block;
+    width: 100%;
+
+    @include breakpoint('small') {
+      width: 50%;
+    }
+
+    @include breakpoint('medium') {
+      width: 33%;
+    }
+
+    @include breakpoint('large') {
+      width: 25%;
+    }
+  }
+
+  [class*='category-grid'],
+  div:has(.img-row),
+  div:has([class*='category-grid']) {
+    max-width: 100%;
+  }
+
+  .img-row {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1em;
+    gap: 1em;
+
+    &.space-between {
+      justify-content: space-between;
+    }
+  }
+
+  .img-full {
+    width: 100%;
+    position: relative;
+  }
+
+  .img-half {
+    width: 100%;
+    position: relative;
+
+    @include breakpoint('medium') {
+      width: calc(50% - 0.5em);
+    }
+  }
+
+  .img-third {
+    width: 100%;
+    position: relative;
+
+    @include breakpoint('medium') {
+      width: calc(33% - 0.666666em);
+    }
+  }
+
+  .img-quarter {
+    width: 100%;
+    position: relative;
+
+    @include breakpoint('medium') {
+      width: calc(25% - 0.75em);
+    }
   }
 }
 
-.img-100 {
-  margin: 0 auto 1em;
-  display: block;
-  width: 100%;
-}
-
-.img-50 {
-  margin: 0 auto 1em;
-  display: block;
-  width: 100%;
-
-  @include breakpoint('small') {
-    width: 60%;
-  }
-
-  @include breakpoint('medium') {
-    width: 50%;
-  }
-}
-
-.img-33 {
-  margin: 0 auto 1em;
-  display: block;
-  width: 100%;
-
-  @include breakpoint('small') {
-    width: 50%;
-  }
-
-  @include breakpoint('medium') {
-    width: 40%;
-  }
-
-  @include breakpoint('large') {
-    width: 33%;
-  }
-}
-
-.img-25 {
-  margin: 0 auto 1em;
-  display: block;
-  width: 100%;
-
-  @include breakpoint('small') {
-    width: 50%;
-  }
-
-  @include breakpoint('medium') {
-    width: 33%;
-  }
-
-  @include breakpoint('large') {
-    width: 25%;
-  }
-}
-
-.img-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1em;
-  gap: 1em;
-
-  &.space-between {
-    justify-content: space-between;
-  }
-}
-
-.img-full {
-  width: 100%;
-  position: relative;
-}
-
-.img-half {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(50% - 0.5em);
-  }
-}
-
-.img-third {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(33.3% - 0.666666em);
-  }
-}
-
-.img-quarter {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(25% - 0.75em);
-  }
+.desc-zone-bottom {
+  padding-top: 1em;
 }
 
 .center {
@@ -177,19 +207,4 @@
       color: $black;
     }
   }
-}
-
-.desc-zone-top,
-.desc-zone-bottom {
-  background-color: $stone-xlt;
-  padding: 0 0.75em 1em;
-  clear: both;
-
-  .content-rich-image-banner {
-    margin: 0 -0.75em;
-  }
-}
-
-.desc-zone-bottom {
-  padding-top: 1em;
 }
