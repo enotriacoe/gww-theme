@@ -116,7 +116,8 @@
 .category-grid-3,
 .category-grid-4,
 .category-grid-5,
-.category-grid-6 {
+.category-grid-6,
+.category-grid-8 {
   display: grid;
   grid-template-columns: 1fr;
   list-style: none;
@@ -124,7 +125,19 @@
   gap: 1em;
   padding: 0;
   text-align: center;
+  align-items: center;
+  line-height: 1;
+  a {
+    text-decoration: none;
+    font-family: $helveticaBold;
+  }
 }
+
+.category-grid-6,
+.category-grid-8 {
+  grid-template-columns: 1fr 1fr;
+}
+
 .category-grid-2 {
   @include breakpoint('large') {
     grid-template-columns: 1fr 1fr;
