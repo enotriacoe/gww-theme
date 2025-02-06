@@ -1,34 +1,7 @@
 {
   "customLayouts": {
     "brand": {},
-    "category": {
-      "category-pgp-food.html": [
-        "/whats-on-the-menu/"
-      ],
-      "category-plp-food.html": [
-        "/red-meat/"
-      ],
-      "category-plp-blank.html": [
-        "/fortified-and-dessert-wine/dessert-wine/"
-      ],
-      "category-pgp-list.html": [
-        "/producers/"
-      ],
-      "category-pgp-offers.html": [
-        "/offers/"
-      ],
-      "category-plp-rich.html": [
-        "/producers/bertani/"
-      ],
-      "category-plp-rich-no-title.html": [
-        "/new-category-header-test/",
-        "/whiskey/",
-        "/offers/australia"
-      ],
-      "category-plp-producer.html": [
-        "/producers/ken-forrester-wines/"
-      ]
-    },
+    "category": {},
     "page": {},
     "product": {}
   },
