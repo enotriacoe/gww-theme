@@ -1,3 +1,16 @@
+{{assignVar "vintage" ' '}}
+{{assignVar "hasAwardName" 0}}
+{{assignVar "awardName" ' '}}
+{{assignVar "hasAwardCompetition" 0}}
+{{assignVar "awardCompetition" ' '}}
+{{assignVar "hasAwardQuote" 0}}
+{{assignVar "awardQuote" ' '}}
+{{assignVar "hasAwardImage" 0}}
+{{assignVar "awardImage" ' '}}
+{{assignVar "awardVintage" ' '}}
+{{assignVar "showAward" 0}}
+
+
 {{#each custom_fields}}
     {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
     {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{assignVar "awardName" value}}{{/if}}
