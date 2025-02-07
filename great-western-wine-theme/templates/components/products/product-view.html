@@ -510,43 +510,6 @@
             {{/filter}}
 
         <div class="info-carousel">
-            {{#gt (getVar "showPress1") 0}}
-              <div class="productView-content-section">
-                <div class="info-carousel-header">
-                    <i class="fal fa-newspaper icon"></i>
-                    <h2 class="content-section-header">Press Review</h3>
-                </div>
-                <blockquote class="press-review-quote">
-                  <p>{{#filter product.custom_fields 'press1Text' property='name' }}{{value}}{{/filter}}</p>
-                  <footer>-
-                    <cite>
-                      {{#if (getVar "hasPress1Url")}}<a href="{{#filter product.custom_fields 'press1Url' property='name' }}{{value}}{{/filter}}">{{/if}}
-                      {{#filter product.custom_fields 'press1Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress1Publication")}}{{#if (getVar "hasPress1Attribution")}}, {{/if}} {{#filter product.custom_fields 'press1Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress1Date")}}, {{#filter product.custom_fields 'press1Date' property='name' }}{{value}}{{/filter}}{{/if}}
-                      {{#if (getVar "hasPress1Url")}}</a>{{/if}}
-                    </cite>
-                  </footer>
-                </blockquote>
-              </div>
-            {{/gt}} 
-
-            {{#gt (getVar "showPress2") 0}}
-              <div class="productView-content-section">
-                <div class="info-carousel-header">
-                    <i class="fal fa-newspaper icon"></i>
-                    <h2 class="content-section-header">Press Review</h3>
-                </div>
-                <blockquote class="press-review-quote">
-                  <p>{{#filter product.custom_fields 'press2Text' property='name' }}{{value}}{{/filter}}</p>
-                  <footer>-
-                    <cite>
-                      {{#if (getVar "hasPress2Url")}}<a href="{{#filter product.custom_fields 'press2Url' property='name' }}{{value}}{{/filter}}">{{/if}}
-                      {{#filter product.custom_fields 'press2Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress2Publication")}}{{#if (getVar "hasPress2Attribution")}}, {{/if}} {{#filter product.custom_fields 'press2Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress2Date")}}, {{#filter product.custom_fields 'press2Date' property='name' }}{{value}}{{/filter}}{{/if}}
-                      {{#if (getVar "hasPress2Url")}}</a>{{/if}}
-                    </cite>
-                  </footer>
-                </blockquote>
-              </div>
-            {{/gt}} 
 
             {{#filter product.custom_fields 'serve' property='name' }}
             <div class="productView-content-section">
@@ -607,6 +570,44 @@
                 <p>{{#filter product.custom_fields 'foodRecommendation' property='name' }}{{value}}{{/filter}}</p>
             </div>
             {{/gt}}
+            
+            {{#gt (getVar "showPress1") 0}}
+              <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-newspaper icon"></i>
+                    <h2 class="content-section-header">Press Review</h3>
+                </div>
+                <blockquote class="press-review-quote">
+                  <p>{{#filter product.custom_fields 'press1Text' property='name' }}{{value}}{{/filter}}</p>
+                  <footer>-
+                    <cite>
+                      {{#if (getVar "hasPress1Url")}}<a href="{{#filter product.custom_fields 'press1Url' property='name' }}{{value}}{{/filter}}">{{/if}}
+                      {{#filter product.custom_fields 'press1Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress1Publication")}}{{#if (getVar "hasPress1Attribution")}}, {{/if}} {{#filter product.custom_fields 'press1Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress1Date")}}, {{#filter product.custom_fields 'press1Date' property='name' }}{{value}}{{/filter}}{{/if}}
+                      {{#if (getVar "hasPress1Url")}}</a>{{/if}}
+                    </cite>
+                  </footer>
+                </blockquote>
+              </div>
+            {{/gt}} 
+
+            {{#gt (getVar "showPress2") 0}}
+              <div class="productView-content-section">
+                <div class="info-carousel-header">
+                    <i class="fal fa-newspaper icon"></i>
+                    <h2 class="content-section-header">Press Review</h3>
+                </div>
+                <blockquote class="press-review-quote">
+                  <p>{{#filter product.custom_fields 'press2Text' property='name' }}{{value}}{{/filter}}</p>
+                  <footer>-
+                    <cite>
+                      {{#if (getVar "hasPress2Url")}}<a href="{{#filter product.custom_fields 'press2Url' property='name' }}{{value}}{{/filter}}">{{/if}}
+                      {{#filter product.custom_fields 'press2Attribution' property='name' }}{{value}}{{/filter}}{{#if (getVar "hasPress2Publication")}}{{#if (getVar "hasPress2Attribution")}}, {{/if}} {{#filter product.custom_fields 'press2Publication' property='name' }}{{value}}{{/filter}}{{/if}}{{#if (getVar "hasPress2Date")}}, {{#filter product.custom_fields 'press2Date' property='name' }}{{value}}{{/filter}}{{/if}}
+                      {{#if (getVar "hasPress2Url")}}</a>{{/if}}
+                    </cite>
+                  </footer>
+                </blockquote>
+              </div>
+            {{/gt}} 
         </div>
       </section>
         
