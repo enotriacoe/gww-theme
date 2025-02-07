@@ -11,19 +11,20 @@ blog:
 
 <div class="page">
    
-    <aside class="page-sidebar">
-        <div class="category-header">
-            <img src="{{cdn '/assets/img/blog-header-wine.jpg'}}" class="category-img" alt="Red Wine in Glass"></a>
-            <div class="category-text">
-                    {{#unless theme_settings.hide_blog_page_heading }}
-                        <h1 class="stylised-title">{{ blog.name }}</h1>
-                    {{/unless}}
-                    <p>The team invite you to take a look at the latest news and peek into the world of wine and its producers.</p>
+    <section class="category-header">
+        <!-- <img src="{{cdn '/assets/img/blog-header-wine.jpg'}}" class="category-img" alt="Red Wine in Glass"></a> -->
+        <div class="category-text">
+            {{#unless theme_settings.hide_blog_page_heading }}
+                <h1 class="stylised-title">{{ blog.name }}</h1>
+            {{/unless}}
+            <div class="category-description">
+                <div class="desc-zone-top">
+                    <div class="content-rich-intro"><div class="content-rich-intro">The team invite you to take a look at the latest news and peek into
+                      the world of wine and its producers.</div></div>
+                </div>
             </div>
         </div>
-        
-        <hr class="productView-divider">
-    </aside>
+    </section>
 
     <div class="page-content blog-listing">
         {{#each blog.posts}}

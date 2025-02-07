@@ -9,7 +9,8 @@
 .blog-listing {
     display: grid;
     grid-template: 1fr 1fr 1fr;
-    gap: 20px
+    gap: 1.5em;
+    margin-top: 1.5em;
 }
 
 .blog {
@@ -77,18 +78,7 @@
     margin: 1em auto;
     text-align: center;
     width: 100%;
-
-    @include breakpoint("small") {
-        width: grid-calc(10, $total-columns);
-    }
-
-    @include breakpoint("medium") {
-        width: grid-calc(10, $total-columns);
-    }
-
-    @include breakpoint("large") {
-        width: grid-calc(10, $total-columns);
-    }
+    max-width: 800px;
 }
 
 // Custom styling for the blog listing page as both the listings and posts use the same classes
