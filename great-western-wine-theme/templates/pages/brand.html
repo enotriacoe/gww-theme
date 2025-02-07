@@ -41,33 +41,28 @@ gql: "query brandById($brandId: [Int!]) {
 
 <div class="page">
 
-    <div class="brand-content-header">
-        {{#if gql.data.site.brands.edges }}
-            {{#each gql.data.site.brands.edges }}
-                {{#each node.metafields.edges }}
-                    {{#with node }}
-                        {{#if key '===' 'top_content'}}
-                            {{{ value}}}
-                        {{/if }}                    
-                    {{/with }}
-                {{/each }}
-            {{/each }}
-        {{/if }}
-    </div>
+    <section class="category-header">
+      <div class="category-text">
+        {{#if brand.name}}
+          <h1 class="stylised-title">{{brand.name}}</h1>
+        {{/if}}
 
-    <div class="brand-content-main">
-        {{#if gql.data.site.brands.edges }}
-            {{#each gql.data.site.brands.edges }}
-                {{#each node.metafields.edges }}
-                    {{#with node }}
-                        {{#if key '===' 'main_content'}}
-                            {{{ value}}}
-                        {{/if }}                    
-                    {{/with }}
+        <div class="brand-description">
+            {{#if gql.data.site.brands.edges }}
+                {{#each gql.data.site.brands.edges }}
+                    {{#each node.metafields.edges }}
+                        {{#with node }}
+                            {{#if key '===' 'top_content'}}
+                                {{{ value}}}
+                            {{/if }}                    
+                        {{/with }}
+                    {{/each }}
                 {{/each }}
-            {{/each }}
-        {{/if }}
-    </div>
+            {{/if }}
+        </div>
+      </div>
+    </section>
+    
     {{{region name="brand_below_header"}}}
 
     <aside class="page-sidebar" id="faceted-search-container">
