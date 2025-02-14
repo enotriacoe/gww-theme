@@ -35,6 +35,21 @@
   }
 }
 
+.category-description:not(:has(.desc-zone-top)) {
+  padding: 0 0.75em 1em;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include breakpoint('medium') {
+    font-size: 1.25em;
+  }
+}
+
 .category-grid-2,
 .category-grid-3,
 .category-grid-4,
