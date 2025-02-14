@@ -806,13 +806,13 @@
         "comments": "Comments"
     },
     "newsletter": {
-        "subscribe": "Save £25 on your first order*",
+        "subscribe": "Save £10 off your first order*",
         "subscribe_intro": "When you sign up to our newsletter",
         "subscribe_submit": "Sign Up",
         "email_placeholder": "Your email address",
         "subscribed_heading": "Thanks for Subscribing!",
         "subscribed_heading_error": "Oops...",
-        "subscribed_message": "Thank you for joining. You will find your £25 discount code in your inbox.",
+        "subscribed_message": "Thank you for joining. You will find your £10 discount code in your inbox.",
         "unsubscribed_heading": "Unsubscribed!",
         "unsubscribed_message": "You will no longer receive marketing emails from <b>{store_name}</b>"
     },
@@ -984,7 +984,7 @@
             "email_required_error": "Email address is required",
             "forgot_password_action": "Forgot password?",
             "guest_customer_text": "Guest Customer",
-            "guest_subscribe_to_newsletter_text": "Please send me £25 off my first order* and exciting offers on the very best wine to drink (*Terms & Conditions apply)",
+            "guest_subscribe_to_newsletter_text": "Please send me £10 off my first order* and exciting offers on the very best wine to drink (*Terms & Conditions apply)",
             "login_action": "Sign in now",
             "login_text": "Already have an account?",
             "password_confirmation_error": "Passwords do not match",
