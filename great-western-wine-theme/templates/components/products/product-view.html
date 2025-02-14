@@ -14,15 +14,16 @@
     {{#if name "===" "press2Date"}}{{assignVar "hasPress2Date" 1}}{{/if}}
     {{#if name "===" "press2Url"}}{{assignVar "hasPress2Url" 1}}{{/if}}
     {{#if name "===" "press2Vintage"}}{{assignVar "press2Vintage" value}}{{/if}}
-    {{#if name "===" "awardName"}}{{assignVar "hasAwardName" 1}}{{/if}}
-    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{/if}}
+    {{#if name "===" "awardMedal"}}{{assignVar "hasAwardMedal" 1}}{{assignVar "awardMedal" value}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
     {{#if name "===" "awardImage"}}
-      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{/if}}
+      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{assignVar "awardImage" value}}{{/if}}
     {{/if}}
     {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
     {{#if name "===" "winemaking"}}{{assignVar "hasWinemaking" 1}}{{/if}}
     {{#if name "===" "foodRecommendation"}}{{assignVar "hasFoodRecommendation" 1}}{{/if}}
     {{#if name "===" "planetFriendlyText"}}{{assignVar "hasPlanetFriendlyText" 1}}{{/if}}
+    {{#if name "===" "isWine"}}{{assignVar 'isWine' value}}{{/if}}
 {{/each}}
 
 {{#all
@@ -43,7 +44,7 @@
 
 {{#all
     (if (getVar "awardVintage") '===' (getVar "vintage"))
-    (if (add (add (getVar "hasAwardName") (getVar "hasAwardCompetition")) (getVar "hasAwardImage")) '>' 2)
+    (if (add (add (getVar "hasAwardMedal") (getVar "hasAwardCompetition")) (getVar "hasAwardImage")) '>' 2)
     }}
     {{assignVar "showAward" 1}}
 {{/all}}
@@ -109,7 +110,7 @@
                         {{/or}} 
                     </div>
     
-                    {{#filter product.custom_fields 'isWine' property='name'}}
+                    {{#if (getVar 'isWine') '===' 'Yes'}}
                         <div class="productView-price-multi">
                             <div class="sticky-multi-price">
                                 <div class="multibuy-price-title">
@@ -124,7 +125,7 @@
                                 <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply ../product.price.with_tax.value 0.1) 2}}</span>
                             </div>
                         </div>
-                    {{/filter}}
+                    {{/if}}
                 </div>
 
                 <div class="productView-cart-cont">
@@ -361,8 +362,8 @@
 
                         {{#if (getVar 'showAward') '>' 0}}
                         <div class="productView-icon">
-                            <img src="https://res.cloudinary.com/enotria/image/upload/w_45,h_45,dpr_auto/gwc/medals/{{getVar 'awardImage'}}" title="{{getVar 'awardCompetition'}} {{getVar 'awardName'}}" alt="{{getVar 'awardCompetition'}} {{getVar 'awardName'}}" class="icon" />
-                            {{getVar 'awardCompetition'}} {{getVar 'awardName'}}
+                            <img src="https://res.cloudinary.com/enotria/image/upload/w_45,h_45,dpr_auto/gwc/medals/{{getVar 'awardImage'}}" title="{{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}" alt="{{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}" class="icon" />
+                            {{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}
                         </div>
                         {{/if}}
                     </div>
