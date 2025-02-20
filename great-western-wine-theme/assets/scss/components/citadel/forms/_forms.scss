@@ -396,3 +396,46 @@
 .form-field--inputPassword:nth-of-type(3) {
     clear: none !important;
 }
+
+#checkout-app {
+    .form-body {
+        border: none;
+        padding: 0;
+        background: none;
+
+        .customerEmail-body {
+          width: 100%;
+        }
+    }
+
+    .dropdown--select {
+        .dropdown-menu {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .form-fieldset {
+        .form-body {
+              border: none;
+              padding: 0;
+        }
+    }
+
+
+    .form-legend {
+        border: 0;
+    }
+
+    .form-checklist.optimizedCheckout-form-checklist {
+        border-radius: 0;
+    }
+
+    .paymentMethod {
+        width: 100%;
+
+        .icon svg {
+            fill: inherit;
+        }
+    }
+}
