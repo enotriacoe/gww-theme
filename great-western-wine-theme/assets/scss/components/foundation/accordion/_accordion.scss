@@ -2,39 +2,37 @@
 // ACCORDION (CSS)
 // =============================================================================
 
-
 .accordion {
-    border-radius: $accordion-borderRadius;
-    box-shadow: none;
+  border-radius: $accordion-borderRadius;
+  box-shadow: none;
 
-    .navList {
-        margin-bottom: 0;
-        padding-left: 8px;
-        padding-right: 8px;
-    }
+  .navList {
+    margin-bottom: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 }
 
 .accordion-content {
-    border: 0;
+  border: 0;
 
-    .form:only-child {
-        margin-bottom: 0;
-    }
+  .form:only-child {
+    margin-bottom: 0;
+  }
 }
 
 .accordion-title {
-    margin: 0;
+  margin: 0;
 }
 
 .accordion-navigation {
-    margin-top: -1px;
-    position: relative;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  margin-top: -1px;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-
 
 // Accordion nav list
 // -----------------------------------------------------------------------------
@@ -43,100 +41,99 @@
 //
 // -----------------------------------------------------------------------------
 .accordion--navList {
-    margin: 0;
-    
-    @include breakpoint("medium") {
-        border: 0;
+  margin: 0;
+
+  @include breakpoint('medium') {
+    border: 0;
+  }
+
+  .sidebarBlock + & {
+    @include breakpoint('medium') {
+      margin-top: $accordion-navList-spacing;
+    }
+  }
+
+  .accordion-block {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    float: left;
+    background-color: $stone-xlt;
+
+    @include breakpoint('medium') {
+      width: calc(33% - 10px);
+      margin-right: 10px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid darken($stone-xlt, 10%);
     }
 
-    .sidebarBlock + & {
-        @include breakpoint("medium") {
-            margin-top: $accordion-navList-spacing;
-        }
+    @include breakpoint('large') {
+      width: calc(25% - 22px);
+      margin-right: 22px;
+      margin-bottom: 25px;
+    }
+  }
+
+  .accordion-content {
+    padding: $accordion-navList-padding;
+
+    @include breakpoint('medium') {
+      padding: 0;
+      position: absolute;
+      border: 1px solid darken($stone-xlt, 10%);
+      border-top: none;
+      width: calc(100% + 2px);
+      background: $stone-xlt;
+      left: -1px;
+      top: 99%;
+      z-index: 10;
     }
 
-    .accordion-block {
-        width: 100%;
-        display: inline-block;
-        position: relative;
-        float: left;
-        background-color: $grey-xlt;
-        
-        @include breakpoint("medium") {
-            width: calc(33% - 10px);
-            margin-right: 10px;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid darken($grey-xlt, 10%);
-        }
-
-        @include breakpoint("large") {
-            width: calc(25% - 22px);
-            margin-right: 22px;
-            margin-bottom: 25px;
-        }
+    .form-minMaxRow {
+      padding: 10px;
     }
 
-    .accordion-content {
-        padding: $accordion-navList-padding;
-        
-        @include breakpoint("medium") {
-            padding: 0;
-            position: absolute;
-            border: 1px solid darken($grey-xlt, 10%);
-            border-top: none;
-            width: calc(100% + 2px);
-            background: $grey-xlt;
-            left: -1px;
-            top: 99%;
-            z-index: 10;
-        }
-
-        .form-minMaxRow {
-            padding: 10px;
-        }
-
-        .toggleLink {
-            padding-left: 8px;
-            padding-right: 8px;
-        }
+    .toggleLink {
+      padding-left: 8px;
+      padding-right: 8px;
     }
+  }
 
-    .accordion-navigation {
-        @include breakpoint("medium") {
-            background-position: right 0 top 50%;
-            border: 0;
-        }
+  .accordion-navigation {
+    @include breakpoint('medium') {
+      background-position: right 0 top 50%;
+      border: 0;
     }
+  }
 
-    .accordion-title {
-        font-weight: normal;
-        padding: $accordion-navList-padding;
-        text-decoration: none;
-        text-transform: inherit;
+  .accordion-title {
+    font-weight: normal;
+    padding: $accordion-navList-padding;
+    text-decoration: none;
+    text-transform: inherit;
 
-        @include breakpoint("medium") {
-            margin-bottom: 0;
-            margin-top: 0;
-            padding: 0;
-        }
+    @include breakpoint('medium') {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0;
     }
+  }
 
-    .accordion-indicator {
-        fill: color("greys", "light");
+  .accordion-indicator {
+    fill: color('greys', 'light');
+  }
+
+  .accordion-navigation-actions {
+    right: $accordion-navList-padding;
+    top: $accordion-navList-padding + spacing('eighth');
+
+    @include breakpoint('medium') {
+      right: 0;
+      top: 0;
     }
-
-    .accordion-navigation-actions {
-        right: $accordion-navList-padding;
-        top: $accordion-navList-padding + spacing("eighth");
-
-        @include breakpoint("medium") {
-            right: 0;
-            top: 0;
-        }
-    }
+  }
 }
-
 
 // Accordion block
 // -----------------------------------------------------------------------------
@@ -145,28 +142,28 @@
 //
 // -----------------------------------------------------------------------------
 .accordion-block:first-child {
-    margin-top: 0;
+  margin-top: 0;
 
-    .accordion-navigation {
-        border-radius: $accordion-borderRadius $accordion-borderRadius 0 0;
-    }
+  .accordion-navigation {
+    border-radius: $accordion-borderRadius $accordion-borderRadius 0 0;
+  }
 }
 
 .accordion-block:last-child {
-    .accordion-navigation,
-    .accordion-content {
-        border-radius: 0 0 $accordion-borderRadius $accordion-borderRadius;
-    }
+  .accordion-navigation,
+  .accordion-content {
+    border-radius: 0 0 $accordion-borderRadius $accordion-borderRadius;
+  }
 
-    .accordion-navigation {
-        border-bottom-width: 0;
+  .accordion-navigation {
+    border-bottom-width: 0;
 
-        // scss-lint:disable NestingDepth
-        &.is-open {
-            border-bottom-width: 1px;
-            border-radius: 0;
-        }
+    // scss-lint:disable NestingDepth
+    &.is-open {
+      border-bottom-width: 1px;
+      border-radius: 0;
     }
+  }
 }
 
 // Accordion navigation actions
@@ -176,22 +173,22 @@
 //
 // -----------------------------------------------------------------------------
 .accordion-navigation-actions {
-    position: absolute;
-    right: $accordion-navigation-paddingHorizontal;
-    top: $accordion-navigation-paddingVertical;
+  position: absolute;
+  right: $accordion-navigation-paddingHorizontal;
+  top: $accordion-navigation-paddingVertical;
 
-    .facetedSearch-clearLink {
-        display: none;
+  .facetedSearch-clearLink {
+    display: none;
+  }
+
+  > a {
+    color: stencilColor('color-textSecondary');
+    vertical-align: middle;
+
+    // scss-lint:disable NestingDepth
+    &:hover {
+      color: stencilColor('color-textSecondary--hover');
     }
-
-    > a {
-        color: stencilColor("color-textSecondary");
-        vertical-align: middle;
-
-        // scss-lint:disable NestingDepth
-        &:hover {
-            color: stencilColor("color-textSecondary--hover");
-        }
-        // scss-lint:enable NestingDepth
-    }
+    // scss-lint:enable NestingDepth
+  }
 }

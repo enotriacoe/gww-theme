@@ -39,7 +39,9 @@
 
   .slick-next,
   .slick-prev {
+    display: none;
     top: 50%;
+    background: transparent;
 
     &:before {
       opacity: 1;
@@ -86,41 +88,56 @@
     max-height: 30vw;
   }
 
-.heroCarousel-slide {
-    &.compat-object-fit { // 1
-        background-size: cover;
-        background-position: 50%;
-        background-repeat: no-repeat;
+  .heroCarousel-slide {
+    &.compat-object-fit {
+      // 1
+      background-size: cover;
+      background-position: 50%;
+      background-repeat: no-repeat;
 
-        &.stretch {
-            @include breakpoint("large") { // 4
-                background-size: 100% 100%;
-            }
+      &.stretch {
+        @include breakpoint('large') {
+          // 4
+          background-size: 100% 100%;
         }
+      }
 
-        .heroCarousel-image {
-            opacity: 0;
-        }
+      .heroCarousel-image {
+        opacity: 0;
+      }
     }
   }
 }
 
+.heroCarousel-slide::before {
+  @include breakpoint('medium') {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at 0% 75%,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
 .heroCarousel-content {
-  background-color: rgba($carousel-bgColor, 1);
-  padding: spacing('half');
+  // background-color: rgba($carousel-bgColor, 1);
+  padding: spacing('single');
   text-align: left;
 
   @include breakpoint('medium') {
-    @include carouselOpaqueBackgrounds;
-    background-color: rgba($carousel-bgColor, 1);
     position: absolute;
-    left: 70px;
-    bottom: 30px;
-    margin: 0 auto;
-    padding: 1.3rem (spacing('single') * 1.5);
-    overflow: hidden;
-    max-width: 60%;
-    max-height: 250px;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    padding: spacing('single') spacing('double');
 
     &.heroCarousel-content--empty {
       background-color: transparent;
@@ -128,8 +145,7 @@
   }
 
   @include breakpoint('large') {
-    max-width: 50%;
-    max-height: 20vw;
+    // max-height: 20vw;
   }
 }
 
@@ -138,34 +154,45 @@
   font-size: 36px;
   margin-top: 0;
   font-family: $fontFamily-headings;
-  font-weight: 700;
   display: block;
+  line-height: 1;
 
   @include breakpoint('medium') {
-    font-size: fontSize('largest');
-    line-height: 1;
+    font-size: 48px;
+    color: #fff;
   }
 
   @include breakpoint('large') {
-    font-size: fontSize('hero');
+    font-size: 72px;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 }
 
 .heroCarousel-description {
   color: $carousel-description-color;
   font-size: fontSize('base');
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 
   @include breakpoint('medium') {
     font-size: fontSize('large');
+    color: #fff;
   }
 }
 
 .heroCarousel-action {
   margin: 0;
+  width: auto;
+  padding: 0.5em 2em;
+  color: black;
+  background-color: $stone;
+  display: inline-block;
+  font-family: $button-font;
 
   @include breakpoint('medium') {
-    margin-top: (spacing('single') / 3);
+    margin-top: 1em;
   }
 }
 
@@ -174,7 +201,8 @@
 
 .home-carousel-wrap {
   width: 100%;
-  display: inline-block;
+  // display: inline-block;
+  background-color: $stone-xlt;
 }
 
 .home-carousel-cont.slick-slider {
@@ -203,4 +231,10 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.slick-dots li button {
+  background-color: white;
+  border-color: $grey-dk;
+  opacity: 0.75;
 }

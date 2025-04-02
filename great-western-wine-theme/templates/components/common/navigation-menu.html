@@ -12,6 +12,11 @@
         {{/each}}
         {{#unless theme_settings.hide_content_navigation}}
             <li class="navPages-item">
+                <a class="navPages-action navPages-action-depth-max {{#if is_active}} activePage{{/if}}"
+                  href="/brands/" > Producers 
+                </a>
+            </li>
+            <li class="navPages-item">
                 <a class="navPages-action navPages-action-depth-max has-subMenu is-root{{#if is_active}} activePage{{/if}}"
                     href="/our-story" data-collapsible="navPages-about"> About Us <i
                         class="icon navPages-action-moreIcon" aria-hidden="true"><svg>

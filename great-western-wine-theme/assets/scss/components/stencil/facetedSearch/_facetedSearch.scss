@@ -2,7 +2,6 @@
 // FACET SEARCH (CSS)
 // =============================================================================
 
-
 // Faceted search toggle
 // -----------------------------------------------------------------------------
 //
@@ -10,55 +9,54 @@
 //
 // -----------------------------------------------------------------------------
 .facetedSearch {
-    flex-basis: 75%;
-    flex-grow: 1;
+  flex-basis: 75%;
+  flex-grow: 1;
 }
 
 .facetedSearch-toggle {
-    @include grid-row;
-    border: $facetedSearch-toggle-border;
-    border-radius: $facetedSearch-toggle-borderRadius;
-    border-width: $facetedSearch-toggle-borderWidth;
-    display: block;
+  @include grid-row;
+  border: $facetedSearch-toggle-border;
+  border-radius: $facetedSearch-toggle-borderRadius;
+  border-width: $facetedSearch-toggle-borderWidth;
+  display: block;
+  margin-bottom: 0;
+  padding: $facetedSearch-toggle-padding;
+  background-color: $stone-xlt;
+
+  @include breakpoint('medium') {
+    // scss-lint:disable ImportantRule
+    display: none !important; // 1
+  }
+
+  &.is-open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     margin-bottom: 0;
-    padding: $facetedSearch-toggle-padding;
-    background-color: $grey-xlt;
-
-    @include breakpoint("medium") {
-        // scss-lint:disable ImportantRule
-        display: none !important; // 1
-    }
-
-    &.is-open {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        margin-bottom: 0;
-    }
+  }
 }
 
 .facetedSearch-toggle-text,
 .facetedSearch-toggle-indicator {
-    display: block;
-    font-weight: normal;
+  display: block;
+  font-weight: normal;
 
-    .icon svg{
-        fill: $color-greyMedium;
-    }
+  .icon svg {
+    fill: $color-greyMedium;
+  }
 }
 
 .facetedSearch-toggle-text {
-    @include grid-column(7);
-    padding: 0;
-    text-align: left;
+  @include grid-column(7);
+  padding: 0;
+  text-align: left;
 }
 
 .facetedSearch-toggle-indicator {
-    @include grid-column(5);
-    font-weight: bold;
-    padding: 0;
-    text-align: right;
+  @include grid-column(5);
+  font-weight: bold;
+  padding: 0;
+  text-align: right;
 }
-
 
 // Faceted search nav list
 // -----------------------------------------------------------------------------
@@ -67,78 +65,78 @@
 //
 // -----------------------------------------------------------------------------
 .facetedSearch-navList {
-    display: none;
+  display: none;
 
-    @include breakpoint("medium") {
-        // scss-lint:disable ImportantRule
-        display: inline-block !important; // 1
-        width: calc(100% - 110px);
+  @include breakpoint('medium') {
+    // scss-lint:disable ImportantRule
+    display: inline-block !important; // 1
+    width: calc(100% - 110px);
 
-        .accordion-block {
-            display: none;
+    .accordion-block {
+      display: none;
 
-            &:nth-child(1), &:nth-child(2), &:nth-child(3) {
-                display: inline-block;
-            }
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3) {
+        display: inline-block;
+      }
 
-            @include breakpoint("large") { 
-                &:nth-child(4) {
-                    display: inline-block;
-                }
-            }
+      @include breakpoint('large') {
+        &:nth-child(4) {
+          display: inline-block;
         }
-
-        &.show-all-filters {
-            .accordion-block {
-                display: inline-block;
-            }
-        }
+      }
     }
 
-    &.is-open {
-        display: block;
-
-        // scss-lint:disable SelectorDepth, NestingDepth
-        .accordion--navList,
-        .accordion-block:first-child .accordion-navigation {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
+    &.show-all-filters {
+      .accordion-block {
+        display: inline-block;
+      }
     }
+  }
 
-    .facetedSearch-toggle + &,
-    .sidebarBlock + & {
-        margin-top: 0;
+  &.is-open {
+    display: block;
+
+    // scss-lint:disable SelectorDepth, NestingDepth
+    .accordion--navList,
+    .accordion-block:first-child .accordion-navigation {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
+  }
 
+  .facetedSearch-toggle + &,
+  .sidebarBlock + & {
+    margin-top: 0;
+  }
 
-    .facetedSearch-toggle + &.is-open,
-    .sidebarBlock + &.is-open {
-        margin-top: -1px;
+  .facetedSearch-toggle + &.is-open,
+  .sidebarBlock + &.is-open {
+    margin-top: -1px;
 
-        @include breakpoint("medium") {
-            margin-top: $facetedSearch-toggle-verticalSpacing;
-        }
+    @include breakpoint('medium') {
+      margin-top: $facetedSearch-toggle-verticalSpacing;
     }
+  }
 
-    .navList--inner {
-        margin-left: spacing("single");
-    }
+  .navList--inner {
+    margin-left: spacing('single');
+  }
 }
 
 .facet-quick-heading {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .facetedSearch-optionColumns {
-    column-count: 2;
+  column-count: 2;
 
-    @include breakpoint("medium") {
-        column-count: 3;
-        column-gap: 20px;
-    }
+  @include breakpoint('medium') {
+    column-count: 3;
+    column-gap: 20px;
+  }
 }
-
 
 // Faceted search refine filters
 // -----------------------------------------------------------------------------
@@ -147,20 +145,20 @@
 //
 // -----------------------------------------------------------------------------
 .facetedSearch-refineFilters {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 
-    @include breakpoint("medium") {
-        margin-bottom: 0px;
-    }
+  @include breakpoint('medium') {
+    margin-bottom: 0px;
+  }
 }
 
 // Facted search ratings
 .facetedSearch-content--rating {
-    .is-selected {
-        font-weight: bold;
-    }
+  .is-selected {
+    font-weight: bold;
+  }
 }
 
 .facetedSearch-clearLink {
-    display: none;
+  display: none;
 }

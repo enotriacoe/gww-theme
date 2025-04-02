@@ -3,42 +3,48 @@
 // =============================================================================
 
 .productView-producer-section {
-    background-color: $blue-lt;
+  background-color: $stone-lt;
+  padding: 22px;
+  margin-bottom: 2.25rem;
+
+  @include breakpoint('medium') {
     padding: 32px;
+  }
 }
 
 .productView-producer-cont {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @include breakpoint('medium') {
+    flex-direction: row;
+  }
+
+  .productView-producer-info,
+  .productView-producer-image {
+    width: 100%;
+
+    @include breakpoint('medium') {
+      width: 50%;
+    }
+  }
+
+  .productView-producer-info {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: flex-start;
 
-    @include breakpoint("medium") {
-        flex-direction: row;
+    @include breakpoint('medium') {
+      flex-direction: row;
+      padding-right: 20px;
     }
 
-    .productView-producer-info, .productView-producer-image {
-        width: 100%;
-
-        @include breakpoint("medium") {
-            width: 50%;
-        }
+    img {
+      @include breakpoint('medium') {
+        width: 80%;
+        margin-right: 20px;
+      }
     }
-
-    .productView-producer-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        
-        @include breakpoint("medium") {
-            flex-direction: row;
-            padding-right: 20px;
-        }
-
-        img {
-            @include breakpoint("medium") {
-                width: 80%;
-                margin-right: 20px;
-            }
-        }
-    }
+  }
 }

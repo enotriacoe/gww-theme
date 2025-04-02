@@ -1,37 +1,22 @@
 ---
 brands:
+    limit: 800
 ---
 
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
-<section class="page">
-    <h1 class="page-heading">{{lang 'brand.label'}}</h1>
+<section class=>
+    <h1 class="stylised-title">{{lang 'brand.label'}}</h1>
+    {{> components/custom/producers-content}}
     {{{region name="brands_below_header"}}}
-    <ul class="brandGrid">
+    <ul class="list-brands">
         {{#each brands}}
             <li class="brand">
-                <article class="card {{#if alternate}}card--alternate{{/if}}">
-                    <figure class="card-figure">
-                        <a class="card-figure__link" aria-label="{{name}}" href="{{url}}">
-                            <div class="card-img-container">
-                                {{> components/common/responsive-img
-                                    image=image
-                                    class="card-image"
-                                    fallback_size=../theme_settings.brand_size
-                                    lazyload=../theme_settings.lazyload_mode
-                                    default_image=../theme_settings.default_image_brand
-                                }}
-                            </div>
-                        </a>
-                    </figure>
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <a href="{{url}}">{{name}}</a>
-                        </h3>
-                    </div>
-                </article>
+                <a class="" aria-label="{{name}}" href="{{url}}">
+                    {{name}}
+                </a>
             </li>
         {{/each}}
     </ul>

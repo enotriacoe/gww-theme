@@ -45,28 +45,16 @@
 }
 
 .productView-description-cont {
-    @include grid-column(12);
     padding: 0;
     margin: 15px 0 30px 0;
 
-    @include breakpoint("large") {
-
-    }
-
-    .productView-title {
-        border-bottom: container("border");
-        margin-bottom: spacing("base");
-        padding-left: spacing("base");
-        padding-right: spacing("base");
-    }
-
-    .productView-description {
-        @include breakpoint("medium") {
-            clear: both;
-            float: none;
-            width: 100%;
-        }
-    }
+    // .productView-description {
+    //     @include breakpoint("medium") {
+    //         clear: both;
+    //         float: none;
+    //         width: 100%;
+    //     }
+    // }
 }
 
 // Mixed Case Description utility
@@ -141,6 +129,72 @@
             p {
                 margin: 0;
             }
+        }
+    }
+}
+
+
+// Flavours
+
+.productView-flavour-cont {
+
+    margin-bottom: 2rem;
+
+    h3 {
+        font-family: $fontFamily-headings;
+        line-height: 1;
+        font-size: 24px;
+        margin-bottom: 1rem;
+        margin-top: 0;
+        text-align:center;
+    }
+    
+    .flavour-list {
+        display: flex;
+    }
+}
+
+.productView-flavour {
+    width: 25%;
+    text-align: center;
+
+    .icon {
+        display: inline-block;
+        width: 100%;
+        height: 36px;
+        font-size: 36px;
+    }
+}
+
+// Curator Quote
+
+.productView-paragraph {
+    position: relative;
+
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 2.5rem;
+        height: 2.5rem;
+        width: 2.5rem;
+        text-align: center;
+
+        &.icon-people {
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+    }
+    
+    p, blockquote {
+        padding-left: 50px;
+        padding-top: 6px;
+        font-size: 16px;
+        font-style: italic;
+
+        footer {
+            font-weight: 600;
+            text-align: right;
         }
     }
 }

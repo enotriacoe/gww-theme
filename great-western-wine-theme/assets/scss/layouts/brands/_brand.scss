@@ -1,18 +1,68 @@
 .brand-image-container {
-    position: relative;
-    max-width: get-width(stencilString('thumb_size'));
+  position: relative;
+  max-width: get-width(stencilString('thumb_size'));
 
-    img {
-        @include lazy-loaded-img;
-    }
+  img {
+    @include lazy-loaded-img;
+  }
 
-    @include lazy-loaded-padding('thumb_size');
+  @include lazy-loaded-padding('thumb_size');
 }
 
 .brand {
-    .card-img-container {
-        max-width: get-width(stencilString('brand_size'));
+  .brand-card {
+    border: 1px solid var(--light-grey, #d4dce1);
 
-        @include lazy-loaded-padding('brand_size');
+    .brand-card-figure {
+      position: relative;
+      margin: 10px 0;
     }
+
+    .brand-card-body {
+      border-top: 1px solid $stone-xlt;
+    }
+  }
+
+  .brand-card-img-container {
+    max-width: 300px;
+    padding-bottom: 100px;
+
+    .brand-card-image {
+      @include lazy-loaded-img;
+
+      border: 0;
+      width: 100%;
+      max-height: 100%;
+      max-width: 250px;
+      object-fit: contain;
+      /* Object-fit polyfill */
+      font-family: 'object-fit: contain;';
+    }
+  }
+
+  .brand-card-title {
+    text-align: center;
+    font-family: $fontFamily-hero;
+    font-size: 24px;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+// Brands Listing Page
+
+.list-brands {
+  column-count: 1;
+  list-style-type: none;
+
+  @include breakpoint('small') {
+    column-count: 2;
+  }
+
+  @include breakpoint('medium') {
+    column-count: 4;
+  }
 }
