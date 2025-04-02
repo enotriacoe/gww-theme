@@ -3,141 +3,63 @@
 // =============================================================================
 
 .float-left {
-    @include breakpoint("small") {
-        float: left;
-        padding-right: 20px;
-    }
+  @include breakpoint('small') {
+    float: left;
+    padding-right: 1.5em;
+  }
 }
 
 .float-right {
-    @include breakpoint("small") {
-        float: right;
-        padding-left: 20px
-    }
-}
-
-.img-50 {
-    margin: 0 auto 20px;
-    display: block;
-    width: 100%;
-
-    @include breakpoint("small") {
-        width: 60%;
-    }
-
-    @include breakpoint("medium") {
-        width: 50%;
-    }
-}
-
-.img-33 {
-    margin: 0 auto 20px;
-    display: block;
-    width: 100%;
-
-    @include breakpoint("small") {
-        width: 50%;
-    }
-
-    @include breakpoint("medium") {
-        width: 40%;
-    }
-
-    @include breakpoint("large") {
-        width: 33%;
-    }
-}
-
-.img-25 {
-    margin: 0 auto 20px;
-    display: block;
-    width: 100%;
-
-    @include breakpoint("small") {
-        width: 50%;
-    }
-
-    @include breakpoint("medium") {
-        width: 33%;
-    }
-
-    @include breakpoint("large") {
-        width: 25%;
-    }
-}
-
-
-.img-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-
-    &.space-between {
-        justify-content: space-between;
-    }
-
-    @include breakpoint("medium") {
-        margin: 0 auto 15px;
-        
-
-        > div:last-child {
-            margin-right: 0;
-        }
-    }
-    
-    @include breakpoint("large") {
-        flex-wrap: nowrap;
-    }
-}
-
-.img-third {
-    width: 100%;
-    position: relative;
-     
-    @include breakpoint("medium") {
-        width: calc(32.5% - 15px);
-    }
+  @include breakpoint('small') {
+    float: right;
+    padding-left: 1.5em;
+  }
 }
 
 .center {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  text-align: center;
 }
 
 .clear-left {
-    clear: left;
+  clear: left;
 }
 
 .clear-right {
-    clear: right;
+  clear: right;
 }
 
 .clear {
-    clear: both;
+  clear: both;
 }
 
 // Panels
 
 .relative {
-    position: relative;
+  position: relative;
 }
 
 .banner-content {
-    &.custom-bg {
-    }
+  &.custom-bg {
+  }
 
-    &.light {
-        .banner-description, .banner-title, .btn-coral-line {
-            border-color: white;
-            color: white;
-        }
+  &.light {
+    .banner-description,
+    .banner-title,
+    .btn-coral-line {
+      border-color: white;
+      color: white;
     }
+  }
 
-    &.dark {
-        .banner-description, .banner-title, .btn-coral-line {
-            border-color: black;
-            color: black;
-        }
+  &.dark {
+    .banner-description,
+    .banner-title,
+    .btn-coral-line {
+      border-color: $black;
+      color: $black;
     }
+  }
 }

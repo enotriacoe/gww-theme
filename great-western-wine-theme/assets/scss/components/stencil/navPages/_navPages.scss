@@ -58,7 +58,7 @@
     display: block;
     z-index: 0;
     top: 55px;
-    border-top: 1px solid black;
+    border-top: 1px solid $black;
 
     @include breakpoint('medium') {
       top: auto;
@@ -354,7 +354,7 @@
 
   @include breakpoint('medium') {
     // scss-lint:disable ImportantRule
-    background-color: white;
+    background-color: $stone-xlt;
     padding: spacing('single') spacing('single') (spacing('single') + spacing('half')) !important;
     position: absolute;
     text-align: left;
@@ -388,15 +388,15 @@
       left: 0;
       width: auto !important;
       height: auto !important;
-      background-color: white;
+      background-color: $stone-xlt;
 
       .navPage-subMenu-list {
         position: absolute;
         text-align: left;
         top: 100%;
-        background-color: white;
+        background-color: $stone-xlt;
         height: auto;
-        border-top: 2px solid stencilColor('navPages-color');
+        border-top: 1px solid stencilColor('navPages-color');
 
         .navPage-subMenu-action {
           width: 100%;
@@ -417,7 +417,7 @@
     margin: auto;
     top: inherit;
     width: 100%;
-    border: 2px solid stencilColor('navPages-color');
+    border: 1px solid stencilColor('navPages-color');
     background-color: stencilColor('navPages-subMenu-backgroundColor');
   }
 }

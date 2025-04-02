@@ -1,32 +1,11 @@
 {
   "customLayouts": {
     "brand": {},
-    "category": {
-      "category-pgp-food.html": [
-        "/whats-on-the-menu/"
-      ],
-      "category-plp-food.html": [
-        "/red-meat/"
-      ],
-      "category-plp-blank.html": [
-        "/fortified-and-dessert-wine/dessert-wine/"
-      ],
-      "category-pgp-list.html": [
-        "/producers/"
-      ],
-      "category-pgp-offers.html": [
-        "/offers/"
-      ],
-      "category-plp-rich.html": [
-        "/producers/bertani/"
-      ],
-      "category-plp-producer.html": [
-        "/producers/ken-forrester-wines/"
-      ]
-    },
+    "category": {},
     "page": {},
     "product": {}
   },
-  "normalStoreUrl": "https://greatwine.co.uk/",
-  "port": "3000"
+  "normalStoreUrl": "https://store-968tlwt7s4.mybigcommerce.com/",
+  "port": "3000",
+  "packageManager": "npm"
 }

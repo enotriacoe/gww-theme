@@ -19,6 +19,9 @@ export default class Brand extends CatalogPage {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
             hooks.on('sortBy-submitted', this.onSortBySubmit);
         }
+
+        this.moveBottomDescZone();
+        this.removeTextNodesFromImageRow();
     }
 
     initFacetedSearch() {
@@ -66,5 +69,19 @@ export default class Brand extends CatalogPage {
                 onInvalidPrice,
             },
         });
+    }
+
+    moveBottomDescZone() {
+        if ($('.desc-zone-bottom')[0]) {
+            $('.desc-zone-bottom').detach().appendTo('.bottom-category-text');
+            $('.desc-zone-bottom').show();
+        }
+    }
+
+    removeTextNodesFromImageRow() {
+        // eslint-disable-next-line func-names
+        $('.img-row').contents().filter(function () {
+            return this.nodeType === Node.TEXT_NODE;
+        }).remove();
     }
 }

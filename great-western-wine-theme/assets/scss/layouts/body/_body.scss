@@ -13,7 +13,7 @@
     margin-top: 0;
 
     @include breakpoint("medium") {
-        margin-top: 121px;
+        margin-top: 120px;
     }
 }
 
@@ -40,6 +40,11 @@
 
 .page-content--textCenter {
     text-align: center;
+}
+
+h1.page-content {
+  margin-top: 1rem;
+  font-size: 36px;
 }
 
 .page-sidebar {

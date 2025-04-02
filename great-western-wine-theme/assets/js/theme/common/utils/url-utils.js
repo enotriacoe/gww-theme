@@ -34,11 +34,13 @@ const urlUtils = {
 
                     for (ndx in queryData[key]) {
                         if (queryData[key].hasOwnProperty(ndx)) {
-                            out += `&${key}=${queryData[key][ndx]}`;
+                            const cleanComponent = encodeURIComponent(queryData[key][ndx]).replaceAll('%20', '+');
+                            out += `&${key}=${cleanComponent}`;
                         }
                     }
                 } else {
-                    out += `&${key}=${queryData[key]}`;
+                    const cleanComponent = encodeURIComponent(queryData[key]).replaceAll('%20', '+');
+                    out += `&${key}=${cleanComponent}`;
                 }
             }
         }

@@ -1,32 +1,35 @@
-<h5 class="newsletter-title">{{lang 'newsletter.subscribe'}}</h5>
-<p class="newsletter-intro">{{lang 'newsletter.subscribe_intro'}}</br>Minimum spend £80 - <a href="/promotional-terms-conditions/" target="_blank">Terms and conditions apply</a></p>
-
-<form id="newsletter-register-form" class="form newsletter-form" action="{{urls.subscribe.action}}" method="post">
-    <fieldset class="form-fieldset">
-        <input type="hidden" name="action" value="subscribe">
-        <input type="hidden" name="nl_first_name" value="bc">
-        <input type="hidden" name="check" value="1">
-        <div class="form-field">
-            <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
-            <div class="form-prefixPostfix wrap">
-                <input class="form-input"
-                       id="nl_email"
-                       name="nl_email"
-                       type="email"
-                       value="{{customer.email}}"
-                       placeholder="{{lang 'newsletter.email_placeholder'}}"
-                       aria-describedby="alertBox-message-text"
-                       aria-required="true"
-                       required
-                >
-                <input class="button button--primary form-prefixPostfix-button--postfix"
-                       type="submit"
-                       value="{{lang 'newsletter.subscribe_submit'}}"
-                >
-            </div>
-            {{#if settings.show_newsletter_summary }}
-                <div class="footer-newsletter-summary">{{settings.newsletter_summary}}</div>
-            {{/if}}
-        </div>
-    </fieldset>
-</form>
+<div class="newsletter-wrapper">
+    <div class="container">
+        <h5 class="newsletter-title">{{lang 'newsletter.subscribe'}}</h5>
+        <p class="newsletter-intro">{{lang 'newsletter.subscribe_intro'}}</br>Minimum spend £50 - <a href="/promotional-terms-conditions/" target="_blank">Terms and conditions apply</a></p>
+        <form id="newsletter-register-form" class="form newsletter-form" action="{{urls.subscribe.action}}" method="post">
+            <fieldset class="form-fieldset">
+                <input type="hidden" name="action" value="subscribe">
+                <input type="hidden" name="nl_first_name" value="bc">
+                <input type="hidden" name="check" value="1">
+                <div class="form-field">
+                    <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
+                    <div class="form-prefixPostfix wrap">
+                        <input class="form-input"
+                              id="nl_email"
+                              name="nl_email"
+                              type="email"
+                              value="{{customer.email}}"
+                              placeholder="{{lang 'newsletter.email_placeholder'}}"
+                              aria-describedby="alertBox-message-text"
+                              aria-required="true"
+                              required
+                        >
+                        <input class="button button--primary form-prefixPostfix-button--postfix"
+                              type="submit"
+                              value="{{lang 'newsletter.subscribe_submit'}}"
+                        >
+                    </div>
+                    {{#if settings.show_newsletter_summary }}
+                        <div class="footer-newsletter-summary">{{settings.newsletter_summary}}</div>
+                    {{/if}}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -1,3 +1,17 @@
+{{#each custom_fields}}
+    {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
+    {{#if name "===" "awardMedal"}}{{assignVar "hasAwardMedal" 1}}{{assignVar "awardMedal" value}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
+    {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
+{{/each}}
+
+{{#all
+    (if (getVar "awardVintage") '===' (getVar "vintage"))
+    (if (add (getVar "hasAwardMedal") (getVar "hasAwardCompetition")) '>' 1)
+    }}
+    {{assignVar "showAward" 1}}
+{{/all}}
+
 <div class="productView-spec">
     <h3 class="stylised-medium">Product Specification</h3>
     <ul class="product-spec-list">
@@ -90,18 +104,16 @@
     </ul>
 
     <ul class="product-spec-list">
-        {{#filter product.custom_fields 'awardName' property='name' }}{{assignVar 'awardName' value}}{{/filter}}
-        {{#filter product.custom_fields 'awardMedal' property='name' }}{{assignVar 'awardMedal' value}}{{/filter}} 
-        {{#filter product.custom_fields 'awardName' property='name' }}
+        {{#if (getVar "showAward")}}
         <li>
             <div class="productView-spec-item">
                 <span class="productView-spec-label">Award</span>
             </div>
             <span>
-                {{getVar 'awardName'}} {{getVar 'awardMedal'}}
+                {{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}
             </span>
         </li>
-        {{/filter}} 
+        {{/if}} 
         
         {{#filter product.custom_fields 'vegan' property='name' }}
         {{#if value '===' 'Yes'}}

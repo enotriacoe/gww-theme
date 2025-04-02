@@ -1,39 +1,47 @@
+.newsletter-wrapper {
+  background-color: $stone;
+  padding: 1.5em 0 0;
+}
+
+.newsletter-container {
+
+}
+
 .newsletter-title {
-    font-family: "Cormorant", Garamond, "Hoefler Text", "Times New Roman", Times, serif;
-    text-align: center;
-    font-size: ($fontSize-largest * 1.5);
-    font-weight: $fontWeight-black;
-    text-transform: none;
-    margin-bottom: 0;
-    margin-top: 10px;
-    line-height: 1.2;
+  font-family: 'JuanaRegular', Garamond, 'Hoefler Text', 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 30px;
+  text-transform: none;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .newsletter-intro {
-    text-align: center;
+  text-align: center;
 }
 
 .newsletter-form {
-    .form-prefixPostfix {
-        max-width: 700px;
-        margin: 0 auto;
-    }
+  .form-prefixPostfix {
+    max-width: 700px;
+    margin: 0 auto;
+  }
 
-    .form-input, .form-prefixPostfix .button{
-        border-radius: 0;
-        margin: 0;
-        border-color: $primary-color;
-    }
+  .form-input,
+  .form-prefixPostfix .button {
+    border-radius: 0;
+    margin: 0;
+    border-color: $primary-color;
+  }
 
-    .button {
-        border-radius: 0;
-        margin: 0;
-        border-color: $primary-color;
-        text-transform: uppercase;
-        background-color: $primary-color;
-    }
-    
-    .hr-black {
-        border-color: black;
-    }
+  .button {
+    border-radius: 0;
+    margin: 0;
+    border-color: $primary-color;
+    // text-transform: uppercase;
+    background-color: $primary-color;
+  }
+
+  .hr-black {
+    border-color: $black;
+  }
 }

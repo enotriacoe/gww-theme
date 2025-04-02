@@ -1,3 +1,35 @@
+{{assignVar "vintage" ' '}}
+{{assignVar "hasAwardMedal" 0}}
+{{assignVar "awardMedal" ' '}}
+{{assignVar "hasAwardCompetition" 0}}
+{{assignVar "awardCompetition" ' '}}
+{{assignVar "hasAwardQuote" 0}}
+{{assignVar "awardQuote" ' '}}
+{{assignVar "hasAwardImage" 0}}
+{{assignVar "awardImage" ' '}}
+{{assignVar "awardVintage" ' '}}
+{{assignVar "showAward" 0}}
+{{assignVar "isWine" 0}}
+
+{{#each custom_fields}}
+    {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
+    {{#if name "===" "awardMedal"}}{{assignVar "hasAwardMedal" 1}}{{assignVar "awardMedal" value}}{{/if}}
+    {{#if name "===" "awardCompetition"}}{{assignVar "hasAwardCompetition" 1}}{{assignVar "awardCompetition" value}}{{/if}}
+    {{#if name "===" "awardQuote"}}{{assignVar "hasAwardQuote" 1}}{{assignVar "awardQuote" value}}{{/if}}
+    {{#if name "===" "awardImage"}}
+      {{#if (length value) '>' 0}}{{assignVar "hasAwardImage" 1}}{{assignVar "awardImage" value}}{{/if}}
+    {{/if}}
+    {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
+    {{#if name "===" "isWine"}}{{assignVar "isWine" value}}{{/if}}
+{{/each}}
+
+{{#all
+    (if (getVar "awardVintage") '===' (getVar "vintage"))
+    (if (add (add (getVar "hasAwardMedal") (getVar "hasAwardCompetition")) (getVar "hasAwardImage")) '>' 2)
+    }}
+    {{assignVar "showAward" 1}}
+{{/all}}
+
 <article
     class="card
     {{#if alternate}} card--alternate{{/if}}"
@@ -54,11 +86,10 @@
                             {{/if}}
                     {{/filter}}
                 {{/if}}
-                {{#filter custom_fields 'awardImage' property='name' }}
-                    <img src="{{value}}" alt="{{/filter}}{{#filter custom_fields 'awardName' property='name' }}{{{ value }}}{{/filter}} {{#filter custom_fields 'awardMedal' property='name' }}{{{ value }}}{{/filter}}"
-                {{#filter custom_fields 'awardImage' property='name' }}
-                    class="card-img-medal" />
-                {{/filter}}
+
+                {{#if (getVar 'showAward' '>' 0) }}
+                    <img class="card-img-medal" src="https://res.cloudinary.com/enotria/image/upload/w_131,h_131,dpr_auto/gwc/medals/{{getVar 'awardImage'}}" title="{{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}" alt="{{getVar 'awardCompetition'}} {{getVar 'awardMedal'}}" />
+                {{/if}}
             </div>
         </a>
 
@@ -85,13 +116,14 @@
             </div>
 
             <p class="card-stats">
-                <span> {{#filter custom_fields 'vintage' property='name' }}{{value}} | {{/filter}}{{#filter custom_fields 'abv' property='name' }}{{value}} ABV {{/filter}} &nbsp; </span>
-                <span class="card-text-volume">{{#filter custom_fields 'unitVolume' property='name' }}{{value}}{{/filter}}</span>
+                {{#filter custom_fields 'vintage' property='name' }}<span>{{value}}</span>{{/filter}}
+                {{#filter custom_fields 'abv' property='name' }}<span>{{value}} ABV</span>{{/filter}}
+                {{#filter custom_fields 'unitVolume' property='name' }}<span>{{value}}</span>{{/filter}}
             </p>
         </div>
         <div class="card-price-wrap">
             <div class="card-price-cont">
-                <div class="card-single-cont" data-test-info-type="price">
+                <div class="card-single-cont {{#if (getVar 'isWine') '===' 'Yes'}} card-single-cont-with-multibuy{{/if}}" data-test-info-type="price">
                     <span class="single-price-title">{{lang 'products.single_bottle_text'}}</span>
                     {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                         {{> components/products/price price=price}}
@@ -99,31 +131,18 @@
                         {{> components/common/login-for-pricing}}
                     {{/or}}
                 </div>
-                {{#filter custom_fields 'isMultibuy' property='name' }}
-                <div class="card-multibuy-cont">
-                {{else}}
-                <div class="card-multibuy-cont" style="display:none">
-                {{/filter}}
-                {{#filter custom_fields 'isWine' property='name'}}
-                    <div class="multibuy-price-title">
-                        <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
-                        <sub> ?</sub>
-                        <span class="tooltip-text">Save 10%: <strong>£{{toFixed (multiply ../price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                {{#if (getVar 'isWine') '===' 'Yes'}}
+                    <div class="card-multibuy-cont">
+                        <div class="multibuy-price-title">
+                            <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
+                            <sub> ?</sub>
+                            <span class="tooltip-text">Save 10%: <strong>£{{toFixed (multiply ../price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                        </div>
+                        <span class="price price--withTax">£{{toFixed (multiply ../price.with_tax.value 0.9) 2}}</span>
+                        <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                        <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply../price.with_tax.value 0.1) 2}}</span>
                     </div>
-                    <span class="price price--withTax">£{{toFixed (multiply ../price.with_tax.value 0.9) 2}}</span>
-                    <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
-                    <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply../price.with_tax.value 0.1) 2}}</span>
-                {{else}}
-                    <div class="multibuy-price-title">
-                        <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
-                        <sub> ?</sub>
-                        <span class="tooltip-text">Save 10%: <strong>£{{toFixed (multiply price.with_tax.value 0.9) 2}}</strong> per bottle when you mix 12+ bottles</span>
-                    </div>
-                    <span class="price price--withTax">£{{toFixed (multiply price.with_tax.value 0.9) 2}}</span>
-                    <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
-                    <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
-                  {{/filter}}
-                </div>
+                {{/if}}
             </div>
             <div class="grid-add-cart max-stock-parent">
                 <div class="max-stock-message-wrap">
@@ -206,9 +225,9 @@
             </div>
             <div class="card-review-cont">
                 {{#if num_reviews '>' 0}}
-                    <p class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</p>
+                    <div class="card-rating">{{> components/products/ratings rating=rating}} ({{ num_reviews}})</div>
                 {{else}}
-                    <a href="{{url}}#write_review" title="Write a review">Write a Review</a>
+                    <div><a href="{{url}}#write_review" title="Write a review">Write a Review</a></div>
                 {{/if}}
                 <div class="wishlist-grid-view">
                     {{> components/common/wishlist-dropdown}}

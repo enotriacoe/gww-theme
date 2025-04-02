@@ -20,13 +20,15 @@
 {{/if}}
 
 {{/if}}
-<footer class="footer" role="contentinfo">
+
+
+<footer class="footer" role="contentinfo">{{#if settings.show_newsletter_box}} {{> components/common/subscription-form}} {{/if}}
     <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
     <div class="container">
         <section class="footer-info">
             <div class="footer-details">
                 <img src="{{cdn 'assets/img/great-wine-co-logo-white.svg'}}" class="footer-logo"
-                    alt="The Great Wine Company white logo" />
+                    alt="The Great Wine Co. logo" />
                 {{> components/common/social-links}}
 
                 {{#if settings.address}}

@@ -16,153 +16,153 @@
 // -----------------------------------------------------------------------------
 
 .header {
-    background-color: $header-bg;
+  background-color: $header-bg;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: zIndex('higher');
+  border-bottom: 1px solid $stone;
+
+  @include breakpoint('medium') {
+    border-bottom: 1px solid $black;
+    overflow: visible;
     position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: zIndex("higher");
-    border-bottom: 1px solid $grey-md;
+  }
 
-    @include breakpoint("medium") {
-        border-bottom: 2px solid black;
-        overflow: visible;
-        position: fixed;
+  &.is-open {
+    height: 100%;
+    position: fixed;
+
+    @include breakpoint('medium') {
+      height: auto;
     }
-
-    &.is-open {
-        height: 100%;
-        position: fixed;
-
-        @include breakpoint("medium") {
-            height: auto;
-        }
-    }
+  }
 }
 
 .header-logo {
-    font-size: 0;   // 1
+  font-size: 0; // 1
+  margin: 0;
+  text-align: center;
+  padding: 0.3rem 0;
+
+  @include breakpoint('medium') {
+    margin: 5px 0;
+    padding: 0;
+  }
+
+  h1 {
     margin: 0;
-    text-align: center;
-    padding: 0.3rem 0;
+  }
 
-    @include breakpoint("medium") {
-        margin: 5px 0;
-        padding: 0;
-    }
+  > a {
+    @include clearfix;
+    color: $storeName-color;
+    display: inline-block;
+    padding: $header-logo-paddingVertical 0;
+    position: relative;
+    text-decoration: none;
+    width: 60%;
+    z-index: zIndex('low');
 
-    h1 {
+    // scss-lint:disable NestingDepth
+    @include breakpoint('medium') {
+      background: none;
+      border-bottom: 0;
+      display: inline;
+      padding: 0;
+      width: 100%;
       margin: 0;
     }
 
-    > a {
-        @include clearfix;
-        color: $storeName-color;
-        display: inline-block;
-        padding: $header-logo-paddingVertical 0;
-        position: relative;
-        text-decoration: none;
-        width: 60%;
-        z-index: zIndex("low");
-
-        // scss-lint:disable NestingDepth
-        @include breakpoint("medium") {
-            background: none;
-            border-bottom: 0;
-            display: inline;
-            padding: 0;
-            width: 100%;
-            margin: 0;
-        }
-
-        &:hover {
-            color: color("link", "hover");
-        }
-
-        &:active {
-            color: color("link", "active");
-        }
+    &:hover {
+      color: color('link', 'hover');
     }
+
+    &:active {
+      color: color('link', 'active');
+    }
+  }
 }
 
 .header-logo--left {
-    text-align: left;
+  text-align: left;
 
-    .header-logo-image {
-        right: auto;
-    }
+  .header-logo-image {
+    right: auto;
+  }
 }
 
 .header-logo--right {
-    text-align: right;
+  text-align: right;
 
-    @include breakpoint("medium") {
-        margin-right: remCalc(40px);
-    }
+  @include breakpoint('medium') {
+    margin-right: remCalc(40px);
+  }
 
-    .header-logo-image {
-        left: auto;
-    }
+  .header-logo-image {
+    left: auto;
+  }
 }
 
 .header-logo-text {
-    display: block;
-    font-family: $fontFamily-hero;
-    font-size: $fontSize-logo-small;   // 1
-    font-weight: stencilFontWeight("headings-font");
-    letter-spacing: remCalc(2px);
-    margin-left: auto;
-    margin-right: auto;
-    overflow: hidden;
-    padding: remCalc(3px) 0;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
+  display: block;
+  font-family: $fontFamily-hero;
+  font-size: $fontSize-logo-small; // 1
+  font-weight: stencilFontWeight('headings-font');
+  letter-spacing: remCalc(2px);
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  padding: remCalc(3px) 0;
+  text-overflow: ellipsis;
+  // text-transform: uppercase;
+  white-space: nowrap;
 
-    @include breakpoint("small") {
-        font-size: $fontSize-logo-medium;
-        padding-bottom: 0;
-        padding-top: 0;
+  @include breakpoint('small') {
+    font-size: $fontSize-logo-medium;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  @include breakpoint('medium') {
+    display: inline;
+    font-size: $fontSize-logo-large;
+    margin-left: 0;
+    margin-right: -(remCalc(2px)); // 3
+    max-width: none;
+    overflow: auto;
+    white-space: normal;
+
+    .header.fixed & {
+      font-size: fontSize('larger');
     }
-
-    @include breakpoint("medium") {
-        display: inline;
-        font-size: $fontSize-logo-large;
-        margin-left: 0;
-        margin-right: -(remCalc(2px)); // 3
-        max-width: none;
-        overflow: auto;
-        white-space: normal;
-
-        .header.fixed & {
-            font-size: fontSize("larger");
-        }
-    }
+  }
 }
 
 .header-logo-image-container {
-    position: relative;
+  position: relative;
 }
 
 .header-logo-image {
-    max-height: remCalc($header-height);
-    display: inline-block;
+  max-height: remCalc($header-height);
+  display: inline-block;
 
-    @include breakpoint("medium") {
-        max-height: 60px;
-    }
+  @include breakpoint('medium') {
+    max-height: 60px;
+  }
 
-    @include breakpoint("large") {
-        max-height: 60px;
-    }
-
+  @include breakpoint('large') {
+    max-height: 60px;
+  }
 }
 
-.header-logo-image-unknown-size { // 5
-    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+.header-logo-image-unknown-size {
+  // 5
+  max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
 
-    @include breakpoint("medium") {
-        max-height: none;
-    }
+  @include breakpoint('medium') {
+    max-height: none;
+  }
 }
 
 //
@@ -172,68 +172,67 @@
 // -----------------------------------------------------------------------------
 
 .mobileMenu-toggle {
-    height: $header-toggle-width;
-    width: 2.8125rem;
-    display: inline-block;
-    font-size: 0;
-    right: 5px;
-    overflow: hidden;
-    padding: 0 remCalc(12) 0;
+  height: $header-toggle-width;
+  width: 2.8125rem;
+  display: inline-block;
+  font-size: 0;
+  right: 5px;
+  overflow: hidden;
+  padding: 0 remCalc(12) 0;
+  position: absolute;
+  z-index: zIndex('high');
+
+  @include breakpoint('medium') {
+    display: none;
+  }
+
+  .mobileMenu-toggleIcon,
+  .mobileMenu-toggleIcon::before,
+  .mobileMenu-toggleIcon::after {
+    background: $header-font-color;
+    content: '';
+    display: block;
+    height: 2px;
     position: absolute;
-    z-index: zIndex("high");
+    transform: rotate(0deg);
+    transition: transform 100ms ease-in, top 100ms ease-in 150ms, bottom 100ms ease-in 150ms; // 1
+    width: remCalc(20);
+  }
 
-    @include breakpoint("medium") {
-        display: none;
+  .mobileMenu-toggleIcon {
+    top: remCalc(27);
+    transition: background-color 10ms ease-in 100ms;
+  }
+
+  .mobileMenu-toggleIcon::before {
+    top: -0.5rem;
+  }
+
+  .mobileMenu-toggleIcon::after {
+    bottom: -0.5rem;
+  }
+
+  &.is-open .mobileMenu-toggleIcon {
+    background-color: transparent;
+    transition-delay: 100ms;
+
+    // scss-lint:disable NestingDepth
+    &::before,
+    &::after {
+      background-color: $header-font-color;
+      bottom: auto;
+      top: auto;
+      transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'
     }
 
-    .mobileMenu-toggleIcon,
-    .mobileMenu-toggleIcon::before,
-    .mobileMenu-toggleIcon::after {
-        background: $header-font-color;
-        content: "";
-        display: block;
-        height: 2px;
-        position: absolute;
-        transform: rotate(0deg);
-        transition: transform 100ms ease-in, top 100ms ease-in 150ms, bottom 100ms ease-in 150ms; // 1
-        width: remCalc(20);
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
     }
 
-    .mobileMenu-toggleIcon {
-        top: remCalc(27);
-        transition: background-color 10ms ease-in 100ms;
+    &::after {
+      bottom: 0;
+      transform: rotate(-45deg);
     }
-
-    .mobileMenu-toggleIcon::before {
-        top: -0.5rem;
-    }
-
-    .mobileMenu-toggleIcon::after {
-        bottom: -0.5rem;
-    }
-
-    &.is-open .mobileMenu-toggleIcon {
-        background-color: transparent;
-        transition-delay: 100ms;
-
-        // scss-lint:disable NestingDepth
-        &::before,
-        &::after {
-            background-color: $header-font-color;
-            bottom: auto;
-            top: auto;
-            transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'
-        }
-
-        &::before {
-            top: 0;
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            bottom: 0;
-            transform: rotate(-45deg);
-        }
-
-    }
+  }
 }

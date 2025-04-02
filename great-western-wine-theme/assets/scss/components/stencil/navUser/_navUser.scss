@@ -17,283 +17,280 @@
 // -----------------------------------------------------------------------------
 
 .navUser {
-    @include nav($style: "navBar", $wrapper: "nav");
-    @include verticalPositionMiddle("absolute");
-    right: 49px;
-    top: 26px; // 2
-    z-index: zIndex("lowest"); // 5.
+  @include nav($style: 'navBar', $wrapper: 'nav');
+  @include verticalPositionMiddle('absolute');
+  right: 49px;
+  top: 26px; // 2
+  z-index: zIndex('lowest'); // 5.
 
-    @include breakpoint("medium") {
-        padding: 0 0 0 (spacing("single") * 0.66);
+  @include breakpoint('medium') {
+    padding: 0 0 0 (spacing('single') * 0.66);
+    position: absolute;
+    top: 0;
+    right: 20px;
+    transform: none;
+    margin: 5px 0;
+    z-index: zIndex('high');
+    width: 70%;
+  }
+
+  .dropdown-menu {
+    background-color: stencilColor('navUser-dropdown-backgroundColor');
+    border: 1px solid stencilColor('navUser-dropdown-borderColor');
+    box-shadow: container('dropShadow');
+    position: absolute;
+
+    // scss-lint:disable NestingDepth
+    &.is-open {
+      &:before {
+        @include css-triangle(
+          $triangle-direction: 'bottom',
+          $triangle-size: 10px,
+          $triangle-color: stencilColor('navUser-dropdown-borderColor')
+        );
+        bottom: 100%;
+        left: spacing('half');
         position: absolute;
-        top: 0;
-        right: 20px;
-        transform: none;
-        margin: 5px 0;
-        z-index: zIndex("high");
-        width: 70%;
-    }
+      }
 
-    .dropdown-menu {
-        background-color: stencilColor("navUser-dropdown-backgroundColor");
-        border: 1px solid stencilColor("navUser-dropdown-borderColor");
-        box-shadow: container("dropShadow");
+      &:after {
+        @include css-triangle(
+          $triangle-direction: 'bottom',
+          $triangle-size: 8px,
+          $triangle-color: stencilColor('navUser-dropdown-backgroundColor')
+        );
+        bottom: 100%;
+        left: spacing('half') + remCalc(2px);
         position: absolute;
-
-        // scss-lint:disable NestingDepth
-        &.is-open {
-            &:before {
-                @include css-triangle(
-                    $triangle-direction: "bottom",
-                    $triangle-size: 10px,
-                    $triangle-color: stencilColor("navUser-dropdown-borderColor")
-                );
-                bottom: 100%;
-                left: spacing("half");
-                position: absolute;
-            }
-
-            &:after {
-                @include css-triangle(
-                    $triangle-direction: "bottom",
-                    $triangle-size: 8px,
-                    $triangle-color: stencilColor("navUser-dropdown-backgroundColor")
-                );
-                bottom: 100%;
-                left: spacing("half") + remCalc(2px);
-                position: absolute;
-            }
-        }
+      }
     }
+  }
 }
 
 .navUser-section {
-    @include breakpoint("medium") {
-        position: relative; // 7
-    }
+  @include breakpoint('medium') {
+    position: relative; // 7
+  }
 }
 
 .navUser-action {
-    color: stencilColor("navUser-color");
-    font-weight: fontWeight("normal");
-    padding: (spacing("half") / 2) 0.5rem;
-    text-decoration: none;
+  color: stencilColor('navUser-color');
+  font-weight: fontWeight('normal');
+  padding: (spacing('half') / 2) 0.5rem;
+  text-decoration: none;
 
-    &:hover,
-    &.is-open {
-        color: stencilColor("navUser-color-hover");
+  &:hover,
+  &.is-open {
+    color: stencilColor('navUser-color-hover');
 
-        // scss-lint:disable NestingDepth
-        svg {
-            fill: stencilColor("navUser-color-hover");
-            stroke: stencilColor("navUser-color-hover");
-        }
-        // scss-lint:enable NestingDepth
-    }
-
-    .icon {
-        height: $header-item-icon-size;
-        width: $header-item-icon-size;
-        margin: 0 auto;
-        display: block;
-    }
-
+    // scss-lint:disable NestingDepth
     svg {
-        fill: stencilColor("navUser-color");
-        stroke: stencilColor("navUser-color");
-        transition: all 0.15s ease;
+      fill: stencilColor('navUser-color-hover');
+      stroke: stencilColor('navUser-color-hover');
     }
+    // scss-lint:enable NestingDepth
+  }
+
+  .icon {
+    height: $header-item-icon-size;
+    width: $header-item-icon-size;
+    margin: 0 auto;
+    display: block;
+  }
+
+  svg {
+    fill: stencilColor('navUser-color');
+    stroke: stencilColor('navUser-color');
+    transition: all 0.15s ease;
+  }
 }
 
 .navUser-item--cart .navUser-action {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .navUser-action--currencySelector + .dropdown-menu {
-    &:before {
-        // scss-lint:disable ImportantRule
-        left: auto !important; // 6
-        right: spacing("half"); // 6
-    }
+  &:before {
+    // scss-lint:disable ImportantRule
+    left: auto !important; // 6
+    right: spacing('half'); // 6
+  }
 
-    &:after {
-        // scss-lint:disable ImportantRule
-        left: auto !important; // 6
-        right: spacing("half") + remCalc(2px); // 6
-    }
+  &:after {
+    // scss-lint:disable ImportantRule
+    left: auto !important; // 6
+    right: spacing('half') + remCalc(2px); // 6
+  }
 }
 
 .navUser-action--storeCredit + .dropdown-menu {
-    max-width: remCalc(300px);
-    padding: spacing("single");
+  max-width: remCalc(300px);
+  padding: spacing('single');
 
-    &:before {
-        // scss-lint:disable ImportantRule
-        left: remCalc(140px) !important; // 3
-    }
+  &:before {
+    // scss-lint:disable ImportantRule
+    left: remCalc(140px) !important; // 3
+  }
 
-    &:after {
-        // scss-lint:disable ImportantRule
-        left: remCalc(142px) !important; // 3
-    }
+  &:after {
+    // scss-lint:disable ImportantRule
+    left: remCalc(142px) !important; // 3
+  }
 }
 
 .navUser-action-divider {
-    border-right: container("border");
-    color: stencilColor("color-textSecondary");
-    display: inline-block;
-    padding: 0 remCalc(20) 0 0;
-    text-decoration: none;
+  border-right: container('border');
+  color: stencilColor('color-textSecondary');
+  display: inline-block;
+  padding: 0 remCalc(20) 0 0;
+  text-decoration: none;
 }
 
 .navUser-item {
-    display: none;
+  display: none;
+
+  .icon {
+    height: $header-item-icon-size-mobile;
+    width: $header-item-icon-size-mobile;
+    margin: 0 10px;
+    display: block;
+  }
+
+  .btn-show-search {
+    .icon {
+      padding: 0.15rem 0;
+    }
+  }
+
+  @include breakpoint('medium') {
+    display: block;
 
     .icon {
-        height: $header-item-icon-size-mobile;
-        width: $header-item-icon-size-mobile;
-        margin: 0 10px;
-        display: block;
+      height: $header-item-icon-size;
+      width: $header-item-icon-size;
+      margin: 0 auto;
     }
 
-    .btn-show-search {
-        .icon {
-            padding: 0.15rem 0;
-        }
+    &.navUser-item--social {
+      margin-top: rem-calc(5px);
+      padding-right: rem-calc(5px);
     }
 
-    @include breakpoint("medium") {
-        display: block;
-
-        .icon {
-            height: $header-item-icon-size;
-            width: $header-item-icon-size;
-            margin: 0 auto;
-        }
-
-        &.navUser-item--social {
-            margin-top: rem-calc(5px);
-            padding-right: rem-calc(5px);
-        }
-
-        &.navUser-item--divider {
-            font-size: rem-calc(25px);
-            margin-top: rem-calc(8px);
-            padding-left: rem-calc(2px);
-        }
+    &.navUser-item--divider {
+      font-size: rem-calc(25px);
+      margin-top: rem-calc(8px);
+      padding-left: rem-calc(2px);
     }
+  }
 }
 
 .navUser-item--search {
-    display: block;
-    float: left;
+  display: block;
+  float: left;
 
-    @include breakpoint("medium") {
-        display: none;
-    }
+  @include breakpoint('medium') {
+    display: none;
+  }
 
-    .navUser-action {
-        padding-left: 0;
-        padding-right: 0;
-    }
+  .navUser-action {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-    .icon {
-        
-    }
+  .icon {
+  }
 }
 
 .navUser-item--cart {
-    display: block;
-    float: left;
+  display: block;
+  float: left;
 
-    .navUser-action {
-        color: stencilColor("navUser-color");
+  .navUser-action {
+    color: stencilColor('navUser-color');
 
-        // scss-lint:disable NestingDepth
-        &:hover,
-        &.is-open {
-            color: stencilColor("navUser-color-hover");
-        }
+    // scss-lint:disable NestingDepth
+    &:hover,
+    &.is-open {
+      color: stencilColor('navUser-color-hover');
     }
+  }
 
-    .dropdown-menu {
-        max-width: remCalc(320px);
+  .dropdown-menu {
+    max-width: remCalc(320px);
 
-        // scss-lint:disable NestingDepth
-        &.is-open {
-            top: auto !important; // 7
-            left: auto !important; // 7
-            right: remCalc(5px); // 7
-            @include breakpoint("medium") {
-                right: 0; // 7
-            }
+    // scss-lint:disable NestingDepth
+    &.is-open {
+      top: auto !important; // 7
+      left: auto !important; // 7
+      right: remCalc(5px); // 7
+      @include breakpoint('medium') {
+        right: 0; // 7
+      }
 
-            &:before,
-            &:after {
-                left: auto;
-            }
+      &:before,
+      &:after {
+        left: auto;
+      }
 
-            &:before {
-                right: spacing("half") - remCalc(5px); // 8
-                @include breakpoint("medium") {
-                    right: spacing("half"); // 8
-                }
-            }
-
-            &:after {
-                right: spacing("half") - remCalc(3px); // 8
-                @include breakpoint("medium") {
-                    right: spacing("half") + remCalc(2px); // 8
-                }
-            }
+      &:before {
+        right: spacing('half') - remCalc(5px); // 8
+        @include breakpoint('medium') {
+          right: spacing('half'); // 8
         }
+      }
+
+      &:after {
+        right: spacing('half') - remCalc(3px); // 8
+        @include breakpoint('medium') {
+          right: spacing('half') + remCalc(2px); // 8
+        }
+      }
     }
+  }
 }
 
 .navUser-item-cartLabel {
-    display: none;
+  display: none;
 
-    @include breakpoint("medium") {
-        display: inline;
-    }
+  @include breakpoint('medium') {
+    display: inline;
+  }
 }
 
 .navUser-item--compare {
-    display: none;
+  display: none;
 
-    &.show {
-        display: block;
-    }
+  &.show {
+    display: block;
+  }
 }
 
 .navUser-item--account {
+  @include breakpoint('medium') {
+    margin-right: 20px;
+  }
 
-    @include breakpoint("medium") {
-        margin-right: 20px;
+  .navUser-or {
+    // scss-lint:disable NestingDepth
+    + .navUser-action {
+      margin-right: -0.5rem; // 1
     }
+  }
 
-    .navUser-or {
-
-        // scss-lint:disable NestingDepth
-        + .navUser-action {
-            margin-right: -0.5rem; // 1
-        }
-    }
-
-    .navUser-action {
-        display: inline-block;
-    }
+  .navUser-action {
+    display: inline-block;
+  }
 }
 
 .navUser-or {
-    color: stencilColor("navUser-color");
-    cursor: default;
-    display: inline-block;
-    margin: 0 remCalc(-12px);
-    padding: 0 2px;
-    position: relative;
-    z-index: 1;
+  color: stencilColor('navUser-color');
+  cursor: default;
+  display: inline-block;
+  margin: 0 remCalc(-12px);
+  padding: 0 2px;
+  position: relative;
+  z-index: 1;
 }
 
 // Quick search
@@ -304,80 +301,82 @@
 // -----------------------------------------------------------------------------
 
 .navUser-action--quickSearch {
+  &.is-open {
+    position: relative;
 
-    &.is-open {
-        position: relative;
-
-        // scss-lint:disable NestingDepth
-        &:before {
-            @include css-triangle(
-                $triangle-direction: "bottom",
-                $triangle-size: 10px,
-                $triangle-color: color("greys", "lightest")
-            );
-            bottom: 0;
-            left: 50%;
-            position: absolute;
-            transform: translateX(-50%);
-        }
+    // scss-lint:disable NestingDepth
+    &:before {
+      @include css-triangle(
+        $triangle-direction: 'bottom',
+        $triangle-size: 10px,
+        $triangle-color: color('greys', 'lightest')
+      );
+      bottom: 0;
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
     }
+  }
 }
 
 .dropdown--quickSearch {
-    background-color: none;
-    padding: spacing("single") 0;
-    position: static;
+  background-color: none;
+  padding: spacing('single') 0;
+  position: static;
 
-    @include breakpoint("small") {
-        padding: 0;
+  @include breakpoint('small') {
+    padding: 0;
+  }
+
+  @include breakpoint('medium') {
+    width: 280px;
+    margin: 5px 0 0;
+  }
+
+  @include breakpoint('large') {
+    width: 400px;
+    margin: 5px 10px 0;
+  }
+
+  &.is-open {
+    // scss-lint:disable ImportantRule
+    left: 0 !important; // 1
+    outline: none;
+    right: 0 !important; // 1
+    width: 100% !important;
+    z-index: zIndex('high');
+  }
+
+  .form {
+    margin: auto;
+    max-width: 30rem;
+  }
+
+  .form,
+  .form-field {
+    margin-bottom: 0;
+  }
+
+  .form-input {
+    font-size: fontSize('smaller');
+    height: auto;
+    border-radius: 2px;
+    background: $stone-lt;
+    border: none;
+    padding: 0.6rem;
+    color: $grey-dk;
+    &:focus {
+      background: $stone-xlt;
     }
+  }
 
-    @include breakpoint("medium") {
-        width: 280px;
-        margin: 5px 0 0;
+  .productGrid {
+    padding: spacing('single') 0 0;
+
+    @include breakpoint('small') {
+      padding: spacing('double') 0 0;
     }
-
-    @include breakpoint("large") {
-        width: 400px;
-        margin: 5px 10px 0;
-    }
-
-    &.is-open {
-        // scss-lint:disable ImportantRule
-        left: 0 !important; // 1
-        outline: none;
-        right: 0 !important; // 1
-        width: 100% !important;
-        z-index: zIndex("high");
-    }
-
-    .form {
-        margin: auto;
-        max-width: 30rem;
-    }
-
-    .form,
-    .form-field {
-        margin-bottom: 0;
-    }
-
-    .form-input {
-        font-size: fontSize("smaller");
-        height: auto;
-        border-radius: 2px;
-        background: $grey-xlt;
-        border: none;
-        padding: 0.6rem;
-        color: $grey-dk;
-    }
-
-    .productGrid {
-        padding: spacing("single") 0 0;
-
-        @include breakpoint("small") {
-            padding: spacing("double") 0 0;
-        }
-    }
+  }
 }
 
 // Counter Pill
@@ -388,31 +387,31 @@
 // -----------------------------------------------------------------------------
 
 .countPill {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: stencilColor("navUser-indicator-backgroundColor");
-    border-radius: 50%;
-    color: color("whites", "bright");
-    display: none;
-    font-size: fontSize("tiny");
-    font-weight: fontWeight("bold");
-    height: 20px; // 1
-    line-height: 20px; // 1
-    margin-left: spacing("eighth");
-    text-align: center;
-    width: 20px; // 1
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: stencilColor('navUser-indicator-backgroundColor');
+  border-radius: 50%;
+  color: color('whites', 'bright');
+  display: none;
+  font-size: fontSize('tiny');
+  font-weight: fontWeight('bold');
+  height: 20px; // 1
+  line-height: 20px; // 1
+  margin-left: spacing('eighth');
+  text-align: center;
+  width: 20px; // 1
 
-    @include breakpoint("medium") {
-        position: static;
-    }
+  @include breakpoint('medium') {
+    position: static;
+  }
 }
 
 .countPill--positive {
-    display: inline-block;
+  display: inline-block;
 }
 
 .countPill--alt {
-    background-color: color("greys", "lighter");
-    color: color("greys", "darker");
+  background-color: color('greys', 'lighter');
+  color: color('greys', 'darker');
 }

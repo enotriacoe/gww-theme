@@ -22,6 +22,9 @@ customer:
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
 <div class="page">
+ 
+    {{> components/category/category-header}}
+
     {{#if category.faceted_search_enabled}}
         <aside class="page-sidebar" id="faceted-search-container">
             {{> components/category/topbar}}
@@ -46,6 +49,8 @@ customer:
         {{/if}}
         {{{region name="category_below_content"}}}
     </main>
+
+    <section class="bottom-category-text"></section>
 </div>
 
 {{/partial}}

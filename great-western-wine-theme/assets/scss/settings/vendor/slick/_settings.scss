@@ -10,7 +10,7 @@ $slick-font-family:                     inherit;
 $slick-loader-path:                     null;
 $slick-arrow-color:                     stencilColor("carousel-arrow-color");
 $slick-arrow-color-hover:               stencilColor("carousel-arrow-color--hover");
-$slick-arrow-bgColor:                   rgba(stencilColor("carousel-arrow-bgColor"), 0.9);
+$slick-arrow-bgColor:                   transparent;
 $slick-arrow-borderColor:               stencilColor("carousel-arrow-borderColor");
 $slick-play-pause-button-color:         stencilColor("carousel-play-pause-button-textColor");
 $slick-play-pause-button-color-hover:   stencilColor("carousel-play-pause-button-textColor--hover");

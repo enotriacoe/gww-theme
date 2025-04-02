@@ -92,11 +92,12 @@ export default class Product extends PageManager {
             }
             $('.static-review-form').slideToggle();
             $('html, body').animate({
-                scrollTop: ($('.static-review-form').offset().top - 200)
+                scrollTop: ($('.static-review-form').offset().top - 250)
             }, 500);
         }
 
-        $('.show-review-form, .jump-review-form').on('click', () => {
+        $('.show-review-form, .jump-review-form').on('click', (e) => {
+            e.preventDefault();
             toggleReviewForm();
         });
     }

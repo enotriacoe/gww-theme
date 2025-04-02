@@ -4,37 +4,56 @@
 // file in any non-disruptive way.
 // =============================================================================
 
-
 // All variables are available here, regardless of use in config.json file or not
 
 //Original Great Western Wine brand colours
-$green:         #357044; // Primary brand colour
-$green-lt:      #4d8d5d;
-$green-xlt:     #E6EEE5;
-$coral:         #E1675C; // Primary brand accent colour
+// $green: #357044; // Primary brand colour
+// $green-lt: #4d8d5d;
+// $green-xlt: #e6eee5;
+// $coral: #e1675c; // Primary brand accent colour
 
 // The Great Wine Co Launch Brand Colours
-$blue-lt:       #E9EFF3;
-$blue:          #6576a4;
-$blue-dk:       #435159;
-$maroon-lt:     #a94964;
-$maroon:        #a53051;
-$coral:         #f0858e;
-$olive:         #98a85a;
-$yellow:        #f2d884;
+// $blue-lt: #e9eff3;
+// $blue: #6576a4;
+// $blue-dk: #435159;
+// $red-lt: #a94964;
+// $red: #a53051;
+// $coral: #f0858e;
+// $olive: #98a85a;
+// $yellow: #f2d884;
 
 // Additional colours
 
-$brand-maroon:  #BE8D94;
-$brand-gold:    #EEE8D2;
-$brand-blue:    #D2E3ED;
-$brand-green:   #EEF8F1;
+$brand-maroon: #be8d94;
+$brand-gold: #eee8d2;
+$brand-blue: #d2e3ed;
+$brand-green: #eef8f1;
 
-$grey-xlt:      #f1f4f6; // Background colour for input fields
-$grey-lt:       #a4bfce; // Placeholder input fields & some hover, used often in config.json
-$grey-md:       #718590; // Placeholder input fields & some hover, used often in config.json
-$grey-dk:       #353d41; // Primary use in config.json
+// $grey-xlt: #f1f4f6; // Background colour for input fields
+// $grey-lt: #a4bfce; // Placeholder input fields & some hover, used often in config.json
+// $grey-md: #718590; // Placeholder input fields & some hover, used often in config.json
+// $grey-dk: #353d41; // Primary use in config.json
 
-$black:         #121618; // Black for fonts
+$focus-color: #245fcc;
 
-$focus-color: #245fcc
+// 2025 Great Wine Co. Colours
+$grey-dk: #354047;
+$stone: #e4ddcb;
+$stone-lt: #ebe7dc;
+$stone-xlt: #f5f3ed;
+$green: #517d7b;
+$green-lt: lighten($green, 5%);
+$green-xlt: lighten($green, 30%);
+$red: #b8361f;
+$red-lt: lighten($red, 5%);
+$yellow: #a97c40;
+$olive: #4e5237;
+$terracotta: #b8361f;
+$plum: #491c28;
+$coral: #ffada5;
+$black: #1f262a; // Black for fonts
+
+// Additional typography
+$helveticaBold: 'HelveticaNowDisplayBold', Helvetica, Arial, sans-serif;
+$button-font: $helveticaBold;
+$juana: 'JuanaRegular', Georgia, serif;
