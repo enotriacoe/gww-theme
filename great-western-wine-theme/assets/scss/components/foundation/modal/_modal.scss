@@ -75,6 +75,7 @@
 }
 
 .modal-body {
+    overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: $reveal-modal-padding;
     
@@ -271,4 +272,39 @@
     top: 0;
     left: 0;
     z-index: 500;
+}
+
+/* Fix the invisible modal issue */
+
+.modalOverlay {
+    background-color: rgba(228, 221,203, 0.8);
+    .modal {
+        box-shadow: 0 2px 12px rgba(153, 153, 153, 0.4);
+        border-radius: 6px;
+
+        @include breakpoint('medium') {
+            margin: 0 auto;
+            max-width: 80%;
+            width: 680px;
+            left: 0;
+            right: 0;
+        } 
+
+        &.modal--afterOpen {
+            display: block;
+            visibility: visible;
+            padding: 24px 48px;
+        }
+
+        &.modal--error .modal-body {
+            overflow: auto;
+            padding: 24px 0;
+            border: none;
+            width:100%;
+
+            p {
+                width: 100%;
+            }
+        }
+    }
 }
