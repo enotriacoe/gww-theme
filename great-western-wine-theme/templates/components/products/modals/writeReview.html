@@ -15,7 +15,7 @@
                 <select id="rating-rate" class="form-select" name="revrating" data-input aria-required="true">
                     <option value="">{{lang 'products.reviews.select_rating'}}</option>
                     {{#for 1 5}}
-                        {{#if ../product.reviews.selected_rating '===' $index}}
+                        {{#if product.reviews.selected_rating '===' $index}}
                             <option selected value="{{$index}}">{{lang (concat 'products.reviews.rating.' $index) }}</option>
                         {{else}}
                             <option value="{{$index}}">{{lang (concat 'products.reviews.rating.' $index) }}</option>
