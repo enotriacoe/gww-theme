@@ -1,6 +1,6 @@
 {
-  "name": "The Great Wine Co. Theme 3.2.3",
-  "version": "3.2.3",
+  "name": "The Great Wine Co. Theme 3.2.4",
+  "version": "3.2.4",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,
@@ -101,6 +101,7 @@
     "show_accept_klarna": false,
     "show_product_details_tabs": false,
     "show_product_reviews": true,
+    "show_product_reviews_tabs": true,
     "show_quick_payment_buttons": false,
     "show_custom_fields_tabs": false,
     "show_product_weight": false,
