@@ -10,7 +10,7 @@
             {{#each customer.wishlists}}
                 <li>
                     <input class="button {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
-                           formaction="{{this.add_url}}&product_id={{../product.id}}"
+                           formaction="{{this.add_url}}&product_id={{product.id}}"
                            type="submit"
                            value="{{this.name}}"
                     >
