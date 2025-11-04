@@ -156,6 +156,7 @@
   &.static {
     @include breakpoint('medium') {
       top: 0 !important;
+      overflow: auto;
     }
   }
 }
@@ -240,9 +241,9 @@
         .tooltip-text {
           @include breakpoint('medium') {
             bottom: calc(100% + 5px);
-            left: -83px;
+            left: -160px;
             margin-left: 0;
-            width: 300px;
+            width: 400px;
             text-align: center;
           }
         }

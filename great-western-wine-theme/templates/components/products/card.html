@@ -10,6 +10,7 @@
 {{assignVar "awardVintage" ' '}}
 {{assignVar "showAward" 0}}
 {{assignVar "isWine" 0}}
+{{assignVar "isChampagne" 0}}
 
 {{#each custom_fields}}
     {{#if name "===" "vintage"}}{{assignVar "vintage" value}}{{/if}}
@@ -21,6 +22,7 @@
     {{/if}}
     {{#if name "===" "awardVintage"}}{{assignVar "awardVintage" value}}{{/if}}
     {{#if name "===" "isWine"}}{{assignVar "isWine" value}}{{/if}}
+    {{#if name "===" "isChampagne"}}{{assignVar "isChampagne" value}}{{/if}}
 {{/each}}
 
 {{#all
@@ -131,7 +133,7 @@
                         {{> components/common/login-for-pricing}}
                     {{/or}}
                 </div>
-                {{#if (getVar 'isWine') '===' 'Yes'}}
+                {{#if (getVar 'isChampagne') '===' 'Yes'}}
                     <div class="card-multibuy-cont">
                         <div class="multibuy-price-title">
                             <span class="tooltip-border">{{lang 'products.multibuy_bottle_text'}}</span>
@@ -142,6 +144,19 @@
                         <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
                         <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.1) 2}}</span>
                     </div>
+                {{else}}
+                  {{#if (getVar 'isWine') '===' 'Yes'}}
+                      <div class="card-multibuy-cont">
+                          <div class="multibuy-price-title">
+                              <span class="tooltip-border">25% Multibuy</span>
+                              <sub> ?</sub>
+                              <span class="tooltip-text">Save 25%: <strong>£{{toFixed (multiply price.with_tax.value 0.75) 2}}</strong> per bottle when you mix 12+ bottles</span>
+                          </div>
+                          <span class="price price--withTax">£{{toFixed (multiply price.with_tax.value 0.75) 2}}</span>
+                          <span class="card-multibuy-label">{{lang 'products.multibuy_discount_text'}}</span>
+                          <span class="multibuy-saving">{{lang 'products.save_price_label'}} £{{toFixed (multiply price.with_tax.value 0.25) 2}}</span>
+                      </div>
+                  {{/if}}
                 {{/if}}
             </div>
             <div class="grid-add-cart max-stock-parent">
