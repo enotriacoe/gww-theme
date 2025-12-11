@@ -22,7 +22,7 @@
 {{/if}}
 
 
-<footer class="footer" role="contentinfo" style="padding-bottom: 83px;">{{#if settings.show_newsletter_box}} {{> components/common/subscription-form}} {{/if}}
+<footer class="footer" role="contentinfo">{{#if settings.show_newsletter_box}} {{> components/common/subscription-form}} {{/if}}
     <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
     <div class="container">
         <section class="footer-info">
@@ -109,88 +109,3 @@
     {{/if}}
     {{{region name="ssl_site_seal--global"}}}
 </footer>
-
-<div style="background:#b8361f; width:100%; position:fixed; bottom:0; left:0; padding:10px 0; text-align:center; 
-  align-items: center; border-top:1px solid #f5f3ed;">
-  <style>
-    .banner-link {
-      color: #ffffff;
-      text-decoration: none;
-    }
-
-    .banner-flex-container {
-      min-height: 2.5em;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      gap: 0.5em;
-      padding: 0 10px;
-    }
-
-    .banner-link:hover,
-    .banner-link:active {
-      color: #f5f3ed;
-    }
-
-    .banner-header,
-    .banner-body {
-      height: auto;
-      line-height: 1;
-      padding: 0;
-      margin: 0;
-      width: auto;
-    }
-
-    .banner-header {
-      font-size: 1.4rem;
-      flex-grow: 3;
-      font-family: "JuanaRegular", Arial, Helvetica, sans-serif;
-      color: #f5f3ed;
-    }
-
-    .banner-header small {
-      text-transform: none;
-      font-weight: normal;
-      font-family: "HelveticaNowTextRegular", Helvetica, Arial, sans-serif;
-      display: block;
-      font-size: 1rem;
-    }
-
-    @media (min-width: 801px) {
-      .banner-flex-container {
-        min-height: 3.2em;
-        gap: 1em;
-      }
-
-      .banner-header {
-        font-size: 1.5rem;
-      }
-
-      .banner-header small {
-        display: inline;
-      }
-
-      /* .banner-body {
-        font-size: 1.2rem;
-      } */
-    }
-
-    @media (min-width: 997px) {
-      .banner-flex-container {
-        gap: 2em;
-      }
-    }
-  </style>
-  <a href="/offers/save-25-on-wine/" class="banner-link">
-    <div class="gwc-flex banner-flex-container" style="max-width:1000px; margin:0 auto;">
-      <div class="banner-header">Save 25% on <u>all</u> wine &amp; sparkling <small>when you buy 12+
-          bottles</small></div>
-      <div class="banner-body">Offer ends <span class="countdown"
-          data-ends="2025-11-03T23:59:59.999Z" data-format="{d} days {hh}:{mm}:{ss}"
-          data-now='{{moment "now" "YYYY-MM-DDTHH:mm:ss.SSSZ"}}'>Monday 3 November</span></div>
-    </div>
-  </a>
-</div>
-<script src="https://cdn.greatwine.co.uk/static/countdown.min.js" defer></script>
