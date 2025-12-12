@@ -21,7 +21,7 @@
   top: 0;
   width: 100%;
   z-index: zIndex('higher');
-  border-bottom: 1px solid $stone;
+  border-bottom: 1px solid $black;
 
   @include breakpoint('medium') {
     border-bottom: 1px solid $black;

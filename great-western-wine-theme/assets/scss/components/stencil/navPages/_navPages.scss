@@ -57,7 +57,7 @@
   &.is-open {
     display: block;
     z-index: 0;
-    top: 55px;
+    top: 61px;
     border-top: 1px solid $black;
 
     @include breakpoint('medium') {
