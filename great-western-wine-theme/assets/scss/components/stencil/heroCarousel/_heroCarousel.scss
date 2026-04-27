@@ -170,7 +170,12 @@
     margin-bottom: 0;
 
     em {
-      color: #f5a69e;
+      font-weight: bold;
+      color: #b8361f;
+
+      @include breakpoint('medium') {
+        color: #fff;
+      }
     }
   }
 }
