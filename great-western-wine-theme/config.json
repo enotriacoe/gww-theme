@@ -1,6 +1,6 @@
 {
-  "name": "The Great Wine Co. Theme 3.2.10",
-  "version": "3.2.10",
+  "name": "The Great Wine Co. Theme 3.2.11",
+  "version": "3.2.11",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,
@@ -37,7 +37,11 @@
   },
   "css_compiler": "scss",
   "autoprefixer_cascade": true,
-  "autoprefixer_browsers": ["> 1%", "last 2 versions", "Firefox ESR"],
+  "autoprefixer_browsers": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
   "settings": {
     "channels": [
       {
@@ -373,8 +377,15 @@
     "paymentbanners-proddetailspage-color": "white",
     "paymentbanners-proddetailspage-ratio": "8x1",
     "paymentbuttons-container": "medium",
-    "supported_card_type_icons": ["american_express", "mastercard", "visa"],
-    "supported_payment_methods": ["card", "paypal"],
+    "supported_card_type_icons": [
+      "american_express",
+      "mastercard",
+      "visa"
+    ],
+    "supported_payment_methods": [
+      "card",
+      "paypal"
+    ],
     "lazyload_mode": "lazyload+lqip",
     "checkout-paymentbuttons-paypal-color": "black",
     "checkout-paymentbuttons-paypal-shape": "rect",
@@ -445,7 +456,11 @@
           "sales_discounts",
           "large_catalog"
         ],
-        "industries": ["arts_crafts", "food_beverage", "books_entertainment"]
+        "industries": [
+          "arts_crafts",
+          "food_beverage",
+          "books_entertainment"
+        ]
       },
       "settings": {
         "homepage_featured_products_count": 6,
