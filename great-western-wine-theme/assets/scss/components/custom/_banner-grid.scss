@@ -2,245 +2,122 @@
 // Custom Styling for client-usable banner grid layout
 // =============================================================================
 
-.banner-row {
-  display: flex;
-  flex-wrap: wrap;
-
-  @include breakpoint('medium') {
-    margin: 0 auto 30px;
-
-    > div:last-child {
-      margin-right: 0;
-    }
-  }
-
-  @include breakpoint('large') {
-    flex-wrap: nowrap;
-  }
+.banner-container {
+  container-type: inline-size;
 }
 
-.custom-banner {
-  margin: 0;
-  @include breakpoint('medium') {
-    margin-right: 30px;
-  }
+.banner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: spacing('single');
 }
 
-.banner-full {
-  width: 100%;
+.banner-grid__item {
   position: relative;
-
-  a {
-    text-decoration: none;
-  }
-}
-
-.banner-half {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(50% - 15px);
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .banner-content {
-    @include breakpoint('medium') {
-      max-width: 70%;
-    }
-    @include breakpoint('large') {
-      max-width: 50%;
-    }
-  }
-}
-
-.banner-1_3 {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(40% - 15px);
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .banner-content {
-    @include breakpoint('medium') {
-      max-width: 85%;
-    }
-  }
-}
-
-.banner-2_3 {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(60% - 15px);
-  }
-
-  a {
-    text-decoration: none;
-  }
-}
-
-.banner-third {
-  width: 100%;
-  position: relative;
-
-  @include breakpoint('medium') {
-    width: calc(32.5% - 15px);
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .banner-content {
-    @include breakpoint('medium') {
-      max-width: 85%;
-    }
-    @include breakpoint('large') {
-      max-width: 60%;
-    }
-  }
-}
-
-.banner-content {
-  padding: spacing('half') 0;
-  text-align: left;
-
-  @include breakpoint('medium') {
-    padding: spacing('half') spacing('single');
-    left: 10px;
-    margin: 0 auto;
-    position: absolute;
-    bottom: 20px;
-    max-width: 50%;
-    max-height: calc(100% - 40px);
-  }
-
-  .button--primary {
-    width: 100%;
-    padding: 7px 15px;
-
-    @include breakpoint('medium') {
-      width: auto;
-    }
-  }
-}
-
-.banner-title {
-  color: $grey-dk;
-  font-size: 24px;
-  margin-top: 0;
-  line-height: 1.2;
-
-  @include breakpoint('medium') {
-    line-height: 1;
-    font-size: 30px;
-    color: $stone-xlt;
-  }
-}
-
-.banner-description {
-  color: $grey-dk;
-  font-size: 18px;
-  line-height: 1;
-
-  @include breakpoint('medium') {
-    color: $stone-xlt;
-  }
-}
-
-.banner-image-wrapper {
-  height: 340px;
   overflow: hidden;
-
-  @include breakpoint('small') {
-    height: 500px;
-  }
-
-  @include breakpoint('medium') {
-    height: 300px;
-  }
-
-  @include breakpoint('large') {
-    height: 413px;
-  }
+  aspect-ratio: 16 / 9;
+  background: #eee;
 
   img {
-    object-fit: cover;
-    height: 100%;
+    display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-}
 
-.banner-image-overlay {
-  @include breakpoint('medium') {
-    background: linear-gradient(
-      270deg,
-      rgba(255, 255, 255, 0) 0,
-      rgba(0, 0, 0, 0.1) 33%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
+  .banner-grid__item__img-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .banner-grid__item__img-wrapper::after {
+    content: '';
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at 5em 65%,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 0) 150%
+    );
+
+    @include breakpoint('medium') {
+      background: radial-gradient(
+        ellipse at 5em 65%,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
   }
 }
 
-// Styling for full width banners with 50% image beside 50% text
-
-.dark-theme {
-  color: $red;
-}
-
-.our-story-cont {
-  @include breakpoint('medium') {
-    padding: 0;
-  }
-}
-
-.banner-image-only {
-  max-height: 300px;
-  height: 100%;
+.banner-grid__item__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  object-fit: cover;
-  object-position: 69% 69%;
+  padding: spacing('single');
 
-  @include breakpoint('small') {
-    max-height: 350px;
+  h2 {
+    color: $stone-xlt;
+    font-size: clamp(2em, 7cqi, 2.5em);
+    font-family: $fontFamily-headings;
+    margin: 0 0 0.1em 0;
+    line-height: 1;
   }
 
-  @include breakpoint('medium') {
-    max-height: 430px;
+  p {
+    margin: 0 0 0.5em;
+    color: $stone-xlt;
+    font-size: clamp(1em, 3.5cqi, 1.25em);
+    line-height: 1;
+  }
+
+  .btn {
+    margin: 0;
+    width: auto;
+    padding: 0.5em 1.5em;
+    color: black;
+    background-color: $stone;
+    display: inline-block;
+    font-family: $button-font;
+
+    @include breakpoint('medium') {
+        margin-top: 0.5em;
+    }
   }
 }
 
-.info-banner {
-  .banner-description {
-    font-size: 1rem;
+@include breakpoint('medium') {
+  .banner-grid {
+    grid-template-columns: repeat(6, 1fr);
+    /* Height of a 16/9 half-width item, so every row matches */
+    grid-auto-rows: calc((100cqi - 24px) * 9 / 32);
   }
-}
 
-.banner-content-no-img {
-  padding: spacing('half') 0;
-  text-align: left;
+  .banner-grid__item {
+    aspect-ratio: auto;
+  }
 
-  @include breakpoint('medium') {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    max-width: 700px;
-    margin-right: 50px;
+  .banner-grid__item--full {
+    grid-column: span 6;
+  }
+
+  .banner-grid__item--half {
+    grid-column: span 3;
+  }
+
+  .banner-grid__item--third {
+    grid-column: span 2;
+  }
+
+  .banner-grid__item--two-thirds {
+    grid-column: span 4;
   }
 }
