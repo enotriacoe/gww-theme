@@ -1,13 +1,68 @@
-<div class="home-banner-grid">
-  <!--HOME BANNER FULL-->
-  <div class="home-banner-full">
+<div class="banner-container">
+  <div class="banner-grid">
+    <div class="banner-grid__item banner-grid__item--full">
+      <a href="/wine/fine-wine/" title="Fine Wine">
+        <div class="banner-grid__item__img-wrapper">
+          <img src="{{getImageManagerImage 'home-fine-wine-amarone-2760x1553.jpg' width=2760}}"
+            srcset="{{getImageManagerImageSrcset 'home-fine-wine-amarone-2760x1553.jpg'}}"
+            alt="A 2015 vintage sticker being applied to a bottle of Bertani's Amarone"
+            class="lazyautosizes lazyloaded"
+            loading="lazy">
+        </div>
+        <div class="banner-grid__item__content">
+          <h2>Fine Wine</h2>
+          <p>Browse our inspirational fine wine list</p>
+          <span class="btn">Shop Now</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="banner-grid__item banner-grid__item--half">
+      <a href="/tastings-events/" title="Tastings & Events">
+        <div class="banner-grid__item__img-wrapper">
+          <img src="{{getImageManagerImage 'home-tasting-1602x902.jpg' width=1602}}"
+            srcset="{{getImageManagerImageSrcset 'home-tasting-1602x902.jpg'}}"
+            alt="An image showing a tasting sample being poured into a glass at one of our events"
+            class="lazyautosizes lazyloaded"
+            loading="lazy">
+        </div>
+        <div class="banner-grid__item__content">
+          <h2>Tastings &amp; Events</h2>
+          <p>Join us to explore the world of wine</p>
+          <span class="btn">Upcoming Events</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="banner-grid__item banner-grid__item--half">
+      <a href="/stories/" title="Stories">
+        <div class="banner-grid__item__img-wrapper">
+          <img src="{{getImageManagerImage 'home-stories-catena-1602x902.jpg' width=1602}}"
+            srcset="{{getImageManagerImageSrcset 'home-stories-catena-1602x902.jpg'}}"
+            alt="An image of the Catena Zapata winery taken from the vineyard that surrounds it"
+            class="lazyautosizes lazyloaded"
+            loading="lazy">
+        </div>
+        <div class="banner-grid__item__content">
+          <h2>Stories</h2>
+          <p>Read the latest on our blog</p>
+          <span class="btn">Read More</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+{{!-- <div class="banner-grid">
+
+  <div class="banner-grid__item banner-grid__item--full">
     <a href="/wine/fine-wine/" title="Fine Wine">
-      <div class="banner-cont">
-        <div class="banner-image-wrapper" style="height:340px;">
+      <div class="banner-content">
+        <div class="banner-image-wrapper">
           <img src="{{getImageManagerImage 'banner-finewine-fmc.jpg' width=1380}}"
             srcset="{{getImageManagerImageSrcset 'banner-finewine-fmc.jpg'}}"
             alt="shop fine wine at the Great Wine Co." class="lazyautosizes lazyloaded"
-            loading="lazy" style="width:100%; object-fit: cover;">
+            loading="lazy">
         </div>
         <div class="banner-content">
           <h2 class="banner-title">Fine Wine</h2>
@@ -17,45 +72,38 @@
       </div>
     </a>
   </div>
-  <!--END HOME BANNER FULL-->
-  <div class="home-banner-two-col">
-    <!--HOME BANNER HALF-->
-    <div class="home-banner-half">
-      <a href="/gifts-more/mixed-cases/" title="Mixed Cases">
-        <div class="banner-cont">
-          <div class="banner-image-wrapper" style="height:340px;">
-            <img src="{{getImageManagerImage 'banner-mixedcases-small.jpg' width=1380}}"
-              srcset="{{getImageManagerImageSrcset 'banner-mixedcases-small.jpg'}}"
-              alt="Mixed Cases Sale" class="lazyautosizes lazyloaded" loading="lazy"
-              style="width:100%; object-fit: cover;">
-          </div>
-          <div class="banner-content">
-            <h2 class="banner-title">Mixed Cases</h2>
-            <p class="banner-description">Curated by Great Wine Co.</p>
-            <span class="btn">Shop Now</span>
-          </div>
+
+  <div class="banner-grid__item banner-grid__item--half">
+    <a href="/tastings-events/" title="Events & Tastings">
+      <div class="banner-content">
+        <div class="banner-image-wrapper">
+          <img src="{{getImageManagerImage 'banner-mixedcases-small.jpg' width=1380}}"
+            srcset="{{getImageManagerImageSrcset 'banner-mixedcases-small.jpg'}}"
+            alt="Mixed Cases Sale" class="lazyautosizes lazyloaded" loading="lazy">
         </div>
-      </a>
-    </div>
-    <!--END HOME BANNER HALF-->
-    <!--HOME BANNER HALF-->
-    <div class="home-banner-half">
-      <a href="/gifts-and-more/" title="Wine and Spirits Gifts">
-        <div class="banner-cont">
-          <div class="banner-image-wrapper" style="height:340px;">
-            <img src="{{getImageManagerImage 'banner-winegifts.jpg' width=1380}}"
-              srcset="{{getImageManagerImageSrcset 'banner-winegifts.jpg'}}" alt="No and Low Sale"
-              class="lazyautosizes lazyloaded" loading="lazy"
-              style="width:100%; object-fit: cover;">
-          </div>
-          <div class="banner-content">
-            <h2 class="banner-title">Gifts and More</h2>
-            <p class="banner-description">Wine and Spirit Gifts</p>
-            <span class="btn">Shop for Gifts</span>
-          </div>
+        <div class="banner-content">
+          <h2 class="banner-title">Mixed Cases</h2>
+          <p class="banner-description">Curated by Great Wine Co.</p>
+          <span class="btn">Shop Now</span>
         </div>
-      </a>
-    </div>
-    <!--END HOME BANNER HALF-->
+      </div>
+    </a>
   </div>
-</div>
+  
+  <div class="banner-grid__item banner-grid__item--half">
+    <a href="/gifts-and-more/" title="Wine and Spirits Gifts">
+      <div class="banner-content">
+        <div class="banner-image-wrapper">
+          <img src="{{getImageManagerImage 'banner-winegifts.jpg' width=1380}}"
+            srcset="{{getImageManagerImageSrcset 'banner-winegifts.jpg'}}" alt="No and Low Sale"
+            class="lazyautosizes lazyloaded" loading="lazy">
+        </div>
+        <div class="banner-content">
+          <h2 class="banner-title">Gifts and More</h2>
+          <p class="banner-description">Wine and Spirit Gifts</p>
+          <span class="btn">Shop for Gifts</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div> --}}

@@ -48,6 +48,7 @@
   }
 
   @include breakpoint('medium') {
+    margin-top: 0;
     text-align: left;
     width: width('4/12');
     float: right;
@@ -131,6 +132,7 @@
   text-align: center;
   padding: spacing('single') 0;
   background-color: $green;
+  margin-top: spacing('single');
 
   @include breakpoint('small') {
     text-align: left;

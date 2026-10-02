@@ -1,6 +1,6 @@
 ---
 brands:
-    limit: 800
+    limit: 1000
 ---
 
 {{#partial "page"}}
@@ -9,7 +9,10 @@ brands:
 
 <section class=>
     <h1 class="stylised-title">{{lang 'brand.label'}}</h1>
-    {{> components/custom/producers-content}}
+    {{#if pagination.brands.current '==' 1}}
+        {{> components/custom/producers-content}}
+    {{/if}}
+
     {{{region name="brands_below_header"}}}
     <ul class="list-brands">
         {{#each brands}}

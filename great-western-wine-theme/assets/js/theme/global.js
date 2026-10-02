@@ -15,7 +15,7 @@ import privacyCookieNotification from './global/cookieNotification';
 import carousel from './common/carousel';
 import svgInjector from './global/svg-injector';
 import { closeWishlistOnClick } from './global/wishlist-open';
-import { addToCartClickEvent, quantityChangeEvent, maxStockMessage } from './global/add-to-cart-func';
+import { addToCartClickEvent, quantityChangeEvent } from './global/add-to-cart-func';
 import { getPartnerInfo } from './global/partner-reg';
 import moveTermsCheckboxToBottom from './global/create-account';
 import toggleMobileSearch from './global/mobile-search-toggle';
