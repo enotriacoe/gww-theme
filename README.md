@@ -12,17 +12,22 @@ The theme should never be pushed directly using the command line, instead, the `
 ## Installation:
 The theme runs independently from the platform and it requires an active BigCommerce account to get access to the API & Data from local. API/Access tokens & keys can be found on TeamsID.
 
-The theme uses a theme engine called **Stencil** and this runs on Node, it requires specifically Node 8.1.0 (not older, not newer) to install the cli tool globaly:
+The theme uses the **Stencil** CLI. Use Node **24** with Stencil CLI **10**. The CLI's native Node Sass dependency does not support Node 26, even though the CLI's Node version check accepts it. Running the preview on Node 26 causes stylesheet requests to return HTTP 422 with an "Unsupported runtime (147)" error.
 
-`npm install -g @bigcommerce/stencil-cli`
+The repository root is also the theme directory and contains a `.node-version` file for Node version managers such as `fnm`. Run the following commands from the repository root in the same terminal that will start Stencil:
 
-In my case I had to use the `n` tool to switch to that specific version of node, but it should work with Brew or other alternatives. 
+```sh
+fnm use
+node --version # Must report v24.x
+yarn global add @bigcommerce/stencil-cli@10.1.1
+stencil --version
+```
 
-Once the global CLI tool is installed, we can proceed to download the **Great Western Wine theme - Cyber-Duck** theme, then `cd` into the theme folder and run `npm install` to get the packages needed to run Stencil against the theme.
+If Node 24 is not installed, run `fnm install 24` first. With another version manager, select Node 24 using its equivalent command. Use one version manager consistently.
 
-In this step, not all the required packages for **Stencil** were installed correctly and some of the commands failed, so I had to install them as they were requested, after solving a permissions issue with the `node_modules` folder inside the project. 
+Once the global CLI tool is installed, run `npm install` from the repository root to get the packages needed to run Stencil against the theme. All commands below also run from the repository root.
 
-(Note from Connor - The BigCommerce documentation advises using Node Version Manager [here](https://developer.bigcommerce.com/stencil-docs/installing-stencil-cli/installing-stencil), NVM and n were fine at first for me, but NVM began to overrule n in most cases, so I uninstalled NVM, other than having to sudo install 8.16 with n, I've had no issues since with running Stencil etc.)).
+After changing Node versions, stop any running `stencil start` process and restart it from the Node 24 terminal. An already-running server keeps its original Node runtime; installing a newer CLI does not change it.
 
 Main commands to use are:
 

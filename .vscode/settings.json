@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "**/great-western-wine-theme/templates/**/*.html": "handlebars"
+    "**/templates/**/*.html": "handlebars"
   },
   "[handlebars]": {
     "editor.formatOnSave": false,
