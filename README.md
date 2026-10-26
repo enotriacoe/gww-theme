@@ -73,3 +73,9 @@ To be able to modify the theme's code/files, we had to create a copy of Cornerst
 
 ## Extra resources for theme development
 [Stencil/Cornerstone docs](https://developer.bigcommerce.com/stencil-docs/getting-started/about-stencil)
+
+### Agent documentation tools
+
+The workspace configures the official BigCommerce documentation MCP server as `bigcommerce-docs` in [.vscode/mcp.json](./.vscode/mcp.json). It provides documentation lookup for Stencil, Handlebars helpers, and other BigCommerce developer topics; it does not configure access to our store.
+
+In VS Code, run **MCP: List Servers** from the Command Palette, select `bigcommerce-docs`, and start it. Review and approve the server trust prompt if shown, then enable its tools in the chat tool picker. No local package installation or store API token is configured.
