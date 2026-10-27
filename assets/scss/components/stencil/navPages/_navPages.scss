@@ -101,17 +101,17 @@
     @include breakpoint('medium') {
       // @include grid-row();
       border-left: 0;
-      margin: auto;
+      margin: auto auto auto 24px;
       padding-left: 0;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(6, 1fr);
+      grid-template-rows: repeat(8, 1fr);
       grid-auto-flow: column;
     }
 
     @include breakpoint('large') {
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-rows: repeat(6, 1fr);
       grid-auto-flow: column;
     }
   }
@@ -209,13 +209,12 @@
 
   .navPages-action-moreIcon,
   .navPages-action-backIcon {
+    @include square(8px);
     border-radius: 4px;
     float: left;
-    height: 35px;
-    margin-top: -10px;
-    padding: 14px; // (33 - 9.6) / 2
+    margin-top: 6px; 
+    padding: 0; // (33 - 9.6) / 2
     transform: rotate(90deg);
-    width: 35px;
 
     @include breakpoint('medium') {
       @include square(8px);
@@ -495,25 +494,30 @@
 // }
 
 .navPage-subMenu-item-close {
+  display:none;
   @include breakpoint('medium') {
-    grid-row-start: 1;
-    grid-row-end: span 6;
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    //   grid-row-start: 1;
+    //   grid-row-end: span 6;
 
-    @include breakpoint('large') {
-      grid-row-end: span 5;
-    }
+    //   @include breakpoint('large') {
+    //     grid-row-end: span 5;
+    //   }
   }
 }
 
 .navPage-subMenu-item-child,
-.navPage-subMenu-item-parent,
-.navPage-subMenu-item-close {
+.navPage-subMenu-item-parent {
   width: 100%;
 
   @include breakpoint('medium') {
     .navPage-subMenu-action {
-      padding-left: (spacing('single'));
-      padding-right: spacing('single');
+      padding-left: (spacing('half'));
+      padding-right: spacing('half');
       width: 100%;
       padding-top: 0;
       padding-bottom: 0;
@@ -532,8 +536,7 @@
     }
 
     .navPage-subMenu-item-child,
-    .navPage-subMenu-item-parent,
-    .navPage-subMenu-item-close {
+    .navPage-subMenu-item-parent {
       .navPage-subMenu-action {
         &:hover,
         &.is-open {
@@ -542,8 +545,7 @@
       }
 
       .navPage-subMenu-item-child,
-      .navPage-subMenu-item-parent,
-      .navPage-subMenu-item-close {
+      .navPage-subMenu-item-parent {
         .navPage-subMenu-action {
           &:hover,
           &.is-open {
@@ -552,8 +554,7 @@
         }
 
         .navPage-subMenu-item-child,
-        .navPage-subMenu-item-parent,
-        .navPage-subMenu-item-close {
+        .navPage-subMenu-item-parent {
           .navPage-subMenu-action {
             &:hover,
             &.is-open {
@@ -582,10 +583,10 @@
 .navPage-subMenu-item-parent {
   @include breakpoint('medium') {
     grid-row-start: 1;
-    grid-row-end: span 6;
+    grid-row-end: span 8;
 
     @include breakpoint('large') {
-      grid-row-end: span 5;
+      grid-row-end: span 6;
     }
   }
   .navPages-action {
