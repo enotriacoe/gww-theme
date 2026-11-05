@@ -5,7 +5,7 @@
             <a class="navPage-subMenu-action navPages-action navPages-action-depth-max"
                     href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
         </li>
-        {{#each (limit children 23)}}
+        {{#each (limit children 24)}}
         <li class="navPage-subMenu-item-child">
             {{#if children}}
                 <a class="navPage-subMenu-action navPages-action navPages-action-depth-max has-subMenu{{#if is_active}} activePage{{/if}}"
@@ -20,11 +20,5 @@
             {{/if}}
         </li>
         {{/each}}
-        {{#gt (length children) 23}}
-            <li class="navPage-subMenu-item-parent">
-                <a class="navPage-subMenu-action navPages-action navPages-action-depth-max"
-                    href="{{url}}">{{lang 'category.view_all.name' category=name}}</a>
-            </li>
-        {{/gt}}
     </ul>
 </div>
