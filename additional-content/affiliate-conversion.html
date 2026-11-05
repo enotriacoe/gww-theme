@@ -1,0 +1,128 @@
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function (event) {
+      var commissionGroup = 'NEW';
+      var custMeta = document.querySelector("#customerMeta");
+      if (custMeta && custMeta.getAttribute('data-customer-orders')) commissionGroup = custMeta.getAttribute("data-customer-orders") == "1"
+        ? "NEW"
+        : "EXISTING";
+      document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend',
+        '<img src="https://www.awin1.com/sread.img?tt=ns&tv=2&merchant=21454&amount=%%ORDER_AMOUNT%%&cr=GBP&ref=%%ORDER_ID%%&parts=' + commissionGroup + ':%%ORDER_AMOUNT%%&vc=&ch=aw&testmode=0" border="0" width="0" height="0">');
+    });
+  </script>
+<script>
+	var orderId = %%ORDER_ID%%;
+	document.addEventListener('DOMContentLoaded', function (event) {
+		if(orderId){
+			var storeFrontBase = "/api/storefront/order/";
+			var storeFrontBaseUrl = storeFrontBase.concat(orderId.toString());
+			window.fetch(storeFrontBaseUrl).then(function(res){
+				res.json().then(function(order){
+					window.dataLayer = window.dataLayer || [];
+					var obj = {
+						"event" : "confirmation",
+						"vendor" : {
+							"google" : {
+								"GA" : {
+									"ecommerce" : {
+										"purchase" : {
+											"actionField" : {
+												"id" : order.orderId,
+												"affiliation" : "Spirits Kiosk",
+												"revenue" : order.orderAmount,
+												"shipping" : order.shippingCostTotal,
+												"tax" : order.taxTotal
+											},
+											"products" : []
+										}
+									}
+								},
+								"GA4" : {
+									"ecommerce" : {
+										"items" : []
+									}
+								}
+							},
+							"facebook" : {
+								"content_ids" : [],
+								"content_names" : [],
+								"content_categories" : [],
+								"content_prices" : [],
+								"content_quantities" : [],
+								"value" : order.orderAmount,
+								"orderId" : order.orderId
+							},
+							"pinterest" : {
+								"order_quantity" : 0,
+								"value" : order.orderAmount,
+								"line_items" : []
+							},
+							"schema" : {
+								"transaction" : {
+									"id" : order.orderId,
+									"affiliation" : "Spirits Kiosk",
+									"revenue" : order.orderAmount,
+									"shipping" : order.shippingCostTotal,
+									"tax" : order.taxTotal,
+									"products" : []
+								}
+							}
+
+						}
+					}
+					if(order.lineItems && order.lineItems.physicalItems){
+						order.lineItems.physicalItems.forEach(function(productObj){
+							var prodGAObj = {
+								"id" : productObj.sku,
+								"name" : productObj.name,
+								"category" : (productObj.categories && productObj.categories.length > 0) ? productObj.categories[0] : "",
+								"price" : productObj.salePrice,
+								"quantity" : productObj.quantity,
+								"variant" : productObj.variantId
+							}
+							var prodGA4Obj = {
+								"item_id" : productObj.sku,
+								"item_name" : productObj.name,
+								"item_category" : (productObj.categories && productObj.categories.length > 0) ? productObj.categories[0] : "",
+								"price" : productObj.salePrice,
+								"quantity" : productObj.quantity,
+								"item_variant" : productObj.variantId
+							}
+							var prodPinObj = {
+								"product_id" : productObj.sku,
+								"product_name" : productObj.name,
+								"product_category" : (productObj.categories) ? productObj.categories : "",
+								"product_price" : productObj.salePrice,
+								"product_quantity" : productObj.quantity,
+								"product_variant" : productObj.variantId
+							}
+							obj.vendor.facebook.content_ids.push(prodGAObj.id);
+							obj.vendor.facebook.content_names.push(prodGAObj.name);
+							obj.vendor.facebook.content_categories.push(prodGAObj.category);
+							obj.vendor.facebook.content_prices.push(productObj.extendedSalePrice);
+							obj.vendor.facebook.content_quantities.push(prodGAObj.quantity);
+							obj.vendor.google.GA.ecommerce.purchase.products.push(prodGAObj);
+							obj.vendor.google.GA4.ecommerce.items.push(prodGA4Obj);
+							obj.vendor.pinterest.line_items.push(prodPinObj);
+							obj.vendor.schema.transaction.products.push(prodGAObj);
+						});
+					}
+					window.dataLayer.push(obj)
+					console.log(order)
+				})
+			});
+		}
+	})
+</script>
+<script>
+  var ecData = {
+    "email": '%%ORDER_EMAIL%%',
+  };
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'orderComplete',
+    'orderValue': %%ORDER_AMOUNT%%,
+    'orderId': '%%ORDER_ID%%',
+    'ecData': ecData
+  });
+
+</script>
